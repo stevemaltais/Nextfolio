@@ -1,0 +1,49 @@
+@import "../abstracts/colors";
+@import "../abstracts/variables";
+
+
+
+
+.fixedEmail:hover{
+    color: var(--accent-color);
+}
+
+.side__StyledSideElement{
+    bottom: 150px;
+    left: auto;
+    position: fixed;
+    right: 22px;
+    width: 40px;
+    z-index: 999;
+}
+
+
+
+.email__StyledLinkWrapper{
+
+}
+
+.email__StyledLinkContainer{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.email__StyledText{
+    font-size: 1.8rem;
+    letter-spacing: .5em;
+    margin: 20px auto;
+    padding: 10px;
+    writing-mode: vertical-rl;
+    color: #818181;
+}
+
+.email__StyledLinkContainer:after {
+    background-color: #fff;
+    content: "";
+    display: block;
+    height: 80px;
+    margin: 0 auto;
+    width: 1px;
+}

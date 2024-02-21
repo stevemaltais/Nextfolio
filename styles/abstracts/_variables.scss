@@ -1,0 +1,49 @@
+// -----------------------------------------------------------------------------
+// Ce fichier contient toutes les variables Sass de l'application.
+// -----------------------------------------------------------------------------
+
+// Texte
+$font-xs: 1.6rem;
+$font-sm: 1.8rem;
+$font-std: 2rem;
+$font-md: 2.2rem;
+$font-lg: 2.6rem;
+$font-xg: 3.9rem;
+$font-xxl: 10rem;
+
+// Texte des titres
+$font-title-xx: 4rem;
+$font-title-xs: 4.4rem;
+$font-title-md: 6.2rem;
+$font-title-xl: 7.2rem;
+$font-title-xxl: 15rem;
+
+
+// Hauteur de ligne
+$fontHeight-std: normal;
+$fontHeight-med: 1.6;
+$fontHeight-sm: 80%;
+
+
+
+
+
+// Rayon de bordure
+$radius-xs: 0.4rem;
+$radius-std: 1.6rem;
+$radius-lg: 1.6rem;
+
+// Marges et espacements
+
+// Breakpoints
+
+
+
+// URL relative ou absolue où tous les actifs sont servis
+$base-url: '/assets/' !default;
+
+/// Relative or absolute URL where all assets are served from
+/// @type String
+/// @example scss - When using a CDN
+///   $base-url: 'https://cdn.example.com/assets/';
+$base-url: '/assets/' !default;

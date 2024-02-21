@@ -1,0 +1,17 @@
+.background_layer, .middle_ayer, .foreground_layer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .background_layer img, .middle_layer img {
+    width: 100%; /* Ajustez selon vos besoins */
+    height: auto;
+  }
+  
+  .foreground_layer h1 {
+    color: white; /* Ajustez selon vos besoins */
+    text-align: center;
+  }
+  

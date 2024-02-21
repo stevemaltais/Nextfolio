@@ -1,0 +1,22 @@
+// Layout.module.scss
+.contentWithSidebarClosed {
+  margin-left: 7.8rem;
+  transition: margin-left 0.3s ease, margin 0.3s ease; // Ajout de la transition sur margin aussi
+}
+
+.contentWithSidebarOpen {
+  margin-left: 25rem;
+  transition: margin-left 0.3s ease, margin 0.3s ease; // Ajout de la transition sur margin aussi
+}
+
+.homeMainWithSidebarClosed {
+  margin: 0 10rem;
+  height: 1000px;
+  transition: margin 0.3s ease; // Assure la transition fluide pour la marge
+}
+
+.homeMainWithSidebarOpen {
+  margin: 0 10rem;
+  height: 1000px;
+  transition: margin 0.3s ease; // Assure la transition fluide pour la marge
+}

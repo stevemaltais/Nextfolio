@@ -1,0 +1,48 @@
+// Importations de fichiers SCSS externes (si vous avez des fichiers séparés pour mixins et variables)
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+@import 'abstracts/colors';
+@import 'base/base';
+@import 'base/normalize';
+@import 'base/reset';
+
+
+html {
+  font-size: 62.5%; // Taille de police de base pour faciliter les conversions en rem
+}
+
+// Variables CSS personnalisées pour les couleurs principales
+:root {
+  --primary-color: #{$darkGrey};
+  --secondary-color: #{$primeColorProgressBar};
+  --accent-color: #{$primeColor};
+}
+
+// Variables CSS personnalisées pour les couleurs neutres
+:root {
+  --light-gray: #{$lightGray}; // (paragraphes)
+  --very-light-gray: #{$verylightgray}; // (titres, boutons)
+  --white: #{$White};
+}
+
+// Variables CSS personnalisées supplémentaires
+:root {
+  /* Ajoutez d'autres variables ici */
+  --btn-text-color: #64d8ff;
+  --btn-border-color: #64d8ff;
+}
+// Famille de polices
+:root {
+  --title-font-stack: 'Roboto', sans-serif;
+  --title2-font-stack: 'Oswald', sans-serif;
+}
+
+// Famille de polices par sélecteur
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--title2-font-stack);
+}
+
+a, p, span, div, body {
+  font-family: var(--title-font-stack);
+}
+
