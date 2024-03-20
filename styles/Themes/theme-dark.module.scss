@@ -1,0 +1,32 @@
+
+@import 'styles/abstracts/colors';
+@import 'styles/base/base';
+@import 'styles/base/normalize';
+
+
+.dark-theme {
+    --background-color: #000000;
+    --text-color: #{$lightGray};
+    --backgroundSideBar : #17181B;
+    --IconMenuSideBar : #{$White};
+    --MenuhoverSideBar : #{$darkGrey};
+    --MenuCoverSideBar : #{$darkGrey};
+    --LinkMenuSideBar: #{$White};
+    --SetupCoverSideBar : #{$darkGrey};
+
+    --logoCercleSideBar : #{$White};
+    --hoverButtonColor: #{var(--accent-color)};
+    --BorderButton :  #{$White};
+    --opacity : 0.1;
+
+    --titleScript : #{$darkGrey};
+    --animatedText: #{$verylightgray};
+    --textweight : 100;
+
+
+    --greenFluo: #00ff00;
+    --pinkFluo: #ff00ff;
+    --purpleFluo: #6464ff;
+    --yellowFluo: #ffff00;
+  }
+  

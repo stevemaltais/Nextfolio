@@ -2,21 +2,57 @@
 .contentWithSidebarClosed {
   margin-left: 7.8rem;
   transition: margin-left 0.3s ease, margin 0.3s ease; // Ajout de la transition sur margin aussi
+  overflow: hidden;
 }
 
 .contentWithSidebarOpen {
   margin-left: 25rem;
   transition: margin-left 0.3s ease, margin 0.3s ease; // Ajout de la transition sur margin aussi
+  overflow: hidden;
 }
 
 .homeMainWithSidebarClosed {
   margin: 0 10rem;
-  height: 1000px;
+  height: auto;
   transition: margin 0.3s ease; // Assure la transition fluide pour la marge
+
 }
 
 .homeMainWithSidebarOpen {
   margin: 0 10rem;
-  height: 1000px;
+  height: auto;
   transition: margin 0.3s ease; // Assure la transition fluide pour la marge
+
+}
+
+@media (max-width: 750px)  {
+
+  .contentWithSidebarClosed {
+    margin-left: 0rem;
+    transition: margin-left 0.3s ease, margin 0.3s ease; // Ajout de la transition sur margin aussi
+    overflow: hidden;
+  }
+  
+  .contentWithSidebarOpen {
+    margin-left: 8rem;
+    transition: margin-left 0.3s ease, margin 0.3s ease; // Ajout de la transition sur margin aussi
+    overflow: hidden;
+  }
+  
+  .homeMainWithSidebarClosed {
+    margin: 0 ;
+    height: auto;
+    transition: margin 0.3s ease; // Assure la transition fluide pour la marge
+  
+  }
+  
+  .homeMainWithSidebarOpen {
+    margin: 0 ;
+    height: auto;
+    transition: margin 0.3s ease; // Assure la transition fluide pour la marge
+  
+  }
+
+  
+
 }

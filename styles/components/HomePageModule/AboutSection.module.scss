@@ -1,0 +1,100 @@
+@import "../../../styles/abstracts/colors";
+@import "../../../styles/abstracts/variables";
+
+.section{
+  margin-bottom: 6rem;
+  
+}
+
+.about  {
+    margin-top: 40rem;
+    height: 100vh;
+   
+    margin-bottom: 10rem;
+}    
+
+    .container{
+    display: block;
+    }
+    
+    .aboutWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    }
+    
+    .aboutInfo {
+    width: 65%;
+    font-family: var(--title-font-stack);
+    }
+    
+    .contactInfo ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;     
+    }
+      
+    .contactInfo li {
+    margin-bottom: 3rem;
+    font-size: $font-md;
+    color: var(--text-color);
+    font-weight: 100;
+    }
+    
+    .aboutInfo p{
+    color: var(--text-color);
+    font-weight: var(--textweight);
+    font-size: 2rem;
+    margin-right: 2rem;
+    text-align: justify;
+    line-height: 2.8rem;
+    }
+    
+    .container h2{
+    font-size: $font-title-xs;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+    }
+    
+    .aboutSeparator{
+    border: 1px solid var(--accent-color) ;
+    margin-bottom: 4rem;
+    }
+    
+    .contactInfo h4{
+    margin-bottom: 4rem;
+    font-size: $font-lg;
+    }          
+    
+    .aboutInfo span{
+    color: var(--accent-color);
+    font-weight: 600;
+    }
+    
+    .aboutEmail:hover{
+    color: var(--accent-color);
+    font-weight: 300;
+    }
+
+    .aboutTel:hover{
+    color: var(--accent-color);
+    font-weight: 300;
+    }
+    
+    .aboutEmail:visited {
+        color: var(--text-color);
+    }
+    
+    .aboutTel:visited {
+      color: var(--text-color);
+    }
+  
+    .aboutEmail {
+      color: var(--text-color);
+    }
+    .aboutTel {
+      color: var(--text-color);
+    }
+      
+   

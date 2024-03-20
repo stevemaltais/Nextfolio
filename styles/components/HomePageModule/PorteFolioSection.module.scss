@@ -1,0 +1,95 @@
+@import "../../../styles/abstracts/colors";
+@import "../../../styles/abstracts/variables";
+
+.section{
+    height: 100vh;
+    margin: 10rem 0;
+}
+
+
+.container h2{
+    font-size: $font-title-xs;
+    margin-bottom: 1rem;
+}
+
+.aboutSeparator{
+
+    border: 1px solid var(--accent-color) ;
+    margin-bottom: 10rem;
+}
+
+
+/* Ajoutez ces styles à votre fichier PorteFolioSection.module.scss */
+.embla__slide{
+    display: block;
+    cursor: pointer;
+
+}
+
+
+
+.embla__slideBackground {
+    position: relative;
+    height: var(--slide-height);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    border-radius: 1.8rem;
+    padding-left: 10px;
+    padding-bottom: 20px;
+    transition: opacity 0.3s ease;
+    opacity: 1; 
+  }
+  
+  .embla__slideBackground::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3); /* Assombrir l'image de fond */
+    border-radius: 1.8rem;
+    z-index: 1;
+  }
+
+
+  .embla__slideContent {
+    z-index: 3; /* S'assurer que le contenu est par-dessus le filtre */
+    color: white; /* Couleur du texte pour contraster avec le fond assombri */
+    text-align: center; /* Centrer le texte */
+    position: relative;
+  }
+  
+  .embla__slideContent h2{
+    text-align: left;
+    font-size: $font-lg;
+  }
+
+  .embla__slideContent p{
+    text-align: left;
+    font-size: $font-xs;
+  }
+
+  .embla__slide:hover .embla__slideBackground {
+    
+    content: '';
+   
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(133, 10, 10, 0.5);
+    border-radius: 1.8rem;
+    z-index: 12;
+  }
+
+  .embla__slideContent h2, .embla__slideContent div {
+    transition: color 0.3s ease;
+  }
+  
+  .embla__slide:hover .embla__slideContent h2, .embla__slide:hover .embla__slideContent div {
+    color: #ccc; 
+  }

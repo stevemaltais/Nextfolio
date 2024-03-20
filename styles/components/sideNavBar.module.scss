@@ -3,6 +3,7 @@
 
 .sidebar.open {
     width: 25rem;
+
 }
 
 .sidebar {
@@ -11,11 +12,11 @@
     top: 0rem;
     height: 100vh;
     width: 7.8rem;
-    background: #17181B;
+    background: var(--backgroundSideBar);
     padding: .6rem 1.4rem;
     transition: width 0.5s ease;
-    z-index: 9998;
-
+    z-index: 100;
+    box-shadow: 0.5px 0 5px rgba(0,0,0,.5);
     text-align: center;
   }
 
@@ -34,7 +35,7 @@
   }
 
 .linkName {
-    color: $White;
+    color:  var(--IconMenuSideBar);
     font-size: 1.5rem;
     font-weight: 400;
     white-space: nowrap;
@@ -45,7 +46,7 @@
 
 
   .sidebar li .link:hover {
-    background: $White;
+    background: var(--LinkMenuSideBar);
   }
 
   /* Style des noms de liens lorsque la barre latérale est ouverte */
@@ -57,7 +58,7 @@
   .sidebar li a:hover .linkName,
 .sidebar li .link:hover i {
   transition: all 0.5s ease;
-  color: $darkGrey;
+  color: var(--MenuhoverSideBar);
 }
 
   /* Style des icônes de la barre latérale */
@@ -66,8 +67,7 @@
     line-height: 5rem;
     font-size: $font-sm;
     border-radius: $font-title-xx;
-    color: #fff;
-    height: 5rem;
+    color : var(--IconMenuSideBar);
     min-width: 50px;
   
     text-align: center;
@@ -84,7 +84,7 @@
     align-items: center;
     text-decoration: none;
     transition: all 0.4s ease;
-    background: $darkGrey;
+    background: var(--MenuCoverSideBar);
 }
 
 
@@ -106,7 +106,7 @@
     white-space: nowrap;
     pointer-events: none;
     transition: 0s;
-    z-index: 999;
+   
   }
   /* Style des infobulles au survol */
   .sidebar li:hover .tooltip {
@@ -115,7 +115,7 @@
     transition: all 0.4s ease;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 999;
+ 
   }
 
   /* Style des infobulles lorsque la barre latérale est ouverte */
@@ -133,18 +133,19 @@
     border-top: 5px solid transparent;
     border-right: 8px solid $lightGray; /* couleur de fond du tooltip */
     border-bottom: 5px solid transparent;
-    z-index: 999;
+
   }
 /* Style des inputs lorsque la barre latérale est ouverte */
 
 .sidebar .navList {
     margin-top: 2rem;
     height: 100%;
+  
 }
 
 .sidebar input {
     font-size: 15px;
-    color: $White;
+    color : var(--IconMenuSideBar);
     font-weight: 400;
     outline: none;
     height: 5rem;
@@ -179,7 +180,7 @@
 
 .sidebar .logoDetails .menuIcon{
     height: 5.5rem;
-    color: #fff;
+    color : var(--IconMenuSideBar);
     width: 100%;
     line-height: 5rem;
     position: absolute;
@@ -227,7 +228,8 @@
 
   /* Styles pour le nom du logo */
 .logoName {
-    border: $White solid .2rem;
+    border: var(--logoCercleSideBar) solid .2rem;
+    background-color: var(--logoCoverSideBar);
     border-radius: 100%;
     width: 4rem;
     height: 4rem;
@@ -323,4 +325,91 @@
   .sidebar {
     animation: slideIn 1.5s ease-out forwards;
   }
+
+  .topBar {
+    transition: height 0.3s ease;
+    /* Autres styles */
+  }
   
+  .topBar.visible {
+    height: 50px; /* Ajustez selon vos besoins */
+  }
+  
+  .menuIcon.hidden {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+
+  @media (max-width: 750px) {
+    .sidebar { 
+      background-color: transparent;
+        width: 5rem;
+       
+        
+    }
+
+    .sidebar.open { 
+      background: #17181B;
+      transform: translateX(0);
+       width: 8rem;
+       
+    }
+    .sidebar.open li .link {
+      padding: .5rem;
+      transition: all 0.5s ease;
+  }
+    
+  
+.navList {
+ 
+  display: none;
+
+  
+  }
+
+  .sidebar.open .navList {
+    display: block;
+    left: 10px;
+    transition: width 0.5s ease;
+    }
+    .sidebar li {
+      margin: 1rem 0rem;
+  
+    }
+  .sidebar li .link{
+    display: flex;
+    flex-direction: column;  
+    background-color: transparent;
+
+  }
+  .sidebar.open li .link { 
+   
+    padding: .5rem; 
+    }
+    .sidebar li i {
+      height: 2rem;
+      line-height:2rem;
+   
+  }
+    .linkName {
+
+      font-size: 1rem;
+   
+    }
+    
+    .sidebar .logoName {
+      display: none;
+  }
+  .sidebar .logoDetails .menuIcon {
+    left: 10px;
+  
+  }
+  .sidebar.open .logoDetails .menuIcon {
+  text-align: center;
+  left: 0;
+  
+  }
+
+}
+ 

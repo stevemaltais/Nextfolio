@@ -4,17 +4,15 @@
 
 
 
-.fixedEmail:hover{
-    color: var(--accent-color);
-}
+
 
 .side__StyledSideElement{
-    bottom: 150px;
+    bottom: 0;
     left: auto;
     position: fixed;
     right: 22px;
     width: 40px;
-    z-index: 999;
+
 }
 
 
@@ -34,16 +32,28 @@
     font-size: 1.8rem;
     letter-spacing: .5em;
     margin: 20px auto;
+  
     padding: 10px;
     writing-mode: vertical-rl;
     color: #818181;
 }
 
 .email__StyledLinkContainer:after {
-    background-color: #fff;
+    background-color:var(--text-color);
     content: "";
     display: block;
-    height: 80px;
+    height: 92px;
     margin: 0 auto;
     width: 1px;
+
+}
+
+.email__StyledText:hover{
+    color: var(--accent-color);
+}
+
+@media (max-width: 750px) {
+    .side__StyledSideElement{
+        display: none;
+    }
 }

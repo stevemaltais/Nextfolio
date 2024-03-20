@@ -1,24 +1,29 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import styles from '@/styles/components/sideNavBar.module.scss';
-
-
+import SettingsMenu from '@/components/SettingsMenu';
 
 
 
 
 const SideNav = ({ isOpen, toggleNav }) => {
- 
- 
+ // État pour contrôler l'affichage de SettingsMenu
+ const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+ const toggleSettingsMenu = () => {
+  setIsSettingsOpen(!isSettingsOpen);
+};
+
 
   return (
+    <>
     <aside className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
+      
       <div className={styles.logoDetails}>
       <div className={`${isOpen ? styles.rotate : ''} ${styles.logoName}`}>M</div>
-
+      <div className={styles.topBar}></div>
         <i className={`bx ${isOpen ? 'bx-menu-alt-right' : 'bx-menu'} ${styles.menuIcon}`} onClick={toggleNav}></i>
-
-      </div>
+        </div>
+  
       <nav className={styles.navList}>
         <ul>
           <li>
@@ -75,15 +80,17 @@ const SideNav = ({ isOpen, toggleNav }) => {
             </Link>
             <span className={styles.tooltip}>Contact</span>
           </li>
-          <li>
-            <a href="#" className={styles.link}>
-              <i className={`bx bx-cog ${styles.setupToggle}`}></i>
-             
+          <li onClick={toggleSettingsMenu}>
+          <a href="#" className={styles.link} onClick={(e) => e.preventDefault()}>
+            <i className={`bx bx-cog ${styles.setupToggle}`}></i>
               <span className={styles.linkName}>Paramètres</span>
             </a>
             <span className={styles.tooltip}>Paramètres</span>
+   
+            
           </li>
         </ul>
+       
         <div className={styles.socialIcons}>
          
           <a href="#"><i className='bx bxl-facebook'></i></a>
@@ -99,8 +106,14 @@ const SideNav = ({ isOpen, toggleNav }) => {
               </div>
             </div>
           </div>
+      
       </nav>
+    
+    
+    
     </aside>
+            <SettingsMenu isOpen={isSettingsOpen} sidebarIsOpen={isOpen} />
+            </>
   );
 };
 

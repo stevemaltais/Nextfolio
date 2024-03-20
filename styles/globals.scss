@@ -5,6 +5,8 @@
 @import 'base/base';
 @import 'base/normalize';
 @import 'base/reset';
+@import 'Themes/theme-retro.module.scss';
+@import 'Themes/theme-dark.module.scss';
 
 
 html {
@@ -46,3 +48,73 @@ a, p, span, div, body {
   font-family: var(--title-font-stack);
 }
 
+
+// Rayon de bordure
+$radius-xs: 0.4rem;
+$radius-std: 1.6rem;
+$radius-lg: 1.6rem;
+
+/* La barre de défilement en entier */
+::-webkit-scrollbar {
+  width: 18px; /* Largeur de la barre de défilement */
+}
+
+/* La piste (la partie sur laquelle la poignée se déplace) */
+::-webkit-scrollbar-track {
+  background: $darkGrey; /* Couleur de fond de la piste */
+}
+
+/* La poignée (la partie que vous pouvez déplacer) */
+::-webkit-scrollbar-thumb {
+  background: #17181B; /* Couleur de fond de la poignée */
+}
+
+/* Au survol ou lors du clic sur la poignée */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Couleur de fond de la poignée au survol */
+}
+:root {
+  --greenFluo: #00ff00;
+  --pinkFluo: #ff00ff;
+  --purpleFluo: #6464ff;
+  --yellowFluo: #ffff00;
+}
+
+:root {
+  --brand-primary: rgb(138, 180, 248);
+  --brand-secondary: rgb(193, 168, 226);
+  --brand-alternative: rgb(136, 186, 191);
+  --background-site: rgb(0, 0, 0);
+  --background-code: rgb(12, 12, 12);
+  --text-body: rgb(222, 222, 222);
+  --text-comment: rgb(170, 170, 170);
+  --text-high-contrast: rgb(230, 230, 230);
+  --text-medium-contrast: rgb(202, 202, 202);
+  --text-low-contrast: rgb(170, 170, 170);
+  --detail-high-contrast: rgb(101, 101, 101);
+  --detail-medium-contrast: rgb(25, 25, 25);
+  --detail-low-contrast: rgb(21, 21, 21);
+  --admonition-note: rgb(138, 180, 248);
+  --admonition-warning: rgb(253, 186, 116);
+  --admonition-danger: rgb(220, 38, 38);
+  --brand-primary-rgb-value: 138, 180, 248;
+  --brand-secondary-rgb-value: 193, 168, 226;
+  --brand-alternative-rgb-value: 136, 186, 191;
+  --background-site-rgb-value: 0, 0, 0;
+  --background-code-rgb-value: 12, 12, 12;
+  --text-body-rgb-value: 222, 222, 222;
+  --text-comment-rgb-value: 170, 170, 170;
+  --text-high-contrast-rgb-value: 230, 230, 230;
+  --text-medium-contrast-rgb-value: 202, 202, 202;
+  --text-low-contrast-rgb-value: 170, 170, 170;
+  --detail-high-contrast-rgb-value: 101, 101, 101;
+  --detail-medium-contrast-rgb-value: 25, 25, 25;
+  --detail-low-contrast-rgb-value: 21, 21, 21;
+  --admonition-note-rgb-value: 138, 180, 248;
+  --admonition-warning-rgb-value: 253, 186, 116;
+  --admonition-danger-rgb-value: 220, 38, 38;
+}
+
+[data-scroll-container] {
+  min-height: 100vh;
+}

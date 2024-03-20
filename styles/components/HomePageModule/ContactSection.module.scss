@@ -1,0 +1,37 @@
+@import "../../../styles/abstracts/colors";
+@import "../../../styles/abstracts/variables";
+
+.section{
+
+
+    text-align: center;
+    padding: 0 4rem;
+    margin-bottom: 10rem;
+    
+}
+
+.title{
+    font-size: 160px;
+    color: $darkGrey;
+    text-align: center;
+    margin-top: -10px;
+}
+.contact p{
+    color: var( --text-color);
+    margin-top: -75px;
+    font-weight: var(--textweight);
+    z-index: 999;
+    line-height: $fontHeight-med;
+    opacity: 0;
+    text-align: justify;
+    
+}
+
+.animate {
+    animation: fadeInAnimation 1s ease forwards 2s; /* Ajoute un délai de 2 secondes */
+  }
+  
+  @keyframes fadeInAnimation {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }

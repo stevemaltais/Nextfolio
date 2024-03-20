@@ -7,8 +7,10 @@
 
 body {
   font-size: $font-std; // Taille de police par défaut
-  color: $lightGray; // Couleur du texte
-  background-color: black; // Couleur d'arrière-plan
+  color: var(--text-color); // Couleur du texte
+  background-color: var(--background-color); // Couleur d'arrière-plan
+
+ 
   
   @include breakpoint-down('medium') {
 
