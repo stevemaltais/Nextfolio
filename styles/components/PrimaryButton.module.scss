@@ -19,12 +19,7 @@
     color: var(--textColorButton);
     cursor: pointer;
     overflow: hidden;
-    box-shadow: 0 0 .2rem var(--BorderButton),
-    0 0 .2rem #fff,
-    0 0 1rem var(--accent-color),
-    0 0 0.1rem var(--accent-color),
-    0 0 0.8rem var(--accent-color),
-    inset 0 0 0.8rem var(--accent-color);
+    box-shadow: var(--neonButton);
 
   }
   
@@ -59,7 +54,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    color: $darkGrey;
+    color: var(--TextColorButtonAfter);
     opacity: 0;
     transition: opacity 1.2s;
     text-align: center;

@@ -74,10 +74,17 @@ $radius-lg: 1.6rem;
   background: #555; /* Couleur de fond de la poignée au survol */
 }
 :root {
-  --greenFluo: #00ff00;
-  --pinkFluo: #ff00ff;
-  --purpleFluo: #6464ff;
-  --yellowFluo: #ffff00;
+  --greenFluo-d: #00ff00;
+  --pinkFluo-d: #ff00ff;
+  --purpleFluo-d: #6464ff;
+  --yellowFluo-d: #ffff00;
+
+  --greenFluo-l: #008300;
+    --pinkFluo-l: #ff0000;
+    --purpleFluo-l: #0000ba;
+    --yellowFluo-l: #ff7300;
+
+
 }
 
 :root {

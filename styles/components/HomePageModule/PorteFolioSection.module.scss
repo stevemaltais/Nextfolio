@@ -6,10 +6,22 @@
     margin: 10rem 0;
 }
 
+.techno {
 
-.container h2{
-    font-size: $font-title-xs;
-    margin-bottom: 1rem;
+  padding: 0.5rem 0.5rem;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  margin-right: 0.5rem;
+  width:auto;
+  height: auto; 
+  text-transform: uppercase ;
+  color: #fff;
+  cursor: pointer;
+}
+.techno:hover {
+  /* Votre effet de survol ici, par exemple : */
+  background-color: darken(#64d8ff, 10%);
 }
 
 .aboutSeparator{
@@ -18,8 +30,11 @@
     margin-bottom: 10rem;
 }
 
+.container h2{
+  font-size: 4.4rem;
 
-/* Ajoutez ces styles à votre fichier PorteFolioSection.module.scss */
+}
+
 .embla__slide{
     display: block;
     cursor: pointer;
@@ -38,7 +53,7 @@
     align-items: flex-end;
     border-radius: 1.8rem;
     padding-left: 10px;
-    padding-bottom: 20px;
+   
     transition: opacity 0.3s ease;
     opacity: 1; 
   }
@@ -52,15 +67,18 @@
     left: 0;
     background: rgba(0, 0, 0, 0.3); /* Assombrir l'image de fond */
     border-radius: 1.8rem;
-    z-index: 1;
+    z-index: 12;
   }
-
+  .embla__slideContent link{
+    color: #fff;
+  }
 
   .embla__slideContent {
     z-index: 3; /* S'assurer que le contenu est par-dessus le filtre */
-    color: white; /* Couleur du texte pour contraster avec le fond assombri */
+    color: white;
     text-align: center; /* Centrer le texte */
     position: relative;
+    z-index: 12;
   }
   
   .embla__slideContent h2{
@@ -71,19 +89,12 @@
   .embla__slideContent p{
     text-align: left;
     font-size: $font-xs;
+    margin-bottom: 1rem;
   }
 
-  .embla__slide:hover .embla__slideBackground {
-    
-    content: '';
-   
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(133, 10, 10, 0.5);
-    border-radius: 1.8rem;
-    z-index: 12;
+  
+  .embla__slide:hover .embla__slideBackground::before {
+    background: rgba(0, 0, 0, 0.1);
   }
 
   .embla__slideContent h2, .embla__slideContent div {
@@ -91,5 +102,6 @@
   }
   
   .embla__slide:hover .embla__slideContent h2, .embla__slide:hover .embla__slideContent div {
-    color: #ccc; 
+    color: #fff; 
   }
+

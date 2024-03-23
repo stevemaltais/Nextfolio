@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from '@/styles/components/SettingsMenu.module.scss';
+
 import PrimaryButton from '@/components/PrimaryButton';
 
 const SettingsMenu = ({ isOpen, sidebarIsOpen }) => {
@@ -8,16 +9,30 @@ const SettingsMenu = ({ isOpen, sidebarIsOpen }) => {
   useEffect(() => {
     document.body.classList.toggle('dark-theme', isDarkMode);
     document.body.classList.toggle('light-theme', !isDarkMode);
+
+    document.documentElement.style.setProperty('--accent-color',  '#64d8ff');
   }, [isDarkMode]);
+
+  
 
   const changeTheme = (e) => {
     setIsDarkMode(e.target.checked);
-  };
 
-  const changeColor = (colorValue) => {
-    document.documentElement.style.setProperty('--accent-color', colorValue);
   };
+  
 
+
+
+  const changeColor = (colorName) => {
+    const themeSuffix = isDarkMode ? '-d' : '-l';
+    const colorVarName = `var(--${colorName}${themeSuffix})`;
+    document.documentElement.style.setProperty('--accent-color', colorVarName);
+  };
+  
+  
+  
+  
+  
   const resetThemeAndColor = () => {
     setIsDarkMode(false);
     document.documentElement.style.setProperty('--accent-color', '#64d8ff');
@@ -43,10 +58,13 @@ const SettingsMenu = ({ isOpen, sidebarIsOpen }) => {
         <hr />
         <h4>Couleurs Theme</h4>
         <div className={styles.colorPalette}>
-          <div onClick={() => changeColor('var(--greenFluo)')} className={styles.color} style={{ backgroundColor: 'var(--greenFluo)' }}></div>
-          <div onClick={() => changeColor('var(--pinkFluo)')} className={styles.color} style={{ backgroundColor: 'var(--pinkFluo)' }}></div>
-          <div onClick={() => changeColor('var(--purpleFluo)')} className={styles.color} style={{ backgroundColor: 'var(--purpleFluo)' }}></div>
-          <div onClick={() => changeColor('var(--yellowFluo)')} className={styles.color} style={{ backgroundColor: 'var(--yellowFluo)' }}></div>
+        <div onClick={() => changeColor('greenFluo')} className={styles.color} style={{ backgroundColor: 'var(--greenFluo)' }}></div>
+  <div onClick={() => changeColor('pinkFluo')} className={styles.color} style={{ backgroundColor: 'var(--pinkFluo)' }}></div>
+  <div onClick={() => changeColor('purpleFluo')} className={styles.color} style={{ backgroundColor: 'var(--purpleFluo)' }}></div>
+  <div onClick={() => changeColor('yellowFluo')} className={styles.color} style={{ backgroundColor: 'var(--yellowFluo)' }}></div>
+
+
+
         </div>
         <PrimaryButton data-scroll text="Reset" onClick={resetThemeAndColor} className={styles.resetButton}>Reset</PrimaryButton>
       </div>
