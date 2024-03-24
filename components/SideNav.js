@@ -63,7 +63,7 @@ const SideNav = ({ isOpen, toggleNav }) => {
             <span className={styles.tooltip}>Blog</span>
           </li>
           <li>
-            <Link href="/portfolio" className={styles.link}>
+            <Link href="/portefolio" className={styles.link}>
       
                 <i className='bx bx-briefcase-alt'></i>
                 <span className={styles.linkName}>Portfolio</span>
