@@ -3,7 +3,8 @@ import PrimaryButton from '../PrimaryButton'
 import styles from '@/styles/components/HomePageModule/ContactSection.module.scss'
 import useIntersectionObserver from '@/Hooks/useIntersectionObserver'
 import AnimatedText from '@/components/AnimatedText'
-import Modal from '../Modal';
+import Modal from '@/components/Modal';
+
 
 
 const ContactSection = () => {

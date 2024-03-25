@@ -22,7 +22,7 @@ export const PorteFolioSection = ({ projets }) => {
               {projet.deTailsDuProjet.technologiesUtilisees.map((techno) => (
                 <a 
                   key={techno}
-                  href={`/portefolio/technologie/${encodeURIComponent(techno.toLowerCase())}`}
+                  href={`/technologie/${encodeURIComponent(techno.toLowerCase())}`}
                   className={styles.techno}
                   style={{ backgroundColor: technoColors[techno] || '#64d8ff' }}
                   onClick={(e) => e.stopPropagation()}

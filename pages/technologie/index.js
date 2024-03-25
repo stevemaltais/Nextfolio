@@ -1,11 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from '../../styles/components/HomePageModule/PorteFolioSection.module.scss'; // Ajustez le chemin selon votre structure
+
 
 const TechnologiePage = () => {
   // Ici, vous pourriez récupérer les données des technologies via une API, ou les définir directement dans le composant
   return (
-    <div className={styles.container}>
+    <div >
       <h1>Technologies</h1>
       <p>Cette page est dédiée à présenter les technologies que j'utilise.</p>
       {/* Exemple de liste de technologies */}

@@ -97,4 +97,11 @@
       color: var(--text-color);
     }
       
-   
+ .techLink{
+  font-weight: bold;
+  color: var(--accent-color);
+ }
+ .techLink:hover{
+  color: var(--accent-color);
+  opacity: 0.8;
+ }

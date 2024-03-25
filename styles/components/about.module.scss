@@ -1,0 +1,86 @@
+/* AboutSection.module.scss */
+.aboutPage {
+
+
+    margin-top: 60px;
+  }
+.wrapper{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.aboutMe__Title {
+    display: block;
+    font-family: var(--title-font-stack);
+    font-weight: 100;
+    line-height: 3.3rem;
+    margin-bottom: 3rem;
+    font-size: 3.5rem;
+    margin-right:20rem;
+}
+.aboutMe__Explain{
+    font-family: var(--title-font-stack);
+    color: var(--text-color);
+    font-weight: var(--textweight);
+    font-size: 2rem;
+    text-align: justify;
+    line-height: 2.8rem;
+    margin-bottom: 20px;
+    margin-right:20rem;
+}
+    
+.aboutPage h1 {
+    color: var(--accent-color);
+    text-align: left;
+    font-size: 70px;
+    font-family: var(--title2-font-stack);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  
+ .aboutPage h2 {
+    color: #0070f3;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  
+
+  .aboutPage li {
+    color: #fff;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .aboutPage ul {
+    list-style: inside square;
+  }
+  
+  .contactMe {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+
+  
+  /* Adaptez le sélecteur ci-dessous au nom exact de la classe générée par votre composant PrimaryButton */
+  .primaryButton {
+    background-color: #0070f3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .primaryButton:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Adaptez le sélecteur ci-dessous au nom exact de la classe générée par votre composant Modal */
+  .modal {
+    /* Styles pour votre composant modal ici */
+  }
+  
