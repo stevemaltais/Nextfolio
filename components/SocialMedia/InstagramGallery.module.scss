@@ -1,0 +1,100 @@
+// InstagramGallery.module.scss
+@import "@/styles/abstracts/colors";
+@import "@/styles/abstracts/variables";
+
+.title{
+  font-family: 'Montserrat', serif;
+  font-weight: 600;
+  font-size: 2rem;
+  text-align: center;
+  color:black;
+  margin-bottom: 2rem;
+
+ 
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); // Augmente le nombre de colonnes à 6
+    gap: 15px; // Augmente l'espace entre les éléments
+    max-width: 1800px; // Ajustez selon la largeur désirée pour votre galerie
+    margin: auto;
+  
+  }
+  
+  .anchor {
+    position: relative; // Nécessaire pour le positionnement absolu de l'overlay
+    display: block;
+    width: 100%; // Utilisez 100% de la cellule de grille
+    overflow: hidden; // Cache tout débordement (utile pour maintenir les images carrées)
+    border-radius: 10px; // Coins arrondis
+  }
+  
+  .image, .thumbnail {
+    width: 100%; // Assure que l'image couvre la largeur
+    height: 350px; // Ajuste la hauteur pour un format rectangulaire
+    object-fit: cover; // Garde les proportions et couvre l'espace disponible
+    transition: opacity 0.3s ease-in-out; // Transition pour le hover
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    padding: 10px; // Ajoutez du padding pour éviter que le texte touche les bords
+    text-align: center; // Centre le texte
+    font-size: 14px; // Réduire la taille du texte
+  }
+  
+  .anchor:hover .image, .anchor:hover .thumbnail {
+    opacity: 0.7; // Assombrit l'image ou la vidéo
+  }
+  
+  .anchor:hover .overlay {
+    opacity: 1;
+  }
+  
+  .caption {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; // Limite le texte à 3 lignes
+    -webkit-box-orient: vertical;
+  }
+  
+  .loadMoreContainer {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    margin-bottom: 5rem;
+  }
+  
+  .loadMoreButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .loadMoreButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .loadMoreButton:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  

@@ -1,86 +1,142 @@
-/* AboutSection.module.scss */
-.aboutPage {
+ /* AboutSection.module.scss */
+ .aboutPage {
 
 
-    margin-top: 60px;
-  }
+  margin-top: 60px;
+}
 .wrapper{
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content:space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content:space-between;
+  align-items: center;
 }
 
 .aboutMe__Title {
-    display: block;
-    font-family: var(--title-font-stack);
-    font-weight: 100;
-    line-height: 3.3rem;
-    margin-bottom: 3rem;
-    font-size: 3.5rem;
-    margin-right:20rem;
+  display: block;
+  font-family: var(--title-font-stack);
+  font-weight: 100;
+  line-height: 3.3rem;
+  margin-bottom: 3rem;
+  font-size: 3.5rem;
+  padding-right:5rem;
+}
+.aboutMe__Title.open {
+
+padding-right: 5rem;
 }
 .aboutMe__Explain{
-    font-family: var(--title-font-stack);
-    color: var(--text-color);
-    font-weight: var(--textweight);
-    font-size: 2rem;
-    text-align: justify;
-    line-height: 2.8rem;
-    margin-bottom: 20px;
-    margin-right:20rem;
+  font-family: var(--title-font-stack);
+  
+  font-weight: var(--textweight);
+  font-size: 2rem;
+  text-align: justify;
+  line-height: 2.8rem;
+  margin-bottom: 20px;
+  padding-right:20rem;
 }
-    
+  
 .aboutPage h1 {
-    color: var(--accent-color);
-    text-align: left;
-    font-size: 70px;
-    font-family: var(--title2-font-stack);
-    text-transform: uppercase;
-    margin-bottom: 40px;
-  }
-  
- .aboutPage h2 {
-    color: #0070f3;
-    margin-top: 40px;
-    margin-bottom: 20px;
-  }
-  
+  color: var(--accent-color);
+  text-align: left;
+  font-size: 70px;
+  font-family: var(--title2-font-stack);
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
 
-  .aboutPage li {
-    color: #fff;
-    line-height: 1.6;
-    margin-bottom: 20px;
-  }
-  
-  .aboutPage ul {
-    list-style: inside square;
-  }
-  
-  .contactMe {
-    text-align: center;
-    margin-top: 40px;
-  }
-  
+.aboutPage h2 {
+  color: #0070f3;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
 
-  
-  /* Adaptez le sélecteur ci-dessous au nom exact de la classe générée par votre composant PrimaryButton */
-  .primaryButton {
-    background-color: #0070f3;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .primaryButton:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Adaptez le sélecteur ci-dessous au nom exact de la classe générée par votre composant Modal */
-  .modal {
-    /* Styles pour votre composant modal ici */
-  }
-  
+
+.aboutPage li {
+  color: #fff;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.aboutPage ul {
+  list-style: inside square;
+}
+
+.contactMe {
+  text-align: center;
+  margin-top: 40px;
+}
+
+
+
+/* Adaptez le sélecteur ci-dessous au nom exact de la classe générée par votre composant PrimaryButton */
+.primaryButton {
+  background-color: #0070f3;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.primaryButton:hover {
+  background-color: #0056b3;
+}
+/* about.module.css */
+/* about.module.css */
+.socialIcons {
+display: flex;
+align-items: center;
+justify-content: flex-start;
+margin-left: -15px;
+}
+.socialIcons a {
+display: flex; /* S'assure que les éléments a sont également flexibles */
+align-items: center;
+justify-content: center;
+width: 100%; /* S'assure que a occupe tout l'espace du li parent */
+height: 100%; /* S'assure que a occupe tout l'espace du li parent */
+}
+
+
+.socialIcons li {
+position: relative;
+display: block;
+color: #666;
+font-size: 30px;
+height: 60px;
+width: 60px;
+background: var(--backgroundSideBar);
+line-height: 60px;
+border-radius: 10px; /* Coins arrondis pour un look carré */
+margin: 15px 15px;
+cursor: pointer;
+transition: .5s;
+text-align: center;
+}
+
+.socialIcons li:before {
+position: absolute;
+content: '';
+top: 0;
+left: 0;
+height: inherit;
+width: inherit;
+border-radius: 10px; /* Coins arrondis pour correspondre au li */
+transform: scale(.9);
+z-index: -1;
+transition: .5s;
+}
+
+
+/* Styles spécifiques pour chaque réseau social */
+.socialIcons li:nth-child(1):before { background: #4267B2; }
+.socialIcons li:nth-child(2):before { background: #1DA1F2; }
+.socialIcons li:nth-child(3):before { background: #E1306C; }
+.socialIcons li:nth-child(4):before { background: #2867B2; }
+.socialIcons li:nth-child(5):before { background: #ff0000; }
+
+/* Styles pour le hover */
+.socialIcons li:hover:before { filter: blur(3px); transform: scale(1.2); }
+.socialIcons li:nth-child(1):hover:before { box-shadow: 0 0 15px #4267B2; }
+.socialIcons li:nth-child(2):hover:before { box-shadow: 0 0 15px #1DA1F2; }

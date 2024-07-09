@@ -1,0 +1,75 @@
+@import "@/styles/abstracts/colors";
+@import "@/styles/abstracts/variables";
+
+.navigation {
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  height: 60px;
+  color: white !important;
+  padding: 0 160px;
+  box-sizing: border-box;
+}
+
+.branding {
+  position: absolute;
+  font-size: 18px;
+  left: 160px;
+  white-space: nowrap;
+  z-index: 51;
+}
+
+.navList {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-left: 0;
+}
+
+.navList li {
+  margin: 0 16px;
+  position: relative;
+}
+
+.link {
+  font-size: 18px;
+  color: white;
+  text-decoration: none;
+
+  &:hover {
+    color: $primeColorHover;
+  }
+}
+
+.dropdownMenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: $dropdownBackgroundColor;
+  padding: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 52;
+
+  li {
+    margin: 0;
+    padding: 10px 20px;
+
+    a {
+      color: white;
+      text-decoration: none;
+
+      &:hover {
+        color: $primeColorHover;
+      }
+    }
+  }
+}
+
+.dropdown:hover .dropdownMenu {
+  display: block;
+}

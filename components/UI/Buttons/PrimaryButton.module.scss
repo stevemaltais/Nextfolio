@@ -1,0 +1,40 @@
+// PrimaryButton.module.scss
+@import "@/styles/abstracts/colors";
+@import "@/styles/abstracts/variables";
+
+
+
+.btn {
+    display: inline-block;
+    background-color: $primeColor; // Couleur par défaut
+    color: white;
+    padding: 14px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    
+    &:hover {
+      background-color: red;
+    }
+  }
+  
+  .adventure {
+    background-color: $primeColor;
+    &:hover {
+      background-color: $primeColorHover;
+    } 
+  }
+  
+  .family {
+    background-color: $secondColor;
+    &:hover {
+      background-color: $secondColorHover;
+    } 
+  }
+  .loadMoreButton {
+    background-color: $secondColor;
+    &:hover {
+      background-color: $secondColorHover;
+    } 
+  }
