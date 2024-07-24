@@ -1,23 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import styles from '@/styles/components/about.module.scss';
-import Modal from '@/components/Modal';
-import PrimaryButton from '@/components/PrimaryButton';
+import ObjectiveCard from '@/components/ObjectiveCard';
+
+
 import InstagramGallery from '@/components/SocialMedia/InstagramGallery';
-
-
-
 import MasonryGallery from '@/components/MasonryGallery';
 
-const About = (isOpen) => {
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  
-  const [isModalVisible, setModalVisible] = useState(false);
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-
-   
-  }; 
+const About = () => {
 
   const objectives = [
     {
@@ -42,69 +32,60 @@ const About = (isOpen) => {
       impact: "Construire une communauté de développeurs bien formés qui sont prêts à relever les défis futurs de manière responsable."
     }
   ];
-  
+
   return (
     <main className={styles.aboutPage}>
-      <section className={`${styles.wrapper} ${isOpen ? styles.open : ''}`}>
-      <MasonryGallery/>     
+      <section className={`${styles.wrapper}`}>
+        <MasonryGallery />
         <div className={styles.aboutMe}>
-        <h1 className={styles.title1}>a propos</h1>
-        <p className={`${styles.aboutMe__Title} ${isOpen ? styles.open : ''}`}>
-        Nomade numérique de Montréal, embrassant la<br/> liberté de travailler aux quatre coins du monde.
-        </p>
-
-        <div className={styles.rightContent}>
-        <p className={styles.aboutMe__Explain}>
-        Depuis 2020, ma passion est de déchiffrer des défis complexes grâce au codage, en trouvant des solutions élégantes. 
-        Si je ne suis pas en train de programmer, je suis probablement en train d'explorer un nouveau coin du monde.
-        </p>
+          <h1 className={styles.title1}>À propos</h1>
+          <p className={`${styles.aboutMe__Title}`}>
+            Nomade numérique de Montréal, embrassant la<br /> liberté de travailler aux quatre coins du monde.
+          </p>
+          <div className={styles.rightContent}>
+            <p className={styles.aboutMe__Explain}>
+              Depuis 2020, ma passion est de déchiffrer des défis complexes grâce au codage, en trouvant des solutions élégantes.
+              Si je ne suis pas en train de programmer, je suis probablement en train d'explorer un nouveau coin du monde.
+            </p>
+          </div>
+          <ul className={styles.socialIcons}>
+            <li><Link href="https://www.facebook.com"><div><i className='bx bxl-facebook'></i></div></Link></li>
+            <li><Link href="https://www.twitter.com"><div><i className='bx bxl-twitter'></i></div></Link></li>
+            <li><Link href="https://www.instagram.com"><div><i className='bx bxl-instagram'></i></div></Link></li>
+            <li><Link href="https://www.linkedin.com"><div><i className='bx bxl-linkedin'></i></div></Link></li>
+            <li><Link href="https://www.youtube.com"><div><i className='bx bxl-youtube'></i></div></Link></li>
+          </ul>
         </div>
-        <ul className={styles.socialIcons}>
-        <li><a href="https://www.facebook.com"><i className='bx bxl-facebook'></i></a></li>
-        <li><a href="https://www.twitter.com"><i className='bx bxl-twitter'></i></a></li>
-        <li><a href="https://www.instagram.com"><i className='bx bxl-instagram'></i></a></li>
-        <li><a href="https://www.linkedin.com"><i className='bx bxl-linkedin'></i></a></li>
-        <li><a href="https://www.youtube.com"><i className='bx bxl-youtube'></i></a></li>
-      </ul>
-       </div>
       </section>
-   
       <section className={styles.TS}>
         <div className={styles.wrapperAbout}>
-      <h2 className={styles.title}>Ma Vision du Développement en 2024</h2>
-      <div className={styles.aboutSeparator}></div>
-      <p className={styles.aboutMe__Explain}>
-        En 2024, je vois le développement web comme une opportunité encore plus grande pour connecter les gens, résoudre des problèmes environnementaux 
-        et sociaux, et innover dans la façon dont nous interagissons avec le monde numérique. Ma vision est de contribuer à des projets qui non seulement 
-        poussent les limites de la technologie, mais qui ont aussi un impact positif sur la société.
-      </p>
-      </div>
-      <h2 className={styles.titleBig}>Mes Objectifs</h2>
-     
-   
-
-      <h2>Mes Aspirations</h2>
-      <div className={styles.aboutSeparator}></div>
-      <p className={styles.aboutMe__Explain}>
-        Je suis constamment à la recherche de nouvelles manières de repousser les limites de ce qui est possible avec le développement web. J'aspire à 
-        travailler sur des projets qui me défient et m'obligent à sortir de ma zone de confort, tout en apportant une contribution significative à la communauté.
-      </p>
-
-      <h2>Mes Voyages</h2>
-      <div className={styles.aboutSeparator}></div>
-      <p className={styles.aboutMe__Explain}>
-        Le nomadisme digital m'a offert l'opportunité unique de m'immerger dans diverses cultures, m'inspirant ainsi dans mon travail et ma vision 
-        du développement. Chaque destination est une source d'inspiration et un rappel de l'impact mondial que le développement web peut avoir.
-      </p>
+          <h2 className={styles.title}>Ma Vision du Développement en 2024</h2>
+          <div className={styles.aboutSeparator}></div>
+          <p className={styles.aboutMe__Explain}>
+            En 2024, je vois le développement web comme une opportunité encore plus grande pour connecter les gens, résoudre des problèmes environnementaux
+            et sociaux, et innover dans la façon dont nous interagissons avec le monde numérique. Ma vision est de contribuer à des projets qui non seulement
+            poussent les limites de la technologie, mais qui ont aussi un impact positif sur la société.
+          </p>
+        </div>
+        <h2 className={styles.titleBig}>Mes Objectifs</h2>
+        <div className={styles.objectivesContainer}>
+        <ObjectiveCard/>
+        </div>
+        <h2>Mes Aspirations</h2>
+        <div className={styles.aboutSeparator}></div>
+        <p className={styles.aboutMe__Explain}>
+          Je suis constamment à la recherche de nouvelles manières de repousser les limites de ce qui est possible avec le développement web. J'aspire à
+          travailler sur des projets qui me défient et m'obligent à sortir de ma zone de confort, tout en apportant une contribution significative à la communauté.
+        </p>
+        <h2>Mes Voyages</h2>
+        <div className={styles.aboutSeparator}></div>
+        <p className={styles.aboutMe__Explain}>
+          Le nomadisme digital m'a offert l'opportunité unique de m'immerger dans diverses cultures, m'inspirant ainsi dans mon travail et ma vision
+          du développement. Chaque destination est une source d'inspiration et un rappel de l'impact mondial que le développement web peut avoir.
+        </p>
       </section>
-      <InstagramGallery />
       <div className={styles.contactMe}>
- 
         <p className={styles.aboutMe__Explain}>Si vous êtes intéressé à en savoir plus sur moi ou à discuter d'opportunités de collaboration, n'hésitez pas à me contacter.</p>
-        
-        <PrimaryButton data-scroll  text="Dites moi Bonjour!" onClick={toggleModal}></PrimaryButton>
-                    <Modal isVisible={isModalVisible} onClose={toggleModal}/>
-                  {/* Contenu du modal ici */}
       </div>
     </main>
   );

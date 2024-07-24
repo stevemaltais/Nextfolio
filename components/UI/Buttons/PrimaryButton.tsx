@@ -16,9 +16,9 @@ const PrimaryButton = ({ text, href, className, onClick, isButton }) => {
 
   return (
     <Link href={href} legacyBehavior>
-      <a className={combinedClassName}>
+      <div className={combinedClassName}>
         {text}
-      </a>
+      </div>
     </Link>
   );
 };
