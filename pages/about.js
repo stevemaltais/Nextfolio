@@ -69,7 +69,7 @@ const About = () => {
         </div>
         <h2 className={styles.titleBig}>Mes Objectifs</h2>
         <div className={styles.objectivesContainer}>
-        <ObjectiveCard/>
+  
         </div>
         <h2>Mes Aspirations</h2>
         <div className={styles.aboutSeparator}></div>
@@ -82,7 +82,9 @@ const About = () => {
         <p className={styles.aboutMe__Explain}>
           Le nomadisme digital m'a offert l'opportunité unique de m'immerger dans diverses cultures, m'inspirant ainsi dans mon travail et ma vision
           du développement. Chaque destination est une source d'inspiration et un rappel de l'impact mondial que le développement web peut avoir.
+       
         </p>
+        <InstagramGallery/>
       </section>
       <div className={styles.contactMe}>
         <p className={styles.aboutMe__Explain}>Si vous êtes intéressé à en savoir plus sur moi ou à discuter d'opportunités de collaboration, n'hésitez pas à me contacter.</p>

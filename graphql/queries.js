@@ -5,7 +5,7 @@ export async function getStaticProps() {
   const { data } = await client.query({
     query: gql`
       query projets {
-        projets(first: 6) {
+        projets(first: 10) {
           nodes {
             title
             content
@@ -30,6 +30,7 @@ export async function getStaticProps() {
     props: {
       projets: data.projets.nodes,
     },
+    revalidate: 60, // Régénérer la page toutes les 60 secondes
   };
 }
 

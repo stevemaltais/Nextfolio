@@ -13,7 +13,9 @@ export const PorteFolioSection = ({ projets }) => {
       <div 
         className={styles.embla__slideBackground} 
         style={{ backgroundImage: `url(${projet.featuredImage?.node?.mediaItemUrl})` }}
+        
       >
+      
         <div className={styles.embla__slideContent}>
           <h2>{projet.title}</h2>
           {projet.content && <div dangerouslySetInnerHTML={{ __html: projet.content }} />}
@@ -35,7 +37,9 @@ export const PorteFolioSection = ({ projets }) => {
         </div>
       </div>
     </div>
+    
   ));
+
 
   return (
     <section className={styles.section} id="folio">
