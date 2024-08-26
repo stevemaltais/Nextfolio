@@ -37,5 +37,13 @@
     --pinkFluo: #ff00ff;
     --purpleFluo: #6464ff;
     --yellowFluo: #ffff00;
+
+
+    --backgroundCard : #{$darkGrey};
+    --TitleBackgroundCard :var(--accent-color);
+    --ColorDividerCard:rgba(255, 255, 255, 0.15);
+    --ColorTitleCard: #{$black};
+    --colortextCard: rgb(161, 161, 170);
+    --colortextStrongCard: #{$White};
   }
   

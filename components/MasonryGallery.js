@@ -1,21 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ModalImage from 'react-modal-image';
 import styles from '@/styles/components/MasonryGallery.module.scss';
 
 const MasonryGallery = () => {
-  // Simuler des URLs d'images pour l'exemple
   const photos = [
-    '/profilePicture.jpg',
-    '/2.jpg',
-    '/profilePicture.jpg',
     '/3.jpg',
-    '/profilePicture.jpg',
-    '/3.jpg',
+    '/1.jpg',
+    '/4.jpg',
+    '/5.jpg',
+    '/6.jpg',
+    '/7.jpg',
+    '/8.jpg',
+    '/9.jpg',
     '/2.jpg',
-    '/profilePicture.jpg',
-    '/2.jpg',
-    // Ajoutez plus d'URLs d'images ici
   ];
+
+  useEffect(() => {
+    const photoItems = document.querySelectorAll(`.${styles.photoItem}`);
+    photoItems.forEach((item, index) => {
+      setTimeout(() => {
+        item.classList.add(styles['reveal']);
+      }, index * 200); // Ajustez la valeur pour la rapidité de l'effet
+    });
+  }, []);
 
   return (
     <div className={styles.myGrid}>

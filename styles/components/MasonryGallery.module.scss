@@ -1,19 +1,82 @@
 .myGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Crée une grille avec 3 colonnes */
-    grid-gap: 10px; /* Espace entre les éléments de la grille */
-    max-width: 450px;
-    margin: auto;
-  }
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Grille avec 3 colonnes */
+  gap: 10px; /* Espace uniforme entre les éléments de la grille */
+  max-width: 550px;
+  margin: auto;
+}
+
+.photoItem {
+  position: relative;
+  overflow: hidden; /* Masquer les parties d'image qui dépassent */
+  border-radius: 10px; /* Applique un arrondi aux coins */
+}
+
+.photoItem img {
+  width: auto;
+  height: 100%;
+  display: block;
+  object-fit: cover; /* Remplir le conteneur tout en respectant les proportions */
+  object-position: center;
+  border-radius: inherit; /* Applique le même radius que le conteneur */
   
-  .photoItem {
-    /* Ajoutez ici des styles pour les conteneurs d'images, si nécessaire */
-  }
-  
-  .photoItem img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover; /* Cette propriété garantit que les images couvrent bien leur espace alloué sans se déformer */
-  }
-  
+  opacity: 0; /* Initialement invisible */
+  transform: translateY(20px) scale(1.05); /* Légèrement décalé et agrandi pour l'effet de mouvement */
+  filter: blur(10px); /* Applique un flou initial */
+  transition: opacity 1s ease, transform 1s ease, filter 1s ease; /* Transition rapide pour les effets */
+}
+
+/* Lorsque l'image est révélée */
+.photoItem.reveal img {
+  opacity: 1;
+  transform: translateY(0) scale(1); /* Revient à la position d'origine et à la taille normale */
+  filter: blur(0); /* Supprime le flou pour révéler l'image */
+}
+
+/* Coins arrondis spécifiques */
+.photoItem:nth-child(1) {
+  border-top-left-radius: 30px;  /* Coin supérieur gauche */
+}
+
+.photoItem:nth-child(3) {
+  border-top-right-radius: 30px; /* Coin supérieur droit */
+}
+
+.photoItem:nth-child(7) {
+  border-bottom-left-radius: 30px; /* Coin inférieur gauche */
+}
+
+.photoItem:nth-child(9) {
+  border-bottom-right-radius: 30px; /* Coin inférieur droit */
+}
+.ReactModal__Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75); /* Fond semi-transparent */
+  z-index: 9000; /* S'assurer que l'overlay est bien au-dessus */
+}
+
+.ReactModal__Content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  max-width: 90%;
+  max-height: 90%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  overflow: auto;
+  z-index: 9001; /* Assurer que le contenu du modal est au-dessus de l'overlay */
+}
+
+.modalImage__open img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}

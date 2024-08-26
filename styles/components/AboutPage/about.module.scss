@@ -1,14 +1,15 @@
  /* AboutSection.module.scss */
  .aboutPage {
 
+ 
 
-  margin-top: 60px;
 }
 .wrapper{
   display: flex;
   flex-direction: row-reverse;
   justify-content:space-between;
   align-items: center;
+  height: 100vh;
 }
 
 .aboutMe__Title {
@@ -20,6 +21,23 @@
   font-size: 3.5rem;
   padding-right:5rem;
 }
+.punch{
+  color:var(--titleScript);
+  font-size: 6rem;
+  writing-mode: vertical-rl; /* Positionne le texte verticalement */
+  transform: rotate(180deg); /* Fait pivoter le texte de 180 degrés */
+
+}
+.titleWrap{
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+}
+
+.TS{
+
+}
+
 .aboutMe__Title.open {
 
 padding-right: 5rem;
@@ -32,7 +50,27 @@ padding-right: 5rem;
   text-align: justify;
   line-height: 2.8rem;
   margin-bottom: 20px;
-  padding-right:20rem;
+  padding-right:10rem;
+}
+.rightContent .aboutMe__Explain{
+ padding-right: 20rem;
+  
+}
+.titleBig{ 
+  font-family: var(--title-font-stack);
+  font-size: 15rem;
+  font-weight: bold;
+  text-align: right;
+  text-transform: uppercase;
+  margin-bottom: -50px;
+  color:var(--titleScript);
+  
+}
+
+.title{
+  font-size: 4rem;
+  margin-bottom: 2rem;
+  
 }
   
 .aboutPage h1 {
@@ -44,11 +82,7 @@ padding-right: 5rem;
   margin-bottom: 40px;
 }
 
-.aboutPage h2 {
-  color: #0070f3;
-  margin-top: 40px;
-  margin-bottom: 20px;
-}
+
 
 
 .aboutPage li {
@@ -127,7 +161,9 @@ transform: scale(.9);
 z-index: -1;
 transition: .5s;
 }
-
+.socialIcons i {
+  line-height: 2; /* Ou une autre valeur adaptée à ton design */
+}
 
 /* Styles spécifiques pour chaque réseau social */
 .socialIcons li:nth-child(1):before { background: #4267B2; }
@@ -140,3 +176,46 @@ transition: .5s;
 .socialIcons li:hover:before { filter: blur(3px); transform: scale(1.2); }
 .socialIcons li:nth-child(1):hover:before { box-shadow: 0 0 15px #4267B2; }
 .socialIcons li:nth-child(2):hover:before { box-shadow: 0 0 15px #1DA1F2; }
+
+.objectivesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+.visionSection {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+
+  &.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-70px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.wrapper {
+  animation: fadeIn 1.5s ease-out forwards;
+
+}
+
+.travelSection{
+
+
+
+}
+
+.travelTitle{
+  font-size: 15rem;
+  font-weight: bold;
+  text-align: left;
+  text-transform: uppercase;
+
+  color:var(--titleScript);
+
+}

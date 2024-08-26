@@ -2,15 +2,18 @@
 import React from 'react';
 import PrimaryButton from '@/components/UI/Buttons/PrimaryButton';
 
+
 const LoadMoreButton = ({ onClick, loading, className }) => {
   return (
+   
     <PrimaryButton
       text={loading ? 'Chargement...' : 'Charger plus'}
       onClick={onClick}
       className={className}
-      isButton
-    />
+      isButton href={undefined}    />
+      
   );
+ 
 };
 
 export default LoadMoreButton;

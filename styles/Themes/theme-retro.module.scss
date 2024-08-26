@@ -38,8 +38,16 @@
 
     --greenFluo: #008300;
     --pinkFluo: #ff0000;
-    --purpleFluo: #0000ba;
+    --purpleFluo: #0000ba;  
     --yellowFluo: #ff7300;
+
   
+    --backgroundCard : #{$verylightgray};
+
+     --TitleBackgroundCard :var(--accent-color);
+    --ColorDividerCard:rgba(114, 114, 114, 0.195);
+    --ColorTitleCard: #{$White};
+    --colortextCard: #($darkGrey);
+    --colortextStrongCard: #($darkGrey);
   }
   

@@ -69,7 +69,7 @@ const InstagramGallery = () => {
       {error && <div className={styles.error}>{error}</div>}
       {hasMore && !error && (
         <div className={styles.loadMoreContainer}>
-          <LoadMoreButton onClick={loadMore} loading={loading} className="adventure" />
+          <LoadMoreButton onClick={loadMore} loading={loading} />
         </div>
       )}
     </div>

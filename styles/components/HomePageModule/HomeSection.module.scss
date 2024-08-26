@@ -78,6 +78,7 @@
     flex: 1;
     height: 40vw;
     position: relative;
+    border-radius: 40px;
     background-size: cover; /* Ajuster la taille du background */
     background-position: 50vw; /* Ajuster la position du background */
     background-repeat: no-repeat;
@@ -85,7 +86,12 @@
     
  
   }
+  .profileSection__image Image {
 
+    border-radius: 40px;
+    
+ 
+  }
   .profileSection__animatedContainer .text{
     text-transform: uppercase;
     font-size: $font-xg;

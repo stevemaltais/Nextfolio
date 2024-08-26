@@ -25,9 +25,9 @@ const HomeSection = () => {
                     <Image
                       src="/profilePicture.jpg"
                       alt="Description"
-                      width={450}
-                      height={600}
-                      style={{ objectFit: 'cover', objectPosition: 'center', boxShadow: '2px 0 5px rgba(0,0,0,.5)' }}
+                      width={600}
+                      height={800}
+                      style={{ objectFit: 'cover', objectPosition: 'center', borderRadius:'40px',boxShadow: '2px 0 5px rgba(0,0,0,.5)' }}
                       priority
                       
                     />

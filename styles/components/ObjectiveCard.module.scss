@@ -1,0 +1,83 @@
+.objectivesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px; /* Espacement entre les cartes */
+}
+
+.objectiveCard {
+  border-radius: 8px; /* Coins arrondis */
+  background-color: var(--backgroundCard);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  width: calc(33.333% - 20px); /* Chaque carte prend environ un tiers de la ligne */
+  min-height: 640px; /* Hauteur fixe pour toutes les cartes */
+  display: flex;
+  flex-direction: column;
+  font-family: var(--title-font-stack);
+
+  &:hover {
+    transform: translateY(-5px); /* Effet de levée au survol */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
+  }
+}
+
+.cardHeader {
+  padding: 16px;
+  background-color: var(--TitleBackgroundCard);
+  color: var(--ColorTitleCard);
+  font-size: 3rem;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  /* Le header n'a pas de hauteur fixe pour qu'il puisse s'adapter au contenu */
+}
+
+.objectiveContent {
+  padding: 0 16px;
+  line-height: 1.6;
+  flex: 1; /* Prend tout l'espace restant entre le header et le footer */
+  display: flex;
+  flex-direction: column;
+  
+ 
+
+  .title{
+
+    text-align: center;
+    font-weight: 500;
+    font-size: 2rem;
+    color: var(--colortextCard);
+    margin: 20px ;
+  }
+
+  p {
+    margin: 12px 0;
+    font-weight: 300;
+    color: var(--colortextCard);
+  }
+  strong{
+    color: var(--colortextStrongCard);
+  }
+}
+
+.customDivider {
+ 
+  border: none;
+  border-top: 2px solid var( --ColorDividerCard);
+  height: 0;
+  background: transparent;
+}
+
+.cardFooter {
+  padding: 20px;
+  text-align: center;
+  color: #007bff;
+  cursor: pointer;
+  flex: 0 0 50px; /* Hauteur fixe du footer */
+
+  &:hover {
+    color: #0b68cc;
+  }
+}
