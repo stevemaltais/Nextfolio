@@ -16,6 +16,13 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const project = await getProjectBySlug(params.slug); // Utilise le slug pour récupérer les détails du projet
+  
+  if (!project) {
+    return {
+      notFound: true, // Retourne une 404 si le projet n'est pas trouvé
+    };
+  }
+
   return {
     props: {
       project,
@@ -27,7 +34,7 @@ const ProjectPage = ({ project }) => {
   const router = useRouter();
 
   if (router.isFallback || !project) {
-    return <div>Loading...</div>; // Ou gérer l'affichage pour le projet non trouvé
+    return <div>Loading...</div>; // Gérer l'affichage pour le projet non trouvé ou lors du chargement
   }
 
   // Assurez-vous d'utiliser `dangerouslySetInnerHTML` de manière responsable
