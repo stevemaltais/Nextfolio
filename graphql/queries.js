@@ -28,8 +28,9 @@ export async function getStaticProps() {
     });
 
     if (!data || !data.projets) {
+      console.error('No projets data found');
       return {
-        notFound: true, // Retourne une 404 si les données sont manquantes
+        notFound: true,
       };
     }
 
@@ -37,15 +38,16 @@ export async function getStaticProps() {
       props: {
         projets: data.projets.nodes,
       },
-      revalidate: 60, // Régénérer la page toutes les 60 secondes
+      revalidate: 60,
     };
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error('Error fetching projects:', error);
     return {
       notFound: true,
     };
   }
 }
+
 
 export const getProjectBySlug = async (slug) => {
   try {
