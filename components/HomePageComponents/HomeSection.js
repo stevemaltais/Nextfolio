@@ -26,7 +26,7 @@ const HomeSection = () => {
                       src="/profilePicture.jpg"
                       alt="Description"
                       width={600}
-                      height={800}
+                      height={600}
                       style={{ objectFit: 'cover', objectPosition: 'center', borderRadius:'40px',boxShadow: '2px 0 5px rgba(0,0,0,.5)' }}
                       priority
                       
