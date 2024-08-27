@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import styles from '@/styles/components/AboutPage/about.module.scss';
 import ObjectiveCard from '@/components/ObjectiveCard';
@@ -9,8 +9,25 @@ import InstagramGallery from '@/components/SocialMedia/InstagramGallery';
 import MasonryGallery from '@/components/MasonryGallery';
 import VisionSection from '@/components/AboutPage/VisionSection';
 import ObjectivesSection from '@/components/AboutPage/ObjectivesSection';
+import SocialMediaIcons from '@/components/SocialMedia/SocialMediaIcon/SocialMediaIcons';
+import AnimatedText from '@/components/AnimatedText';
+import useIntersectionObserver from '@/Hooks/useIntersectionObserver'
+import Image from 'next/image';
 
 const About = () => {
+
+
+
+    const [isIntersecting, setIsIntersecting] = useState(false);
+    const pRef = useRef(null);
+
+  // Fonction de rappel pour gérer les changements de visibilité
+    const handleVisibilityChange = (isVisible) => {
+        setIsIntersecting(isVisible);
+    };
+
+    // Utiliser le hook useIntersectionObserver pour observer h4Ref
+  useIntersectionObserver(pRef, () => handleVisibilityChange(true), () => handleVisibilityChange(false));
 
   const objectives = [
     {
@@ -85,21 +102,46 @@ const About = () => {
         
         </p>
         </section>
+
         <section className={styles.travelSection}>
-        <h2 className={styles.travelTitle}>Mes Voyages</h2>
-        <div className={styles.aboutSeparator}></div>
-        <p className={styles.aboutMe__Explain}>
-        Le nomadisme digital m'a offert l'opportunité unique de m'immerger dans diverses cultures, enrichissant ainsi mon approche du développement. 
-        Chaque destination m'inspire et me rappelle l'impact global que le développement web peut avoir. 
-        Ces expériences de voyage se reflètent dans mon travail, nourrissant ma créativité et mon engagement envers des solutions globales.
-        Nos Aventures : Anous5lamerique
-        Découvrez les aventures de notre famille nomade à travers notre projet Anous5lamerique sur Instagram. 
-        Nous partageons notre expérience unique de voyages en famille, où nous explorons les coins les plus 
-        fascinants des Amériques tout en jonglant avec nos carrières numériques.
-       
-        </p>
-        <InstagramGallery/>
+        
+          <div className={styles.travelSection__adventure}>
+            <div className={styles.travelSection__adventureWrapper}>
+            <div className={styles.travelSection__wrapper}>
+            <h2 className={styles.travelSection__title} ><AnimatedText text="MES VOYAGES" onVisibilityChange={handleVisibilityChange} /></h2>
+           
+            <div className={styles.travelSection__separator}></div>
+            <p className={styles.travelSection__explain}>
+              Le nomadisme digital m'a offert l'opportunité unique de m'immerger dans diverses cultures, enrichissant ainsi mon approche du développement. 
+              Chaque destination m'inspire et me rappelle l'impact global que le développement web peut avoir. 
+              Ces expériences de voyage se reflètent dans mon travail, nourrissant ma créativité et mon engagement envers des solutions globales.
+            </p>
+          </div>
+              <div className={styles.travelSection__adventureHeader}>
+              <Image
+        src="/LOGO SANS FOND 270x234.png"
+        alt="Logo"
+        width={100}
+        height={100}
+        className={styles.logoImage}
+        priority
+      /> <h3 className={styles.travelSection__adventureTitle}>Nos Aventures</h3>
+               
+                <p className={styles.travelSection__adventureDescription}>
+                Découvrez les aventures de notre famille nomade à travers notre projet Anous5lamerique sur facebook et Instagram. 
+                Nous partageons notre expérience unique de voyages en famille, où nous explorons les coins les plus 
+                fascinants des Amériques tout en jonglant avec nos carrières numériques.
+              </p>
+                <SocialMediaIcons />
+              </div>
+
+          
+            </div>
+           
+          </div>
+          <InstagramGallery />
         </section>
+
       <div className={styles.contactMe}>
         <p className={styles.aboutMe__Explain}>Si vous souhaitez en savoir plus sur moi ou discuter d'opportunités de collaboration, n'hésitez pas à me contacter. 
         Je suis toujours ouvert aux nouvelles idées et aux défis passionnants.</p>

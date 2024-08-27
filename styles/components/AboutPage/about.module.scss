@@ -206,16 +206,107 @@ transition: .5s;
 
 .travelSection{
 
+ 
+
+}
+.travelSection__wrapper{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-left: 120px;
+  font-size: 3rem;
+  text-align: left;
+  opacity: 0;
+  animation: slideInFromLeft 1s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+.travelSection__adventureWrapper{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+
+}
+.travelSection__adventure{
+  
+    margin: 40px 0;
+}
+.travelSection__adventureHeader{
+  display: flex;
+  flex-direction: column;
+
+  text-align: center;
+  align-items: center;
 
 
 }
+.travelSection__explain{
+  opacity: 0;
+  margin-top: -40px;
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 4.5s;
+  
 
-.travelTitle{
+}
+
+.travelSection__title{
   font-size: 15rem;
-  font-weight: bold;
-  text-align: left;
-  text-transform: uppercase;
+  font-family: var(--title2-font-stack) !important;
+  
+  text-transform: uppercase; 
+  
+
+}
+.travelSection__adventureTitle{
 
   color:var(--titleScript);
+  font-size: 4rem;
+ 
 
+}
+.travelSection__adventureProjectName{
+  font-family: var(--title2-font-stack) !important;
+  font-size: 10rem;
+}
+.travelSection__adventureDescription{
+  margin-top: 15px;
+}
+.travelSection__adventureWrapper .logoImage {
+  margin-right: 20px; /* Espacement entre le logo et le texte */
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+}
+
+/* Animation de la section "Mes Voyages" */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate {
+  animation: fadeInAnimation 1s ease forwards 2s; /* Ajoute un délai de 2 secondes */
+}
+
+@keyframes fadeInAnimation {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
