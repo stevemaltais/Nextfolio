@@ -46,14 +46,13 @@
   flex: 1;
   height: 40vw;
   position: relative;
-  border-radius: 40px;
-  background-size: cover;
+
+
   background-position: center;
   background-repeat: no-repeat;
 
   @media (max-width: 750px) {
-    height: auto;
-    img {
+     img {
       width: 80%;
       height: auto;
     }
