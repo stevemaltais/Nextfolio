@@ -13,6 +13,12 @@
     transform: translateY(122%);
     
     box-shadow: -5px 0 5px rgba(0,0,0,.5);
+    @media (max-width: 750px) {
+      width: 276px !important;
+      height: 270px;
+      transform: translateY(147%);
+    
+    }
 }
 
 
@@ -20,7 +26,11 @@
 .colorPalette {
     display: flex;
     flex-wrap: wrap;
-  }
+    @media (max-width: 750px) {
+      margin-bottom: -30px !important;
+    }
+}
+
 
 
 .color {
@@ -110,4 +120,7 @@
   }
  .menu  input{
     display: none;
+  }
+  .resetButton{
+  
   }
