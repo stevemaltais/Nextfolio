@@ -8,6 +8,7 @@
         opacity: 1;
         transform: translateX(0);
       }
+ 
     }
   
     .punch {
@@ -26,6 +27,10 @@
       flex-wrap: wrap;
       gap: 20px;
       justify-content: space-between;
+      @media (max-width: 750px) {
+        flex-direction: column;
+       
+       }
     }
   }
   .titleBig{ 

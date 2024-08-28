@@ -3,6 +3,10 @@
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px; /* Espacement entre les cartes */
+  @media (max-width: 750px) {
+  flex-direction: column;
+  
+  }
 }
 
 .objectiveCard {
