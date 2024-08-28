@@ -45,6 +45,9 @@ const AnimatedText = ({ text, onVisibilityChange }) => {
       const style = document.createElement('style');
       style.setAttribute('data-style', 'animatedText');
       style.innerHTML = `
+
+      
+
         .hidden span {
           opacity: 0;
         }
@@ -58,6 +61,7 @@ const AnimatedText = ({ text, onVisibilityChange }) => {
           animation: move-text-color 1.75s forwards;
           bottom: -1em;
           opacity: 0;
+
         }
 
         @keyframes fadeIn {

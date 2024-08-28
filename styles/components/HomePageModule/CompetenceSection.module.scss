@@ -2,7 +2,9 @@
 @import "../../../styles/abstracts/variables";
 
 .wrapper{
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
  
 }
 
@@ -11,19 +13,35 @@
     color: var(--titleScript);
     text-align: center;
   margin-bottom: 10rem;
+  @media (max-width: 750px) {
+    font-size: 40px;
+
+   
+  }
 }
+
 
 .competencesWeb h2 {
     margin-bottom: 6rem;
     text-align: center;
     font-size: 28px;
+    @media (max-width: 750px) {
+      font-size: 22px;
+      margin-bottom: 3rem;
+    }
 }
 
 .competencesWeb {
     align-items: flex-start;
     display: flex;
     justify-content: space-around;
-    
+    @media (max-width: 750px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+     
+     
+    }
 }
 .competencesWeb ul {
     list-style: none;
@@ -37,20 +55,27 @@
   }
 .competencesWeb li strong{
     text-transform: uppercase;
-      
+    @media (max-width: 750px) {
+      text-align: center;
+      font-size: 18px;
+    }
    }
 
    .domaines em{
  
     font-size: 18px;
     font-weight: 200;
+   
    }
 
 
    .domaines,
    .developpement {
      width: 45%;
-
+     @media (max-width: 750px) {
+      width: 90%;
+      margin-bottom: 4rem;
+    }
  
      
      
@@ -64,6 +89,11 @@
     margin-top: -9.3rem;
     opacity: 0;
     transition: opacity 1s ease-in-out;
+    @media (max-width: 750px) {
+      font-size: 28px;
+      margin-top: -1.2rem;
+      
+    }
 }
 
 .animate {

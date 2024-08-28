@@ -15,6 +15,11 @@
     color: $darkGrey;
     text-align: center;
     margin-top: -10px;
+    @media (max-width: 750px) {
+        font-size: 40px;
+        margin-top: -0px;
+       
+      }
 }
 .contact p{
     color: var( --text-color);
@@ -24,6 +29,11 @@
     line-height: $fontHeight-med;
     opacity: 0;
     text-align: justify;
+    @media (max-width: 750px) {
+        width: 98%;
+        margin-bottom: 4rem;
+        margin-top: -7px;
+      }
     
 }
 

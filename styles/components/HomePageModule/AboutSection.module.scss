@@ -3,7 +3,13 @@
 
 .section{
   margin-bottom: 6rem;
-  
+ 
+  @media (max-width: 750px) {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+
 }
 
 .about  {
@@ -15,6 +21,10 @@
 
     .container{
     display: block;
+    @media (max-width: 750px) {
+     width: 90%;
+  
+    }
     }
     
     .aboutWrapper {
@@ -22,17 +32,29 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+
+    @media (max-width: 750px) {
+      flex-direction: column;
+      align-items: center;
+    }
     }
     
     .aboutInfo {
     width: 65%;
     font-family: var(--title-font-stack);
+    @media (max-width: 750px) {
+      width: 98%;
+    }
     }
     
     .contactInfo ul {
       list-style: none;
       padding: 0;
-      margin: 0;     
+      margin: 0;  
+      @media (max-width: 750px) {
+        
+        text-align: left;
+      }   
     }
       
     .contactInfo li {
@@ -40,7 +62,21 @@
     font-size: $font-md;
     color: var(--text-color);
     font-weight: 100;
+    @media (max-width: 750px) {
+     
+      font-size: $font-sm;
     }
+    }
+
+    .contactInfo {
+      @media (max-width: 750px) {
+        width: 98%;
+        text-align: center;
+        font-size: $font-xs;
+        margin-top: 4rem;
+      }
+      
+      }
     
     .aboutInfo p{
     color: var(--text-color);
@@ -49,6 +85,9 @@
     margin-right: 2rem;
     text-align: justify;
     line-height: 2.8rem;
+    @media (max-width: 750px) {
+      margin-right: 0px;
+    }
     }
     
     .container h2{
