@@ -5,24 +5,20 @@
 
 
 
-
-
 .profileSection {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
-  min-height: 100vh; /* Assure que la section prend toute la hauteur de la fenêtre */
+  min-height: 100vh;
   text-align: center;
-  margin-top: 5rem;
+  margin-top: auto;
   animation: fadeIn 1.5s ease-out forwards;
 
   @media (max-width: 750px) {
     flex-direction: column;
     align-items: center;
-    padding-top: 1%;
-
-    
+    padding-top: 15%;
   }
 }
 
@@ -37,22 +33,27 @@
 
   @media (max-width: 750px) {
     align-items: center;
-
     justify-content: flex-start;
   }
 }
 
 .profileSection__image {
   flex: 1;
-  height: 40vw;
+  height: auto; /* Ajuster la hauteur automatiquement */
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-
-  background-position: center;
-  background-repeat: no-repeat;
+  img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 40px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, .5);
+  }
 
   @media (max-width: 750px) {
-     img {
+    img {
       width: 80%;
       height: auto;
     }
@@ -98,7 +99,6 @@
 
   @media (max-width: 750px) {
     font-size: $font-xs;
-
   }
 }
 
@@ -115,8 +115,6 @@
 
   @media (max-width: 750px) {
     font-size: 16px;
-   
- 
   }
 }
 
