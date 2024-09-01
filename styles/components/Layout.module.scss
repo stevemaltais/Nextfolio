@@ -35,7 +35,7 @@
   }
   
   .contentWithSidebarOpen {
-    margin-left: 6rem;
+    margin: auto;
     transition: margin-left 0.3s ease; /* Transition uniquement sur margin-left */
   }
 
@@ -45,7 +45,6 @@
     height: auto;
     transition: margin 0.3s ease; /* Transition uniquement sur margin */
     overflow: hidden; /* Empêche les débordements qui pourraient affecter la hauteur */
-    
   }
 
 }

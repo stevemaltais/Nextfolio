@@ -16,7 +16,7 @@ const SettingsMenu = ({ isOpen, sidebarIsOpen }) => {
       const windowWidth = window.innerWidth;
 
       if (windowWidth <= 600) {
-        setLeftPosition(isOpen ? (sidebarIsOpen ? '81px' : '-350rem') : '-350px');
+        setLeftPosition(isOpen ? (sidebarIsOpen ? '58px' : '-350rem') : '-350px');
       } else if (windowWidth <= 750) {
         setLeftPosition(isOpen ? (sidebarIsOpen ? '220px' : '6rem') : '-350px');
       } else {
