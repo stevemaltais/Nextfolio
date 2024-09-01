@@ -1,60 +1,51 @@
-// Layout.module.scss
 .contentWithSidebarClosed {
   margin-left: 7.8rem;
-  transition: margin-left 0.3s ease, margin 0.3s ease; // Ajout de la transition sur margin aussi
+  transition: margin-left 0.3s ease; /* Transition uniquement sur margin-left */
   overflow: hidden;
+
 }
 
 .contentWithSidebarOpen {
   margin-left: 25rem;
-  transition: margin-left 0.3s ease, margin 0.3s ease; // Ajout de la transition sur margin aussi
+  transition: margin-left 0.3s ease; /* Transition uniquement sur margin-left */
   overflow: hidden;
 }
 
 .homeMainWithSidebarClosed {
   margin: 0 10rem;
   height: auto;
-  transition: margin 0.3s ease; // Assure la transition fluide pour la marge
-
+  transition: margin-left 0.3s ease; /* Transition uniquement sur margin */
+  overflow: hidden; /* Empêche les débordements qui pourraient affecter la hauteur */
+  
 }
 
 .homeMainWithSidebarOpen {
   margin: 0 10rem;
   height: auto;
-  transition: margin 0.3s ease; // Assure la transition fluide pour la marge
-
+  transition: margin-left 0.3s ease; /* Transition uniquement sur margin */
+  overflow: hidden; /* Empêche les débordements qui pourraient affecter la hauteur */
 }
 
 @media (max-width: 750px)  {
-
-
   .contentWithSidebarClosed {
     margin-left: 0rem;
-    transition: margin-left 0.3s ease, margin 0.3s ease; // Ajout de la transition sur margin aussi
-    
+    transition: margin-left 0.3s ease; /* Transition uniquement sur margin-left */
+
+   
   }
   
   .contentWithSidebarOpen {
-    margin-left: 8rem;
-    transition: margin-left 0.3s ease, margin 0.3s ease; // Ajout de la transition sur margin aussi
-
-    
-  }
-  
-  .homeMainWithSidebarClosed {
-    margin: 0 ;
-    height: auto;
-    transition: margin 0.3s ease; // Assure la transition fluide pour la marge
-    
-  }
-  
-  .homeMainWithSidebarOpen {
-    margin: 0 ;
-    height: auto;
-    transition: margin 0.3s ease; // Assure la transition fluide pour la marge
-  
+    margin-left: 6rem;
+    transition: margin-left 0.3s ease; /* Transition uniquement sur margin-left */
   }
 
   
+  .homeMainWithSidebarClosed, .homeMainWithSidebarOpen {
+    margin: 0;
+    height: auto;
+    transition: margin 0.3s ease; /* Transition uniquement sur margin */
+    overflow: hidden; /* Empêche les débordements qui pourraient affecter la hauteur */
+    
+  }
 
 }

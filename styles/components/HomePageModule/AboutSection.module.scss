@@ -44,8 +44,10 @@
     font-family: var(--title-font-stack);
     @media (max-width: 750px) {
       width: 98%;
+      min-height: 100vh;
     }
     }
+
     
     .contactInfo ul {
       list-style: none;
@@ -74,6 +76,8 @@
         text-align: center;
         font-size: $font-xs;
         margin-top: 4rem;
+
+       
       }
       
       }
