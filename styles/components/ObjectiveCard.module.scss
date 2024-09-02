@@ -1,11 +1,28 @@
+@import "/styles/abstracts/mixins";
+
 .objectivesContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px; /* Espacement entre les cartes */
-  @media (max-width: 750px) {
-  flex-direction: column;
+  @include breakpoint-down('xl') {
+   
+  }
+
+  @include breakpoint-down('lg') {
   
+  }
+
+  @include breakpoint-down('sm') {
+  
+  }
+
+  @include breakpoint-down('xs') {
+   
+  }
+
+  @include breakpoint-down('xxs') {
+    
   }
 }
 
@@ -21,10 +38,29 @@
   flex-direction: column;
   font-family: var(--title-font-stack);
 
+  @include breakpoint-down('xl') {
+   
+  }
+
+  @include breakpoint-down('lg') {
+    margin: auto;
+    width: 100%;
+  }
+
+  @include breakpoint-down('sm') {
+    margin: 0 20px;
+    width: 100%;
+  }
+
+
+
+
+
   &:hover {
     transform: translateY(-5px); /* Effet de levée au survol */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
   }
+
 }
 
 .cardHeader {
@@ -35,7 +71,26 @@
   text-transform: uppercase;
   text-align: center;
   font-weight: bold;
-  /* Le header n'a pas de hauteur fixe pour qu'il puisse s'adapter au contenu */
+
+  @include breakpoint-down('xl') {
+   
+  }
+
+  @include breakpoint-down('lg') {
+   
+  }
+
+  @include breakpoint-down('sm') {
+  
+  }
+
+  @include breakpoint-down('xs') {
+    font-size: 3.5vh;
+  }
+
+  @include breakpoint-down('xxs') {
+    
+  }
 }
 
 .objectiveContent {
@@ -54,16 +109,67 @@
     font-size: 2rem;
     color: var(--colortextCard);
     margin: 20px ;
+    @include breakpoint-down('xl') {
+
+    }
+  
+    @include breakpoint-down('lg') {
+   
+  
+    
+    }
+  
+    @include breakpoint-down('sm') {
+   
+     
+    }
+  
+    @include breakpoint-down('xs') {
+      font-size: 2.8vh;
+     
+    }
+  
+    @include breakpoint-down('xxs') {
+  
+    }
   }
+
 
   p {
     margin: 12px 0;
     font-weight: 300;
     color: var(--colortextCard);
+
+    @include breakpoint-down('xl') {
+
+    }
+  
+    @include breakpoint-down('lg') {
+   
+  
+    
+    }
+  
+    @include breakpoint-down('sm') {
+   
+     
+    }
+  
+    @include breakpoint-down('xs') {
+      font-size: 2.5vh;
+     
+    }
+  
+    @include breakpoint-down('xxs') {
+  
+    }
   }
   strong{
     color: var(--colortextStrongCard);
+
+ 
   }
+  
 }
 
 .customDivider {

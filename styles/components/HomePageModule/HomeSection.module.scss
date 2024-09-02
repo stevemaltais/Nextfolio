@@ -35,7 +35,7 @@
 
   /* Adjustments for very large screens (monitors 4K or ultrawide) */
   @include breakpoint-up('xxl') {
-    margin-top: 2em;
+    padding-top: 6%;
     margin-bottom: 12rem;
   }
 }

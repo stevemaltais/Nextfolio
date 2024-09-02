@@ -1,6 +1,7 @@
 // InstagramGallery.module.scss
 @import "@/styles/abstracts/colors";
 @import "@/styles/abstracts/variables";
+@import "/styles/abstracts/mixins";
 
 .title{
   font-family: 'Montserrat', serif;
@@ -15,12 +16,36 @@
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); // Augmente le nombre de colonnes à 6
+    grid-template-columns: repeat(6, 1fr); // Augmente le nombre de colonnes à 6
     gap: 15px; // Augmente l'espace entre les éléments
     max-width: 1800px; // Ajustez selon la largeur désirée pour votre galerie
     margin: auto;
-  
+
+    @include breakpoint-down('xl') {
+      grid-template-columns: repeat(3, 1fr); // Augmente le nombre de colonnes à 6
+    }
+
+    @include breakpoint-down('lg') {
+      grid-template-columns: repeat(2, 1fr); // Augmente le nombre de colonnes à 6
+    }
+
+    @include breakpoint-down('sm') {
+      margin: 0 10px;
+      gap: 10px;
+      grid-template-columns: repeat(2, 1fr); // Augmente le nombre de colonnes à 6
+    }
+
+    @include breakpoint-down('xs') {
+      grid-template-columns: repeat(1, 1fr); // Augmente le nombre de colonnes à 6
+    }
+
+    @include breakpoint-down('xxs') {
+      
+    }
   }
+  
+  
+  
   
   .anchor {
     position: relative; // Nécessaire pour le positionnement absolu de l'overlay
@@ -35,6 +60,28 @@
     height: 350px; // Ajuste la hauteur pour un format rectangulaire
     object-fit: cover; // Garde les proportions et couvre l'espace disponible
     transition: opacity 0.3s ease-in-out; // Transition pour le hover
+
+    @include breakpoint-down('xl') {
+     
+    }
+
+    @include breakpoint-down('lg') {
+    
+    }
+
+    @include breakpoint-down('sm') {
+      
+    }
+
+    @include breakpoint-down('xs') {
+      height: 320px;
+      object-fit: cover;
+    }
+
+    @include breakpoint-down('xxs') {
+      
+    }
+
   }
   
   .overlay {

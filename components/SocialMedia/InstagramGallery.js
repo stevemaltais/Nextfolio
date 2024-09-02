@@ -15,7 +15,7 @@ const InstagramGallery = () => {
     setLoading(true);
     setError(null);
     const accessToken = process.env.NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN;
-    const limit = 5;
+    const limit = 6;
     let endpoint = `https://graph.instagram.com/me/media?fields=id,media_type,media_url,thumbnail_url,permalink,caption&access_token=${accessToken}&limit=${limit}`;
     if (after && !initialLoad) {
       endpoint += `&after=${after}`;

@@ -1,3 +1,5 @@
+@import "../../../styles/abstracts/mixins";
+
 .visionSection {
     opacity: 0;
     transform: translateY(20px);
@@ -12,6 +14,10 @@
   .title{
     font-size: 4rem;
     margin-bottom: 2rem;
+    @include breakpoint-down('xxs') {
+      text-align: center;
+      
+    }
     
   }
   .aboutMe__Explain{
@@ -23,4 +29,9 @@
     line-height: 2.8rem;
     margin-bottom: 20px;
     padding-right:6rem;
+    @include breakpoint-down('xxs') {
+      padding-right:0rem;
+      margin: 0 10px;
+      
+    }
   }

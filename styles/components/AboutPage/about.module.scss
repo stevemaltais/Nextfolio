@@ -1,3 +1,6 @@
+@import "../../../styles/abstracts/mixins";
+ 
+ 
  /* AboutSection.module.scss */
  .aboutPage {
 
@@ -10,6 +13,9 @@
   justify-content:space-between;
   align-items: center;
   height: 100vh;
+  @include breakpoint-down('xxs') {
+    flex-direction: column;
+   }
 }
 
 .aboutMe__Title {
@@ -20,6 +26,7 @@
   margin-bottom: 3rem;
   font-size: 3.5rem;
   padding-right:5rem;
+
 }
 .punch{
   color:var(--titleScript);
@@ -32,6 +39,10 @@
   display: flex;
   justify-content: flex-end;
   align-items: stretch;
+  @include breakpoint-down('xxs') {
+   flex-direction: column;
+ 
+  }
 }
 
 .TS{
