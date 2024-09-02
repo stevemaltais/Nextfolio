@@ -1,95 +1,114 @@
 // -----------------------------------------------------------------------------
-// This file contains all application-wide Sass mixins.
+// This file contains all application-wide Sass mixins and breakpoints definitions.
 // -----------------------------------------------------------------------------
 
+// Mixin for handling hover, active, focus, and focus-within states
 /// Event wrapper
-/// @author Harry Roberts
 /// @param {Bool} $self [false] - Whether or not to include current selector
 /// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
 @mixin on-event($self: false) {
-    @if $self {
-      &,
-      &:hover,
-      &:active,
-      &:focus,
-      &:focus-within {
-        @content;
-      }
-    } @else {
-      &:hover,
-      &:active,
-      &:focus,
-      &:focus-within {
-        @content;
-      }
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus,
+    &:focus-within {
+      @content;
     }
-  }
-  
-  /// Make a context based selector a little more friendly
-  /// @author Kitty Giraudel
-  /// @param {String} $context
-  @mixin when-inside($context) {
-    #{$context} & {
+  } @else {
+    &:hover,
+    &:active,
+    &:focus,
+    &:focus-within {
       @content;
     }
   }
+}
 
-// Points de rupture
+// Mixin for making context-based selectors more readable
+/// Make a context based selector a little more friendly
+/// @param {String} $context - The context selector to prepend
+@mixin when-inside($context) {
+  #{$context} & {
+    @content;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Breakpoints definitions
+// -----------------------------------------------------------------------------
+
+// Breakpoints for width (upwards)
 $breakpoints-up: (
-  'xs': 0em,            // pour tous les écrans
-  'sm': 36em,           // ≥ 576px - Mobiles en mode paysage et plus
-  'md': 48em,           // ≥ 768px - Tablettes en mode portrait et plus
-  'lg': 62em,           // ≥ 992px - Tablettes en mode paysage et plus
-  'xl': 75em,           // ≥ 1200px - Desktops et plus
-  'xxl': 90em           // ≥ 1440px - Grands écrans et plus
+  'xs': 0em,            // 0px - for all screens
+  'sm': 36em,           // ≥ 576px - Mobiles in landscape mode and above
+  'md': 48em,           // ≥ 768px - Tablets in portrait mode and above
+  'lg': 62em,           // ≥ 992px - Tablets in landscape mode and above
+  'xl': 75em,           // ≥ 1200px - Desktops and above
+  'xxl': 90em           // ≥ 1440px - Large screens and above
 );
 
+// Breakpoints for width (downwards)
 $breakpoints-down: (
-  'xxs': 20em,          // < 320px - Très petits mobiles
-  'xs': 35.9375em,      // < 576px - Mobiles en mode portrait
-  'sm': 47.9375em,      // < 768px - Mobiles en mode paysage et tablettes en mode portrait
-  'md': 61.9375em,      // < 992px - Tablettes en mode paysage
+  'xxs': 24em,          // < 375px - Very small mobiles
+  'xs': 35.9375em,      // < 576px - Mobiles in portrait mode
+  'sm': 47.9375em,      // < 768px - Mobiles in landscape mode and tablets in portrait mode
+  'md': 61.9375em,      // < 992px - Tablets in landscape mode
   'lg': 74.9375em,      // < 1200px - Desktops
-  'xl': 89.9375em,      // < 1440px - Grands écrans
-  'xxl': 100em          // un point de coupure arbitraire pour les écrans extrêmement larges
+  'xl': 89.9375em,      // < 1440px - Large screens
+  'xxl': 100em          // An arbitrary breakpoint for extremely large screens
 );
 
-// Points de rupture pour la hauteur
+// Breakpoints for height (upwards)
 $breakpoints-height-up: (
-  'short': 40em,   // 640px
-  'medium': 60em,  // 960px
-  'tall': 80em     // 1280px
+  'short': 40em,   // ≥ 640px - Short height screens
+  'medium': 60em,  // ≥ 960px - Medium height screens
+  'tall': 80em     // ≥ 1280px - Tall height screens
 );
 
+// Breakpoints for height (downwards)
 $breakpoints-height-down: (
-  'short': 39.9375em,  // 639px
-  'medium': 59.9375em, // 959px
-  'tall': 79.9375em    // 1279px
+  'short': 39.9375em,  // < 639px - Short height screens
+  'medium': 59.9375em, // < 959px - Medium height screens
+  'tall': 79.9375em    // < 1279px - Tall height screens
 );
 
-// Mixins pour la hauteur
-@mixin breakpoint-height-up($size) {
-  @media (min-height: map-get($breakpoints-height-up, $size)) {
-    @content;
-  }
-}
+// -----------------------------------------------------------------------------
+// Mixins for breakpoints
+// -----------------------------------------------------------------------------
 
-@mixin breakpoint-height-down($size) {
-  @media (max-height: map-get($breakpoints-height-down, $size)) {
-    @content;
-  }
-}
-
-
-// Mixins
+// Mixin for media queries based on width (upwards)
+/// Apply styles when the screen width is greater than or equal to the specified breakpoint.
+/// @param {String} $size - The breakpoint name ('xs', 'sm', 'md', etc.)
 @mixin breakpoint-up($size) {
   @media (min-width: map-get($breakpoints-up, $size)) {
     @content;
   }
 }
 
+// Mixin for media queries based on width (downwards)
+/// Apply styles when the screen width is less than or equal to the specified breakpoint.
+/// @param {String} $size - The breakpoint name ('xxs', 'xs', 'sm', etc.)
 @mixin breakpoint-down($size) { 
   @media (max-width: map-get($breakpoints-down, $size)) {
+    @content;
+  }
+}
+
+// Mixin for media queries based on height (upwards)
+/// Apply styles when the screen height is greater than or equal to the specified breakpoint.
+/// @param {String} $size - The breakpoint name ('short', 'medium', 'tall')
+@mixin breakpoint-height-up($size) {
+  @media (min-height: map-get($breakpoints-height-up, $size)) {
+    @content;
+  }
+}
+
+// Mixin for media queries based on height (downwards)
+/// Apply styles when the screen height is less than or equal to the specified breakpoint.
+/// @param {String} $size - The breakpoint name ('short', 'medium', 'tall')
+@mixin breakpoint-height-down($size) {
+  @media (max-height: map-get($breakpoints-height-down, $size)) {
     @content;
   }
 }

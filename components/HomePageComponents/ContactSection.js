@@ -28,13 +28,14 @@ const ContactSection = () => {
 
   return (
     <section  id="contact" className={styles.section}>
+      <div className={styles.contact__wrapper}></div>
         <div className={styles.title}>
             <h2>
                 <AnimatedText text="Contact" onVisibilityChange={handleVisibilityChange} />
             </h2>
         </div>
         <div className={styles.contact} >
-            <p ref={pRef} className={` ${isIntersecting ? styles.animate : ''}`}>Je vous remercie de l'intérêt que vous portez à mon profil. Si vous souhaitez en savoir plus sur mes compétences,
+            <p ref={pRef} className={ styles.animate}>Je vous remercie de l'intérêt que vous portez à mon profil. Si vous souhaitez en savoir plus sur mes compétences,
                 discuter de vos projets ou échanger sur des opportunités, n'hésitez pas à me contacter. Je suis à votre disposition pour
                 répondre à toutes vos questions et évaluer ensemble comment nous pouvons travailler en synergie.
                 La méthode la plus simple et efficace pour me joindre est par courriel. Vous trouverez ci-dessous mon adresse e-mail.

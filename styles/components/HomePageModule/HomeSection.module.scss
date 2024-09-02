@@ -1,27 +1,46 @@
 @import "../../../styles/abstracts/colors";
 @import "../../../styles/abstracts/variables";
+@import "../../../styles/abstracts/mixins";
 
-/* Main */
-
-
-
+/* Main profile section styling */
 .profileSection {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
- margin-bottom: 10rem;
+  margin-bottom: 10rem;
   text-align: center;
   margin-top: auto;
   animation: fadeIn 1.5s ease-out forwards;
 
-  @media (max-width: 750px) {
+  /* Responsive adjustments for large screens */
+  @include breakpoint-down('xl') {
+
+    padding-top: 6%;
+  }
+
+  /* Responsive adjustments for medium screens (tablets) */
+  @include breakpoint-down('lg') {
+
+    padding-top: 8%;
+  }
+
+  /* Responsive adjustments for smaller screens (mobiles) */
+  @include breakpoint-down('sm') {
     flex-direction: column;
     align-items: center;
-    padding-top: 15%;
+    padding-top: 10%;
+  
+  }
+
+  /* Adjustments for very large screens (monitors 4K or ultrawide) */
+  @include breakpoint-up('xxl') {
+    margin-top: 2em;
+    margin-bottom: 12rem;
   }
 }
 
+/* Profile content container */
 .profileSection__content {
   flex: 1;
   display: flex;
@@ -31,15 +50,28 @@
   max-width: 1200px;
   width: 100%;
 
-  @media (max-width: 750px) {
+  @include breakpoint-down('xl') {
     align-items: center;
+    justify-content: flex-start;
+  }
+
+  @include breakpoint-down('lg') {
+    align-items: center;
+ 
+    justify-content: flex-start;
+  }
+
+  @include breakpoint-down('sm') {
+    align-items: center;
+
     justify-content: flex-start;
   }
 }
 
+/* Profile image container */
 .profileSection__image {
   flex: 1;
-  height: auto; /* Ajuster la hauteur automatiquement */
+  height: auto; /* Adjust height automatically */
   position: relative;
   display: flex;
   justify-content: center;
@@ -49,61 +81,111 @@
     max-width: 90%;
     height: auto;
     border-radius: 40px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, .5);
-  }
+    box-shadow: 2px 0 5px rgba(0, 0, 0, .5); /* Add subtle shadow */
 
-  @media (max-width: 750px) {
-    img {
+    @include breakpoint-down('xl') {
+      width: 85%;
+    }
+
+    @include breakpoint-down('lg') {
       width: 80%;
-      height: auto;
+    }
+
+    @include breakpoint-down('sm') {
+      width: 45%;
+    }
+
+    @include breakpoint-down('xs') {
+      width: 70%;
+    }
+
+    @include breakpoint-down('xxs') {
+      width: 78%;
     }
   }
 }
 
+
+/* Profile first name and last name styling */
 .profileSection__fname,
 .profileSection__name {
-  text-transform: uppercase;
+  text-transform: uppercase; /* Uppercase text */
   line-height: 100%;
   margin: 0;
   padding: 0;
 }
 
+/* First name styling */
 .profileSection__fname {
   color: var(--profileNameHome);
-  font-size: $font-xxl;
+  font-size:5vw;
   font-weight: 300;
 
-  @media (max-width: 750px) {
-    font-size: $font-xg;
-    font-weight: 300;
+  @include breakpoint-down('xl') {
+    font-size:5vw;
+  }
+
+  @include breakpoint-down('lg') {
+    font-size:5vw;
+  }
+
+  @include breakpoint-down('sm') {
+    font-size:6vw;
   }
 }
 
+/* Last name styling */
 .profileSection__name {
   color: var(--accent-color);
-  font-size: $font-title-xxl;
+  font-size:8vw;
   font-weight: 700;
-  margin-top: -30px;
+  margin-top: -25px;
 
-  @media (max-width: 750px) {
-    font-size: $font-title-xl;
-    font-weight: 700;
+  @include breakpoint-down('xl') {
+    font-size:12vw;
+    margin-top: -22px;
+  }
+
+  @include breakpoint-down('lg') {
+    font-size:12vw;
     margin-top: -15px;
     margin-bottom: -25px;
   }
-}
 
-.profileSection__animatedContainer .text {
-  text-transform: uppercase;
-  font-size: $font-xg;
-
-  @media (max-width: 750px) {
-    font-size: $font-xs;
+  @include breakpoint-down('sm') {
+    font-size:10vw;
+    margin-top: -10px;
+    margin-bottom: -20px;
+    z-index: 2111;
+  }
+  @include breakpoint-down('xs') {
+    font-size:15vw;
+    margin-top: -10px;
+    margin-bottom: -20px;
   }
 }
 
+/* Animated text container styling */
+.profileSection__animatedContainer .text {
+  text-transform: uppercase;
+  font-size:2vw;
+
+  @include breakpoint-down('xl') {
+    font-size:2vw;
+  }
+
+  @include breakpoint-down('lg') {
+    font-size:2vw;
+  }
+
+  @include breakpoint-down('sm') {
+    font-size:4vw;
+  }
+}
+
+/* Animated text styling */
 .profileSection__animatedText {
-  font-size: 42px;
+  font-size:2vw;
   margin-top: 2rem;
   display: inline-block;
   text-decoration: underline;
@@ -113,11 +195,21 @@
   font-weight: 700;
   text-transform: uppercase;
 
-  @media (max-width: 750px) {
-    font-size: 16px;
+  @include breakpoint-down('xl') {
+    font-size:2vw;
+  }
+
+  @include breakpoint-down('lg') {
+    font-size:2vw;
+  }
+
+  @include breakpoint-down('sm') {
+    font-size:4vw;
+    text-underline-offset: 0.2em;
   }
 }
 
+/* General text styling */
 .text {
   display: inline-block;
   color: var(--profileNameHome);
@@ -125,9 +217,31 @@
   font-weight: 500;
   margin-right: 1.8rem;
   margin-top: 2.5rem;
+
+  @include breakpoint-down('xl') {
+    margin-right: 1em;
+    font-size:5vw;
+  }
+
+  @include breakpoint-down('lg') {
+    margin-right: 1em;
+    font-size:5vw;
+  }
+
+  @include breakpoint-down('sm') {
+    margin-right: 0.5em;
+    font-size:1vw;
+  }
 }
 
+/* Keyframes for fade-in animation */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-70px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-70px); /* Start with offset for slide effect */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* End with no offset */
+  }
 }

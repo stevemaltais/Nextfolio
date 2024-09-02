@@ -2,12 +2,19 @@
 @import "../../../styles/abstracts/variables";
 
 .section{
-
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 
     text-align: center;
-    padding: 0 4rem;
+
     margin-bottom: 10rem;
     
+}
+.contact__wrapper{
+  width: 95%;
+
 }
 
 .title{
@@ -16,7 +23,7 @@
     text-align: center;
     margin-top: -10px;
     @media (max-width: 750px) {
-        font-size: 40px;
+      font-size: 55px;
         margin-top: -0px;
        
       }

@@ -178,25 +178,29 @@
     position: relative;
 }
 
-.sidebar .logoDetails .menuIcon{
-    height: 5.5rem;
-    color : var(--IconMenuSideBar);
-    width: 100%;
-    line-height: 5rem;
-    position: absolute;
-    margin-top: 6rem;
-    right: 0;
-    transform: translateY(-50%);
-    font-size: 2.2rem;
-    transition: all 0.4s ease;
-    font-size: $font-md;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.5s ease;
+.sidebar .logoDetails .menuIcon {
+  height: 4rem;
+  width: 4rem; /* Assurez-vous que la largeur est égale à la hauteur */
+  color: var(--IconMenuSideBar);
+  line-height: 4rem; /* Centrer l'icône verticalement */
+  position: absolute;
+  top: 50%; /* Centrer verticalement par rapport à son parent */
+  left: 50%; /* Centrer horizontalement par rapport à son parent */
+  transform: translate(-50%, -50%); /* Ajuster pour centrer exactement */
+  font-size: 2.2rem;
+  transition: all 0.4s ease;
+  text-align: center;
+  cursor: pointer;
+ 
+  border-radius: 50%; /* Assure que le conteneur est parfaitement rond */
+  transition: all 0.5s ease;
 }
+
+
 
 .sidebar.open .logoDetails .menuIcon {
     text-align: right;
+    background-color: transparent;
   
   }
   
@@ -240,6 +244,7 @@
 
 .setupToggle {
     animation: rotateInfinite 2s linear infinite; 
+    transform-origin: center; 
   }
 
   @keyframes rotateInfinite {
@@ -372,7 +377,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    left: 10px;
+  
     transition: width 0.5s ease;
     }
     .sidebar li {
@@ -403,15 +408,25 @@
     .sidebar .logoName {
       display: none;
   }
-  .sidebar .logoDetails .menuIcon {
-    left: 10px;
+
+
   
-  }
-  .sidebar.open .logoDetails .menuIcon {
+
+
+.sidebar .logoDetails .menuIcon {
+
+  background-color: rgba(86, 86, 86, 0.425); /* Couleur de fond du cercle */
+
+}
+.sidebar.open .logoDetails .menuIcon {
   text-align: center;
-  left: 0;
   
-  }
+
+}
+
+  
+
+
   .sidebar .profile .name,
   .sidebar .profile .job {
 display: none;
@@ -423,9 +438,7 @@ display: none;
     margin-top: 0rem;
     
   }
-  .sidebar.open .navList .socialIcons a {
-   
-  }
+
   .sidebar.open .navList .socialIcons i {
   
     font-size: 2rem;

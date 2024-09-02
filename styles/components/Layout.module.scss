@@ -1,3 +1,6 @@
+@import "/styles/abstracts/mixins";
+
+
 .contentWithSidebarClosed {
   margin-left: 7.8rem;
   transition: margin-left 0.3s ease; /* Transition uniquement sur margin-left */
@@ -16,7 +19,10 @@
   height: auto;
   transition: margin-left 0.3s ease; /* Transition uniquement sur margin */
   overflow: hidden; /* Empêche les débordements qui pourraient affecter la hauteur */
-  
+  @include breakpoint-down('sm') {
+    margin: 0;
+    
+  }
 }
 
 .homeMainWithSidebarOpen {
@@ -24,15 +30,16 @@
   height: auto;
   transition: margin-left 0.3s ease; /* Transition uniquement sur margin */
   overflow: hidden; /* Empêche les débordements qui pourraient affecter la hauteur */
+
 }
 
 @media (max-width: 750px)  {
   .contentWithSidebarClosed {
     margin-left: 0rem;
     transition: margin-left 0.3s ease; /* Transition uniquement sur margin-left */
-
    
   }
+
   
   .contentWithSidebarOpen {
     margin: auto;
