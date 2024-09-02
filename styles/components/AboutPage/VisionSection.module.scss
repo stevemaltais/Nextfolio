@@ -14,7 +14,7 @@
   .title{
     font-size: 4rem;
     margin-bottom: 2rem;
-    @include breakpoint-down('xxs') {
+    @include breakpoint-down('xs') {
       text-align: center;
       
     }
@@ -29,7 +29,7 @@
     line-height: 2.8rem;
     margin-bottom: 20px;
     padding-right:6rem;
-    @include breakpoint-down('xxs') {
+    @include breakpoint-down('xs') {
       padding-right:0rem;
       margin: 0 10px;
       

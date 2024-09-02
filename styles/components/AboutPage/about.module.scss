@@ -39,7 +39,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: stretch;
-  @include breakpoint-down('xxs') {
+  @include breakpoint-down('xs') {
    flex-direction: column;
  
   }
