@@ -1,69 +1,67 @@
-@import "/styles//abstracts//mixins";
+@import "/styles/abstracts/mixins";
 
 .myGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Grille avec 3 colonnes */
-  gap: 10px; /* Espace uniforme entre les éléments de la grille */
+  grid-template-columns: repeat(3, 1fr); /* Grid with 3 columns */
+  gap: 10px; /* Uniform spacing between grid items */
   max-width: 550px;
   margin: auto;
   @include breakpoint-down('xs') {
     max-width: 250px;
     gap: 5px;
-    
   }
 }
 
 .photoItem {
   position: relative;
-  overflow: hidden; /* Masquer les parties d'image qui dépassent */
-  border-radius: 10px; /* Applique un arrondi aux coins */
+  overflow: hidden; /* Hide overflow for rounded corners */
+  border-radius: 10px; /* Rounded corners */
+
+  img {
+    width: auto;
+    height: 100%;
+    display: block;
+    object-fit: cover; /* Fill container while respecting proportions */
+    object-position: center;
+    border-radius: inherit; /* Inherit border radius from container */
+    transform: translateY(20px) scale(1.05) translateZ(0); /* Use translateZ to force GPU rendering */
+    opacity: 0; /* Initially invisible */
+    filter: blur(10px); /* Initial blur */
+    transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease; /* Faster transitions */
+  }
+
+  &.reveal img {
+    opacity: 1;
+    transform: translateY(0) scale(1); /* Reset transform on reveal */
+    filter: blur(0); /* Remove blur on reveal */
+  }
+
+  /* Specific rounded corners */
+  &:nth-child(1) {
+    border-top-left-radius: 30px;
+  }
+
+  &:nth-child(3) {
+    border-top-right-radius: 30px;
+  }
+
+  &:nth-child(7) {
+    border-bottom-left-radius: 30px;
+  }
+
+  &:nth-child(9) {
+    border-bottom-right-radius: 30px;
+  }
 }
 
-.photoItem img {
-  width: auto;
-  height: 100%;
-  display: block;
-  object-fit: cover; /* Remplir le conteneur tout en respectant les proportions */
-  object-position: center;
-  border-radius: inherit; /* Applique le même radius que le conteneur */
-  
-  opacity: 0; /* Initialement invisible */
-  transform: translateY(20px) scale(1.05); /* Légèrement décalé et agrandi pour l'effet de mouvement */
-  filter: blur(10px); /* Applique un flou initial */
-  transition: opacity 1s ease, transform 1s ease, filter 1s ease; /* Transition rapide pour les effets */
-}
-
-/* Lorsque l'image est révélée */
-.photoItem.reveal img {
-  opacity: 1;
-  transform: translateY(0) scale(1); /* Revient à la position d'origine et à la taille normale */
-  filter: blur(0); /* Supprime le flou pour révéler l'image */
-}
-
-/* Coins arrondis spécifiques */
-.photoItem:nth-child(1) {
-  border-top-left-radius: 30px;  /* Coin supérieur gauche */
-}
-
-.photoItem:nth-child(3) {
-  border-top-right-radius: 30px; /* Coin supérieur droit */
-}
-
-.photoItem:nth-child(7) {
-  border-bottom-left-radius: 30px; /* Coin inférieur gauche */
-}
-
-.photoItem:nth-child(9) {
-  border-bottom-right-radius: 30px; /* Coin inférieur droit */
-}
 .ReactModal__Overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.75); /* Fond semi-transparent */
-  z-index: 9000; /* S'assurer que l'overlay est bien au-dessus */
+  background-color: rgba(0, 0, 0, 0.75); /* Semi-transparent background */
+  z-index: 9000;
 }
 
 .ReactModal__Content {
@@ -78,7 +76,7 @@
   padding: 20px;
   border-radius: 10px;
   overflow: auto;
-  z-index: 9001; /* Assurer que le contenu du modal est au-dessus de l'overlay */
+  z-index: 9001; /* Ensure content is above overlay */
 }
 
 .modalImage__open img {

@@ -18,9 +18,10 @@ const MasonryGallery = () => {
   useEffect(() => {
     const photoItems = document.querySelectorAll(`.${styles.photoItem}`);
     photoItems.forEach((item, index) => {
+      console.log(`Revealing item ${index}`); // Debugging log
       setTimeout(() => {
         item.classList.add(styles['reveal']);
-      }, index * 200); // Ajustez la valeur pour la rapidité de l'effet
+      }, index * 200); // Adjust delay as needed
     });
   }, []);
 
