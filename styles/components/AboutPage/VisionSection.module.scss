@@ -5,10 +5,18 @@
     transform: translateY(20px);
     transition: opacity 2s ease, transform 2s ease;
     transition-delay: 0.8s;
+    @include breakpoint-down('xs') {
+      margin-top: 20em;
+      
+    }
   
     &.fade-in {
       opacity: 1;
       transform: translateY(0);
+      @include breakpoint-down('xs') {
+       
+        
+      }
     }
   }
   .title{
@@ -16,7 +24,7 @@
     margin-bottom: 2rem;
     @include breakpoint-down('xs') {
       text-align: center;
-      
+   
     }
     
   }
@@ -31,7 +39,7 @@
     padding-right:6rem;
     @include breakpoint-down('xs') {
       padding-right:0rem;
-      margin: 0 10px;
+      margin: 0 20px;
       
     }
   }

@@ -71,5 +71,6 @@
   align-items: flex-end;
   @include breakpoint-down('xs') {
     gap: 0px;
+    margin: 0 20px;
   }
 }

@@ -1,3 +1,5 @@
+@import "../../../styles/abstracts/mixins";
+
 .socialMediaWrapper{  
     display: flex;
     flex-direction: column;
@@ -40,6 +42,7 @@
   flex-direction: row;
   color: inherit;
   text-decoration: none;
+
   svg {
     width: 30px; /* Taille personnalisée de l'icône SVG */
     height: 30px; /* Assurez-vous que la hauteur est également définie */

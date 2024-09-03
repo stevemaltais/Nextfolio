@@ -1,9 +1,16 @@
+@import "/styles//abstracts//mixins";
+
 .myGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Grille avec 3 colonnes */
   gap: 10px; /* Espace uniforme entre les éléments de la grille */
   max-width: 550px;
   margin: auto;
+  @include breakpoint-down('xs') {
+    max-width: 250px;
+    gap: 5px;
+    
+  }
 }
 
 .photoItem {
