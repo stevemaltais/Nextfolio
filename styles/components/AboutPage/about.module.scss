@@ -22,7 +22,9 @@
   align-items: center;
   height: 100vh;
   @include breakpoint-down('xs') {
-   
+    flex-direction: column;
+    margin-top: 10px;
+    height: auto;
    }
 }
 .title1 {
