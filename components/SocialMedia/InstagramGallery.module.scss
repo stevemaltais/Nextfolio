@@ -2,129 +2,81 @@
 @import "@/styles/abstracts/colors";
 @import "@/styles/abstracts/variables";
 @import "/styles/abstracts/mixins";
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); // 6 colonnes pour la galerie
+  gap: 15px; // Espace entre les éléments
+  max-width: 1800px; // Largeur maximale de la galerie
+  margin: auto;
 
-.title{
-  font-family: 'Montserrat', serif;
-  font-weight: 600;
-  font-size: 2rem;
-  text-align: center;
-  color:black;
-  margin-bottom: 2rem;
+  @include breakpoint-down('xl') {
+    grid-template-columns: repeat(3, 1fr); // 3 colonnes pour les écrans XL
+  }
 
- 
+  @include breakpoint-down('lg') {
+    grid-template-columns: repeat(2, 1fr); // 2 colonnes pour les écrans LG
+  }
+
+  @include breakpoint-down('sm') {
+    margin: 0 10px;
+    gap: 10px;
+    grid-template-columns: repeat(2, 1fr); // 2 colonnes pour les petits écrans
+  }
+
+  @include breakpoint-down('xs') {
+    grid-template-columns: repeat(2, 1fr); // 2 colonnes pour les très petits écrans
+    gap: 4px;
+  }
 }
 
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr); // Augmente le nombre de colonnes à 6
-    gap: 15px; // Augmente l'espace entre les éléments
-    max-width: 1800px; // Ajustez selon la largeur désirée pour votre galerie
-    margin: auto;
+.anchor {
+  position: relative; // Pour le positionnement de l'overlay
+  display: block;
+  width: 100%; // Utiliser toute la largeur de la cellule de grille
+  height: 100%; // Assurez-vous que l'élément .anchor remplit entièrement la cellule de la grille
+  overflow: hidden; // Masquer tout dépassement
+  border-radius: 10px; // Coins arrondis
 
-    @include breakpoint-down('xl') {
-      grid-template-columns: repeat(3, 1fr); // Augmente le nombre de colonnes à 6
-    }
-
-    @include breakpoint-down('lg') {
-      grid-template-columns: repeat(2, 1fr); // Augmente le nombre de colonnes à 6
-    }
-
-    @include breakpoint-down('sm') {
-      margin: 0 10px;
-      gap: 10px;
-      grid-template-columns: repeat(2, 1fr); // Augmente le nombre de colonnes à 6
-    }
-
-    @include breakpoint-down('xs') {
-      grid-template-columns: repeat(1, 1fr); // Augmente le nombre de colonnes à 6
-    }
-
-    @include breakpoint-down('xxs') {
-      
-    }
+  @include breakpoint-down('xs') {
+    border-radius: 10px;
+    height: 220px; // Hauteur ajustée pour les petits écrans
   }
-  
-  
-  
-  
-  .anchor {
-    position: relative; // Nécessaire pour le positionnement absolu de l'overlay
-    display: block;
-    width: 100%; // Utilisez 100% de la cellule de grille
-    overflow: hidden; // Cache tout débordement (utile pour maintenir les images carrées)
-    border-radius: 10px; // Coins arrondis
-  }
-  
-  .image, .thumbnail {
-    width: 100%; // Assure que l'image couvre la largeur
-    height: 350px; // Ajuste la hauteur pour un format rectangulaire
-    object-fit: cover; // Garde les proportions et couvre l'espace disponible
-    transition: opacity 0.3s ease-in-out; // Transition pour le hover
+}
 
-    @include breakpoint-down('xl') {
-     
-    }
+.image, .thumbnail {
+  width: 100%; // Remplir la largeur du conteneur
+  height: 100%; // Remplir la hauteur du conteneur pour que l'image couvre le bloc .anchor
+  object-fit: cover; // Couvrir tout le conteneur tout en conservant les proportions
+  transition: opacity 0.3s ease-in-out; // Transition lors du survol
 
-    @include breakpoint-down('lg') {
-    
-    }
+  @include breakpoint-down('xs') {
+    height: 220px; // Hauteur ajustée pour les petits écrans
+    object-fit: cover;
+  }
+}
 
-    @include breakpoint-down('sm') {
-      
-    }
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  padding: 10px; // Padding pour éviter que le texte touche les bords
+  text-align: center;
+  font-size: 14px; // Taille du texte
+}
 
-    @include breakpoint-down('xs') {
-      height: 320px;
-      object-fit: cover;
-    }
+.anchor:hover .image, .anchor:hover .thumbnail {
+  opacity: 0.7; // Réduire l'opacité de l'image sur hover
+}
 
-    @include breakpoint-down('xxs') {
-      
-    }
-
-  }
-  
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    padding: 10px; // Ajoutez du padding pour éviter que le texte touche les bords
-    text-align: center; // Centre le texte
-    font-size: 14px; // Réduire la taille du texte
-  }
-  
-  .anchor:hover .image, .anchor:hover .thumbnail {
-    opacity: 0.7; // Assombrit l'image ou la vidéo
-  }
-  
-  .anchor:hover .overlay {
-    opacity: 1;
-  }
-  
-  .caption {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3; // Limite le texte à 3 lignes
-    -webkit-box-orient: vertical;
-  }
-  
-  .loadMoreContainer {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-    margin-bottom: 5rem;
-  }
-  
-
-  
- 
+.anchor:hover .overlay {
+  opacity: 1; // Afficher l'overlay sur hover
+}
