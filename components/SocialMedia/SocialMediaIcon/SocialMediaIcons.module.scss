@@ -105,6 +105,12 @@
   &.yt:hover {
     background: #FE0000;
   }
+  
+  }
+  .followersCount{
+    @include breakpoint-down('xs') {
+      font-size: 2vh;
+    }
 }
 
 
