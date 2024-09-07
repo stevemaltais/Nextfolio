@@ -60,7 +60,7 @@ const About = () => {
         <div className={styles.aboutMe}>
           <h1 className={styles.title1}>A propos</h1>
           <p className={`${styles.aboutMe__Title}`}>
-            Nomade numérique de Montréal, embrassant la<br /> liberté de travailler aux quatre coins du monde.
+            Nomade numérique de Montréal, embrassant la liberté de travailler aux quatre coins du monde.
           </p>
           <div className={styles.rightContent}>
             <p className={styles.aboutMe__Explain}>

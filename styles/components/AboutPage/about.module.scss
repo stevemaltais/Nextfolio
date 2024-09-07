@@ -23,7 +23,7 @@
   height: 100vh;
   @include breakpoint-down('xs') {
     flex-direction: column;
-    margin-top: 10px;
+    margin-top: 5px;
     height: auto;
    }
 }
@@ -48,10 +48,10 @@
   @include breakpoint-down('xs') {
     text-align: center;
     padding-right:0rem;
-    font-size: 3.4vh;
-    line-height: 1em;
-    margin: 0 20px;
-    margin-bottom: 20px;
+    font-size: 2.9vh;
+    line-height: 0.9em;
+    margin: 0 10px;
+    margin-bottom: 10px;
     
    }
 
@@ -286,6 +286,13 @@ transition: .5s;
   opacity: 0;
   animation: slideInFromLeft 1s ease-out forwards;
   animation-delay: 0.5s;
+  
+  @include breakpoint-down('xs') {
+    padding-left: 0px;
+    margin:  0 20px;
+ 
+  }
+
 }
 
 .travelSection__adventureWrapper{
@@ -294,6 +301,9 @@ transition: .5s;
   justify-content: flex-end;
   flex-direction: row-reverse;
 
+  @include breakpoint-down('xs') {
+    flex-direction: column;
+  }
 }
 .travelSection__adventure{
   
@@ -305,7 +315,10 @@ transition: .5s;
 
   text-align: center;
   align-items: center;
-
+  @include breakpoint-down('xs') {
+    width: 100%;
+    margin: 0 20px;
+  }
 
 }
 .travelSection__explain{
@@ -314,7 +327,12 @@ transition: .5s;
   animation: fadeInUp 1s ease-out forwards;
   animation-delay: 4.5s;
   
-
+  @include breakpoint-down('xs') {
+    margin-top: 10px;
+    text-align: justify;
+    font-size: 2.5vh;
+    font-weight: 300;
+  }
 }
 
 .travelSection__title{
@@ -322,7 +340,12 @@ transition: .5s;
   font-family: var(--title2-font-stack) !important;
   
   text-transform: uppercase; 
-  
+  @include breakpoint-down('xs') {
+    font-size: 9vh;
+    line-height: 6vh;
+    text-align: center;
+   
+  }
 
 }
 .travelSection__adventureTitle{
@@ -340,10 +363,15 @@ transition: .5s;
   margin-top: 15px;
 }
 .travelSection__adventureWrapper .logoImage {
-  margin-right: 20px; /* Espacement entre le logo et le texte */
+  margin-right: 20px; 
   width: 300px;
   height: 300px;
   object-fit: contain;
+  @include breakpoint-down('xs') {
+    margin-right: 0px;
+    width: 200px;
+  height: 200px;
+  }
 }
 
 /* Animation de la section "Mes Voyages" */

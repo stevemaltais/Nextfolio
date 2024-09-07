@@ -37,7 +37,7 @@
     color: var(--titleScript);
     font-size: 6.8rem;
     writing-mode: vertical-rl; /* Positionne le texte verticalement */
-    transform: rotate(180deg); /* Fait pivoter le texte de 180 degrés */
+   
     font-family: var(--title2-font-stack);
 
     &.slide-in {

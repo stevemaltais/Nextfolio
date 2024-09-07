@@ -6,7 +6,7 @@
     transition: opacity 2s ease, transform 2s ease;
     transition-delay: 0.8s;
     @include breakpoint-down('xs') {
-      margin-top: 20em;
+      margin-top: 5em;
       
     }
   

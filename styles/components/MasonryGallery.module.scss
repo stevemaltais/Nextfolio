@@ -8,8 +8,9 @@
   position: relative; /* Ensure the grid container has relative positioning */
   
   @include breakpoint-down('xs') {
-    max-width: 250px;
+    max-width: 100%;
     gap: 5px;
+    padding: 0px 5px 5px 5px;
   }
 }
 
@@ -17,7 +18,8 @@
   position: relative; /* Make sure the container has relative positioning */
   overflow: hidden; /* Hide overflow to respect rounded corners */
   border-radius: 10px; /* Apply rounded corners */
-  z-index: 1; /* Ensure it doesn't overlap other elements */
+
+
   
   /* Fix the aspect ratio to maintain consistent dimensions */
   aspect-ratio: 1/1; /* Maintain a 1:1 ratio for square images */
@@ -34,6 +36,8 @@
     opacity: 0; /* Initially invisible */
     filter: blur(10px); /* Apply initial blur */
     transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease; /* Add smooth transitions */
+
+
   }
 
   &.reveal img {
@@ -45,18 +49,30 @@
   /* Specific rounded corners */
   &:nth-child(1) {
     border-top-left-radius: 30px;
+    @include breakpoint-down('xs') {
+      border-top-left-radius: 20px;
+    }
   }
 
   &:nth-child(3) {
     border-top-right-radius: 30px;
+    @include breakpoint-down('xs') {
+      border-top-right-radius: 20px;
+    }
   }
 
   &:nth-child(7) {
     border-bottom-left-radius: 30px;
+    @include breakpoint-down('xs') {
+      border-bottom-left-radius: 20px;
+    }
   }
 
   &:nth-child(9) {
     border-bottom-right-radius: 30px;
+    @include breakpoint-down('xs') {
+      border-bottom-right-radius:  20px;
+    }
   }
 }
 
