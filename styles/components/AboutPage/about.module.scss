@@ -266,6 +266,13 @@ transition: .5s;
   to { opacity: 1; transform: translateY(0); }
 }
 
+.AspirationSection{
+
+
+}
+.AspirationWrap{
+ 
+}
 .wrapper {
   animation: fadeIn 1.5s ease-out forwards;
 
@@ -281,6 +288,7 @@ transition: .5s;
   align-items: flex-start;
   flex-direction: column;
   padding-left: 120px;
+  margin-right: 40px;
   font-size: 3rem;
   text-align: left;
   opacity: 0;
@@ -316,28 +324,37 @@ transition: .5s;
   text-align: center;
   align-items: center;
   @include breakpoint-down('xs') {
-    width: 100%;
-    margin: 0 20px;
+    line-height: 1.6;
+    margin: 20px 20px;
   }
 
 }
 .travelSection__explain{
   opacity: 0;
-  margin-top: -40px;
+
   animation: fadeInUp 1s ease-out forwards;
   animation-delay: 4.5s;
+  font-size: 2.5vh;
+    background: var( --MenuCoverSideBar );
+    padding: 30px;
+    border-radius: 1em;
+    box-shadow: var(--BoxShadowIconSocial);
+  
+line-height: 1.5em;
   
   @include breakpoint-down('xs') {
-    margin-top: 10px;
+    margin-top: 0px;
     text-align: justify;
-    font-size: 2.5vh;
+  
     font-weight: 300;
+    line-height: 1.6;
   }
 }
 
 .travelSection__title{
-  font-size: 15rem;
+  font-size: 18vh;
   font-family: var(--title2-font-stack) !important;
+  line-height: 12vh;
   
   text-transform: uppercase; 
   @include breakpoint-down('xs') {
@@ -360,7 +377,14 @@ transition: .5s;
   font-size: 10rem;
 }
 .travelSection__adventureDescription{
+  font-size: 2.5vh;
+  font-weight: 300;
+  line-height: 1.5em;
   margin-top: 15px;
+  @include breakpoint-down('xs') {
+   font-size: 2.5vh;
+   margin-top: 0px;
+  }
 }
 .travelSection__adventureWrapper .logoImage {
   margin-right: 20px; 

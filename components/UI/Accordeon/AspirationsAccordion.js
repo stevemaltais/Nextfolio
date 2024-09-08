@@ -1,50 +1,72 @@
-import React from "react";
-import { Accordion, AccordionItem } from "@nextui-org/react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from './AspirationsAccordion.module.scss';
 
-export default function AspirationsAccordion() {
+const CustomAccordionItem = ({ title, content, isOpen, onClick }) => {
+  const contentRef = useRef(null);
+
   return (
-    <Accordion variant="splitted" className={styles.accordion}>
-      <AccordionItem 
-        key="1" 
-        aria-label="Repousser les limites" 
-        title={<span className={styles.accordionTitle}>Repousser les limites technologiques</span>} 
-        className={styles.accordionItem}
+    <div className={styles.accordionItem}>
+      <button className={styles.accordionHeader} onClick={onClick}>
+        <span>{title}</span>
+        <svg
+          className={`${styles.chevron} ${isOpen ? styles.rotate : ""}`}
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.5 19l-7-7 7-7"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+      <div
+        ref={contentRef}
+        className={`${styles.accordionContent} ${isOpen ? styles.open : ""}`}
+        style={{
+          height: isOpen ? `${contentRef.current.scrollHeight}px` : "0px",
+          opacity: isOpen ? 1 : 0,
+        }}
       >
-        <span className={styles.accordionContent}>
-          Travailler sur des projets utilisant les dernières technologies pour rester à la pointe de l'innovation.
-        </span>
-      </AccordionItem>
-      <AccordionItem 
-        key="2" 
-        aria-label="Impact social" 
-        title={<span className={styles.accordionTitle}>Contribuer à des projets à impact social</span>} 
-        className={styles.accordionItem}
-      >
-        <span className={styles.accordionContent}>
-          Intégrer des initiatives qui favorisent un développement durable et éthique.
-        </span>
-      </AccordionItem>
-      <AccordionItem 
-        key="3" 
-        aria-label="Solutions évolutives" 
-        title={<span className={styles.accordionTitle}>Développer des solutions évolutives</span>} 
-        className={styles.accordionItem}
-      >
-        <span className={styles.accordionContent}>
-          Concevoir des applications et des sites web capables de s'adapter aux besoins futurs tout en offrant une expérience utilisateur optimale.
-        </span>
-      </AccordionItem>
-      <AccordionItem 
-        key="4" 
-        aria-label="Apprendre et enseigner" 
-        title={<span className={styles.accordionTitle}>Apprendre et enseigner</span>} 
-        className={styles.accordionItem}
-      >
-        <span className={styles.accordionContent}>
-          Participer activement à la formation de la prochaine génération de développeurs, en partageant mes connaissances et en encourageant l'innovation responsable.
-        </span>
-      </AccordionItem>
-    </Accordion>
+        <div className={styles.accordionContentInner}>{content}</div>
+      </div>
+    </div>
+  );
+};
+
+export default function CustomAccordion() {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleAccordion = (index) => {
+    setOpenIndex(index === openIndex ? null : index); // Toggle open state
+  };
+
+  const defaultContent =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+
+  return (
+    <div className={styles.accordion}>
+      <CustomAccordionItem
+        title="Repousser les limites technologiques"
+        content={defaultContent}
+        isOpen={openIndex === 0}
+        onClick={() => toggleAccordion(0)}
+      />
+      <CustomAccordionItem
+        title="Contribuer à des projets à impact social"
+        content={defaultContent}
+        isOpen={openIndex === 1}
+        onClick={() => toggleAccordion(1)}
+      />
+      <CustomAccordionItem
+        title="Développer des solutions évolutives"
+        content={defaultContent}
+        isOpen={openIndex === 2}
+        onClick={() => toggleAccordion(2)}
+      />
+    </div>
   );
 }

@@ -438,7 +438,7 @@ display: none;
     flex-wrap: wrap; /* Permet aux éléments de passer à la ligne */
     justify-content: center; /* Centre les icônes horizontalement */
     margin-top: 0rem;
-    
+    padding: 2px;
   }
 
   .sidebar.open .navList .socialIcons i {

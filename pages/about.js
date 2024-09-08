@@ -91,16 +91,19 @@ const About = () => {
     ))}
         </div>
         </section>
-        <section>
+        <section className={styles.AspirationSection}>
+        <div className={styles.AspirationWrap}>
         <h2>Mes Aspirations</h2>
         <div className={styles.aboutSeparator}></div>
         <p className={styles.aboutMe__Explain}>
         Je suis constamment à la recherche de nouvelles manières de repousser les limites du développement web. 
         Mon ambition est de travailler sur des projets exigeants qui me forcent à sortir de ma zone de confort, 
         tout en apportant une contribution significative à la communauté technologique.
-
+         
         
         </p>
+        </div>
+        <AspirationsAccordion/>
         </section>
 
         <section className={styles.travelSection}>

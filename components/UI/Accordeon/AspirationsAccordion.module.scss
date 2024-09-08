@@ -1,50 +1,64 @@
-/* AspirationsAccordion.module.scss */
-
-/* Style pour l'accordéon */
 .accordion {
-    background-color: transparent;
-    border-radius: 8px;
-  }
-  
-  /* Style pour chaque élément de l'accordéon */
+  background-color: #1c1c1e;
+  border-radius: 8px;
+  padding: 10px;
+  color: #fff;
+
   .accordionItem {
-    background-color: #333;
-    color: #eaeaea;
-    padding: 1.2rem 1.5rem;
-    border-bottom: 1px solid #444;
-    display: flex;
-    flex-direction: column;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    .accordionHeader {
+      background-color: #1c1c1e;
+      border-radius: 8px;
+      padding: 15px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+      border: none;
+
+      &:hover {
+        background-color: #3a3a3c;
+      }
+
+      span {
+        color: white;
+      }
+
+      .chevron {
+        color: rgba(255, 255, 255, 0.6);
+        transition: transform 0.3s ease; // Rotation plus fluide
+        height: 20px;
+        transform: rotate(0deg); // Position initiale
+      }
+
+      &.rotate .chevron {
+        transform: rotate(-90deg); // Rotation du chevron quand l'élément est ouvert
+      }
+    }
+
+    .accordionContent {
+      overflow: hidden;
+      height: 0;
+      opacity: 0;
+      transition: height 0.35s ease, opacity 0.35s ease; // Fluidité améliorée
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+      padding: 0 20px;
+
+      &.open {
+        height: auto;
+        opacity: 1;
+      }
+
+      .accordionContentInner {
+        padding: 15px 0; // Padding à l'intérieur du contenu
+      }
+    }
   }
-  
-  /* S'assurer que les styles de titre sont appliqués */
-  .accordionTitle {
-    font-weight: bold !important;
-    color: #ffffff !important; /* Couleur du texte du titre */
-    font-size: 1.1rem !important;
-    background-color: #444 !important;
-    padding: 0.75rem 1rem !important;
-    border-radius: 5px !important;
-    margin-bottom: 0.5rem !important;
-  }
-  
-  /* Contenu de l'accordéon */
-  .accordionContent {
-    color: #cccccc;
-    font-size: 1rem;
-    line-height: 1.6;
-    background-color: #222;
-    padding: 0.75rem 1rem;
-    border-radius: 5px;
-  }
-  
-  /* Ajuster les styles des éléments d'interface par défaut de NextUI */
-  .accordionItem h2 {
-    all: unset; /* Réinitialiser tous les styles par défaut */
-  }
-  
-  .accordionItem button {
-    all: unset; /* Réinitialiser tous les styles par défaut du bouton */
-    display: block;
-    width: 100%;
-  }
-  
+}

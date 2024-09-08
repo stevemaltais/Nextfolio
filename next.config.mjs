@@ -2,8 +2,16 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['api.stevemaltais.dev'], // Remplacez 'exemple.com' par le domaine de votre API ou des images que vous voulez autoriser
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'api.stevemaltais.dev',
+        pathname: '**',
+      },
+    ],
   },
+  compress: true,
+  productionBrowserSourceMaps: false,
 };
 
 export default nextConfig;
