@@ -32,13 +32,13 @@
 
       .chevron {
         color: rgba(255, 255, 255, 0.6);
-        transition: transform 0.3s ease; // Rotation plus fluide
+        transition: transform 0.3s ease; // Transition fluide pour la rotation
         height: 20px;
         transform: rotate(0deg); // Position initiale
       }
 
-      &.rotate .chevron {
-        transform: rotate(-90deg); // Rotation du chevron quand l'élément est ouvert
+      &.chevron .rotate  {
+        transform: rotate(90deg); // Rotation du chevron lorsque l'élément est ouvert
       }
     }
 
@@ -46,7 +46,7 @@
       overflow: hidden;
       height: 0;
       opacity: 0;
-      transition: height 0.35s ease, opacity 0.35s ease; // Fluidité améliorée
+      transition: height 0.35s ease, opacity 0.35s ease;
       font-size: 14px;
       color: rgba(255, 255, 255, 0.8);
       padding: 0 20px;
@@ -55,9 +55,12 @@
         height: auto;
         opacity: 1;
       }
+      &.open .rotate {
+        transform: rotate(90deg); // Rotation du chevron lorsque l'élément est ouvert 
+      }
 
       .accordionContentInner {
-        padding: 15px 0; // Padding à l'intérieur du contenu
+        padding: 15px 0;
       }
     }
   }
