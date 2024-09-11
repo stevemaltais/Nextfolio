@@ -1,31 +1,30 @@
 @import "../../../styles/abstracts/mixins";
- 
- 
- /* AboutSection.module.scss */
 
- .aboutPage{
+/* AboutSection.module.scss */
 
- }
- .aboutMe {
+.aboutPage {
+  // Généralement, ajoute ici les styles de la page about si nécessaire
+}
 
+.aboutMe {
   @include breakpoint-down('sm') {
     font-size: 1vh;
-   
- 
-   }
-
-
+  }
 }
+
 .wrapper {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
   height: 100vh;
-
+  @include breakpoint-down('md') {
+    flex-direction: column;
+  }
   @include breakpoint-down('sm') {
     flex-direction: row;
   }
+
 
   @include breakpoint-down('xs') {
     flex-direction: column;
@@ -33,14 +32,12 @@
     height: auto;
   }
 }
-.title1 {
 
+.title1 {
+ 
   @include breakpoint-down('sm') {
     font-size: 5vh !important;
-    
-   
-   }
-
+  }
 }
 
 .aboutMe__Title {
@@ -49,112 +46,126 @@
   font-weight: 100;
   line-height: 3.3rem;
   margin-bottom: 3rem;
-  font-size: 3.5rem;
-  padding-right:5rem;
-  @include breakpoint-down('sm') {
+  font-size: clamp(25px, 4vw, 3.5rem); // Ajustement fluide avec clamp
+  padding-right: 5rem;
+  @include breakpoint-down('md') {
     text-align: center;
-    padding-right:0rem;
-    font-size: 2.9vh;
-    line-height: 0.9em;
+    font-size: clamp(20px, 3.2vw, 3.2vh); // Utilisation de clamp pour la taille
+    margin-bottom: 8px;
+  }
+
+  @include breakpoint-down('sm') {
+   
+    padding-right: 0;
+    font-size: clamp(20px, 3vw, 2.9vh); // Utilisation de clamp pour la taille
+    line-height: 1.2em;
     margin: 0 10px;
     margin-bottom: 10px;
-    
-   }
-
-}
-.punch{
-  color:var(--titleScript);
-  font-size: 6rem;
-  writing-mode: vertical-rl; /* Positionne le texte verticalement */
-  transform: 180deg; /* Fait pivoter le texte de 180 degrés */
-
-}
-.titleWrap{
-  display: flex;
-  justify-content: flex-end;
-  align-items: stretch;
-  @include breakpoint-down('sm') {
-   flex-direction: column;
-   
   }
 }
 
-.TS{
+.punch {
+  color: var(--titleScript);
+  font-size: clamp(40px, 8vw, 6rem); // Ajustement fluide de la taille
+  writing-mode: vertical-rl;
+  transform: rotate(180deg); // Correction de la rotation
+}
+
+.titleWrap {
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+
+  @include breakpoint-down('sm') {
+    flex-direction: column;
+  }
+}
+
+.TS {
   display: flex;
   flex-direction: column;
 }
 
 .aboutMe__Title.open {
-
-padding-right: 5rem;
+  padding-right: 5rem;
 }
-.aboutMe__Explain{
+
+.aboutMe__Explain {
   font-family: var(--title-font-stack);
-  
   font-weight: var(--textweight);
-  font-size: 2rem;
+  font-size: clamp(16px, 2vw, 2rem); // Taille fluide avec clamp
   text-align: justify;
   line-height: 2.8rem;
   margin-bottom: 20px;
-  padding-right:10rem;
+  padding-right: 10rem;
+  @include breakpoint-down('md') {
+    
+   
+  }
   @include breakpoint-down('sm') {
-    font-size: 2.5vh;
+    font-size: clamp(14px, 2vw, 2.5vh);
     line-height: 1.2em;
-    padding-right:0rem;
-    margin-bottom: -20px
-  
-   }
-  
+    padding-right: 0;
+    margin-bottom: -20px;
+  }
 }
-.rightContent .aboutMe__Explain{
- padding-right: 20rem;
 
- @include breakpoint-down('sm') {
-  padding-right: 0rem;
-  margin: 0 20px;
- }
-  
+.rightContent .aboutMe__Explain {
+  padding-right: 20rem;
+
+  @include breakpoint-down('xxl') {
+    padding-right: 2em;
+  }
+
+  @include breakpoint-down('sm') {
+    padding-right: 0;
+    margin: 0 20px;
+  }
+
 }
-.titleBig{ 
+
+.titleBig {
   font-family: var(--title-font-stack);
-  font-size: 15rem;
+  font-size: clamp(40px, 10vw, 15rem); // Ajustement fluide avec clamp
   font-weight: bold;
   text-align: right;
   text-transform: uppercase;
   margin-bottom: -50px;
-  color:var(--titleScript);
-  
+  color: var(--titleScript);
 }
 
-.title{
+.title {
   font-size: 4rem;
   margin-bottom: 2rem;
-  
 }
-  
+
 .aboutPage h1 {
   color: var(--accent-color);
   text-align: left;
-  font-size: clamp(25px, 6vw, 70px); // Utilisation de clamp() pour gérer la taille entre mobile et desktop
+  font-size: clamp(25px, 6vw, 70px); // Utilisation de clamp pour gérer la taille
   font-family: var(--title2-font-stack);
   text-transform: uppercase;
   margin-bottom: 40px;
+  @include breakpoint-down('md') {
+    text-align: center;
+    margin-bottom: 20px;
+  }
 
-  // Pour les petits écrans, ajuste l'alignement et les marges
   @include breakpoint-down('sm') {
     text-align: center;
     margin-bottom: 10px;
   }
 
-  // Pour les écrans avec une petite hauteur, si nécessaire
   @include breakpoint-height-down('short') {
     font-size: 25px;
   }
 }
 
-
-
-
+@media screen and (orientation: landscape) {
+  .aboutPage h1 {
+    font-size: clamp(20px, 5vw, 35px); // Ajustement en mode paysage
+  }
+}
 
 .aboutPage li {
   color: #fff;
@@ -171,9 +182,7 @@ padding-right: 5rem;
   margin-top: 40px;
 }
 
-
-
-/* Adaptez le sélecteur ci-dessous au nom exact de la classe générée par votre composant PrimaryButton */
+/* Bouton principal */
 .primaryButton {
   background-color: #0070f3;
   color: white;
@@ -182,88 +191,107 @@ padding-right: 5rem;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #0056b3;
+  }
 }
 
-.primaryButton:hover {
-  background-color: #0056b3;
-}
-/* about.module.css */
-/* about.module.css */
 .socialIcons {
-display: flex;
-align-items: center;
-justify-content: flex-start;
-margin-left: -15px;
-@include breakpoint-down('sm') {
-  
-  justify-content: center;
- }
-}
-.socialIcons a {
-display: flex; /* S'assure que les éléments a sont également flexibles */
-align-items: center;
-justify-content: center;
-width: 100%; /* S'assure que a occupe tout l'espace du li parent */
-height: 100%; /* S'assure que a occupe tout l'espace du li parent */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: -15px;
+
+  @include breakpoint-down('md') {
+    justify-content: center;
+  }
 }
 
+.socialIcons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
 
 .socialIcons li {
-position: relative;
-display: block;
-color: #666;
-font-size: 30px;
-height: 60px;
-width: 60px;
-background: var(--backgroundSideBar);
-line-height: 60px;
-border-radius: 10px; /* Coins arrondis pour un look carré */
-margin: 15px 15px;
-cursor: pointer;
-transition: .5s;
-text-align: center;
-@include breakpoint-down('sm') {
-  height: 40px;
-  width: 40px;
-  justify-content: center;
- }
+  position: relative;
+  display: block;
+  color: #666;
+  font-size: 30px;
+  height: 60px;
+  width: 60px;
+  background: var(--backgroundSideBar);
+  line-height: 60px;
+  border-radius: 10px;
+  margin: 15px 15px;
+  cursor: pointer;
+  transition: 0.5s;
+  text-align: center;
+
+  @include breakpoint-down('sm') {
+    height: 40px;
+    width: 40px;
+    justify-content: center;
+  }
 }
 
 .socialIcons li:before {
-position: absolute;
-content: '';
-top: 0;
-left: 0;
-height: inherit;
-width: inherit;
-border-radius: 10px; /* Coins arrondis pour correspondre au li */
-transform: scale(.9);
-z-index: -1;
-transition: .5s;
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  height: inherit;
+  width: inherit;
+  border-radius: 10px;
+  transform: scale(0.9);
+  z-index: -1;
+  transition: 0.5s;
 }
+
 .socialIcons i {
-  line-height: 2; /* Ou une autre valeur adaptée à ton design */
+  line-height: 2; // Ajustement pour les icônes
 }
 
 /* Styles spécifiques pour chaque réseau social */
-.socialIcons li:nth-child(1):before { background: #4267B2; }
-.socialIcons li:nth-child(2):before { background: #1DA1F2; }
-.socialIcons li:nth-child(3):before { background: #E1306C; }
-.socialIcons li:nth-child(4):before { background: #2867B2; }
-.socialIcons li:nth-child(5):before { background: #ff0000; }
+.socialIcons li:nth-child(1):before {
+  background: #4267B2;
+}
+.socialIcons li:nth-child(2):before {
+  background: #1DA1F2;
+}
+.socialIcons li:nth-child(3):before {
+  background: #E1306C;
+}
+.socialIcons li:nth-child(4):before {
+  background: #2867B2;
+}
+.socialIcons li:nth-child(5):before {
+  background: #ff0000;
+}
 
 /* Styles pour le hover */
-.socialIcons li:hover:before { filter: blur(3px); transform: scale(1.2); }
-.socialIcons li:nth-child(1):hover:before { box-shadow: 0 0 15px #4267B2; }
-.socialIcons li:nth-child(2):hover:before { box-shadow: 0 0 15px #1DA1F2; }
+.socialIcons li:hover:before {
+  filter: blur(3px);
+  transform: scale(1.2);
+}
+
+.socialIcons li:nth-child(1):hover:before {
+  box-shadow: 0 0 15px #4267B2;
+}
+.socialIcons li:nth-child(2):hover:before {
+  box-shadow: 0 0 15px #1DA1F2;
+}
 
 .objectivesContainer {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: space-between;
- 
 }
+
 .visionSection {
   opacity: 0;
   transform: translateY(20px);
@@ -276,67 +304,71 @@ transition: .5s;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-70px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-70px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.AspirationSection{
+.AspirationSection {
   height: 50vh;
-
   margin-top: 20vh;
+
   @include breakpoint-down('sm') {
     margin-top: 7vh;
     height: 60vh;
-    margin:20px;
+    margin: 20px;
     margin-top: 14vh;
- 
   }
 }
-.AspirationSection h2{
+
+.AspirationSection h2 {
   font-size: 10vh;
   text-transform: uppercase;
 
   @include breakpoint-down('sm') {
     font-size: 4.5vh;
     text-align: center;
-
- 
   }
 }
-.AspirationWrap{
+
+.AspirationWrap {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
- text-align: center;
- @include breakpoint-down('sm') {
- flex-direction: column;
-  align-items: center;
-}
+  text-align: center;
+
+  @include breakpoint-down('sm') {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
-.AspirationWrap h2{
+.AspirationWrap h2 {
   font-size: 4.5vh;
   margin-bottom: 20px;
- }
-.wrapper {
-  animation: fadeIn 1.5s ease-out forwards;
-
 }
 
-.AspirationSection .aboutMe__Explain{
+.wrapper {
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
+.AspirationSection .aboutMe__Explain {
   width: 60%;
+
   @include breakpoint-down('sm') {
     width: auto;
     margin: 10px;
-   }
+  }
 }
 
-.travelSection{
+.travelSection {}
 
- 
-
-}
-.travelSection__wrapper{
+.travelSection__wrapper {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -347,16 +379,14 @@ transition: .5s;
   opacity: 0;
   animation: slideInFromLeft 1s ease-out forwards;
   animation-delay: 0.5s;
-  
-  @include breakpoint-down('sm') {
-    padding-left: 0px;
-    margin:  0 20px;
- 
-  }
 
+  @include breakpoint-down('sm') {
+    padding-left: 0;
+    margin: 0 20px;
+  }
 }
 
-.travelSection__adventureWrapper{
+.travelSection__adventureWrapper {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -366,92 +396,91 @@ transition: .5s;
     flex-direction: column;
   }
 }
-.travelSection__adventure{
-  
-    margin: 40px 0;
+
+.travelSection__adventure {
+  margin: 40px 0;
 }
-.travelSection__adventureHeader{
+
+.travelSection__adventureHeader {
   display: flex;
   flex-direction: column;
-
   text-align: center;
   align-items: center;
+
   @include breakpoint-down('sm') {
     line-height: 1.6;
     margin: 20px 20px;
   }
-
 }
-.travelSection__explain{
-  opacity: 0;
 
+.travelSection__explain {
+  opacity: 0;
   animation: fadeInUp 1s ease-out forwards;
   animation-delay: 4.5s;
-  font-size: 2.5vh;
-    background: var( --MenuCoverSideBar );
-    padding: 30px;
-    border-radius: 1em;
-    box-shadow: var(--BoxShadowIconSocial);
-  
-line-height: 1.5em;
-  
+  font-size: clamp(16px, 2.5vw, 2.5vh);
+  background: var(--MenuCoverSideBar);
+  padding: 30px;
+  border-radius: 1em;
+  box-shadow: var(--BoxShadowIconSocial);
+  line-height: 1.5em;
+
   @include breakpoint-down('sm') {
-    margin-top: 0px;
+    margin-top: 0;
     text-align: justify;
-  
     font-weight: 300;
     line-height: 1.6;
   }
 }
 
-.travelSection__title{
-  font-size: 18vh;
+.travelSection__title {
+  font-size: clamp(40px, 10vw, 18vh); // Ajustement fluide
   font-family: var(--title2-font-stack) !important;
   line-height: 12vh;
-  
-  text-transform: uppercase; 
+  text-transform: uppercase;
+
   @include breakpoint-down('sm') {
     font-size: 9vh;
     line-height: 6vh;
     text-align: center;
-   
   }
-
 }
-.travelSection__adventureTitle{
 
-  color:var(--titleScript);
-  font-size: 4rem;
- 
-
+.travelSection__adventureTitle {
+  color: var(--titleScript);
+  font-size: clamp(30px, 5vw, 4rem); // Ajustement fluide
 }
-.travelSection__adventureProjectName{
+
+.travelSection__adventureProjectName {
   font-family: var(--title2-font-stack) !important;
   font-size: 10rem;
 }
-.travelSection__adventureDescription{
-  font-size: 2.5vh;
+
+.travelSection__adventureDescription {
+  font-size: clamp(16px, 2.5vw, 2.5vh);
   font-weight: 300;
   line-height: 1.5em;
   margin-top: 15px;
+
   @include breakpoint-down('sm') {
-   font-size: 2.5vh;
-   margin-top: 0px;
-  }
-}
-.travelSection__adventureWrapper .logoImage {
-  margin-right: 20px; 
-  width: 300px;
-  height: 300px;
-  object-fit: contain;
-  @include breakpoint-down('sm') {
-    margin-right: 0px;
-    width: 200px;
-  height: 200px;
+    font-size: 2.5vh;
+    margin-top: 0;
   }
 }
 
-/* Animation de la section "Mes Voyages" */
+.travelSection__adventureWrapper .logoImage {
+  margin-right: 20px;
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+
+  @include breakpoint-down('sm') {
+    margin-right: 0;
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Animations */
 @keyframes slideInFromLeft {
   from {
     opacity: 0;
@@ -475,10 +504,14 @@ line-height: 1.5em;
 }
 
 .animate {
-  animation: fadeInAnimation 1s ease forwards 2s; /* Ajoute un délai de 2 secondes */
+  animation: fadeInAnimation 1s ease forwards 2s; // Ajoute un délai de 2 secondes
 }
 
 @keyframes fadeInAnimation {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

@@ -6,7 +6,20 @@
   max-width: 550px;
   margin: auto;
   position: relative; /* Ensure the grid container has relative positioning */
+  @include breakpoint-down('xxl') {
+    max-width: 40%;
+  }
+  @include breakpoint-down('xl') {
+    max-width: 50%;
+
   
+  }
+  @include breakpoint-down('md') {
+    max-width: 65%;
+
+  
+  }
+
   @include breakpoint-down('xs') {
     max-width: 100%;
     gap: 5px;
