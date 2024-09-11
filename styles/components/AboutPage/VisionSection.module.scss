@@ -22,7 +22,7 @@
   .title{
     font-size: 4.5vh;
     margin-bottom: 2rem;
-    @include breakpoint-down('xs') {
+    @include breakpoint-down('md') {
       text-align: center;
    
     }
@@ -37,7 +37,7 @@
     line-height: 2.8rem;
     margin-bottom: 20px;
     padding-right:6rem;
-    @include breakpoint-down('xs') {
+    @include breakpoint-down('md') {
       padding-right:0rem;
       margin: 0 20px;
       

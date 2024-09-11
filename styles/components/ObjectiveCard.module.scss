@@ -41,6 +41,9 @@
   @include breakpoint-down('xl') {
    
   }
+  @include breakpoint-down('md') {
+   
+  }
 
   @include breakpoint-down('lg') {
     margin: auto;
@@ -62,6 +65,8 @@
   }
 
 }
+
+
 
 .cardHeader {
   padding: 16px;

@@ -76,9 +76,11 @@
   justify-content: flex-end;
   align-items: stretch;
 
-  @include breakpoint-down('sm') {
+  @include breakpoint-down('xl') {
     flex-direction: column;
+
   }
+ 
 }
 
 .TS {
@@ -98,8 +100,8 @@
   line-height: 2.8rem;
   margin-bottom: 20px;
   padding-right: 10rem;
-  @include breakpoint-down('md') {
-    
+  @include breakpoint-down('lg') {
+    padding-right: 0rem;
    
   }
   @include breakpoint-down('sm') {
@@ -117,9 +119,10 @@
     padding-right: 2em;
   }
 
-  @include breakpoint-down('sm') {
+  @include breakpoint-down('lg') {
     padding-right: 0;
     margin: 0 20px;
+
   }
 
 }
@@ -132,6 +135,7 @@
   text-transform: uppercase;
   margin-bottom: -50px;
   color: var(--titleScript);
+
 }
 
 .title {
@@ -330,7 +334,7 @@
   font-size: 10vh;
   text-transform: uppercase;
 
-  @include breakpoint-down('sm') {
+  @include breakpoint-down('lg') {
     font-size: 4.5vh;
     text-align: center;
   }
@@ -342,7 +346,7 @@
   align-items: flex-start;
   text-align: center;
 
-  @include breakpoint-down('sm') {
+  @include breakpoint-down('lg') {
     flex-direction: column;
     align-items: center;
   }
@@ -360,7 +364,7 @@
 .AspirationSection .aboutMe__Explain {
   width: 60%;
 
-  @include breakpoint-down('sm') {
+  @include breakpoint-down('lg') {
     width: auto;
     margin: 10px;
   }
@@ -380,9 +384,10 @@
   animation: slideInFromLeft 1s ease-out forwards;
   animation-delay: 0.5s;
 
-  @include breakpoint-down('sm') {
+  @include breakpoint-down('lg') {
     padding-left: 0;
     margin: 0 20px;
+    justify-content: center;
   }
 }
 
@@ -392,7 +397,7 @@
   justify-content: flex-end;
   flex-direction: row-reverse;
 
-  @include breakpoint-down('sm') {
+  @include breakpoint-down('lg') {
     flex-direction: column;
   }
 }
@@ -438,7 +443,7 @@
   line-height: 12vh;
   text-transform: uppercase;
 
-  @include breakpoint-down('sm') {
+  @include breakpoint-down('lg') {
     font-size: 9vh;
     line-height: 6vh;
     text-align: center;
