@@ -11,6 +11,12 @@
     max-width: 100%;
     gap: 5px;
     padding: 0px 5px 5px 5px;
+  
+  }
+  @include breakpoint-up('sm') {
+    max-width: 50%;
+    gap: 5px;
+    padding: 0px 5px 5px 5px;
   }
 }
 

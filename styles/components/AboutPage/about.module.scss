@@ -8,11 +8,12 @@
  }
  .aboutMe {
 
-  @include breakpoint-down('xs') {
+  @include breakpoint-down('sm') {
     font-size: 1vh;
    
  
    }
+
 
 }
 .wrapper{
@@ -21,15 +22,20 @@
   justify-content:space-between;
   align-items: center;
   height: 100vh;
-  @include breakpoint-down('xs') {
+  @include breakpoint-down('sm') {
     flex-direction: column;
     margin-top: 5px;
     height: auto;
    }
+   @include breakpoint-up('sm') {
+    flex-direction: row;
+ 
+   }
+
 }
 .title1 {
 
-  @include breakpoint-down('xs') {
+  @include breakpoint-down('sm') {
     font-size: 5vh !important;
     
    
@@ -45,7 +51,7 @@
   margin-bottom: 3rem;
   font-size: 3.5rem;
   padding-right:5rem;
-  @include breakpoint-down('xs') {
+  @include breakpoint-down('sm') {
     text-align: center;
     padding-right:0rem;
     font-size: 2.9vh;
@@ -67,7 +73,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: stretch;
-  @include breakpoint-down('xs') {
+  @include breakpoint-down('sm') {
    flex-direction: column;
    
   }
@@ -91,7 +97,7 @@ padding-right: 5rem;
   line-height: 2.8rem;
   margin-bottom: 20px;
   padding-right:10rem;
-  @include breakpoint-down('xs') {
+  @include breakpoint-down('sm') {
     font-size: 2.5vh;
     line-height: 1.2em;
     padding-right:0rem;
@@ -103,7 +109,7 @@ padding-right: 5rem;
 .rightContent .aboutMe__Explain{
  padding-right: 20rem;
 
- @include breakpoint-down('xs') {
+ @include breakpoint-down('sm') {
   padding-right: 0rem;
   margin: 0 20px;
  }
@@ -133,7 +139,7 @@ padding-right: 5rem;
   font-family: var(--title2-font-stack);
   text-transform: uppercase;
   margin-bottom: 40px;
-  @include breakpoint-down('xs') {
+  @include breakpoint-down('sm') {
     text-align: center;
     margin-bottom: 10px;
    }
@@ -180,7 +186,7 @@ display: flex;
 align-items: center;
 justify-content: flex-start;
 margin-left: -15px;
-@include breakpoint-down('xs') {
+@include breakpoint-down('sm') {
   
   justify-content: center;
  }
@@ -208,7 +214,7 @@ margin: 15px 15px;
 cursor: pointer;
 transition: .5s;
 text-align: center;
-@include breakpoint-down('xs') {
+@include breakpoint-down('sm') {
   height: 40px;
   width: 40px;
   justify-content: center;
@@ -267,15 +273,54 @@ transition: .5s;
 }
 
 .AspirationSection{
+  height: 50vh;
 
+  margin-top: 20vh;
+  @include breakpoint-down('sm') {
+    margin-top: 7vh;
+    height: 60vh;
+    margin:20px;
+    margin-top: 14vh;
+ 
+  }
+}
+.AspirationSection h2{
+  font-size: 10vh;
+  text-transform: uppercase;
 
+  @include breakpoint-down('sm') {
+    font-size: 4.5vh;
+    text-align: center;
+
+ 
+  }
 }
 .AspirationWrap{
- 
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+ text-align: center;
+ @include breakpoint-down('sm') {
+ flex-direction: column;
+  align-items: center;
 }
+}
+
+.AspirationWrap h2{
+  font-size: 4.5vh;
+  margin-bottom: 20px;
+ }
 .wrapper {
   animation: fadeIn 1.5s ease-out forwards;
 
+}
+
+.AspirationSection .aboutMe__Explain{
+  width: 60%;
+  @include breakpoint-down('sm') {
+    width: auto;
+    margin: 10px;
+   }
 }
 
 .travelSection{
@@ -295,7 +340,7 @@ transition: .5s;
   animation: slideInFromLeft 1s ease-out forwards;
   animation-delay: 0.5s;
   
-  @include breakpoint-down('xs') {
+  @include breakpoint-down('sm') {
     padding-left: 0px;
     margin:  0 20px;
  
@@ -309,7 +354,7 @@ transition: .5s;
   justify-content: flex-end;
   flex-direction: row-reverse;
 
-  @include breakpoint-down('xs') {
+  @include breakpoint-down('sm') {
     flex-direction: column;
   }
 }
@@ -323,7 +368,7 @@ transition: .5s;
 
   text-align: center;
   align-items: center;
-  @include breakpoint-down('xs') {
+  @include breakpoint-down('sm') {
     line-height: 1.6;
     margin: 20px 20px;
   }
@@ -342,7 +387,7 @@ transition: .5s;
   
 line-height: 1.5em;
   
-  @include breakpoint-down('xs') {
+  @include breakpoint-down('sm') {
     margin-top: 0px;
     text-align: justify;
   
@@ -357,7 +402,7 @@ line-height: 1.5em;
   line-height: 12vh;
   
   text-transform: uppercase; 
-  @include breakpoint-down('xs') {
+  @include breakpoint-down('sm') {
     font-size: 9vh;
     line-height: 6vh;
     text-align: center;
@@ -381,7 +426,7 @@ line-height: 1.5em;
   font-weight: 300;
   line-height: 1.5em;
   margin-top: 15px;
-  @include breakpoint-down('xs') {
+  @include breakpoint-down('sm') {
    font-size: 2.5vh;
    margin-top: 0px;
   }
@@ -391,7 +436,7 @@ line-height: 1.5em;
   width: 300px;
   height: 300px;
   object-fit: contain;
-  @include breakpoint-down('xs') {
+  @include breakpoint-down('sm') {
     margin-right: 0px;
     width: 200px;
   height: 200px;

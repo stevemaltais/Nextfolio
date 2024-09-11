@@ -18,6 +18,7 @@
     "@nextui-org/react": "^2.4.6",
     "@studio-freight/lenis": "^1.0.39",
     "axios": "^1.7.5",
+    "dotenv": "^16.4.5",
     "embla-carousel": "^8.0.0",
     "embla-carousel-react": "^8.0.0",
     "framer-motion": "^11.0.5",

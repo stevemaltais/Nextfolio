@@ -92,8 +92,9 @@ const About = () => {
         </div>
         </section>
         <section className={styles.AspirationSection}>
-        <div className={styles.AspirationWrap}>
         <h2>Mes Aspirations</h2>
+        <div className={styles.AspirationWrap}>
+        
         <div className={styles.aboutSeparator}></div>
         <p className={styles.aboutMe__Explain}>
         Je suis constamment à la recherche de nouvelles manières de repousser les limites du développement web. 
@@ -102,8 +103,9 @@ const About = () => {
          
         
         </p>
-        </div>
         <AspirationsAccordion/>
+        </div>
+       
         </section>
 
         <section className={styles.travelSection}>
