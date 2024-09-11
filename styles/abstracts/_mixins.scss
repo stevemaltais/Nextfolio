@@ -68,7 +68,7 @@ $breakpoints-height-up: (
 
 // Breakpoints for height (downwards)
 $breakpoints-height-down: (
-  'short': 39.9375em,  // < 639px - Short height screens
+  'short': 24em,  // < 639px - Short height screens
   'medium': 59.9375em, // < 959px - Medium height screens
   'tall': 79.9375em    // < 1279px - Tall height screens
 );

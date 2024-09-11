@@ -2,7 +2,7 @@
 .myGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Grid with 3 columns */
-  gap: 10px; /* Uniform spacing between grid items */
+  gap: 5px; /* Uniform spacing between grid items */
   max-width: 550px;
   margin: auto;
   position: relative; /* Ensure the grid container has relative positioning */
@@ -13,11 +13,7 @@
     padding: 0px 5px 5px 5px;
   
   }
-  @include breakpoint-up('sm') {
-    max-width: 50%;
-    gap: 5px;
-    padding: 0px 5px 5px 5px;
-  }
+
 }
 
 .photoItem {
