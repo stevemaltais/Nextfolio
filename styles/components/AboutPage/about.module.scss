@@ -135,23 +135,23 @@ padding-right: 5rem;
 .aboutPage h1 {
   color: var(--accent-color);
   text-align: left;
-  font-size: 70px;
+  font-size: clamp(25px, 6vw, 70px); // Utilisation de clamp() pour gérer la taille entre mobile et desktop
   font-family: var(--title2-font-stack);
   text-transform: uppercase;
   margin-bottom: 40px;
+
+  // Pour les petits écrans, ajuste l'alignement et les marges
   @include breakpoint-down('sm') {
     text-align: center;
     margin-bottom: 10px;
+  }
+
+  // Pour les écrans avec une petite hauteur, si nécessaire
+  @include breakpoint-height-down('short') {
     font-size: 25px;
-   }
-   @include breakpoint-height-down('short') {
-  
-    font-size: 25px;
-   }
-   @media (max-width: 767px) and (orientation: landscape) {
-    font-size: 50px; // Ajuste la taille du texte pour le mode paysage
   }
 }
+
 
 
 
