@@ -11,19 +11,23 @@ const SettingsMenu = ({ isOpen, sidebarIsOpen }) => {
     // Récupérer les paramètres du thème et de la couleur du localStorage lors du montage
     const savedTheme = localStorage.getItem('isDarkMode') === 'true';
     const savedAccentColor = localStorage.getItem('accentColor') || '#64d8ff';
-
+  
     setIsDarkMode(savedTheme);
     setAccentColor(savedAccentColor);
-
+  
     document.body.classList.toggle('dark-theme', savedTheme);
     document.body.classList.toggle('light-theme', !savedTheme);
     document.documentElement.style.setProperty('--accent-color', savedAccentColor);
-
-    // Fonction pour ajuster dynamiquement la position en fonction de la largeur de la fenêtre
+  
+    // Fonction pour ajuster dynamiquement la position en fonction de la largeur de la fenêtre et l'orientation
     const handleResize = () => {
       const windowWidth = window.innerWidth;
-
-      if (windowWidth <= 600) {
+      const isLandscape = window.matchMedia('(orientation: landscape)').matches;
+  
+      if (isLandscape) {
+        // Appliquer les valeurs pour le mode paysage
+        setLeftPosition(isOpen ? (sidebarIsOpen ? '200px' : '-350rem') : '-350px');
+      } else if (windowWidth <= 600) {
         setLeftPosition(isOpen ? (sidebarIsOpen ? '58px' : '-350rem') : '-350px');
       } else if (windowWidth <= 750) {
         setLeftPosition(isOpen ? (sidebarIsOpen ? '220px' : '6rem') : '-350px');
@@ -31,10 +35,10 @@ const SettingsMenu = ({ isOpen, sidebarIsOpen }) => {
         setLeftPosition(isOpen ? (sidebarIsOpen ? '250px' : '7.8rem') : '-350px');
       }
     };
-
+  
     handleResize(); // Appeler une fois pour définir la position initiale
     window.addEventListener('resize', handleResize); // Ajouter un écouteur pour les changements de taille de fenêtre
-
+  
     return () => window.removeEventListener('resize', handleResize); // Nettoyer l'écouteur lorsque le composant est démonté
   }, [isOpen, sidebarIsOpen]);
 

@@ -26,11 +26,18 @@
 }
 
 .homeMainWithSidebarOpen {
-  margin: 0 10rem;
+  padding: 0 10rem;
   height: auto;
   transition: margin-left 0.3s ease; /* Transition uniquement sur margin */
   overflow: hidden; /* Empêche les débordements qui pourraient affecter la hauteur */
-
+  @include breakpoint-down('lg') {
+    padding: 4rem;
+    
+  }
+  @include breakpoint-down('md') {
+    padding: 0;
+    
+  }
 }
 
 @media (max-width: 768px)  {
@@ -53,5 +60,13 @@
     transition: margin 0.3s ease; /* Transition uniquement sur margin */
     overflow: hidden; /* Empêche les débordements qui pourraient affecter la hauteur */
   }
+
+}
+@media screen and (orientation: landscape) and (max-width: 767px) {
+  .homeMainWithSidebarOpen{
+    padding: 0PX;
+  }
+
+
 
 }

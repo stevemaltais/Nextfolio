@@ -201,8 +201,9 @@
 .sidebar.open .logoDetails .menuIcon {
     text-align: right;
     background-color: transparent;
-  
+    left: 88%;
   }
+
   
 
   .rotate {
@@ -366,7 +367,10 @@
       transition: all 0.5s ease;
       border-radius: 0px;
   }
-    
+  .sidebar.open .logoDetails .menuIcon {
+
+    left: 50%;
+  }
   
 .navList {
  
@@ -446,4 +450,24 @@ display: none;
     font-size: 2rem;
   }
 }
- 
+@media screen and (orientation: landscape) and (max-width: 767px) {
+  .sidebar.open{
+    width: 30%;
+  }
+  .navList ul {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+  .sidebar.open .logoDetails .menuIcon {
+
+    left: 88%;
+  }
+  .sidebar .logoName {
+    display: flex;
+    margin-left: 10px;
+    width: 3rem;
+    height: 3rem;
+}
+}

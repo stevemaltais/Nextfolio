@@ -245,3 +245,16 @@
     transform: translateY(0); /* End with no offset */
   }
 }
+@media screen and (orientation: landscape) and (max-width: 767px) {
+  .profileSection {
+    flex-direction: row;
+  
+
+  }
+  .profileSection__content{
+   display: none;
+  
+  }
+
+
+}

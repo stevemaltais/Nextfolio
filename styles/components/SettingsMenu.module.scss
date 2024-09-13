@@ -124,3 +124,8 @@
   .resetButton{
   
   }
+  @media screen and (orientation: landscape) and (max-width: 767px) {
+    .menu{
+      transform: translateY(40%);
+    }
+  }

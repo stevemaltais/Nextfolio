@@ -36,7 +36,7 @@
 .title1 {
  
   @include breakpoint-down('sm') {
-    font-size: 5vh !important;
+    font-size: 5vh;
   }
 }
 
@@ -49,6 +49,7 @@
   font-size: clamp(25px, 4vw, 3.5rem); // Ajustement fluide avec clamp
   padding-right: 5rem;
   @include breakpoint-down('md') {
+    padding-right: 0;
     text-align: center;
     font-size: clamp(20px, 3.2vw, 3.2vh); // Utilisation de clamp pour la taille
     margin-bottom: 8px;
@@ -60,7 +61,7 @@
     font-size: clamp(20px, 3vw, 2.9vh); // Utilisation de clamp pour la taille
     line-height: 1.2em;
     margin: 0 10px;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
   }
 }
 
@@ -105,7 +106,7 @@
    
   }
   @include breakpoint-down('sm') {
-    font-size: clamp(14px, 2vw, 2.5vh);
+    font-size: clamp(16px, 2vw, 3.5vh);
     line-height: 1.2em;
     padding-right: 0;
     margin-bottom: -20px;
@@ -119,12 +120,22 @@
     padding-right: 2em;
   }
 
-  @include breakpoint-down('lg') {
-    padding-right: 0;
-    margin: 0 20px;
+
+  @include breakpoint-down('xl') {
+   
+      padding-right: 1em;
 
   }
+  @include breakpoint-down('lg') {
+   
+    padding-right: 2em;
 
+}
+@include breakpoint-down('md') {
+  padding-right: 0em;
+  margin: 0 20px;
+
+}
 }
 
 .titleBig {
@@ -146,7 +157,7 @@
 .aboutPage h1 {
   color: var(--accent-color);
   text-align: left;
-  font-size: clamp(25px, 6vw, 70px); // Utilisation de clamp pour gérer la taille
+  font-size: clamp(33px, 6vw, 70px); // Utilisation de clamp pour gérer la taille
   font-family: var(--title2-font-stack);
   text-transform: uppercase;
   margin-bottom: 40px;
@@ -157,19 +168,12 @@
 
   @include breakpoint-down('sm') {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
 
-  @include breakpoint-height-down('short') {
-    font-size: 25px;
-  }
 }
 
-@media screen and (orientation: landscape) {
-  .aboutPage h1 {
-    font-size: clamp(20px, 5vw, 35px); // Ajustement en mode paysage
-  }
-}
+
 
 .aboutPage li {
   color: #fff;
@@ -319,12 +323,12 @@
 }
 
 .AspirationSection {
-  height: 50vh;
+  height: auto;
   margin-top: 20vh;
 
   @include breakpoint-down('sm') {
     margin-top: 7vh;
-    height: 60vh;
+    height: auto;
     margin: 20px;
     margin-top: 14vh;
   }
@@ -383,11 +387,20 @@
   opacity: 0;
   animation: slideInFromLeft 1s ease-out forwards;
   animation-delay: 0.5s;
-
+  @include breakpoint-down('xl') {
+  align-items: center;
+ 
+  }
   @include breakpoint-down('lg') {
     padding-left: 0;
     margin: 0 20px;
     justify-content: center;
+    text-align: center;
+  }
+  @include breakpoint-down('md') {
+    text-align: center;
+    align-items: center;
+
   }
 }
 
@@ -429,6 +442,10 @@
   box-shadow: var(--BoxShadowIconSocial);
   line-height: 1.5em;
 
+  @include breakpoint-down('md') {
+    padding: 15px;
+    
+  }
   @include breakpoint-down('sm') {
     margin-top: 0;
     text-align: justify;
@@ -447,7 +464,11 @@
     font-size: 9vh;
     line-height: 6vh;
     text-align: center;
+  
+   
   }
+
+
 }
 
 .travelSection__adventureTitle {
@@ -518,5 +539,40 @@
   }
   to {
     opacity: 1;
+  }
+}
+@media screen and (orientation: landscape) and (max-width: 767px) {
+  .aboutPage h1 {
+    font-size: clamp(20px, 5vw, 35px); /* Ajustement en mode paysage pour mobile */
+  }
+  .travelSection__title {
+    font-size: clamp(60px, 5vw, 35px) !important;
+  }
+  .rightContent .aboutMe__Explain{
+    font-size: clamp(16px, 2vw, 3.5vh);
+    margin: 0 20px;
+  }
+  .title1{
+    font-size: 9vh;
+  }
+  .aboutMe{
+    padding: 10px 0px;
+    margin: auto;
+  }
+  .AspirationSection h2{
+    font-size: 9vh
+  }
+  .objectivesContainer{
+    width: 80%;
+  }
+
+  .TS{
+    align-items: center;
+  }
+  .travelSection__adventureDescription {
+    font-size: clamp(16px, 2.5vw, 2.5vh);
+  }
+  .socialIcons {
+    margin:  0 1px;
   }
 }

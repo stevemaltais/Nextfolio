@@ -28,6 +28,13 @@
     }
     
   }
+
+  @media screen and (orientation: landscape) and (max-width: 767px) {
+    .title{
+      font-size: 8vh ;
+    }
+  }
+  
   .aboutMe__Explain{
     font-family: var(--title-font-stack);
     

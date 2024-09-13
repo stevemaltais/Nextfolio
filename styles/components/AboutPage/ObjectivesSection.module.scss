@@ -76,9 +76,10 @@
   padding-top: 40px;
   gap: 20px;
   align-items: flex-end;
+  justify-content: flex-end;
 
   @include breakpoint-down('md') {
-    margin: 0px 20px;
+    
     justify-content: flex-end;
     gap: 2px;
   }
@@ -87,5 +88,12 @@
   @include breakpoint-down('xs') {
     gap: 0px;
     margin: 0 20px;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-width: 767px) {
+
+  .objectivesSection{
+    width: 88%;
   }
 }
