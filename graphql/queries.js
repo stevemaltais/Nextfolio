@@ -38,7 +38,7 @@ export async function getStaticProps() {
       props: {
         projets: data.projets.nodes,
       },
-      revalidate: 10,
+      revalidate: 60,
     };
   } catch (error) {
     console.error('Error fetching projects:', error);
@@ -62,29 +62,6 @@ export const getProjectBySlug = async (slug) => {
             featuredImage {
               node {
                 mediaItemUrl
-              }
-            }
-            deTailsDuProjet {
-              descriptionDuProjet
-             
-              urlDuProjet
-              problemeAResoudre
-              solutionProposee
-              processusDeDeveloppement
-              fonctionnalitesCles
-              performanceEtOptimisation
-              interactionsEtFonctionnalitesAvancees
-              defisEtSolutions
-              testsEtValidation
-              resultats
-              conclusionEtRetoursDExperience
-              composantsReutilisablesEtScalabilite
-              contexteEtObjectifs
-              imageDuProjet {
-                node {
-                  altText
-                  mediaItemUrl
-                }
               }
             }
           }
@@ -185,7 +162,7 @@ export const fetchProjectsByTech = async (techSlug) => {
     const { data } = await client.query({
       query: gql`
         query GetProjectsByTech($slug: String!) {
-          projets(where: { technologieSlug: $slug }) {
+          projets(where: { taxQuery: { taxArray: [{ terms: [$slug], taxonomy: "technologie" }] } }) {
             nodes {
               title
               id
