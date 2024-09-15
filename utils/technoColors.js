@@ -2,10 +2,10 @@ const technoColors = {
     html: "green",
     'nexts.js': "blue",
     react: "red",
-    nextjs: "red",
-    css: "orange",
+    Nextjs: "red",
+    Scss: "orange",
     javascript: "yellow",
-    // Ajoutez ici d'autres technologies et leurs couleurs
+    Vercel :  "pink"
   };
   
   export default technoColors;

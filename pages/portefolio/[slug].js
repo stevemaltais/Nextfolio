@@ -2,6 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { fetchProjectSlugs, getProjectBySlug } from '@/graphql/queries';
 import styles from '@/pages/portefolio/etudedecas.module.scss'; // Import du module CSS
+import technoColors from '@/utils/technoColors';
 
 export async function getStaticPaths() {
   const slugs = await fetchProjectSlugs();
@@ -52,17 +53,28 @@ const ProjectPage = ({ project }) => {
             </h1>
             {/* Section Technologies Utilisées */}
             {project.deTailsDuProjet?.technologiesUtilisees?.length > 0 && (
-              <div className={styles.etudeDeCas__Techno}>
-                <h2 className={styles.etudeDeCas__TechnoTitle}>Technologies Utilisées</h2>
-                <div className={styles.etudeDeCas__content}>
-                  <ul>
-                    {project.deTailsDuProjet.technologiesUtilisees.map((tech, index) => (
-                      <li key={index}>{tech}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            )}
+  <div className={styles.etudeDeCas__Techno}>
+ 
+    <div className={styles.etudeDeCas__content}>
+      <ul>
+        {project.deTailsDuProjet.technologiesUtilisees.map((tech, index) => (
+          <li key={index}>
+            <a
+            key={tech}
+              href={`/technologie/${encodeURIComponent(tech.toLowerCase())}`}
+            
+              onClick={(e) => e.stopPropagation()} // Empêcher la propagation de l'événement pour éviter le clic sur l'image du projet
+              className={styles.techno}
+              style={{ backgroundColor: technoColors[tech] || '#64d8ff' }}
+            >
+              {tech}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+)}
           </div>
           {project.featuredImage?.node?.mediaItemUrl && (
             <div className={styles.etudeDeCas__imageContainer}>

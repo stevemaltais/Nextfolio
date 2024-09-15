@@ -6,8 +6,7 @@
     // Styles pour les listes à puces et numérotées
     ul,
     ol {
-      margin-left: 20px; // Indentation des listes
-      padding-left: 20px; // Espace autour des listes
+      
       list-style-position: inside; // Positionnement des puces à l'intérieur du conteneur
   
       li {
@@ -46,7 +45,7 @@
     justify-content: center;
     align-items: center;
     @include breakpoint-down('sm') {
-        flex-direction: column;
+        flex-direction: column-reverse;
       }
 }
 .etudeDeCas__HeaderRightSide{
@@ -55,7 +54,10 @@
     justify-content: center;
     
     align-items: flex-start;
-
+    @include breakpoint-down('sm') {
+        flex-direction: column-reverse;
+        align-items: center;
+      }
 }
 
 /* Titre principal */
@@ -75,7 +77,9 @@ text-transform: uppercase;
   }
 
   @include breakpoint-down('sm') {
-
+    margin-top: 20px;
+    font-size: 2.2vh;
+    margin-left: 0px;
   }
 }
 
@@ -90,6 +94,7 @@ text-transform: uppercase;
     }
   
     @include breakpoint-down('sm') {
+        font-size: 3vh;
   
     }
   }
@@ -142,6 +147,7 @@ text-transform: uppercase;
     padding-left: 12px;
     justify-content: left;
     @include breakpoint-down('sm') {
+        padding-left: 0px;
         justify-content: center;
       }
 }
@@ -180,19 +186,23 @@ text-transform: uppercase;
 }
 
 /* Lien de chaque technologie */
-.etudeDeCas__technologyLink {
-  padding: 10px 20px;
-  border-radius: 5px;
-  background-color: var(--accent-color);
-  color: #fff;
-  text-decoration: none;
-  transition: background-color 0.3s;
+.techno {
 
-  &:hover {
-    background-color: (var(--accent-color), 10%);
+    padding: 0.5rem 0.5rem;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    margin-right: 0.5rem;
+    width:auto;
+    height: auto; 
+    text-transform: uppercase ;
+    color: #fff;
+    cursor: pointer;
   }
-}
-
+  .techno:hover {
+    /* Votre effet de survol ici, par exemple : */
+    background-color: darken(#64d8ff, 10%);
+  }
 /* Listes générales */
 .etudeDeCas__list {
   list-style: inside square;
@@ -225,4 +235,25 @@ text-transform: uppercase;
     opacity: 1;
     transform: translateY(0);
   }
+}
+@media screen and (orientation: landscape) and (max-width: 767px) {
+    .etudeDeCas{
+        padding-top: 0px;
+    }
+    .etudeDeCas__header{
+        flex-direction: column-reverse;
+    }
+    .etudeDeCas__imageContainer { 
+
+        width: 60%;
+    }
+    .etudeDeCas__title{ 
+        margin-top: 10px;
+        font-size: 5vh;
+        text-align: center;
+    }
+    .etudeDeCas__title span{ 
+
+        font-size: 6vh;
+    }
 }

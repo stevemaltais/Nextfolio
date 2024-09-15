@@ -15,6 +15,26 @@ export async function getStaticProps() {
               id
               deTailsDuProjet {
                 technologiesUtilisees
+                descriptionDuProjet
+                urlDuProjet
+                problemeAResoudre
+                solutionProposee
+                processusDeDeveloppement
+                fonctionnalitesCles
+                performanceEtOptimisation
+                interactionsEtFonctionnalitesAvancees
+                defisEtSolutions
+                testsEtValidation
+                resultats
+                conclusionEtRetoursDExperience
+                composantsReutilisablesEtScalabilite
+                contexteEtObjectifs
+                imageDuProjet {
+                  node {
+                    altText
+                    mediaItemUrl
+                  }
+                }
               }
               featuredImage {
                 node {
@@ -61,6 +81,29 @@ export const getProjectBySlug = async (slug) => {
             featuredImage {
               node {
                 mediaItemUrl
+              }
+            }
+            deTailsDuProjet {
+              descriptionDuProjet
+              technologiesUtilisees
+              urlDuProjet
+              problemeAResoudre
+              solutionProposee
+              processusDeDeveloppement
+              fonctionnalitesCles
+              performanceEtOptimisation
+              interactionsEtFonctionnalitesAvancees
+              defisEtSolutions
+              testsEtValidation
+              resultats
+              conclusionEtRetoursDExperience
+              composantsReutilisablesEtScalabilite
+              contexteEtObjectifs
+              imageDuProjet {
+                node {
+                  altText
+                  mediaItemUrl
+                }
               }
             }
           }
