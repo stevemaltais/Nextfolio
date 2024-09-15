@@ -1,0 +1,228 @@
+@import "../../styles/abstracts/colors";
+@import "../../styles/abstracts/variables";
+@import "../../styles/abstracts/mixins";
+
+.etudeDeCas__content {
+    // Styles pour les listes à puces et numérotées
+    ul,
+    ol {
+      margin-left: 20px; // Indentation des listes
+      padding-left: 20px; // Espace autour des listes
+      list-style-position: inside; // Positionnement des puces à l'intérieur du conteneur
+  
+      li {
+        margin-bottom: 10px; // Espace entre les éléments de liste
+        line-height: 1.5; // Hauteur de ligne pour la lisibilité
+      }
+    }
+    
+    // S'assurer que la propriété list-style-type est correctement définie
+    ul {
+      list-style-type: disc; // Affiche des puces
+    }
+  
+    ol {
+      list-style-type: decimal; // Affiche des nombres pour les listes ordonnées
+    }
+  }
+/* Conteneur principal pour l'étude de cas */
+.etudeDeCas {
+   padding: 2rem;
+
+}
+
+/* Wrapper pour le contenu */
+.etudeDeCas__wrapper {
+    margin: 0 40px;
+    @include breakpoint-down('sm') {
+        margin: 0 ;
+     
+      }
+    
+}
+.etudeDeCas__header{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    @include breakpoint-down('sm') {
+        flex-direction: column;
+      }
+}
+.etudeDeCas__HeaderRightSide{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    align-items: flex-start;
+
+}
+
+/* Titre principal */
+.etudeDeCas__title {
+  font-size: 1.5vw;
+  color: black;
+  text-align: left;
+  margin-bottom: 4rem;
+  font-weight: 400;
+text-transform: uppercase;
+  margin-left: 40px;
+
+  font-family: var(--title-font-stack);
+
+  @include breakpoint-down('lg') {
+   
+  }
+
+  @include breakpoint-down('sm') {
+
+  }
+}
+
+.etudeDeCas__title span{
+    font-size: 2.5vw;
+    font-weight: bold;
+    color: black;
+    font-family: var(--title-font-stack);
+  
+    @include breakpoint-down('lg') {
+     
+    }
+  
+    @include breakpoint-down('sm') {
+  
+    }
+  }
+
+/* Section générale */
+.etudeDeCas__section {
+ 
+
+  @include breakpoint-down('sm') {
+    padding: 1rem;
+  
+  }
+}
+
+/* Titres des sections */
+.etudeDeCas__sectionTitle {
+  font-size: 1vw;
+  color: black;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  text-align: left;
+
+  @include breakpoint-down('lg') {
+  
+  }
+
+  @include breakpoint-down('sm') {
+    font-size: 3vw;
+  }
+}
+
+/* Contenu du texte */
+.etudeDeCas__content {
+  font-family: var(--text-font-stack);
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  text-align: justify;
+  color: var(--text-color);
+  
+
+  @include breakpoint-down('sm') {
+    font-size: 1.2rem;
+    line-height: 2rem;
+  }
+}
+
+.etudeDeCas__Techno .etudeDeCas__content ul{
+    display: flex;
+    list-style: none;
+    padding-left: 12px;
+    justify-content: left;
+    @include breakpoint-down('sm') {
+        justify-content: center;
+      }
+}
+.etudeDeCas__Techno .etudeDeCas__content ul li{
+    
+    padding-left: 12px;
+
+    @include breakpoint-down('sm') {
+        padding-left: 0;
+      }
+}
+
+/* Conteneur de l'image */
+.etudeDeCas__imageContainer {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Liste des technologies */
+.etudeDeCas__technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Lien de chaque technologie */
+.etudeDeCas__technologyLink {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: var(--accent-color);
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: (var(--accent-color), 10%);
+  }
+}
+
+/* Listes générales */
+.etudeDeCas__list {
+  list-style: inside square;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+/* Bouton principal */
+.etudeDeCas__button {
+  background-color: #0070f3;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}
+
+/* Animation pour fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-70px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

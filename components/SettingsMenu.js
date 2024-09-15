@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from '@/styles/components/SettingsMenu.module.scss';
 import PrimaryButton from '@/components/PrimaryButton';
+import { getLeftPosition } from '@/utils/breakpoints'; // Import de la fonction utilitaire
 
 const SettingsMenu = ({ isOpen, sidebarIsOpen }) => {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -19,21 +20,9 @@ const SettingsMenu = ({ isOpen, sidebarIsOpen }) => {
     document.body.classList.toggle('light-theme', !savedTheme);
     document.documentElement.style.setProperty('--accent-color', savedAccentColor);
   
-    // Fonction pour ajuster dynamiquement la position en fonction de la largeur de la fenêtre et l'orientation
+    // Fonction pour ajuster dynamiquement la position
     const handleResize = () => {
-      const windowWidth = window.innerWidth;
-      const isLandscape = window.matchMedia('(orientation: landscape)').matches;
-  
-      if (isLandscape) {
-        // Appliquer les valeurs pour le mode paysage
-        setLeftPosition(isOpen ? (sidebarIsOpen ? '200px' : '-350rem') : '-350px');
-      } else if (windowWidth <= 600) {
-        setLeftPosition(isOpen ? (sidebarIsOpen ? '58px' : '-350rem') : '-350px');
-      } else if (windowWidth <= 750) {
-        setLeftPosition(isOpen ? (sidebarIsOpen ? '220px' : '6rem') : '-350px');
-      } else {
-        setLeftPosition(isOpen ? (sidebarIsOpen ? '250px' : '7.8rem') : '-350px');
-      }
+      setLeftPosition(getLeftPosition(isOpen, sidebarIsOpen));
     };
   
     handleResize(); // Appeler une fois pour définir la position initiale

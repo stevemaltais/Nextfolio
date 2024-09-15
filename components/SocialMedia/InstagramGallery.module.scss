@@ -10,21 +10,22 @@
   margin: auto;
 
   @include breakpoint-down('xl') {
-    grid-template-columns: repeat(3, 1fr); // 3 colonnes pour les écrans XL
+    grid-template-columns: repeat(5, 1fr); // 3 colonnes pour les écrans XL
   }
 
   @include breakpoint-down('lg') {
-    grid-template-columns: repeat(2, 1fr); // 2 colonnes pour les écrans LG
+    grid-template-columns: repeat(4, 1fr); // 2 colonnes pour les écrans LG
   }
+
 
   @include breakpoint-down('sm') {
     margin: 0 10px;
     gap: 10px;
-    grid-template-columns: repeat(2, 1fr); // 2 colonnes pour les petits écrans
+    grid-template-columns: repeat(3, 1fr); // 2 colonnes pour les petits écrans
   }
 
   @include breakpoint-down('xs') {
-    grid-template-columns: repeat(2, 1fr); // 2 colonnes pour les très petits écrans
+    grid-template-columns: repeat(3, 1fr); // 2 colonnes pour les très petits écrans
     gap: 4px;
   }
 }
@@ -84,3 +85,11 @@
   text-align: center;
 
 }
+
+@media screen and (orientation: landscape) and (max-width: 767px) {
+
+  .gallery {
+    grid-template-columns: repeat(4, 1fr); 
+  }
+
+  }

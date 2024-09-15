@@ -1,9 +1,13 @@
 @import "../../../styles/abstracts/colors";
 @import "../../../styles/abstracts/variables";
+@import "../../../styles/abstracts/mixins";
 
 .section{
    
-    margin: 10rem 0;
+    margin: 10rem 0rem;
+    @include breakpoint-down('lg') {
+      margin: 10rem 2rem;
+    }
 }
 
 .techno {
