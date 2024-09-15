@@ -2,8 +2,9 @@ import React from 'react';
 import EmblaCarousel from '@/components/Carousel/EmblaCarousel';
 import styles from '@/styles/components/HomePageModule/PorteFolioSection.module.scss';
 import Link from 'next/link';
-import technoColors from '@/utils/technoColors';
 import { useRouter } from 'next/router';
+import technoColors from '@/utils/technoColors';
+
 
 export const PorteFolioSection = ({ projets }) => {
   const router = useRouter(); 
