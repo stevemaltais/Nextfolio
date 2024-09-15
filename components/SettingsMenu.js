@@ -9,32 +9,45 @@ const SettingsMenu = ({ isOpen, sidebarIsOpen }) => {
   const [accentColor, setAccentColor] = useState('#64d8ff'); // Stocker l'accent color
 
   useEffect(() => {
-    // Récupérer les paramètres du thème et de la couleur du localStorage lors du montage
-    const savedTheme = localStorage.getItem('isDarkMode') === 'true';
-    const savedAccentColor = localStorage.getItem('accentColor') || '#64d8ff';
+    // Vérifier si le code s'exécute côté client avant d'accéder à `localStorage`
+    if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+      // Récupérer les paramètres du thème et de la couleur du localStorage lors du montage
+      const savedTheme = localStorage.getItem('isDarkMode') === 'true';
+      const savedAccentColor = localStorage.getItem('accentColor') || '#64d8ff';
   
-    setIsDarkMode(savedTheme);
-    setAccentColor(savedAccentColor);
+      setIsDarkMode(savedTheme);
+      setAccentColor(savedAccentColor);
   
-    document.body.classList.toggle('dark-theme', savedTheme);
-    document.body.classList.toggle('light-theme', !savedTheme);
-    document.documentElement.style.setProperty('--accent-color', savedAccentColor);
-  
+      document.body.classList.toggle('dark-theme', savedTheme);
+      document.body.classList.toggle('light-theme', !savedTheme);
+      document.documentElement.style.setProperty('--accent-color', savedAccentColor);
+    }
+
     // Fonction pour ajuster dynamiquement la position
     const handleResize = () => {
       setLeftPosition(getLeftPosition(isOpen, sidebarIsOpen));
     };
   
     handleResize(); // Appeler une fois pour définir la position initiale
-    window.addEventListener('resize', handleResize); // Ajouter un écouteur pour les changements de taille de fenêtre
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize); // Ajouter un écouteur pour les changements de taille de fenêtre
+    }
   
-    return () => window.removeEventListener('resize', handleResize); // Nettoyer l'écouteur lorsque le composant est démonté
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', handleResize); // Nettoyer l'écouteur lorsque le composant est démonté
+      }
+    };
   }, [isOpen, sidebarIsOpen]);
 
   const changeTheme = (e) => {
     const isDark = e.target.checked;
     setIsDarkMode(isDark);
-    localStorage.setItem('isDarkMode', isDark); // Sauvegarder le mode dans le localStorage
+
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('isDarkMode', isDark); // Sauvegarder le mode dans le localStorage
+    }
+
     document.body.classList.toggle('dark-theme', isDark);
     document.body.classList.toggle('light-theme', !isDark);
   };
@@ -45,14 +58,21 @@ const SettingsMenu = ({ isOpen, sidebarIsOpen }) => {
 
     document.documentElement.style.setProperty('--accent-color', colorVarName);
     setAccentColor(colorVarName); // Mettre à jour l'état local
-    localStorage.setItem('accentColor', colorVarName); // Sauvegarder la couleur dans le localStorage
+
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('accentColor', colorVarName); // Sauvegarder la couleur dans le localStorage
+    }
   };
 
   const resetThemeAndColor = () => {
     setIsDarkMode(false);
     setAccentColor('#64d8ff');
-    localStorage.setItem('isDarkMode', false);
-    localStorage.setItem('accentColor', '#64d8ff');
+
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('isDarkMode', false);
+      localStorage.setItem('accentColor', '#64d8ff');
+    }
+
     document.documentElement.style.setProperty('--accent-color', '#64d8ff');
   };
 
