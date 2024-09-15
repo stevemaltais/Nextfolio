@@ -56,9 +56,7 @@ const ProjectPage = ({ project }) => {
                 <h2 className={styles.etudeDeCas__TechnoTitle}>Technologies Utilisées</h2>
                 <div className={styles.etudeDeCas__content}>
                   <ul>
-                    {project.deTailsDuProjet.technologiesUtilisees.map((tech, index) => (
-                      <li key={index}>{tech}</li>
-                    ))}
+             
                   </ul>
                 </div>
               </div>

@@ -66,7 +66,7 @@ export const getProjectBySlug = async (slug) => {
             }
             deTailsDuProjet {
               descriptionDuProjet
-              technologiesUtilisees
+             
               urlDuProjet
               problemeAResoudre
               solutionProposee
