@@ -51,6 +51,17 @@ const ProjectPage = ({ project }) => {
             <h1 className={styles.etudeDeCas__title}>
               <span>Étude de cas</span><br />{project.title}
             </h1>
+                   {/* Section URL du Projet */}
+        {project.deTailsDuProjet?.urlDuProjet && (
+          <div className={styles.etudeDeCas__contentLink}>
+            <h2 className={styles.etudeDeCas__contentLinkTitle}>Lien vers le Projet</h2>
+            <div className={styles.etudeDeCas__contentLink}>
+              <a href={project.deTailsDuProjet.urlDuProjet} target="_blank" rel="noopener noreferrer">
+                Voir le projet
+              </a>
+            </div>
+          </div>
+        )}
             {/* Section Technologies Utilisées */}
             {project.deTailsDuProjet?.technologiesUtilisees?.length > 0 && (
   <div className={styles.etudeDeCas__Techno}>
@@ -229,17 +240,7 @@ const ProjectPage = ({ project }) => {
           </section>
         )}
 
-        {/* Section URL du Projet */}
-        {project.deTailsDuProjet?.urlDuProjet && (
-          <section className={styles.etudeDeCas__section}>
-            <h2 className={styles.etudeDeCas__sectionTitle}>Lien vers le Projet</h2>
-            <div className={styles.etudeDeCas__content}>
-              <a href={project.deTailsDuProjet.urlDuProjet} target="_blank" rel="noopener noreferrer">
-                Voir le projet
-              </a>
-            </div>
-          </section>
-        )}
+ 
       </div>
     </div>
   );

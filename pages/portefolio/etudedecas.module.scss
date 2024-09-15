@@ -6,7 +6,7 @@
     // Styles pour les listes à puces et numérotées
     ul,
     ol {
-      
+      margin-left: 20px;
       list-style-position: inside; // Positionnement des puces à l'intérieur du conteneur
   
       li {
@@ -23,6 +23,11 @@
     ol {
       list-style-type: decimal; // Affiche des nombres pour les listes ordonnées
     }
+    @include breakpoint-down('sm') {
+    
+        margin-left: 0px;
+      }
+  
   }
 /* Conteneur principal pour l'étude de cas */
 .etudeDeCas {
@@ -44,6 +49,7 @@
     flex-direction: row-reverse;
     justify-content: center;
     align-items: center;
+    margin-bottom: 40px;
     @include breakpoint-down('sm') {
         flex-direction: column-reverse;
       }
@@ -52,23 +58,25 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-left: 40px;
     
     align-items: flex-start;
     @include breakpoint-down('sm') {
         flex-direction: column-reverse;
         align-items: center;
+        margin-left: 0px;
       }
 }
 
 /* Titre principal */
 .etudeDeCas__title {
   font-size: 1.5vw;
-  color: black;
+  color: var(--text-color);
   text-align: left;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
   font-weight: 400;
 text-transform: uppercase;
-  margin-left: 40px;
+  
 
   font-family: var(--title-font-stack);
 
@@ -86,7 +94,7 @@ text-transform: uppercase;
 .etudeDeCas__title span{
     font-size: 2.5vw;
     font-weight: bold;
-    color: black;
+    color: var(--text-color);
     font-family: var(--title-font-stack);
   
     @include breakpoint-down('lg') {
@@ -101,20 +109,25 @@ text-transform: uppercase;
 
 /* Section générale */
 .etudeDeCas__section {
- 
+ margin-bottom: 40px;
 
   @include breakpoint-down('sm') {
-    padding: 1rem;
+
   
   }
+}
+
+.etudeDeCas__contentLink{
+    text-align: center;
+    font-size: 2vh;
 }
 
 /* Titres des sections */
 .etudeDeCas__sectionTitle {
   font-size: 1vw;
-  color: black;
+  color: var(--text-color);
   text-transform: uppercase;
-  margin-bottom: 2rem;
+  margin-bottom: 10px;
   text-align: left;
 
   @include breakpoint-down('lg') {
