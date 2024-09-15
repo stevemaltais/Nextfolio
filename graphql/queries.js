@@ -48,7 +48,6 @@ export async function getStaticProps() {
   }
 }
 
-
 export const getProjectBySlug = async (slug) => {
   try {
     const { data } = await client.query({
@@ -161,12 +160,16 @@ export const fetchProjectsByTech = async (techSlug) => {
   try {
     const { data } = await client.query({
       query: gql`
-        query GetProjectsByTech($slug: String!) {
-          projets(where: { taxQuery: { taxArray: [{ terms: [$slug], taxonomy: "technologie" }] } }) {
+        query GetAllProjects {
+          projets {
             nodes {
               title
               id
               content
+              slug
+              deTailsDuProjet {
+                technologiesUtilisees
+              }
               featuredImage {
                 node {
                   mediaItemUrl
@@ -176,19 +179,24 @@ export const fetchProjectsByTech = async (techSlug) => {
           }
         }
       `,
-      variables: { slug: techSlug },
     });
 
     if (!data || !data.projets) {
-      return []; // Retourne un tableau vide si aucun projet n'est trouvé pour cette technologie
+      return []; // Retourne un tableau vide si aucun projet n'est trouvé
     }
 
-    return data.projets.nodes;
+    // Filtrer les projets qui ont `techSlug` dans `technologiesUtilisees`
+    const filteredProjects = data.projets.nodes.filter((project) =>
+      project.deTailsDuProjet?.technologiesUtilisees?.includes(techSlug)
+    );
+
+    return filteredProjects;
   } catch (error) {
     console.error('Error fetching projects by tech:', error);
     return [];
   }
 };
+
 
 export const GET_PHOTOS_QUERY = gql`
   query GetPhoto {
