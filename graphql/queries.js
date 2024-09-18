@@ -5,45 +5,50 @@ export async function getStaticProps() {
   try {
     const { data } = await client.query({
       query: gql`
-        query projets {
-          projets(first: 10) {
-            nodes {
-              title
-              content
-              slug
-              uri
-              id
-              deTailsDuProjet {
-                technologiesUtilisees
-                descriptionDuProjet
-                urlDuProjet
-                problemeAResoudre
-                solutionProposee
-                processusDeDeveloppement
-                fonctionnalitesCles
-                performanceEtOptimisation
-                interactionsEtFonctionnalitesAvancees
-                defisEtSolutions
-                testsEtValidation
-                resultats
-                conclusionEtRetoursDExperience
-                composantsReutilisablesEtScalabilite
-                contexteEtObjectifs
-                imageDuProjet {
-                  node {
-                    altText
-                    mediaItemUrl
-                  }
-                }
-              }
-              featuredImage {
+      query projets {
+        projets(first: 10) {
+          nodes {
+            title
+            content
+            slug
+            uri
+            id
+            deTailsDuProjet {
+              technologiesUtilisees
+              descriptionDuProjet
+              urlDuProjet
+              problemeAResoudre
+              solutionProposee
+              processusDeDeveloppement
+              fonctionnalitesCles
+              performanceEtOptimisation
+              interactionsEtFonctionnalitesAvancees
+              defisEtSolutions
+              testsEtValidation
+              resultats
+              conclusionEtRetoursDExperience
+              composantsReutilisablesEtScalabilite
+              contexteEtObjectifs
+              imageDuProjet {
                 node {
+                  altText
                   mediaItemUrl
                 }
+              }
+              mockupimage {
+                node {
+                  sourceUrl
+                }
+              }
+            }
+            featuredImage {
+              node {
+                mediaItemUrl
               }
             }
           }
         }
+      }
       `,
     });
 
@@ -105,6 +110,11 @@ export const getProjectBySlug = async (slug) => {
                   mediaItemUrl
                 }
               }
+              mockupimage {
+                node {
+                  sourceUrl
+                }
+              }
             }
           }
         }
@@ -113,7 +123,7 @@ export const getProjectBySlug = async (slug) => {
     });
 
     if (!data || !data.projetBy) {
-      return null; // Retourne null si le projet n'est pas trouvé
+      return null; // Retourner null si le projet n'est pas trouvé
     }
 
     return data.projetBy;
@@ -122,6 +132,7 @@ export const getProjectBySlug = async (slug) => {
     return null;
   }
 };
+
 
 export const fetchProjectSlugs = async () => {
   try {

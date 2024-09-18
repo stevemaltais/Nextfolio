@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="fr">
       <Head>
         {/* Meta Viewport pour le responsive */}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+       
 
         {/* Fonts et CSS */}
         <link

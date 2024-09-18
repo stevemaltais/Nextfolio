@@ -70,31 +70,45 @@
 
 /* Titre principal */
 .etudeDeCas__title {
-  font-size: 1.5vw;
-  color: var(--text-color);
-  text-align: left;
-  margin-bottom: 1rem;
-  font-weight: 400;
-text-transform: uppercase;
-  
-
-  font-family: var(--title-font-stack);
-
-  @include breakpoint-down('lg') {
-   
-  }
-
-  @include breakpoint-down('sm') {
-    margin-top: 20px;
-    font-size: 2.2vh;
-    margin-left: 0px;
-  }
-}
-
-.etudeDeCas__title span{
-    font-size: 2.5vw;
-    font-weight: bold;
+    font-size: 1.5vw;
     color: var(--text-color);
+    text-align: left;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-family: var(--title-font-stack);
+  
+    @include breakpoint-down('lg') {
+      // Styles pour les tailles d'écran plus petites
+    }
+  
+    @include breakpoint-down('sm') {
+      margin-top: 20px;
+
+      margin-left: 0px;
+    }
+  
+    // Styles spécifiques pour les parties du titre
+    &FirstPart {
+      font-size: 3vh;
+      color: var(--accent-color);
+      @include breakpoint-down('sm') {
+     font-size: 2.3vh;
+      }
+    }
+  
+    &SecondPart {
+     font-size: 2.8vh;
+     @include breakpoint-down('sm') {
+        font-size: 2.2vh;
+         }
+    }
+  }
+
+  .etudeDeCas__titleSpan{
+    font-size: 5vh;
+    font-weight: bold;
+    
     font-family: var(--title-font-stack);
   
     @include breakpoint-down('lg') {
@@ -135,7 +149,7 @@ text-transform: uppercase;
   }
 
   @include breakpoint-down('sm') {
-    font-size: 3vw;
+    font-size: 4vw;
   }
 }
 
@@ -149,7 +163,7 @@ text-transform: uppercase;
   
 
   @include breakpoint-down('sm') {
-    font-size: 1.2rem;
+    font-size: 1.9vh;
     line-height: 2rem;
   }
 }
@@ -189,6 +203,7 @@ text-transform: uppercase;
   }
 }
 
+
 /* Liste des technologies */
 .etudeDeCas__technologies {
   display: flex;
@@ -201,11 +216,11 @@ text-transform: uppercase;
 /* Lien de chaque technologie */
 .techno {
 
-    padding: 0.5rem 0.5rem;
+    padding: 0.4rem 0.8rem;
     font-size: 1.2rem;
-    border-radius: 0.5rem;
+    border-radius: 0.4rem;
     margin-bottom: 1rem;
-    margin-right: 0.5rem;
+    margin-right: 1rem;
     width:auto;
     height: auto; 
     text-transform: uppercase ;
@@ -216,6 +231,11 @@ text-transform: uppercase;
     /* Votre effet de survol ici, par exemple : */
     background-color: darken(#64d8ff, 10%);
   }
+
+.etudeDeCas__contentTechno ul{
+    display: flex;
+    flex-direction: row;
+}
 /* Listes générales */
 .etudeDeCas__list {
   list-style: inside square;
