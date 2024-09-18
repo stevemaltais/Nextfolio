@@ -3,6 +3,8 @@ import EmblaCarousel from '@/components/Carousel/EmblaCarousel';
 import styles from '@/styles/components/HomePageModule/PorteFolioSection.module.scss';
 import { useRouter } from 'next/router';
 import technoColors from '@/utils/technoColors';
+import TechnologiesList from '../Blog/TechnologiesList';
+
 
 export const PorteFolioSection = ({ projets }) => {
   // Fonction pour tronquer l'URL
@@ -36,22 +38,8 @@ export const PorteFolioSection = ({ projets }) => {
         >
           <div className={styles.embla__slideContent}>
             <h2 className={styles.slideContent_title}>{formatUrl(projet.deTailsDuProjet?.urlDuProjet)}</h2>
-            {projet.content && <div dangerouslySetInnerHTML={{ __html: projet.content }} />}
-            {projet.deTailsDuProjet.technologiesUtilisees && Array.isArray(projet.deTailsDuProjet.technologiesUtilisees) && (
-              <div style={{ display: 'flex' }} onClick={(e) => e.stopPropagation()}>
-                {projet.deTailsDuProjet.technologiesUtilisees.map((techno) => (
-                  <a 
-                    key={techno}
-                    href={`/technologie/${encodeURIComponent(techno.toLowerCase())}`}
-                    className={styles.techno}
-                    style={{ backgroundColor: technoColors[techno] || '#64d8ff' }}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    {techno}
-                  </a>
-                ))}
-              </div>
-            )}
+            <TechnologiesList technologies={projet.deTailsDuProjet.technologiesUtilisees} />
+        
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { fetchProjectSlugs, getProjectBySlug } from '@/graphql/queries';
 import styles from '@/pages/portefolio/etudedecas.module.scss'; // Import du module SCSS
 import technoColors from '@/utils/technoColors';
+import TechnologiesList from '@/components/Blog/TechnologiesList';
 
 export async function getStaticPaths() {
   const slugs = await fetchProjectSlugs();
@@ -81,26 +82,8 @@ const ProjectPage = ({ project }) => {
           </h1>
 
             {/* Section Technologies Utilisées */}
-            {project.deTailsDuProjet?.technologiesUtilisees?.length > 0 && (
-              <div className={styles.etudeDeCas__Techno}>
-                <div className={styles.etudeDeCas__contentTechno}>
-                  <ul>
-                    {project.deTailsDuProjet.technologiesUtilisees.map((tech, index) => (
-                      <li key={index}>
-                        <a
-                          href={`/technologie/${encodeURIComponent(tech.toLowerCase())}`}
-                          onClick={(e) => e.stopPropagation()}
-                          className={styles.techno}
-                          style={{ backgroundColor: technoColors[tech] || '#64d8ff' }}
-                        >
-                          {tech}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            )}
+            <TechnologiesList technologies={project.deTailsDuProjet?.technologiesUtilisees} />
+
           </div>
 
           {/* Section Image du Projet */}
