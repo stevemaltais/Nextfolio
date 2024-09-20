@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import styles from '@/components/UI/Drawer.module.scss';
+import React, { useState, useEffect } from 'react';
+import styles from '@/components/UI/Drawer.module.scss'; 
 
 const Drawer = ({ isOpen, onClose, children }) => {
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchEndX, setTouchEndX] = useState(0);
+  const [isSwiping, setIsSwiping] = useState(false);
 
   // Utilise useEffect pour bloquer/débloquer le scroll
   useEffect(() => {
@@ -13,7 +14,6 @@ const Drawer = ({ isOpen, onClose, children }) => {
       document.body.classList.remove('no-scroll');
     }
 
-    // Nettoyage de l'effet quand le composant est démonté ou le drawer est fermé
     return () => {
       document.body.classList.remove('no-scroll');
     };
@@ -22,22 +22,28 @@ const Drawer = ({ isOpen, onClose, children }) => {
   // Fonction pour gérer le début du swipe (touchstart)
   const handleTouchStart = (e) => {
     setTouchStartX(e.touches[0].clientX);
+    setIsSwiping(false); // Réinitialise l'état de swipe
   };
 
-  // Fonction pour gérer la fin du swipe (touchend)
+  // Fonction pour gérer le mouvement du swipe (touchmove)
   const handleTouchMove = (e) => {
     setTouchEndX(e.touches[0].clientX);
+    if (Math.abs(touchStartX - touchEndX) > 50) {
+      setIsSwiping(true); // Le swipe commence à être significatif
+    }
   };
 
-  // Fonction pour détecter le swipe
+  // Fonction pour détecter le swipe (touchend)
   const handleTouchEnd = () => {
-    if (touchStartX - touchEndX > 100) {
-      // Si on swipes vers la gauche (drawer à droite), on ferme
-      onClose();
+    // Si l'utilisateur a swipé à droite suffisamment
+    if (isSwiping && touchStartX - touchEndX > 100) {
+      onClose(); // Fermer le drawer si le swipe est vers la droite
     }
-    // Réinitialisation des positions
+
+    // Réinitialisation des valeurs après le swipe
     setTouchStartX(0);
     setTouchEndX(0);
+    setIsSwiping(false);
   };
 
   return (
