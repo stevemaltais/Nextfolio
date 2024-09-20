@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { fetchProjectSlugs, getProjectBySlug } from '@/graphql/queries';
-import styles from '.etudedecas.module.scss'; // Import du module SCSS
+import styles from './etudedecas.module.scss'; // Import du module SCSS
 import technoColors from '@/utils/technoColors';
 import TechnologiesList from '@/components/Blog/TechnologiesList';
 
