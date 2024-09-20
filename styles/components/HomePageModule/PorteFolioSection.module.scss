@@ -134,3 +134,35 @@
 .embla__slide:hover .embla__slideContent div {
   color: #fff;
 }
+.drawerContent {
+  opacity: 1;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.drawerImageContainer {
+  width: 100%;
+  height: auto;
+  border-radius: 10px; /* Assure un bord arrondi pour le conteneur */
+  overflow: hidden; /* Cache toute partie de l'image qui dépasse du conteneur */
+  margin-bottom: 1rem;
+}
+
+.drawerImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Assure que l'image s'ajuste bien dans son conteneur */
+  display: block; /* S'assure que l'image est un élément en bloc */
+  border-radius: 10px; /* Applique le radius si nécessaire */
+}
+
+.fadeIn {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fadeOut {
+  opacity: 0;
+  transform: translateX(-20px); /* Un léger déplacement vers la gauche pour l'effet de sortie */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}

@@ -1,74 +1,55 @@
 import { gql } from '@apollo/client';
 import client from '@/lib/apolloClient';
 
+// Requête pour la page d'accueil (liste des projets)
 export async function getStaticProps() {
   try {
     const { data } = await client.query({
       query: gql`
-      query projets {
-        projets(first: 10) {
-          nodes {
-            title
-            content
-            slug
-            uri
-            id
-            deTailsDuProjet {
-              technologiesUtilisees
-              descriptionDuProjet
-              urlDuProjet
-              problemeAResoudre
-              solutionProposee
-              processusDeDeveloppement
-              fonctionnalitesCles
-              performanceEtOptimisation
-              interactionsEtFonctionnalitesAvancees
-              defisEtSolutions
-              testsEtValidation
-              resultats
-              conclusionEtRetoursDExperience
-              composantsReutilisablesEtScalabilite
-              contexteEtObjectifs
-              imageDuProjet {
+        query projets {
+          projets(first: 10) {
+            nodes {
+              title
+              slug
+              detailsDuProjet {
+                titreCourtDuProjet
+                descriptionCourteDuProjet
+                categorieDuProjet
+                anneeDuProjet
+              }
+              featuredImage {
                 node {
-                  altText
                   mediaItemUrl
                 }
               }
-              mockupimage {
-                node {
-                  sourceUrl
+              etudeDeCas {
+                technologiesUtilisees
+                mockupimage {
+                  node {
+                    sourceUrl
+                  }
                 }
-              }
-            }
-            featuredImage {
-              node {
-                mediaItemUrl
+                urlDuProjet
               }
             }
           }
         }
-      }
       `,
     });
 
-    if (!data || !data.projets) {
-      console.error('No projets data found');
-      return {
-        notFound: true,
-      };
-    }
+    // Vérifier les projets récupérés
+    console.log('Projets récupérés:', data.projets.nodes);
 
     return {
       props: {
-        projets: data.projets.nodes,
+        projets: data.projets.nodes, // Retourner les projets dans les props
       },
-      revalidate: 60,
+      revalidate: 60,  // Revalider toutes les 60 secondes
     };
   } catch (error) {
-    console.error('Error fetching projects:', error);
+    console.error('Erreur lors de la récupération des projets:', error);
     return {
-      notFound: true,
+      notFound: true,  // Si erreur, renvoyer la page 404
     };
   }
 }
@@ -83,12 +64,13 @@ export const getProjectBySlug = async (slug) => {
             id
             content
             slug
-            featuredImage {
-              node {
-                mediaItemUrl
-              }
+            detailsDuProjet {
+              titreCourtDuProjet
+              descriptionCourteDuProjet
+              categorieDuProjet
+              anneeDuProjet
             }
-            deTailsDuProjet {
+            etudeDeCas {
               descriptionDuProjet
               technologiesUtilisees
               urlDuProjet
@@ -96,17 +78,8 @@ export const getProjectBySlug = async (slug) => {
               solutionProposee
               processusDeDeveloppement
               fonctionnalitesCles
-              performanceEtOptimisation
-              interactionsEtFonctionnalitesAvancees
-              defisEtSolutions
-              testsEtValidation
-              resultats
-              conclusionEtRetoursDExperience
-              composantsReutilisablesEtScalabilite
-              contexteEtObjectifs
               imageDuProjet {
                 node {
-                  altText
                   mediaItemUrl
                 }
               }
@@ -116,6 +89,11 @@ export const getProjectBySlug = async (slug) => {
                 }
               }
             }
+            featuredImage {
+              node {
+                mediaItemUrl
+              }
+            }
           }
         }
       `,
@@ -123,17 +101,17 @@ export const getProjectBySlug = async (slug) => {
     });
 
     if (!data || !data.projetBy) {
-      return null; // Retourner null si le projet n'est pas trouvé
+      return null;  // Retourner null si aucun projet n'est trouvé
     }
 
     return data.projetBy;
   } catch (error) {
-    console.error('Error fetching project by slug:', error);
+    console.error('Erreur lors de la récupération du projet par slug:', error);
     return null;
   }
 };
 
-
+// Requête pour récupérer les slugs des projets
 export const fetchProjectSlugs = async () => {
   try {
     const { data } = await client.query({
@@ -149,16 +127,17 @@ export const fetchProjectSlugs = async () => {
     });
 
     if (!data || !data.projets) {
-      return []; // Retourne un tableau vide si aucun slug n'est trouvé
+      return [];
     }
 
     return data.projets.nodes.map((node) => node.slug);
   } catch (error) {
-    console.error('Error fetching project slugs:', error);
+    console.error('Erreur lors de la récupération des slugs:', error);
     return [];
   }
 };
 
+// Requête pour récupérer les slugs des technologies
 export const fetchTechSlugs = async () => {
   try {
     const { data } = await client.query({
@@ -174,16 +153,17 @@ export const fetchTechSlugs = async () => {
     });
 
     if (!data || !data.technologies) {
-      return []; // Retourne un tableau vide si aucun slug de technologie n'est trouvé
+      return [];
     }
 
     return data.technologies.nodes.map((node) => node.slug);
   } catch (error) {
-    console.error('Error fetching tech slugs:', error);
+    console.error('Erreur lors de la récupération des slugs de technologies:', error);
     return [];
   }
 };
 
+// Requête pour récupérer les détails d'une technologie spécifique
 export const fetchTechDetails = async (techSlug) => {
   try {
     const { data } = await client.query({
@@ -200,16 +180,17 @@ export const fetchTechDetails = async (techSlug) => {
     });
 
     if (!data || !data.technologieBy) {
-      return null; // Retourne null si les détails de la technologie ne sont pas trouvés
+      return null;
     }
 
     return data.technologieBy;
   } catch (error) {
-    console.error('Error fetching tech details:', error);
+    console.error('Erreur lors de la récupération des détails de la technologie:', error);
     return null;
   }
 };
 
+// Requête pour récupérer des projets par technologie
 export const fetchProjectsByTech = async (techSlug) => {
   try {
     const { data } = await client.query({
@@ -221,7 +202,7 @@ export const fetchProjectsByTech = async (techSlug) => {
               id
               content
               slug
-              deTailsDuProjet {
+              etudeDeCas {
                 technologiesUtilisees
               }
               featuredImage {
@@ -236,34 +217,16 @@ export const fetchProjectsByTech = async (techSlug) => {
     });
 
     if (!data || !data.projets) {
-      return []; // Retourne un tableau vide si aucun projet n'est trouvé
+      return [];
     }
 
-    // Filtrer les projets qui ont `techSlug` dans `technologiesUtilisees`
     const filteredProjects = data.projets.nodes.filter((project) =>
-      project.deTailsDuProjet?.technologiesUtilisees?.includes(techSlug)
+      project.etudeDeCas?.technologiesUtilisees?.includes(techSlug)
     );
 
     return filteredProjects;
   } catch (error) {
-    console.error('Error fetching projects by tech:', error);
+    console.error('Erreur lors de la récupération des projets par technologie:', error);
     return [];
   }
 };
-
-
-export const GET_PHOTOS_QUERY = gql`
-  query GetPhoto {
-    photos {
-      nodes {
-        photosMe {
-          imageDeMoi {
-            node {
-              sourceUrl
-            }
-          }
-        }
-      }
-    }
-  }
-`;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { fetchProjectSlugs, getProjectBySlug } from '@/graphql/queries';
-import styles from '@/pages/portefolio/etudedecas.module.scss'; // Import du module SCSS
+import styles from '@/pages/portefolio/etudeDeCas.module.scss'; // Import du module SCSS
 import technoColors from '@/utils/technoColors';
 import TechnologiesList from '@/components/Blog/TechnologiesList';
 
@@ -73,7 +73,7 @@ const ProjectPage = ({ project }) => {
          
           <span className={styles.etudeDeCas__titleSpan}>Étude de cas</span><br />
             {/* Section URL du Projet */}
-          <a href={project.deTailsDuProjet.urlDuProjet} target="_blank" rel="noopener noreferrer">
+          <a href={project.etudeDeCas.urlDuProjet} target="_blank" rel="noopener noreferrer">
             <span className={styles.etudeDeCas__titleFirstPart}><strong>{firstPart}</strong></span>
           </a>
               {secondPart && (
@@ -82,7 +82,7 @@ const ProjectPage = ({ project }) => {
           </h1>
 
             {/* Section Technologies Utilisées */}
-            <TechnologiesList technologies={project.deTailsDuProjet?.technologiesUtilisees} />
+            <TechnologiesList technologies={project.etudeDeCas?.technologiesUtilisees} />
 
           </div>
 
@@ -98,137 +98,137 @@ const ProjectPage = ({ project }) => {
         </div>
 
         {/* Autres Sections Dynamique */}
-        {project.deTailsDuProjet && (
+        {project.etudeDeCas && (
           <>
             {/* Section Contexte et Objectifs */}
-            {project.deTailsDuProjet.contexteEtObjectifs && (
+            {project.etudeDeCas.contexteEtObjectifs && (
               <section className={styles.etudeDeCas__section}>
                 <h2 className={styles.etudeDeCas__sectionTitle}>Contexte et Objectifs</h2>
                 <div
                   className={styles.etudeDeCas__content}
-                  dangerouslySetInnerHTML={createMarkup(project.deTailsDuProjet.contexteEtObjectifs)}
+                  dangerouslySetInnerHTML={createMarkup(project.etudeDeCas.contexteEtObjectifs)}
                 />
               </section>
             )}
 
             {/* Section Description du Projet */}
-            {project.deTailsDuProjet.descriptionDuProjet && (
+            {project.etudeDeCas.descriptionDuProjet && (
               <section className={styles.etudeDeCas__section}>
                 <h2 className={styles.etudeDeCas__sectionTitle}>Description du Projet</h2>
                 <div
                   className={styles.etudeDeCas__content}
-                  dangerouslySetInnerHTML={createMarkup(project.deTailsDuProjet.descriptionDuProjet)}
+                  dangerouslySetInnerHTML={createMarkup(project.etudeDeCas.descriptionDuProjet)}
                 />
               </section>
             )}
 
             {/* Autres sections similaires */}
-            {project.deTailsDuProjet.problemeAResoudre && (
+            {project.etudeDeCas.problemeAResoudre && (
               <section className={styles.etudeDeCas__section}>
                 <h2 className={styles.etudeDeCas__sectionTitle}>Problème à Résoudre</h2>
                 <div
                   className={styles.etudeDeCas__content}
-                  dangerouslySetInnerHTML={createMarkup(project.deTailsDuProjet.problemeAResoudre)}
+                  dangerouslySetInnerHTML={createMarkup(project.etudeDeCas.problemeAResoudre)}
                 />
               </section>
             )}
 
-            {project.deTailsDuProjet.solutionProposee && (
+            {project.etudeDeCas.solutionProposee && (
               <section className={styles.etudeDeCas__section}>
                 <h2 className={styles.etudeDeCas__sectionTitle}>Solution Proposée</h2>
                 <div
                   className={styles.etudeDeCas__content}
-                  dangerouslySetInnerHTML={createMarkup(project.deTailsDuProjet.solutionProposee)}
+                  dangerouslySetInnerHTML={createMarkup(project.etudeDeCas.solutionProposee)}
                 />
               </section>
             )}
 
-            {project.deTailsDuProjet.processusDeDeveloppement && (
+            {project.etudeDeCas.processusDeDeveloppement && (
               <section className={styles.etudeDeCas__section}>
                 <h2 className={styles.etudeDeCas__sectionTitle}>Processus de Développement</h2>
                 <div
                   className={styles.etudeDeCas__content}
-                  dangerouslySetInnerHTML={createMarkup(project.deTailsDuProjet.processusDeDeveloppement)}
+                  dangerouslySetInnerHTML={createMarkup(project.etudeDeCas.processusDeDeveloppement)}
                 />
               </section>
             )}
 
-            {project.deTailsDuProjet.composantsReutilisablesEtScalabilite && (
+            {project.etudeDeCas.composantsReutilisablesEtScalabilite && (
               <section className={styles.etudeDeCas__section}>
                 <h2 className={styles.etudeDeCas__sectionTitle}>Composants Réutilisables et Scalabilité</h2>
                 <div
                   className={styles.etudeDeCas__content}
-                  dangerouslySetInnerHTML={createMarkup(project.deTailsDuProjet.composantsReutilisablesEtScalabilite)}
+                  dangerouslySetInnerHTML={createMarkup(project.etudeDeCas.composantsReutilisablesEtScalabilite)}
                 />
               </section>
             )}
 
-            {project.deTailsDuProjet.fonctionnalitesCles && (
+            {project.etudeDeCas.fonctionnalitesCles && (
               <section className={styles.etudeDeCas__section}>
                 <h2 className={styles.etudeDeCas__sectionTitle}>Fonctionnalités Clés</h2>
                 <div
                   className={styles.etudeDeCas__content}
-                  dangerouslySetInnerHTML={createMarkup(project.deTailsDuProjet.fonctionnalitesCles)}
+                  dangerouslySetInnerHTML={createMarkup(project.etudeDeCas.fonctionnalitesCles)}
                 />
               </section>
             )}
 
-            {project.deTailsDuProjet.performanceEtOptimisation && (
+            {project.etudeDeCas.performanceEtOptimisation && (
               <section className={styles.etudeDeCas__section}>
                 <h2 className={styles.etudeDeCas__sectionTitle}>Performance et Optimisation</h2>
                 <div
                   className={styles.etudeDeCas__content}
-                  dangerouslySetInnerHTML={createMarkup(project.deTailsDuProjet.performanceEtOptimisation)}
+                  dangerouslySetInnerHTML={createMarkup(project.etudeDeCas.performanceEtOptimisation)}
                 />
               </section>
             )}
 
-            {project.deTailsDuProjet.interactionsEtFonctionnalitesAvancees && (
+            {project.etudeDeCas.interactionsEtFonctionnalitesAvancees && (
               <section className={styles.etudeDeCas__section}>
                 <h2 className={styles.etudeDeCas__sectionTitle}>Interactions et Fonctionnalités Avancées</h2>
                 <div
                   className={styles.etudeDeCas__content}
-                  dangerouslySetInnerHTML={createMarkup(project.deTailsDuProjet.interactionsEtFonctionnalitesAvancees)}
+                  dangerouslySetInnerHTML={createMarkup(project.etudeDeCas.interactionsEtFonctionnalitesAvancees)}
                 />
               </section>
             )}
 
-            {project.deTailsDuProjet.defisEtSolutions && (
+            {project.etudeDeCas.defisEtSolutions && (
               <section className={styles.etudeDeCas__section}>
                 <h2 className={styles.etudeDeCas__sectionTitle}>Défis et Solutions</h2>
                 <div
                   className={styles.etudeDeCas__content}
-                  dangerouslySetInnerHTML={createMarkup(project.deTailsDuProjet.defisEtSolutions)}
+                  dangerouslySetInnerHTML={createMarkup(project.etudeDeCas.defisEtSolutions)}
                 />
               </section>
             )}
 
-            {project.deTailsDuProjet.testsEtValidation && (
+            {project.etudeDeCas.testsEtValidation && (
               <section className={styles.etudeDeCas__section}>
                 <h2 className={styles.etudeDeCas__sectionTitle}>Tests et Validation</h2>
                 <div
                   className={styles.etudeDeCas__content}
-                  dangerouslySetInnerHTML={createMarkup(project.deTailsDuProjet.testsEtValidation)}
+                  dangerouslySetInnerHTML={createMarkup(project.etudeDeCas.testsEtValidation)}
                 />
               </section>
             )}
 
-            {project.deTailsDuProjet.resultats && (
+            {project.etudeDeCas.resultats && (
               <section className={styles.etudeDeCas__section}>
                 <h2 className={styles.etudeDeCas__sectionTitle}>Résultats</h2>
                 <div
                   className={styles.etudeDeCas__content}
-                  dangerouslySetInnerHTML={createMarkup(project.deTailsDuProjet.resultats)}
+                  dangerouslySetInnerHTML={createMarkup(project.etudeDeCas.resultats)}
                 />
               </section>
             )}
 
-            {project.deTailsDuProjet.conclusionEtRetoursDExperience && (
+            {project.etudeDeCas.conclusionEtRetoursDExperience && (
               <section className={styles.etudeDeCas__section}>
                 <h2 className={styles.etudeDeCas__sectionTitle}>Conclusion et Retours d’Expérience</h2>
                 <div
                   className={styles.etudeDeCas__content}
-                  dangerouslySetInnerHTML={createMarkup(project.deTailsDuProjet.conclusionEtRetoursDExperience)}
+                  dangerouslySetInnerHTML={createMarkup(project.etudeDeCas.conclusionEtRetoursDExperience)}
                 />
               </section>
             )}
