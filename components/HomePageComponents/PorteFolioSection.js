@@ -4,6 +4,7 @@ import styles from '@/styles/components/HomePageModule/PorteFolioSection.module.
 import { useRouter } from 'next/router';
 import TechnologiesList from '../Blog/TechnologiesList';
 import Drawer from '@/components/UI/Drawer';
+import PrimaryButton from '../PrimaryButton';
 
 export const PorteFolioSection = ({ projets }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -53,6 +54,7 @@ export const PorteFolioSection = ({ projets }) => {
         >
           <div className={styles.embla__slideContent}>
             <h2 className={styles.slideContent_title}>{formatUrl(projet.etudeDeCas?.urlDuProjet)}</h2>
+            {/* Affiche seulement 4 technologies en dehors du Drawer */}
             <TechnologiesList technologies={projet.etudeDeCas?.technologiesUtilisees} />
           </div>
         </div>
@@ -69,33 +71,62 @@ export const PorteFolioSection = ({ projets }) => {
       </div>
 
       {/* Drawer pour afficher le résumé du projet avec transition */}
-      <Drawer isOpen={isDrawerOpen} onClose={closeDrawer}>
-        {selectedProject && (
-          <div 
-            className={`${styles.drawerContent} ${isTransitioning ? styles.drawerContentFadeOut : styles.drawerContentFadeIn}`} 
-          >
-            {selectedProject.featuredImage?.node?.mediaItemUrl && (
-              <img 
-                src={selectedProject.featuredImage.node.mediaItemUrl} 
-                alt={selectedProject.title} 
-                className={styles.drawerImage}
-              />
-            )}
-            <h3>{selectedProject.detailsDuProjet?.titreCourtDuProjet}</h3>
-            <p>{selectedProject.detailsDuProjet?.categorieDuProjet}</p>
-            <div 
-              dangerouslySetInnerHTML={{ __html: selectedProject.detailsDuProjet?.descriptionCourteDuProjet }} 
-            />
-            <span>{selectedProject.detailsDuProjet?.anneeDuProjet}</span>
-            <button 
-              onClick={() => router.push(`/portefolio/${selectedProject.slug}`)}
-              className={styles.moreInfoButton}
-            >
-              En savoir plus
-            </button>
-          </div>
-        )}
-      </Drawer>
+    
+
+<Drawer isOpen={isDrawerOpen} onClose={closeDrawer}>
+  {selectedProject && (
+    <div 
+      className={`${styles.drawerContent} ${isTransitioning ? styles.drawerContentFadeOut : styles.drawerContentFadeIn}`} 
+    >
+      <h3 className={styles.drawerContent__Title}>{selectedProject.detailsDuProjet?.titreCourtDuProjet}</h3>
+      {selectedProject.featuredImage?.node?.mediaItemUrl && (
+        <img 
+          src={selectedProject.featuredImage.node.mediaItemUrl} 
+          alt={selectedProject.title} 
+          className={styles.drawerImage}
+        />
+      )}
+
+      <div className={styles.projectDetails}>
+        <h4>DESCRIPTION</h4>
+        <div className={styles.drawerContent__Description}
+          dangerouslySetInnerHTML={{ __html: selectedProject.detailsDuProjet?.descriptionCourteDuProjet }} 
+        />
+      </div>
+
+      <div className={styles.projectDetails}>
+        <span className={styles.DrawerTechno_separator}></span>
+        <h4>INFOS PROJET</h4>
+        <p><strong>Catégorie :</strong> {selectedProject.detailsDuProjet?.categorieDuProjet}</p>
+        <p><strong>Année :</strong> {selectedProject.detailsDuProjet?.anneeDuProjet}</p>
+        <p><strong>Lien :</strong> 
+          {selectedProject.etudeDeCas?.urlDuProjet && (
+            <a className={styles.projectDetails__Link} href={selectedProject.etudeDeCas.urlDuProjet} target="_blank" rel="noopener noreferrer">
+              {formatUrl(selectedProject.etudeDeCas.urlDuProjet)}
+            </a>
+          )}
+        </p>
+        <div className={styles.DrawerTechno}>
+          <span className={styles.DrawerTechno_separator}></span>
+          <TechnologiesList technologies={selectedProject.etudeDeCas?.technologiesUtilisees} isInDrawer={true} />
+        </div>
+        <span className={styles.DrawerTechno_separator}></span>
+      </div>
+
+      {/* Utilisation de PrimaryButton */}
+      <div className={styles.moreInfoButton}>
+      <PrimaryButton 
+        text="Étude de cas"
+        onClick={() => router.push(`/portefolio/${selectedProject.slug}`)}
+        
+        data-scroll
+      />
+      </div>
+    </div>
+  )}
+</Drawer>
+
+
     </section>
   );
 };

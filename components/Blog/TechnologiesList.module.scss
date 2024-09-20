@@ -1,58 +1,66 @@
-.technologiesList__container {
-    margin: 0; /* Supprime les marges autour du composant */
-    padding: 0; /* Supprime le padding */
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .technologiesList__content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem; /* Espacement entre les éléments */
-    margin: 0;
-    padding: 0;
-    align-items: flex-start;
-  }
-  
-  .technologiesList__item {
-    margin: 0; /* Supprime toutes les marges */
-    padding-left: 12px; /* Padding gauche par défaut */
-    
-    // Retirer le padding gauche du premier élément
-    &:first-child {
-      padding-left: 0;
-    }
-  
-    // Retirer le padding droite du dernier élément
-    &:last-child {
-      margin-right: 0; /* Supprime l'espacement à droite */
-    }
-  }
-  
-  .technologiesList__content ul{
-    display: flex;
-    flex-direction: row;
+@import "../../styles/abstracts/colors";
+@import "../../styles/abstracts/variables";
+@import "../../styles/abstracts/mixins";
 
+.technologiesList__container {
+  margin: 0;
+  padding: 0;
+}
+
+.technologiesList__content {
+  margin: 0;
+  padding: 0;
+}
+
+.technologiesList__content ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.technologiesList__item {
+  margin: 0;
+  padding: 0.5rem; /* Par défaut pour les éléments normaux */
+}
+
+.technologiesList__techno {
+  padding: 0.5rem 0.8rem;
+  font-size: 1.2rem;
+  border-radius: 0.4rem;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  background-color: #64d8ff;
+
+  &:hover {
+    background-color: darken(#64d8ff, 10%);
   }
-  
+}
+
+/* Spécifique pour le Drawer */
+.drawerTechnologiesGrid {
+  .technologiesList__content ul {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
   .technologiesList__item {
-    display: flex;
-    flex-direction: row;
-    margin: 0; /* Supprime les marges */
-    padding: 0.5rem; /* Espacement interne de l'élément */
+    padding: 0 !important; /* Force la suppression du padding */
+    margin: 0.2rem !important; /* Force une petite marge verticale et horizontale */
   }
-  
+
   .technologiesList__techno {
-    padding: 0.5rem 0.8rem;
-    font-size: 1.2rem;
-    border-radius: 0.4rem;
-    text-transform: uppercase;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-  
+    padding: 0.5rem !important; /* Moins de padding autour des technologies dans le Drawer */
+    background-color: var(--accent-color) !important; /* Couleur spéciale pour le drawer */
+    color: #fff !important;
+    text-align: center;
+    white-space: normal; /* Permet au texte de revenir à la ligne */
+
     &:hover {
-      background-color: darken(#64d8ff, 10%);
+      background-color: darken(#333, 10%) !important;
     }
   }
-  
+}

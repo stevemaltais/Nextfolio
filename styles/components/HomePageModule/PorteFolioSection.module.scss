@@ -138,6 +138,47 @@
   opacity: 1;
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
+.drawerContent__Title{
+  text-align: right;
+  margin-bottom: 2vh;
+
+  
+  }
+
+.drawerContent__Description{
+  font-size: 2vh;
+  line-height: 2.2vh;
+  text-align: justify;
+}
+.DrawerTechno_separator {
+  border: none;
+  height: 1px;
+  background: var( --drawerSeparator);
+  margin: 1rem 0; /* Espace au-dessus et en dessous de la ligne */
+  display: block; /* S'assurer que le span se comporte comme un bloc pour occuper toute la largeur */
+}
+
+.projectDetails h4{
+  font-size: 2vh;
+  margin-bottom: 2vh;
+  
+  }
+
+.projectDetails p{
+font-size: 1.8vh;
+
+}
+.projectDetails__Link{
+  font-size: 1.5vh;
+  font-weight: bold;
+  margin-left: 1vh;
+  color: var(--TextColorButtonAfter);
+  text-transform: uppercase;
+
+  &:hover{
+    color: var(--accent-color);
+  }
+}
 
 .drawerImageContainer {
   width: 100%;
@@ -153,6 +194,7 @@
   object-fit: cover; /* Assure que l'image s'ajuste bien dans son conteneur */
   display: block; /* S'assure que l'image est un élément en bloc */
   border-radius: 10px; /* Applique le radius si nécessaire */
+  margin-bottom: 2vh;
 }
 
 .fadeIn {
@@ -165,4 +207,7 @@
   opacity: 0;
   transform: translateX(-20px); /* Un léger déplacement vers la gauche pour l'effet de sortie */
   transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.moreInfoButton{
+  text-align: center;
 }
