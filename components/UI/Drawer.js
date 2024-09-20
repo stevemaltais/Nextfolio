@@ -35,8 +35,8 @@ const Drawer = ({ isOpen, onClose, children }) => {
 
   // Fonction pour détecter le swipe (touchend)
   const handleTouchEnd = () => {
-    // Si l'utilisateur a swipé à droite suffisamment
-    if (isSwiping && touchStartX - touchEndX > 100) {
+    // Si l'utilisateur a swipé suffisamment de gauche à droite
+    if (isSwiping && touchEndX - touchStartX > 100) {
       onClose(); // Fermer le drawer si le swipe est vers la droite
     }
 
