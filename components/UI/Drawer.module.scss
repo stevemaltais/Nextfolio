@@ -1,10 +1,9 @@
 
 @import "../../styles/abstracts/mixins";
-
 .drawer {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: -125%; /* Ajusté pour s'assurer qu'il est bien hors de l'écran */
     width: 400px;
     height: 100%;
     background: var(--SetupCoverSideBar);
@@ -14,17 +13,18 @@
     overflow-y: auto;
 
     @include breakpoint-down('xm') {
-       width: 100%;
+       width: 100vw; /* Utilise la largeur du viewport pour les petits écrans */
+     
     }
   
     &.open {
-      right: 0;
+      right: 0; /* Ouvre le drawer en le ramenant complètement à droite */
     }
-  
+
     &__content {
       padding: 20px;
     }
-  
+
     &__closeButton {
       position: absolute;
       top: 10px;
@@ -36,6 +36,7 @@
       color: #fff;
     }
 }
+
 
 .drawer__Content {
     opacity: 0;
