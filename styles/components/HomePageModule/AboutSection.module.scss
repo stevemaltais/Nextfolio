@@ -1,150 +1,176 @@
+/* ----------------------------------------------------------------------------- */
+/* IMPORTS */
+/* ----------------------------------------------------------------------------- */
+
 @import "../../../styles/abstracts/colors";
 @import "../../../styles/abstracts/variables";
 
-.section{
+/* ----------------------------------------------------------------------------- */
+/* SECTION STYLING */
+/* ----------------------------------------------------------------------------- */
+
+.section {
   margin-bottom: 6rem;
- 
+
   @media (max-width: 750px) {
     display: flex;
-  flex-direction: column;
-  align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
-
 }
 
-.about  {
-    margin-top: 40rem;
-    height: 100vh;
-   
-    margin-bottom: 10rem;
-}    
+/* ----------------------------------------------------------------------------- */
+/* ABOUT SECTION */
+/* ----------------------------------------------------------------------------- */
 
-    .container{
-    display: block;
-    @media (max-width: 750px) {
-     width: 90%;
+.about {
+  margin-top: 40rem;
+  height: 100vh;
+  margin-bottom: 10rem;
+}
+
+.container {
+  display: block;
+
+  @media (max-width: 750px) {
+    width: 90%;
+  }
+}
+
+.aboutWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+
+  @media (max-width: 750px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.aboutInfo {
+  width: 65%;
+  font-family: var(--title-font-stack);
+
+  @media (max-width: 750px) {
+    width: 100%;
+  }
+}
+
+/* ----------------------------------------------------------------------------- */
+/* CONTACT INFO STYLING */
+/* ----------------------------------------------------------------------------- */
+
+.contactInfo ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  @media (max-width: 750px) {
+    text-align: left;
+  }
+}
+
+.contactInfo li {
+  margin-bottom: $spacing-md;
+  font-size: $font-std;
+  color: var(--text-color);
+  font-weight: 300;
+
+  @media (max-width: 750px) {
+    font-size: $font-sm;
+  }
+}
+
+.contactInfo {
+  background-color: #c5c1c14a;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 750px) {
+    width: 98%;
+    text-align: center;
+    font-size: $font-xs;
+    margin-top: 4rem;
+  }
+}
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
   
-    }
-    }
-    
-    .aboutWrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
+}
 
-    @media (max-width: 750px) {
-      flex-direction: column;
-      align-items: center;
-    }
-    }
-    
-    .aboutInfo {
-    width: 65%;
-    font-family: var(--title-font-stack);
-    @media (max-width: 750px) {
-      width: 100%;
-      
-    }
-    }
+/* ----------------------------------------------------------------------------- */
+/* ABOUT INFO STYLING */
+/* ----------------------------------------------------------------------------- */
 
-    
-    .contactInfo ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;  
-      @media (max-width: 750px) {
-        
-        text-align: left;
-      }   
-    }
-      
-    .contactInfo li {
-    margin-bottom: 3rem;
-    font-size: $font-md;
-    color: var(--text-color);
-    font-weight: 100;
-    @media (max-width: 750px) {
-     
-      font-size: $font-sm;
-    }
-    }
+.aboutInfo p {
+  color: var(--text-color);
+  font-weight: var(--textweight);
+  font-size: $font-std;
+  margin-right: 2rem;
+  text-align: justify;
+  line-height: 2.8rem;
 
-    .contactInfo {
-      @media (max-width: 750px) {
-        width: 98%;
-        text-align: center;
-        font-size: $font-xs;
-        margin-top: 4rem;
+  @media (max-width: 750px) {
+    margin-right: 0px;
+  }
+}
 
-       
-      }
-      
-      }
-    
-    .aboutInfo p{
-    color: var(--text-color);
-    font-weight: var(--textweight);
-    font-size: 2rem;
-    margin-right: 2rem;
-    text-align: justify;
-    line-height: 2.8rem;
-    @media (max-width: 750px) {
-      margin-right: 0px;
-    }
-    }
-    
-    .container h2{
-    font-size: $font-title-xs;
-    font-weight: 700;
-    margin-bottom: 0.7rem;
-    }
-    
-    .aboutSeparator{
-    border: 1px solid var(--accent-color) ;
-    margin-bottom: 4rem;
-    }
-    
-    .contactInfo h4{
-    margin-bottom: 4rem;
-    font-size: $font-lg;
-    }          
-    
-    .aboutInfo span{
-    color: var(--accent-color);
-    font-weight: 600;
-    }
-    
-    .aboutEmail:hover{
-    color: var(--accent-color);
-    font-weight: 300;
-    }
+/* ----------------------------------------------------------------------------- */
+/* HEADINGS AND SEPARATORS */
+/* ----------------------------------------------------------------------------- */
 
-    .aboutTel:hover{
-    color: var(--accent-color);
-    font-weight: 300;
-    }
-    
-    .aboutEmail:visited {
-        color: var(--text-color);
-    }
-    
-    .aboutTel:visited {
-      color: var(--text-color);
-    }
-  
-    .aboutEmail {
-      color: var(--text-color);
-    }
-    .aboutTel {
-      color: var(--text-color);
-    }
-      
- .techLink{
+.container h2 {
+  font-size: $font-title-xs;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+
+.aboutSeparator {
+  border: 1px solid var(--accent-color);
+  margin-bottom: 4rem;
+}
+
+.contactInfo h4 {
+  margin-bottom: 4rem;
+  font-size: $font-lg;
+}
+
+/* ----------------------------------------------------------------------------- */
+/* ABOUT TEXT SPAN AND LINKS */
+/* ----------------------------------------------------------------------------- */
+
+.aboutInfo span {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.aboutEmail:hover, .aboutTel:hover {
+  color: var(--accent-color);
+  font-weight: 300;
+}
+
+.aboutEmail:visited, .aboutTel:visited {
+  color: var(--text-color);
+}
+
+.aboutEmail, .aboutTel {
+  color: var(--text-color);
+}
+
+/* ----------------------------------------------------------------------------- */
+/* TECHNOLOGY LINK STYLING */
+/* ----------------------------------------------------------------------------- */
+
+.techLink {
   font-weight: bold;
   color: var(--accent-color);
- }
- .techLink:hover{
+}
+
+.techLink:hover {
   color: var(--accent-color);
   opacity: 0.8;
- }
+}

@@ -32,19 +32,21 @@ const AboutSection = () => {
                 </p>
               </div>
               <div data-scroll data-scroll-direction="horizontal" data-scroll-speed="-1" className={styles.contactInfo}>
-                <h4>Personal Information</h4>
-                  <ul data-scroll data-scroll-direction="vertical" data-scroll-speed="-1" >
-                    <li> <strong>Nom:</strong> Steve Maltais</li>
-                    <li><strong>Courriel:</strong> <a className={styles.aboutEmail} href="mailto:codingWith@stevemaltais.ca">codingWith@stevemaltais.ca</a></li>
-                    <li><strong>Téléphone:</strong> <a className={styles.aboutTel} href="tel:438-525-5695">438-525-5695</a></li>
-                    <li><strong>Date de naissance:</strong> 08/07/1980</li>
-                    <li><strong>Adresse:</strong> Sur la route en Amérique</li>
-                    <li><strong>Nationalité:</strong> Canadien</li>
-                    <li><strong>Profil professionnel:</strong> Développeur Web</li>
-                  </ul>
-              <PrimaryButton data-scroll data-scroll-direction="vertical" data-scroll-speed="0.5" data-scroll-delay="0.05" text="Télécharger mon CV"onClick={() => alert('CV téléchargé !')}></PrimaryButton>
+    <h4>Personal Information</h4>
+  <ul data-scroll data-scroll-direction="vertical" data-scroll-speed="-1">
+    <li><strong>Nom:&nbsp;</strong> Steve Maltais</li>
+    <li><strong>Courriel:&nbsp;</strong> <a className={styles.aboutEmail} href="mailto:codingWith@stevemaltais.ca">codingWith@stevemaltais.ca</a></li>
+    <li><strong>Téléphone:&nbsp;</strong> <a className={styles.aboutTel} href="tel:438-525-5695">438-525-5695</a></li>
+    <li><strong>Date de naissance:&nbsp;</strong> 08/07/1980</li>
+    <li><strong>Adresse:&nbsp;</strong> Sur la route en Amérique</li>
+    <li><strong>Nationalité:&nbsp;</strong> Canadien</li>
+    <li><strong>Profil professionnel:&nbsp;</strong> Développeur Web</li>
+  </ul>
+  <div className={styles.buttonWrapper}>
+    <PrimaryButton data-scroll data-scroll-direction="vertical" data-scroll-speed="0.5" data-scroll-delay="0.05" text="Télécharger mon CV" onClick={() => alert('CV téléchargé !')}></PrimaryButton>
+  </div>
+</div>
 
-            </div>
           </div>
       </div>
 

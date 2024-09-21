@@ -1,45 +1,73 @@
-// Importations de fichiers SCSS externes (si vous avez des fichiers séparés pour mixins et variables)
-@import 'abstracts/variables';
-@import 'abstracts/mixins';
-@import 'abstracts/colors';
-@import 'base/base';
-@import 'base/normalize';
-@import 'base/reset';
-@import 'Themes/theme-retro.module.scss';
-@import 'Themes/theme-dark.module.scss';
+/* ----------------------------------------------------------------------------- */
+/* IMPORTS */
+/* ----------------------------------------------------------------------------- */
 
+/* Importations des fichiers SCSS externes */
+@import 'abstracts/variables';    /* Variables globales (couleurs, espacements, etc.) */
+@import 'abstracts/mixins';       /* Mixins globales (fonctions SCSS réutilisables) */
+@import 'abstracts/colors';       /* Couleurs globales */
 
+/* Importations de styles de base */
+@import 'base/base';              /* Styles de base pour les éléments HTML */
+@import 'base/normalize';         /* Normalisation des styles par défaut du navigateur */
+@import 'base/reset';             /* Réinitialisation des styles de base du navigateur */
+
+/* Importations des thèmes */
+@import 'Themes/theme-light.module.scss'; /* Thème rétro */
+@import 'Themes/theme-dark.module.scss';  /* Thème sombre */
+
+/* ----------------------------------------------------------------------------- */
+/* ROOT SETTINGS */
+/* ----------------------------------------------------------------------------- */
+
+/* Définition de la taille de la police de base pour faciliter les conversions en rem */
 html {
-  font-size: 62.5%; // Taille de police de base pour faciliter les conversions en rem
+  font-size: 62.5%;  /* 1rem = 10px */
 }
 
-// Variables CSS personnalisées pour les couleurs principales
+/* ----------------------------------------------------------------------------- */
+/* VARIABLES CSS */
+/* ----------------------------------------------------------------------------- */
+
+/* Couleurs principales */
 :root {
   --primary-color: #{$darkGrey};
   --secondary-color: #{$primeColorProgressBar};
   --accent-color: #{$primeColor};
 }
 
-// Variables CSS personnalisées pour les couleurs neutres
+/* Couleurs neutres */
 :root {
-  --light-gray: #{$lightGray}; // (paragraphes)
-  --very-light-gray: #{$verylightgray}; // (titres, boutons)
-  --white: #{$White};
+  --light-gray: #{$lightGray};           /* Utilisé pour les paragraphes */
+  --very-light-gray: #{$verylightgray};  /* Utilisé pour les titres et boutons */
+  --white: #{$White};                    /* Couleur blanche */
 }
 
-// Variables CSS personnalisées supplémentaires
+/* Couleurs supplémentaires */
 :root {
-  /* Ajoutez d'autres variables ici */
   --btn-text-color: #64d8ff;
   --btn-border-color: #64d8ff;
+  --greenFluo-d: #00ff00;
+  --pinkFluo-d: #ff00ff;
+  --purpleFluo-d: #6464ff;
+  --yellowFluo-d: #ffff00;
+  --greenFluo-l: #008300;
+  --pinkFluo-l: #ff0000;
+  --purpleFluo-l: #0000ba;
+  --yellowFluo-l: #ff7300;
 }
-// Famille de polices
+
+/* Polices */
 :root {
   --title-font-stack: 'Roboto', sans-serif;
   --title2-font-stack: 'Oswald', sans-serif;
 }
 
-// Famille de polices par sélecteur
+/* ----------------------------------------------------------------------------- */
+/* TYPOGRAPHIE */
+/* ----------------------------------------------------------------------------- */
+
+/* Famille de polices par sélecteur */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--title2-font-stack);
 }
@@ -48,11 +76,9 @@ a, p, span, div, body {
   font-family: var(--title-font-stack);
 }
 
-
-// Rayon de bordure
-$radius-xs: 0.4rem;
-$radius-std: 1.6rem;
-$radius-lg: 1.6rem;
+/* ----------------------------------------------------------------------------- */
+/* SCROLLBAR STYLING */
+/* ----------------------------------------------------------------------------- */
 
 /* La barre de défilement en entier */
 ::-webkit-scrollbar {
@@ -73,90 +99,43 @@ $radius-lg: 1.6rem;
 ::-webkit-scrollbar-thumb:hover {
   background: #555; /* Couleur de fond de la poignée au survol */
 }
-:root {
-  --greenFluo-d: #00ff00;
-  --pinkFluo-d: #ff00ff;
-  --purpleFluo-d: #6464ff;
-  --yellowFluo-d: #ffff00;
 
-  --greenFluo-l: #008300;
-    --pinkFluo-l: #ff0000;
-    --purpleFluo-l: #0000ba;
-    --yellowFluo-l: #ff7300;
+/* ----------------------------------------------------------------------------- */
+/* LAYOUT GLOBAL */
+/* ----------------------------------------------------------------------------- */
 
-
-}
-
-:root {
-  --brand-primary: rgb(138, 180, 248);
-  --brand-secondary: rgb(193, 168, 226);
-  --brand-alternative: rgb(136, 186, 191);
-  --background-site: rgb(0, 0, 0);
-  --background-code: rgb(12, 12, 12);
-  --text-body: rgb(222, 222, 222);
-  --text-comment: rgb(170, 170, 170);
-  --text-high-contrast: rgb(230, 230, 230);
-  --text-medium-contrast: rgb(202, 202, 202);
-  --text-low-contrast: rgb(170, 170, 170);
-  --detail-high-contrast: rgb(101, 101, 101);
-  --detail-medium-contrast: rgb(25, 25, 25);
-  --detail-low-contrast: rgb(21, 21, 21);
-  --admonition-note: rgb(138, 180, 248);
-  --admonition-warning: rgb(253, 186, 116);
-  --admonition-danger: rgb(220, 38, 38);
-  --brand-primary-rgb-value: 138, 180, 248;
-  --brand-secondary-rgb-value: 193, 168, 226;
-  --brand-alternative-rgb-value: 136, 186, 191;
-  --background-site-rgb-value: 0, 0, 0;
-  --background-code-rgb-value: 12, 12, 12;
-  --text-body-rgb-value: 222, 222, 222;
-  --text-comment-rgb-value: 170, 170, 170;
-  --text-high-contrast-rgb-value: 230, 230, 230;
-  --text-medium-contrast-rgb-value: 202, 202, 202;
-  --text-low-contrast-rgb-value: 170, 170, 170;
-  --detail-high-contrast-rgb-value: 101, 101, 101;
-  --detail-medium-contrast-rgb-value: 25, 25, 25;
-  --detail-low-contrast-rgb-value: 21, 21, 21;
-  --admonition-note-rgb-value: 138, 180, 248;
-  --admonition-warning-rgb-value: 253, 186, 116;
-  --admonition-danger-rgb-value: 220, 38, 38;
-}
-
+/* Conteneur de défilement personnalisé */
 [data-scroll-container] {
   min-height: 100vh;
 }
 
-
+/* Layout pour une grille Masonry */
 .my-masonry-grid {
-  display: -webkit-box; /* Not needed if autoprefixing */
-  display: -ms-flexbox; /* Not needed if autoprefixing */
   display: flex;
-  margin-left: -30px; /* gutter size offset */
+  margin-left: -30px; /* Décalage de la gouttière */
   width: auto;
 }
+
 .my-masonry-grid_column {
-  padding-left: 30px; /* gutter size */
+  padding-left: 30px; /* Taille de la gouttière */
   background-clip: padding-box;
 }
 
-/* Style your items */
-.my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+/* Espacement des éléments dans la grille Masonry */
+.my-masonry-grid_column > div {
   margin-bottom: 30px;
 }
 
-.adventure{
-  color: red;
-}
-
-
-  @media (max-width: 750px) {
-    main { 
-  
-     
-        
-    }
-}
+/* Désactivation du scroll */
 .no-scroll {
   overflow: hidden;
   height: 100%;
 }
+
+/* ----------------------------------------------------------------------------- */
+/* VARIABLES SCSS POUR LES RAYONS DE BORDURE */
+/* ----------------------------------------------------------------------------- */
+
+$radius-xs: 0.4rem;
+$radius-std: 1.6rem;
+$radius-lg: 1.6rem;
