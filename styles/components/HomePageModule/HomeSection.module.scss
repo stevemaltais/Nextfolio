@@ -23,7 +23,7 @@
     align-items: center;
     justify-content: center; 
     height: 100vh;           
-   padding-top: 15vw;
+   padding-top: 10vw;
   }
 }
 
@@ -84,7 +84,7 @@
       width: 70%;
     }
     @include breakpoint-down('xxs') {
-      width: 78%;
+      width: 90%;
     }
   }
 }
@@ -145,7 +145,7 @@
   }
   
   @include breakpoint-down('xs') {
-    font-size: $font-title-md;
+    font-size:$font-title-xl;
     margin-top: $spacing-neg-xs;
     margin-bottom: $spacing-neg-md;
   }
@@ -246,8 +246,24 @@
 @media screen and (orientation: landscape) and (max-width: $breakpoint-sm) {
   .profileSection {
     flex-direction: row;
+    padding-top: 0;
   }
   .profileSection__content {
     flex: none;
+   font-size: $font-title-xxl;
+  }
+  .profileSection__name {
+   font-size: $font-title-xxl;
+  }
+  .profileSection__animatedContainer .text {
+    font-size: $font-md;
+
+  }
+  .profileSection__animatedText { 
+    font-size: $font-md;
+  }
+  .profileSection__animatedContainer{
+height: auto;
+
   }
 }
