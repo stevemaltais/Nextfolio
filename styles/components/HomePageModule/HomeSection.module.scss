@@ -81,7 +81,7 @@
       width: 45%;
     }
     @include breakpoint-down('xs') {
-      width: 70%;
+      width: 80%;
     }
     @include breakpoint-down('xxs') {
       width: 90%;
