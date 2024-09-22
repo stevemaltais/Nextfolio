@@ -1,54 +1,83 @@
+/* ----------------------------------------------------------------------------- */
+/* IMPORTS */
+/* ----------------------------------------------------------------------------- */
+
 @import "../../../styles/abstracts/colors";
 @import "../../../styles/abstracts/variables";
+@import "../../../styles/abstracts/mixins";
 
-.section{
+/* ----------------------------------------------------------------------------- */
+/* SECTION AND CONTACT WRAPPER */
+/* ----------------------------------------------------------------------------- */
+
+/* Section styling */
+.section {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-
-    text-align: center;
-
-    margin-bottom: 10rem;
-    
+  padding: 0rem 2rem;
+  text-align: center;
+  margin-bottom: $spacing-xl; /* Utilisation de la variable d'espacement */
 }
-.contact__wrapper{
+
+/* Contact wrapper */
+.contact__wrapper {
   width: 95%;
-
 }
 
-.title{
-    font-size: 160px;
-    color: $darkGrey;
-    text-align: center;
-    margin-top: -10px;
-    @media (max-width: 750px) {
-      font-size: 55px;
-        margin-top: -0px;
-       
-      }
-}
-.contact p{
-    color: var( --text-color);
-    margin-top: -75px;
-    font-weight: var(--textweight);
-    z-index: 999;
-    line-height: $fontHeight-med;
-    opacity: 0;
-    text-align: justify;
-    @media (max-width: 750px) {
-        width: 98%;
-        margin-bottom: 4rem;
-        margin-top: -7px;
-      }
-    
-}
+/* ----------------------------------------------------------------------------- */
+/* TITLE */
+/* ----------------------------------------------------------------------------- */
 
-.animate {
-    animation: fadeInAnimation 1s ease forwards 2s; /* Ajoute un délai de 2 secondes */
+/* Title styling with clamp() for fluid resizing */
+.title {
+  font-size: clamp(4rem, 12vw, 16rem); /* Utilisation de clamp() pour une taille fluide */
+  color: var(--text-color); /* Utilisation de la variable de couleur */
+  text-align: center;
+  margin-top: clamp(-6px, -2vw, -10px); /* Ajustement fluide pour la marge */
+  z-index: 2;
+
+  /* Responsive adjustments with mixins */
+  @include breakpoint-down('md') {
+    font-size: clamp(8rem, 10vw, 8rem); /* Ajustement pour les écrans moyens */
+    margin-top: 0;
   }
+}
+
+/* ----------------------------------------------------------------------------- */
+/* CONTACT SECTION */
+/* ----------------------------------------------------------------------------- */
+
+.contact p {
+  color: var(--text-color);
+  margin-top: clamp(-25px, -10vw, -7px); /* Ajustement fluide de la marge */
+  font-weight: var(--textweight);
+  z-index: 999;
+  line-height: $fontHeight-med;
+  opacity: 0;
+  text-align: justify;
+
+  @include breakpoint-down('md') {
+    width: 98%;
   
-  @keyframes fadeInAnimation {
-    from { opacity: 0; }
-    to { opacity: 1; }
   }
+}
+
+/* ----------------------------------------------------------------------------- */
+/* ANIMATION */
+/* ----------------------------------------------------------------------------- */
+
+/* Animation for fadeIn effect */
+.animate {
+  animation: fadeInAnimation 1s ease forwards 2s; /* Délai de 2 secondes */
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

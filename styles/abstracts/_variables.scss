@@ -20,6 +20,7 @@ $font-xxl: clamp(5rem, 5vw + 2rem, 6rem);         // Extra large
 
 // Tailles de police (Titres)
 $font-title-xs: clamp(3.2rem, 2.5vw + 1rem, 4rem);  // Petit titre
+$font-title-sm: clamp(3.5rem, 3vw + 1.5rem, 4rem);  // Petit titre
 $font-title-md: clamp(4rem, 3vw + 1.5rem, 5rem);    // Moyen titre
 $font-title-lg: clamp(5rem, 3.5vw + 2rem, 6rem);    // Grand titre
 $font-title-xl: clamp(6rem, 4vw + 2.5rem, 7rem);    // Très grand titre

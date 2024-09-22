@@ -4,6 +4,7 @@
 
 @import "../../../styles/abstracts/colors";
 @import "../../../styles/abstracts/variables";
+@import "../../../styles/abstracts/mixins";
 
 /* ----------------------------------------------------------------------------- */
 /* SECTION STYLING */
@@ -114,8 +115,9 @@
   text-align: justify;
   line-height: 2.8rem;
 
-  @media (max-width: 750px) {
-    margin-right: 0px;
+  @include breakpoint-down('xs') {
+    font-size: $font-sm;
+    margin-right: 0;
   }
 }
 
@@ -132,11 +134,17 @@
 .aboutSeparator {
   border: 1px solid var(--accent-color);
   margin-bottom: 4rem;
+  @include breakpoint-down('xs') {
+    margin-bottom: $spacing-md;
+  }
 }
 
 .contactInfo h4 {
   margin-bottom: 4rem;
   font-size: $font-lg;
+  @include breakpoint-down('xs') {
+    margin-bottom: $spacing-lg;
+  }
 }
 
 /* ----------------------------------------------------------------------------- */
