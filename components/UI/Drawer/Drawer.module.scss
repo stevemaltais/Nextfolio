@@ -8,7 +8,7 @@
   width: 0; /* Le drawer commence avec une largeur de 0 */
   background: var(--SetupCoverSideBar);
   box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
-  transition: width 0.9s ease; /* Transition sur la largeur du drawer */
+  transition: width 0.6s ease; /* Transition sur la largeur du drawer */
   z-index: 1000;
   overflow-y: auto;
 
