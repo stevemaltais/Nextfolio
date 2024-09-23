@@ -1,29 +1,21 @@
 .imageOverlay {
   position: fixed;
-  left: 500px;
-  width: 50%;
+  left: 500px; /* Position fixe stable */
+  top: 0; /* Fixe à 0 pour éviter tout mouvement vertical */
+  width: 50vw; /* Utilisation de vw pour stabiliser la largeur, peu importe la scrollbar */
   z-index: -2;
 }
 
 .underlay {
-  width: 99%;
-  height: 99%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ajuste l'image sans la déformer */
   opacity: var(--opacity);
-}
-
-.underlay2 {
-  transform-origin: center;
-  width: 99%;
-  height: 99%;
-  object-fit: contain;
-  transform: translateY(-16px);
-  opacity: 0.0;
 }
 
 /* Désactive les effets de scroll lorsque le drawer est ouvert */
 .noScrollEffect {
-  pointer-events: none; /* Désactive l'interaction avec l'élément */
-  transform: none !important; /* Supprime tout effet de transformation */
-  transition: none !important; /* Désactive les transitions */
+  pointer-events: none;
+  transform: none !important;
+  transition: none !important;
 }

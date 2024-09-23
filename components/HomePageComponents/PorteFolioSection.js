@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import TechnologiesList from '../Blog/TechnologiesList';
 import Drawer from '@/components/UI/Drawer/Drawer';
 import PrimaryButton from '../PrimaryButton';
-import ProjectDetails from '@/components/Projets/ProjectDetails';  // Importation du composant séparé
+import ProjectDetails from '@/components/Projets/ProjectDetails'; // Importation du composant séparé
 import { formatUrl } from '@/utils/formatUrl';
 
 const PorteFolioSection = ({ projets }) => {
@@ -17,52 +17,73 @@ const PorteFolioSection = ({ projets }) => {
 
   const isValidProject = (projet) => projet && projet.id;
 
-  const handleProjectSelection = useCallback((projet) => {
-    if (selectedProject && selectedProject.id !== projet.id) {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setSelectedProject(projet);
-        setIsTransitioning(false);
-      }, 500);
-    } else {
-      setSelectedProject(projet);
-      setIsDrawerOpen(true);
-    }
-  }, [selectedProject]);
+  // Ouvre le drawer avec le projet sélectionné
+  const handleProjectSelection = useCallback(
+    (projet) => {
+      if (selectedProject && selectedProject.id !== projet.id) {
+        setIsTransitioning(true);
+        setTimeout(() => {
+          setSelectedProject(projet);
+          setIsTransitioning(false);
+        }, 500);
+      } else {
+        setSelectedProject(projet); // Sélectionne le projet
+        setIsDrawerOpen(true); // Ouvre le drawer
+      }
+    },
+    [selectedProject]
+  );
 
+  // Ferme le drawer et réinitialise l'état
   const closeDrawer = useCallback(() => {
     setIsDrawerOpen(false);
+    setTimeout(() => {
+      setSelectedProject(null); // Réinitialise après la fermeture
+    }, 600); // Correspond à la durée de la transition de fermeture
   }, []);
 
   if (!projets || projets.length === 0) {
     return <p>Aucun projet disponible pour l'instant.</p>;
   }
 
-  const renderSlide = useCallback((projet) => {
-    if (!isValidProject(projet)) {
-      console.warn('Projet sans ID trouvé:', projet);
-      return null; // Ignore les projets sans ID
-    }
+  const renderSlide = useCallback(
+    (projet) => {
+      if (!isValidProject(projet)) {
+        console.warn('Projet sans ID trouvé:', projet);
+        return null; // Ignore les projets sans ID
+      }
 
-    const backgroundImageUrl = projet.etudeDeCas?.mockupimage?.node?.sourceUrl || 
-                               projet.featuredImage?.node?.mediaItemUrl || 
-                               '/default-image.svg';
+      const backgroundImageUrl =
+        projet.etudeDeCas?.mockupimage?.node?.sourceUrl ||
+        projet.featuredImage?.node?.mediaItemUrl ||
+        '/default-image.svg';
 
-    return (
-      <div key={projet.id} className={styles.embla__slide} onClick={() => handleProjectSelection(projet)}>
-        <div className={styles.embla__slideBackground} style={{ backgroundImage: `url(${backgroundImageUrl})` }}>
-          <div className={styles.embla__slideContent}>
-            <h2 className={styles.slideContent_title}>{formatUrl(projet.etudeDeCas?.urlDuProjet || projet.title)}</h2>
-            {projet.etudeDeCas?.technologiesUtilisees ? (
-              <TechnologiesList technologies={projet.etudeDeCas.technologiesUtilisees} />
-            ) : (
-              <p>Aucune technologie spécifiée</p>
-            )}
+      return (
+        <div
+          key={projet.id}
+          className={styles.embla__slide}
+          onClick={() => handleProjectSelection(projet)} // Ouvre ou met à jour le drawer
+        >
+          <div
+            className={styles.embla__slideBackground}
+            style={{ backgroundImage: `url(${backgroundImageUrl})` }}
+          >
+            <div className={styles.embla__slideContent}>
+              <h2 className={styles.slideContent_title}>
+                {formatUrl(projet.etudeDeCas?.urlDuProjet || projet.title)}
+              </h2>
+              {projet.etudeDeCas?.technologiesUtilisees ? (
+                <TechnologiesList technologies={projet.etudeDeCas.technologiesUtilisees} />
+              ) : (
+                <p>Aucune technologie spécifiée</p>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    );
-  }, [handleProjectSelection, formatUrl]);
+      );
+    },
+    [handleProjectSelection, formatUrl]
+  );
 
   return (
     <section className={styles.section} id="folio">
@@ -74,20 +95,24 @@ const PorteFolioSection = ({ projets }) => {
 
       <Drawer isOpen={isDrawerOpen} onClose={closeDrawer}>
         {selectedProject && (
-          <div className={`${styles.drawerContent} ${isTransitioning ? styles.drawerContentFadeOut : styles.drawerContentFadeIn}`}>
+          <div
+            className={`${styles.drawerContent} ${
+              isTransitioning ? styles.drawerContentFadeOut : styles.drawerContentFadeIn
+            }`}
+          >
             <h3 className={styles.drawerContent__Title}>
               {selectedProject.detailsDuProjet?.titreCourtDuProjet || selectedProject.title}
             </h3>
             {selectedProject.featuredImage?.node?.mediaItemUrl && (
-              <img 
-                src={selectedProject.featuredImage.node.mediaItemUrl} 
-                alt={selectedProject.title} 
+              <img
+                src={selectedProject.featuredImage.node.mediaItemUrl}
+                alt={selectedProject.title}
                 className={styles.drawerImage}
               />
             )}
             <ProjectDetails project={selectedProject} formatUrl={formatUrl} />
             <div className={styles.moreInfoButton}>
-              <PrimaryButton 
+              <PrimaryButton
                 text="Étude de cas"
                 onClick={() => router.push(`/portefolio/${selectedProject.slug}`)}
                 data-scroll
