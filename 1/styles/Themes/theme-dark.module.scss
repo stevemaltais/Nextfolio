@@ -1,0 +1,68 @@
+/* ----------------------------------------------------------------------------- */
+/* IMPORTS */
+/* ----------------------------------------------------------------------------- */
+
+@import 'styles/abstracts/colors';
+@import 'styles/base/base';
+@import 'styles/base/normalize';
+
+/* ----------------------------------------------------------------------------- */
+/* THEME : DARK THEME */
+/* ----------------------------------------------------------------------------- */
+
+.dark-theme {
+
+  /* Couleurs générales */
+  --background-color: #000000;
+  --text-color: #{$lightGray};
+
+  /* Sidebar */
+  --backgroundSideBar: #17181B;
+  --IconMenuSideBar: #{$White};
+  --MenuhoverSideBar: #{$darkGrey};
+  --MenuCoverSideBar: #{$darkGrey};
+  --LinkMenuSideBar: #{$White};
+  --SetupCoverSideBar: #{$darkGrey};
+
+  /* Profil */
+  --logoCercleSideBar: #{$White};
+
+  /* Boutons */
+  --hoverButtonColor: #{var(--accent-color)};
+  --TextColorButtonAfter: #{$black};
+  --BorderButton: #{$White};
+
+  /* Effets et ombrages */
+  --BoxShadowIconSocial: inset 0px 4px 4px rgba(0, 0, 0, 0.3), inset 0px -2px 4px rgba(255, 255, 255, 0.3);
+
+  /* Boutons Neon */
+  --neonButton: 0 0 .2rem var(--BorderButton),
+                0 0 .2rem #fff,
+                0 0 1rem var(--accent-color),
+                0 0 0.1rem var(--accent-color),
+                0 0 0.8rem var(--accent-color),
+                inset 0 0 0.8rem var(--accent-color);
+
+  /* États au survol et opacité */
+  --opacity: 0.1;
+
+  /* Typographie */
+  --titleScript: #{$darkGrey};
+  --animatedText: #{$verylightgray};
+  --textweight: 100;
+
+  /* Cartes et séparateurs */
+  --drawerSeparator: #7d7d7d;
+  --backgroundCard: #{$darkGrey};
+  --TitleBackgroundCard: var(--accent-color);
+  --ColorDividerCard: rgba(255, 255, 255, 0.15);
+  --ColorTitleCard: #{$black};
+  --colortextCard: rgb(161, 161, 170);
+  --colortextStrongCard: #{$White};
+
+  /* Couleurs fluos */
+  --greenFluo: #00ff00;
+  --pinkFluo: #ff00ff;
+  --purpleFluo: #6464ff;
+  --yellowFluo: #ffff00;
+}

@@ -1,0 +1,212 @@
+@import "/styles/abstracts/mixins";
+
+.objectivesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px; /* Espacement entre les cartes */
+  @include breakpoint-down('xl') {
+    gap: 0px;
+  }
+
+  @include breakpoint-down('lg') {
+   
+  }
+
+  @include breakpoint-down('sm') {
+   
+  }
+
+  @include breakpoint-down('xs') {
+   
+  }
+
+  @include breakpoint-down('xxs') {
+    
+  }
+}
+
+.objectiveCard {
+  border-radius: 8px; /* Coins arrondis */
+  background-color: var(--backgroundCard);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  width: calc(33.333% - 20px); /* Chaque carte prend environ un tiers de la ligne */
+  min-height: 640px; /* Hauteur fixe pour toutes les cartes */
+  display: flex;
+  flex-direction: column;
+  font-family: var(--title-font-stack);
+
+  @include breakpoint-down('xl') {
+   
+  }
+  @include breakpoint-down('md') {
+   
+  }
+
+  @include breakpoint-down('lg') {
+    margin: auto;
+    width: 100%;
+  
+  }
+
+  @include breakpoint-down('sm') {
+    margin: 0 20px;
+    width: 100%;
+  }
+
+
+
+
+
+  &:hover {
+    transform: translateY(-5px); /* Effet de levée au survol */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
+  }
+
+}
+
+
+
+.cardHeader {
+  padding: 16px;
+  background-color: var(--TitleBackgroundCard);
+  color: var(--ColorTitleCard);
+  font-size: 3rem;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+
+  @include breakpoint-down('xl') {
+   
+  }
+
+  @include breakpoint-down('lg') {
+   
+  }
+
+  @include breakpoint-down('sm') {
+  
+  }
+
+  @include breakpoint-down('xs') {
+    font-size: 3.5vh;
+  }
+
+  @include breakpoint-down('xxs') {
+    
+  }
+}
+
+.objectiveContent {
+  padding: 0 16px;
+  line-height: 1.6;
+  flex: 1; /* Prend tout l'espace restant entre le header et le footer */
+  display: flex;
+  flex-direction: column;
+  
+ 
+
+  .title{
+
+    text-align: center;
+    font-weight: 500;
+    font-size: 2rem;
+    color: var(--colortextCard);
+    margin: 20px ;
+    @include breakpoint-down('xl') {
+
+    }
+  
+    @include breakpoint-down('lg') {
+   
+  
+    
+    }
+  
+    @include breakpoint-down('sm') {
+   
+     
+    }
+  
+    @include breakpoint-down('xs') {
+      font-size: 2.8vh;
+     
+    }
+  
+    @include breakpoint-down('xxs') {
+  
+    }
+  }
+
+
+  p {
+    margin: 12px 0;
+    font-weight: 300;
+    color: var(--colortextCard);
+
+    @include breakpoint-down('xl') {
+
+    }
+  
+    @include breakpoint-down('lg') {
+   
+  
+    
+    }
+  
+    @include breakpoint-down('sm') {
+   
+     
+    }
+  
+    @include breakpoint-down('xs') {
+      font-size: 2.5vh;
+     
+    }
+  
+    @include breakpoint-down('xxs') {
+  
+    }
+  }
+  strong{
+    color: var(--colortextStrongCard);
+
+ 
+  }
+  
+}
+
+.customDivider {
+ 
+  border: none;
+  border-top: 2px solid var( --ColorDividerCard);
+  height: 0;
+  background: transparent;
+}
+
+.cardFooter {
+  padding: 20px;
+  text-align: center;
+  color: #007bff;
+  cursor: pointer;
+  flex: 0 0 50px; /* Hauteur fixe du footer */
+
+  &:hover {
+    color: #0b68cc;
+  }
+}
+@media screen and (orientation: landscape) and (max-width: 767px) {
+ 
+  .cardHeader{
+    font-size: 2.3rem;
+  }
+  .objectiveContent .title{
+    font-size: 1.8rem;
+  }
+  .objectiveContent p{
+    font-size: 1.6rem;
+  }
+
+}

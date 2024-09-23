@@ -1,14 +1,25 @@
+/* ----------------------------------------------------------------------------- */
+/* IMPORTS : Importation des fichiers SCSS abstraits (couleurs, variables, mixins) */
+/* ----------------------------------------------------------------------------- */
 @import "../../../styles/abstracts/colors";
 @import "../../../styles/abstracts/variables";
 @import "../../../styles/abstracts/mixins";
 
+/* ----------------------------------------------------------------------------- */
+/* STYLES GÉNÉRAUX DE LA SECTION */
+/* ----------------------------------------------------------------------------- */
+
 .section {
-  margin: 10rem 0rem;
+  margin: 10rem 0;
 
   @include breakpoint-down('lg') {
-    margin: 10rem 2rem;
+    margin: 10rem 2rem; /* Ajout des styles pour les différentes tailles d'écran */
   }
 }
+
+/* ----------------------------------------------------------------------------- */
+/* TECHNOLOGIES : Styles associés aux technologies dans le portfolio */
+/* ----------------------------------------------------------------------------- */
 
 .techno {
   padding: 0.5rem 0.5rem;
@@ -16,36 +27,39 @@
   border-radius: 0.5rem;
   margin-bottom: 1rem;
   margin-right: 0.5rem;
-  width: auto;
-  height: auto;
   text-transform: uppercase;
   color: #fff;
   cursor: pointer;
+
+  &:hover {
+    background-color: darken(#64d8ff, 10%);
+  }
 }
 
-.techno:hover {
-  background-color: darken(#64d8ff, 10%);
-}
+/* ----------------------------------------------------------------------------- */
+/* SÉPARATEUR : Ligne de séparation utilisée dans la section à propos */
+/* ----------------------------------------------------------------------------- */
 
 .aboutSeparator {
   border: 1px solid var(--accent-color);
   margin-bottom: 10rem;
 }
 
+/* ----------------------------------------------------------------------------- */
+/* STYLES DU CONTAINER ET DES TITRES */
+/* ----------------------------------------------------------------------------- */
+
 .container h2 {
   font-size: 4.4rem;
 }
 
+/* ----------------------------------------------------------------------------- */
+/* CAROUSEL : Styles pour le slider Embla et les slides */
+/* ----------------------------------------------------------------------------- */
+
 .embla__slide {
   display: block;
   cursor: pointer;
-}
-
-.slideContent_title {
-  text-transform: uppercase;
-  margin: 0;
-  padding: 0;
-  padding-bottom: 0.5rem; /* Ajuste l'espacement sous le h2 */
 }
 
 .embla__slideBackground {
@@ -60,19 +74,28 @@
   padding-left: 10px;
   transition: opacity 0.3s ease;
   opacity: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 1.8rem;
+    z-index: 12;
+  }
 }
 
-.embla__slideBackground::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 1.8rem;
-  z-index: 12;
+/* Animation au hover de la slide */
+.embla__slide:hover .embla__slideBackground::before {
+  background: rgba(0, 0, 0, 0.1);
 }
+
+/* ----------------------------------------------------------------------------- */
+/* CONTENU DES SLIDES */
+/* ----------------------------------------------------------------------------- */
 
 .embla__slideContent {
   display: flex;
@@ -81,20 +104,18 @@
   justify-content: flex-start;
   margin-left: 10px;
   margin-bottom: 10px;
-  z-index: 3;
+  z-index: 12;
   color: white;
   text-align: left;
   position: relative;
-  z-index: 12;
   flex-grow: 0; /* Empêche l'extension de la hauteur */
   flex-shrink: 1; /* Permet au contenu de se réduire si nécessaire */
-  max-height: 100%; /* S'assurer qu'il ne dépasse pas son conteneur parent */
+  max-height: 100%; /* Limite la hauteur max */
 
   h2 {
     font-size: $font-lg;
     margin: 0;
     padding: 0;
-   
   }
 
   .technologiesList__container {
@@ -121,9 +142,9 @@
   margin-bottom: 1rem;
 }
 
-.embla__slide:hover .embla__slideBackground::before {
-  background: rgba(0, 0, 0, 0.1);
-}
+/* ----------------------------------------------------------------------------- */
+/* EFFET HOVER SUR LE CONTENU DES SLIDES */
+/* ----------------------------------------------------------------------------- */
 
 .embla__slideContent h2,
 .embla__slideContent div {
@@ -134,68 +155,84 @@
 .embla__slide:hover .embla__slideContent div {
   color: #fff;
 }
+
+/* ----------------------------------------------------------------------------- */
+/* DRAWER : Contenu et animations pour le drawer (affichage des détails des projets) */
+/* ----------------------------------------------------------------------------- */
+
 .drawerContent {
   opacity: 1;
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.drawerContent__Title{
+
+.drawerContent__Title {
   text-align: right;
   margin-bottom: 2vh;
+}
 
-  
-  }
-
-.drawerContent__Description{
+.drawerContent__Description {
   font-size: 2vh;
   line-height: 2.2vh;
   text-align: justify;
 }
+
 .DrawerTechno_separator {
   border: none;
   height: 1px;
-  background: var( --drawerSeparator);
-  margin: 1rem 0; /* Espace au-dessus et en dessous de la ligne */
-  display: block; /* S'assurer que le span se comporte comme un bloc pour occuper toute la largeur */
+  background: var(--drawerSeparator);
+  margin: 1rem 0;
+  display: block;
 }
 
-.projectDetails h4{
+/* ----------------------------------------------------------------------------- */
+/* DÉTAILS DU PROJET DANS LE DRAWER */
+/* ----------------------------------------------------------------------------- */
+
+.projectDetails h4 {
   font-size: 2vh;
   margin-bottom: 2vh;
-  
-  }
-
-.projectDetails p{
-font-size: 1.8vh;
-
 }
-.projectDetails__Link{
+
+.projectDetails p {
+  font-size: 1.8vh;
+}
+
+.projectDetails__Link {
   font-size: 1.5vh;
   font-weight: bold;
   margin-left: 1vh;
   color: var(--TextColorButtonAfter);
   text-transform: uppercase;
 
-  &:hover{
+  &:hover {
     color: var(--accent-color);
   }
 }
 
+/* ----------------------------------------------------------------------------- */
+/* IMAGE DU PROJET DANS LE DRAWER */
+/* ----------------------------------------------------------------------------- */
+
 .drawerImageContainer {
   width: 100%;
   height: auto;
-  border-radius: 10px; /* Assure un bord arrondi pour le conteneur */
-  overflow: hidden; /* Cache toute partie de l'image qui dépasse du conteneur */
+  border-radius: 10px;
+  overflow: hidden;
   margin-bottom: 1rem;
 }
 
 .drawerImage {
   width: 100%;
   height: auto;
-  object-fit: cover; /* Assure que l'image s'ajuste bien dans son conteneur */
-  display: block; /* S'assure que l'image est un élément en bloc */
-  border-radius: 10px; /* Applique le radius si nécessaire */
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
   margin-bottom: 2vh;
 }
+
+/* ----------------------------------------------------------------------------- */
+/* ANIMATIONS FADE-IN/FADE-OUT */
+/* ----------------------------------------------------------------------------- */
 
 .fadeIn {
   opacity: 1;
@@ -205,9 +242,14 @@ font-size: 1.8vh;
 
 .fadeOut {
   opacity: 0;
-  transform: translateX(-20px); /* Un léger déplacement vers la gauche pour l'effet de sortie */
+  transform: translateX(-20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.moreInfoButton{
+
+/* ----------------------------------------------------------------------------- */
+/* BOUTON D'INFORMATION SUPPLÉMENTAIRE */
+/* ----------------------------------------------------------------------------- */
+
+.moreInfoButton {
   text-align: center;
 }

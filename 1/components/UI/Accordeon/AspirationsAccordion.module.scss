@@ -1,0 +1,68 @@
+.accordion {
+  background: var(--MenuCoverSideBar);
+  border-radius: 8px;
+  
+  padding: 10px 10px 0 10px;
+  color: #fff;
+
+  .accordionItem {
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    .accordionHeader {
+      background-color: var(--TitleBackgroundAccordio);
+      border-radius: 8px;
+      padding: 15px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+      border: none;
+
+      &:hover {
+        background-color: var(--TitleBackgroundCard);
+      }
+
+      span {
+        color: white;
+      }
+
+      .chevron {
+        color: rgba(255, 255, 255, 0.6);
+        transition: transform 0.3s ease; // Transition fluide pour la rotation
+        height: 20px;
+        transform: rotate(0deg); // Position initiale
+      }
+
+      &.chevron .rotate  {
+        transform: rotate(90deg); // Rotation du chevron lorsque l'élément est ouvert
+      }
+    }
+
+    .accordionContent {
+      overflow: hidden;
+      height: 0;
+      opacity: 0;
+      transition: height 0.35s ease, opacity 0.35s ease;
+      font-size: 14px;
+      color: var(--IconMenuSideBar);
+      padding: 0 20px;
+
+      &.open {
+        height: auto;
+        opacity: 1;
+      }
+      &.open .rotate {
+        transform: rotate(90deg); // Rotation du chevron lorsque l'élément est ouvert 
+      }
+
+      .accordionContentInner {
+        padding: 15px 0;
+      }
+    }
+  }
+}

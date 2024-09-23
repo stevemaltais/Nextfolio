@@ -1,0 +1,578 @@
+@import "../../../styles/abstracts/mixins";
+
+/* AboutSection.module.scss */
+
+.aboutPage {
+  // Généralement, ajoute ici les styles de la page about si nécessaire
+}
+
+.aboutMe {
+  @include breakpoint-down('sm') {
+    font-size: 1vh;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  @include breakpoint-down('md') {
+    flex-direction: column;
+  }
+  @include breakpoint-down('sm') {
+    flex-direction: row;
+  }
+
+
+  @include breakpoint-down('xs') {
+    flex-direction: column;
+    margin-top: 5px;
+    height: auto;
+  }
+}
+
+.title1 {
+ 
+  @include breakpoint-down('sm') {
+    font-size: 5vh;
+  }
+}
+
+.aboutMe__Title {
+  display: block;
+  font-family: var(--title-font-stack);
+  font-weight: 100;
+  line-height: 3.3rem;
+  margin-bottom: 3rem;
+  font-size: clamp(25px, 4vw, 3.5rem); // Ajustement fluide avec clamp
+  padding-right: 5rem;
+  @include breakpoint-down('md') {
+    padding-right: 0;
+    text-align: center;
+    font-size: clamp(20px, 3.2vw, 3.2vh); // Utilisation de clamp pour la taille
+    margin-bottom: 8px;
+  }
+
+  @include breakpoint-down('sm') {
+   
+    padding-right: 0;
+    font-size: clamp(20px, 3vw, 2.9vh); // Utilisation de clamp pour la taille
+    line-height: 1.2em;
+    margin: 0 10px;
+    margin-bottom: 6px;
+  }
+}
+
+.punch {
+  color: var(--titleScript);
+  font-size: clamp(40px, 8vw, 6rem); // Ajustement fluide de la taille
+  writing-mode: vertical-rl;
+  transform: rotate(180deg); // Correction de la rotation
+}
+
+.titleWrap {
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+
+  @include breakpoint-down('xl') {
+    flex-direction: column;
+
+  }
+ 
+}
+
+.TS {
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutMe__Title.open {
+  padding-right: 5rem;
+}
+
+.aboutMe__Explain {
+  font-family: var(--title-font-stack);
+  font-weight: var(--textweight);
+  font-size: clamp(16px, 2vw, 2rem); // Taille fluide avec clamp
+  text-align: justify;
+  line-height: 2.8rem;
+  margin-bottom: 20px;
+  padding-right: 10rem;
+  @include breakpoint-down('lg') {
+    padding-right: 0rem;
+   
+  }
+  @include breakpoint-down('sm') {
+    font-size: clamp(16px, 2vw, 3.5vh);
+    line-height: 1.2em;
+    padding-right: 0;
+    margin-bottom: -20px;
+  }
+}
+
+.rightContent .aboutMe__Explain {
+  padding-right: 20rem;
+
+  @include breakpoint-down('xxl') {
+    padding-right: 2em;
+  }
+
+
+  @include breakpoint-down('xl') {
+   
+      padding-right: 1em;
+
+  }
+  @include breakpoint-down('lg') {
+   
+    padding-right: 2em;
+
+}
+@include breakpoint-down('md') {
+  padding-right: 0em;
+  margin: 0 20px;
+
+}
+}
+
+.titleBig {
+  font-family: var(--title-font-stack);
+  font-size: clamp(40px, 10vw, 15rem); // Ajustement fluide avec clamp
+  font-weight: bold;
+  text-align: right;
+  text-transform: uppercase;
+  margin-bottom: -50px;
+  color: var(--titleScript);
+
+}
+
+.title {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+
+.aboutPage h1 {
+  color: var(--accent-color);
+  text-align: left;
+  font-size: clamp(33px, 6vw, 70px); // Utilisation de clamp pour gérer la taille
+  font-family: var(--title2-font-stack);
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  @include breakpoint-down('md') {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  @include breakpoint-down('sm') {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+}
+
+
+
+.aboutPage li {
+  color: #fff;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.aboutPage ul {
+  list-style: inside square;
+}
+
+.contactMe {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* Bouton principal */
+.primaryButton {
+  background-color: #0070f3;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}
+
+.socialIcons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: -15px;
+
+  @include breakpoint-down('md') {
+    justify-content: center;
+  }
+}
+
+.socialIcons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.socialIcons li {
+  position: relative;
+  display: block;
+  color: #666;
+  font-size: 30px;
+  height: 60px;
+  width: 60px;
+  background: var(--backgroundSideBar);
+  line-height: 60px;
+  border-radius: 10px;
+  margin: 15px 15px;
+  cursor: pointer;
+  transition: 0.5s;
+  text-align: center;
+
+  @include breakpoint-down('sm') {
+    height: 40px;
+    width: 40px;
+    justify-content: center;
+  }
+}
+
+.socialIcons li:before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  height: inherit;
+  width: inherit;
+  border-radius: 10px;
+  transform: scale(0.9);
+  z-index: -1;
+  transition: 0.5s;
+}
+
+.socialIcons i {
+  line-height: 2; // Ajustement pour les icônes
+}
+
+/* Styles spécifiques pour chaque réseau social */
+.socialIcons li:nth-child(1):before {
+  background: #4267B2;
+}
+.socialIcons li:nth-child(2):before {
+  background: #1DA1F2;
+}
+.socialIcons li:nth-child(3):before {
+  background: #E1306C;
+}
+.socialIcons li:nth-child(4):before {
+  background: #2867B2;
+}
+.socialIcons li:nth-child(5):before {
+  background: #ff0000;
+}
+
+/* Styles pour le hover */
+.socialIcons li:hover:before {
+  filter: blur(3px);
+  transform: scale(1.2);
+}
+
+.socialIcons li:nth-child(1):hover:before {
+  box-shadow: 0 0 15px #4267B2;
+}
+.socialIcons li:nth-child(2):hover:before {
+  box-shadow: 0 0 15px #1DA1F2;
+}
+
+.objectivesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.visionSection {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+
+  &.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-70px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.AspirationSection {
+  height: auto;
+  margin-top: 20vh;
+
+  @include breakpoint-down('sm') {
+    margin-top: 7vh;
+    height: auto;
+    margin: 20px;
+    margin-top: 14vh;
+  }
+}
+
+.AspirationSection h2 {
+  font-size: 10vh;
+  text-transform: uppercase;
+
+  @include breakpoint-down('lg') {
+    font-size: 4.5vh;
+    text-align: center;
+  }
+}
+
+.AspirationWrap {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  text-align: center;
+
+  @include breakpoint-down('lg') {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.AspirationWrap h2 {
+  font-size: 4.5vh;
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
+.AspirationSection .aboutMe__Explain {
+  width: 60%;
+
+  @include breakpoint-down('lg') {
+    width: auto;
+    margin: 10px;
+  }
+}
+
+.travelSection {}
+
+.travelSection__wrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-left: 120px;
+  margin-right: 40px;
+  font-size: 3rem;
+  text-align: left;
+  opacity: 0;
+  animation: slideInFromLeft 1s ease-out forwards;
+  animation-delay: 0.5s;
+  @include breakpoint-down('xl') {
+  align-items: center;
+ 
+  }
+  @include breakpoint-down('lg') {
+    padding-left: 0;
+    margin: 0 20px;
+    justify-content: center;
+    text-align: center;
+  }
+  @include breakpoint-down('md') {
+    text-align: center;
+    align-items: center;
+
+  }
+}
+
+.travelSection__adventureWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+
+  @include breakpoint-down('lg') {
+    flex-direction: column;
+  }
+}
+
+.travelSection__adventure {
+  margin: 40px 0;
+}
+
+.travelSection__adventureHeader {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+
+  @include breakpoint-down('sm') {
+    line-height: 1.6;
+    margin: 20px 20px;
+  }
+}
+
+.travelSection__explain {
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 4.5s;
+  font-size: clamp(16px, 2.5vw, 2.5vh);
+  background: var(--MenuCoverSideBar);
+  padding: 30px;
+  border-radius: 1em;
+  box-shadow: var(--BoxShadowIconSocial);
+  line-height: 1.5em;
+
+  @include breakpoint-down('md') {
+    padding: 15px;
+    
+  }
+  @include breakpoint-down('sm') {
+    margin-top: 0;
+    text-align: justify;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+}
+
+.travelSection__title {
+  font-size: clamp(40px, 10vw, 18vh); // Ajustement fluide
+  font-family: var(--title2-font-stack) !important;
+  line-height: 12vh;
+  text-transform: uppercase;
+
+  @include breakpoint-down('lg') {
+    font-size: 9vh;
+    line-height: 6vh;
+    text-align: center;
+  
+   
+  }
+
+
+}
+
+.travelSection__adventureTitle {
+  color: var(--titleScript);
+  font-size: clamp(30px, 5vw, 4rem); // Ajustement fluide
+}
+
+.travelSection__adventureProjectName {
+  font-family: var(--title2-font-stack) !important;
+  font-size: 10rem;
+}
+
+.travelSection__adventureDescription {
+  font-size: clamp(16px, 2.5vw, 2.5vh);
+  font-weight: 300;
+  line-height: 1.5em;
+  margin-top: 15px;
+
+  @include breakpoint-down('sm') {
+    font-size: 2.5vh;
+    margin-top: 0;
+  }
+}
+
+.travelSection__adventureWrapper .logoImage {
+  margin-right: 20px;
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+
+  @include breakpoint-down('sm') {
+    margin-right: 0;
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Animations */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate {
+  animation: fadeInAnimation 1s ease forwards 2s; // Ajoute un délai de 2 secondes
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media screen and (orientation: landscape) and (max-width: 767px) {
+  .aboutPage h1 {
+    font-size: clamp(20px, 5vw, 35px); /* Ajustement en mode paysage pour mobile */
+  }
+  .travelSection__title {
+    font-size: clamp(60px, 5vw, 35px) !important;
+  }
+  .rightContent .aboutMe__Explain{
+    font-size: clamp(16px, 2vw, 3.5vh);
+    margin: 0 20px;
+  }
+  .title1{
+    font-size: 9vh;
+  }
+  .aboutMe{
+    padding: 10px 0px;
+    margin: auto;
+  }
+  .AspirationSection h2{
+    font-size: 9vh
+  }
+  .objectivesContainer{
+    width: 80%;
+  }
+
+  .TS{
+    align-items: center;
+  }
+  .travelSection__adventureDescription {
+    font-size: clamp(16px, 2.5vw, 2.5vh);
+  }
+  .socialIcons {
+    margin:  0 1px;
+  }
+}

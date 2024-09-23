@@ -1,38 +1,29 @@
-
 .imageOverlay {
   position: fixed;
-  left: 584px;
-  top: 42px;
-
-  width: 55%;
+  left: 500px;
+  width: 50%;
   z-index: -2;
-  }
+}
 
+.underlay {
+  width: 99%;
+  height: 99%;
+  object-fit: contain;
+  opacity: var(--opacity);
+}
 
+.underlay2 {
+  transform-origin: center;
+  width: 99%;
+  height: 99%;
+  object-fit: contain;
+  transform: translateY(-16px);
+  opacity: 0.0;
+}
 
-  
-  .underlay {
-    width: 99%;
-    height: 99%;
-    object-fit: contain;
-   
-    opacity: var(--opacity);
-
-
-
-  }
-
-  
-  
-  .underlay2 {
-   
- 
-    transform-origin: center;
-    width: 99%;
-    height: 99%;
-    object-fit: contain;
-    
-    transform: translateY(-16px);
-        opacity: 0.0;
-  }
-
+/* Désactive les effets de scroll lorsque le drawer est ouvert */
+.noScrollEffect {
+  pointer-events: none; /* Désactive l'interaction avec l'élément */
+  transform: none !important; /* Supprime tout effet de transformation */
+  transition: none !important; /* Désactive les transitions */
+}

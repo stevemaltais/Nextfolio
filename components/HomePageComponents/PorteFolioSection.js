@@ -1,132 +1,134 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import EmblaCarousel from '@/components/Carousel/EmblaCarousel';
 import styles from '@/styles/components/HomePageModule/PorteFolioSection.module.scss';
 import { useRouter } from 'next/router';
 import TechnologiesList from '../Blog/TechnologiesList';
-import Drawer from '@/components/UI/Drawer';
+import Drawer from '@/components/UI/Drawer/Drawer';
 import PrimaryButton from '../PrimaryButton';
+import ProjectDetails from '@/components/Projets/ProjectDetails';  // Importation du composant séparé
+import { formatUrl } from '@/utils/formatUrl';
 
-export const PorteFolioSection = ({ projets }) => {
+const PorteFolioSection = ({ projets }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
-  const [isTransitioning, setIsTransitioning] = useState(false); // État de transition
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const router = useRouter();
 
-  const openDrawer = (projet) => {
+  const isValidProject = (projet) => projet && projet.id;
+
+  const handleProjectSelection = useCallback((projet) => {
     if (selectedProject && selectedProject.id !== projet.id) {
-      setIsTransitioning(true); // Déclenche la transition de sortie
+      setIsTransitioning(true);
       setTimeout(() => {
-        setSelectedProject(projet); // Met à jour le projet sélectionné
-        setIsTransitioning(false); // Réinitialise la transition
-      }, 500); // Délai correspondant à la durée de l'animation
+        setSelectedProject(projet);
+        setIsTransitioning(false);
+      }, 500);
     } else {
-      setSelectedProject(projet); // Met à jour le projet directement si le drawer est fermé
-      setIsDrawerOpen(true); // Ouvre le drawer
+      setSelectedProject(projet);
+      setIsDrawerOpen(true);
     }
-  };
+  }, [selectedProject]);
 
-  const closeDrawer = () => {
+  const closeDrawer = useCallback(() => {
     setIsDrawerOpen(false);
-  };
-
-  const formatUrl = (url) => {
-    return url ? url.replace(/^https?:\/\//, '').replace(/\/$/, '') : '';
-  };
+  }, []);
 
   if (!projets || projets.length === 0) {
     return <p>Aucun projet disponible pour l'instant.</p>;
   }
 
-  const slides = projets.map((projet) => {
+  const renderSlide = useCallback((projet) => {
+    if (!isValidProject(projet)) {
+      console.warn('Projet sans ID trouvé:', projet);
+      return null; // Ignore les projets sans ID
+    }
+
     const backgroundImageUrl = projet.etudeDeCas?.mockupimage?.node?.sourceUrl || 
                                projet.featuredImage?.node?.mediaItemUrl || 
                                '/default-image.svg';
 
     return (
-      <div 
-        key={projet.id} 
-        className={styles.embla__slide} 
-        onClick={() => openDrawer(projet)} // Ouvre ou met à jour le drawer
-      >
-        <div 
-          className={styles.embla__slideBackground} 
-          style={{ backgroundImage: `url(${backgroundImageUrl})` }}
-        >
+      <div key={projet.id} className={styles.embla__slide} onClick={() => handleProjectSelection(projet)}>
+        <div className={styles.embla__slideBackground} style={{ backgroundImage: `url(${backgroundImageUrl})` }}>
           <div className={styles.embla__slideContent}>
-            <h2 className={styles.slideContent_title}>{formatUrl(projet.etudeDeCas?.urlDuProjet)}</h2>
-            {/* Affiche seulement 4 technologies en dehors du Drawer */}
-            <TechnologiesList technologies={projet.etudeDeCas?.technologiesUtilisees} />
+            <h2 className={styles.slideContent_title}>{formatUrl(projet.etudeDeCas?.urlDuProjet || projet.title)}</h2>
+            {projet.etudeDeCas?.technologiesUtilisees ? (
+              <TechnologiesList technologies={projet.etudeDeCas.technologiesUtilisees} />
+            ) : (
+              <p>Aucune technologie spécifiée</p>
+            )}
           </div>
         </div>
       </div>
     );
-  });
+  }, [handleProjectSelection, formatUrl]);
 
   return (
     <section className={styles.section} id="folio">
       <div className={styles.container} id="about-info">
         <h2>Portefolio</h2>
         <div className={styles.aboutSeparator}></div>
-        <EmblaCarousel slides={slides} />
+        <EmblaCarousel slides={projets.filter(isValidProject).map(renderSlide)} />
       </div>
 
-      {/* Drawer pour afficher le résumé du projet avec transition */}
-    
-
-<Drawer isOpen={isDrawerOpen} onClose={closeDrawer}>
-  {selectedProject && (
-    <div 
-      className={`${styles.drawerContent} ${isTransitioning ? styles.drawerContentFadeOut : styles.drawerContentFadeIn}`} 
-    >
-      <h3 className={styles.drawerContent__Title}>{selectedProject.detailsDuProjet?.titreCourtDuProjet}</h3>
-      {selectedProject.featuredImage?.node?.mediaItemUrl && (
-        <img 
-          src={selectedProject.featuredImage.node.mediaItemUrl} 
-          alt={selectedProject.title} 
-          className={styles.drawerImage}
-        />
-      )}
-
-      <div className={styles.projectDetails}>
-        <h4>DESCRIPTION</h4>
-        <div className={styles.drawerContent__Description}
-          dangerouslySetInnerHTML={{ __html: selectedProject.detailsDuProjet?.descriptionCourteDuProjet }} 
-        />
-      </div>
-
-      <div className={styles.projectDetails}>
-        <span className={styles.DrawerTechno_separator}></span>
-        <h4>INFOS PROJET</h4>
-        <p><strong>Catégorie :</strong> {selectedProject.detailsDuProjet?.categorieDuProjet}</p>
-        <p><strong>Année :</strong> {selectedProject.detailsDuProjet?.anneeDuProjet}</p>
-        <p><strong>Lien :</strong> 
-          {selectedProject.etudeDeCas?.urlDuProjet && (
-            <a className={styles.projectDetails__Link} href={selectedProject.etudeDeCas.urlDuProjet} target="_blank" rel="noopener noreferrer">
-              {formatUrl(selectedProject.etudeDeCas.urlDuProjet)}
-            </a>
-          )}
-        </p>
-        <div className={styles.DrawerTechno}>
-          <span className={styles.DrawerTechno_separator}></span>
-          <TechnologiesList technologies={selectedProject.etudeDeCas?.technologiesUtilisees} isInDrawer={true} />
-        </div>
-        <span className={styles.DrawerTechno_separator}></span>
-      </div>
-
-      {/* Utilisation de PrimaryButton */}
-      <div className={styles.moreInfoButton}>
-      <PrimaryButton 
-        text="Étude de cas"
-        onClick={() => router.push(`/portefolio/${selectedProject.slug}`)}
-        
-        data-scroll
-      />
-      </div>
-    </div>
-  )}
-</Drawer>
-
-
+      <Drawer isOpen={isDrawerOpen} onClose={closeDrawer}>
+        {selectedProject && (
+          <div className={`${styles.drawerContent} ${isTransitioning ? styles.drawerContentFadeOut : styles.drawerContentFadeIn}`}>
+            <h3 className={styles.drawerContent__Title}>
+              {selectedProject.detailsDuProjet?.titreCourtDuProjet || selectedProject.title}
+            </h3>
+            {selectedProject.featuredImage?.node?.mediaItemUrl && (
+              <img 
+                src={selectedProject.featuredImage.node.mediaItemUrl} 
+                alt={selectedProject.title} 
+                className={styles.drawerImage}
+              />
+            )}
+            <ProjectDetails project={selectedProject} formatUrl={formatUrl} />
+            <div className={styles.moreInfoButton}>
+              <PrimaryButton 
+                text="Étude de cas"
+                onClick={() => router.push(`/portefolio/${selectedProject.slug}`)}
+                data-scroll
+              />
+            </div>
+          </div>
+        )}
+      </Drawer>
     </section>
   );
 };
+
+// Validation des props avec PropTypes
+PorteFolioSection.propTypes = {
+  projets: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+      title: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+      detailsDuProjet: PropTypes.shape({
+        titreCourtDuProjet: PropTypes.string,
+        descriptionCourteDuProjet: PropTypes.string,
+        categorieDuProjet: PropTypes.array,
+        anneeDuProjet: PropTypes.string,
+      }),
+      featuredImage: PropTypes.shape({
+        node: PropTypes.shape({
+          mediaItemUrl: PropTypes.string,
+        }),
+      }),
+      etudeDeCas: PropTypes.shape({
+        technologiesUtilisees: PropTypes.array,
+        mockupimage: PropTypes.shape({
+          node: PropTypes.shape({
+            sourceUrl: PropTypes.string,
+          }),
+        }),
+        urlDuProjet: PropTypes.string,
+      }),
+    })
+  ).isRequired,
+};
+
+export default PorteFolioSection;

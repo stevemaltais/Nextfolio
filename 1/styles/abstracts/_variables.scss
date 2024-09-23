@@ -1,0 +1,110 @@
+// -----------------------------------------------------------------------------
+// Ce fichier contient toutes les variables Sass de l'application.
+// -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+// TYPOGRAPHIE
+// -----------------------------------------------------------------------------
+// Utilisation de `clamp()` pour adapter les tailles de police de manière fluide.
+// Les valeurs sont ajustées pour une interface moderne et réactive.
+
+// Tailles de police (Textes)
+$font-xs: clamp(1.4rem, 1.2vw + 0.5rem, 1.6rem);  // Très petit
+$font-sm: clamp(1.6rem, 1.5vw + 0.4rem, 1.8rem);  // Petit
+$font-std: clamp(1.8rem, 2vw + 0.5rem, 2rem);     // Standard
+$font-md: clamp(2rem, 2vw + 0.7rem, 2.4rem);      // Moyen
+$font-lg: clamp(2.4rem, 2.5vw + 0.8rem, 2.8rem);  // Large
+$font-xg: clamp(3rem, 3vw + 1rem, 3.9rem);        // Très grand
+$font-xxl: clamp(5rem, 5vw + 2rem, 6rem);         // Extra large
+
+// Tailles de police (Titres)
+$font-title-xs: clamp(3.2rem, 2.5vw + 1rem, 4rem);  // Petit titre
+$font-title-sm: clamp(3.5rem, 3vw + 1.5rem, 4rem);  // Petit titre
+$font-title-md: clamp(4rem, 3vw + 1.5rem, 5rem);    // Moyen titre
+$font-title-lg: clamp(5rem, 3.5vw + 2rem, 6rem);    // Grand titre
+$font-title-xl: clamp(6rem, 4vw + 2.5rem, 7rem);    // Très grand titre
+$font-title-xxl: clamp(8rem, 5vw + 3rem, 10rem);    // Extra large titre
+
+// Tailles de police (Titres Push)
+$font-titlePush-xs : clamp(10rem, 7vw + 4.5rem, 12rem); // Petit titre Push
+$font-titlePush-md : clamp(13rem, 10vw + 5.5rem, 15rem); // Petit titre Push
+
+// Hauteur de ligne
+$fontHeight-std: 1.6;  // Hauteur standard
+$fontHeight-med: 1.4;  // Hauteur moyenne
+$fontHeight-sm: 1.2;   // Hauteur compacte
+
+// Espacement des lettres
+$letter-spacing-normal: 0;
+$letter-spacing-wide: 0.05em;
+$letter-spacing-wider: 0.1em;
+$letter-spacing-tight: -0.05em;
+
+
+// -----------------------------------------------------------------------------
+// BORDURES ET RAYONS
+// -----------------------------------------------------------------------------
+// Rayon de bordure avec des tailles différentes selon les besoins
+$radius-xs: clamp(0.2rem, 0.5vw, 0.4rem);  // Petit rayon
+$radius-std: clamp(0.4rem, 0.8vw, 0.8rem); // Rayon standard
+$radius-lg: clamp(0.8rem, 1vw, 1.2rem);    // Grand rayon
+$radius-xl: clamp(1.2rem, 1.5vw, 2rem);    // Très grand rayon
+
+// -----------------------------------------------------------------------------
+// MARGES ET ESPACEMENTS POSITIFS ET NÉGATIFS
+// -----------------------------------------------------------------------------
+// Gestion des marges et des espacements avec `clamp()` pour plus de fluidité
+
+// Espacements positifs
+$spacing-xxxs: clamp(0.2rem, .5vw, 0.4rem);   // Très petit espacement
+$spacing-xxs: clamp(0.4rem, 1vw, 0.8rem);   // Très petit espacement
+$spacing-xs: clamp(0.8rem, 1.2vw, 1.2rem);  // Petit espacement
+$spacing-sm: clamp(1.2rem, 1.5vw, 1.6rem);  // Moyen espacement
+$spacing-md: clamp(1.6rem, 2vw, 2rem);      // Grand espacement
+$spacing-lg: clamp(2rem, 2.5vw, 2.4rem);    // Très grand espacement
+$spacing-xl: clamp(2.4rem, 3vw, 3.2rem);    // Extra grand espacement
+$spacing-xxl: clamp(4rem, 4vw, 6rem);       // Ultra grand espacement
+$spacing-xxx: clamp(6rem, 6vw, 8rem);       // Ultra grand espacement
+
+// Espacements négatifs
+$spacing-neg-xxs: clamp(-0.4rem, -1vw, -0.8rem);   // Très petit espacement négatif
+$spacing-neg-xs: clamp(-0.8rem, -1.2vw, -1.2rem);  // Petit espacement négatif
+$spacing-neg-sm: clamp(-1.2rem, -1.5vw, -1.6rem);  // Moyen espacement négatif
+$spacing-neg-md: clamp(-1.6rem, -2vw, -2rem);      // Grand espacement négatif
+$spacing-neg-lg: clamp(-2rem, -2.5vw, -2.4rem);    // Très grand espacement négatif
+$spacing-neg-xl: clamp(-2.4rem, -3vw, -3.2rem);    // Extra grand espacement négatif
+$spacing-neg-xxl: clamp(-4rem, -4vw, -6rem);       // Ultra grand espacement négatif
+
+
+// Pour marges/paddings spécifiques (utilisation par côté)
+$margin-top-md: $spacing-md;
+$margin-bottom-md: $spacing-md;
+$padding-left-md: $spacing-md;
+$padding-right-md: $spacing-md;
+
+// -----------------------------------------------------------------------------
+// BREAKPOINTS (pour la réactivité)
+// -----------------------------------------------------------------------------
+// Breakpoints pour les différentes tailles d'écrans
+$breakpoint-xs: 480px;   // Téléphone mobile
+$breakpoint-sm: 768px;   // Tablette
+$breakpoint-md: 1024px;  // Petit écran/ordinateur portable
+$breakpoint-lg: 1280px;  // Grand écran
+
+// -----------------------------------------------------------------------------
+// COULEURS (à déplacer dans un fichier séparé de couleurs si nécessaire)
+// -----------------------------------------------------------------------------
+// Palette de couleurs pour une meilleure organisation
+$color-primary: #1877f2;         // Bleu Facebook
+$color-secondary: #42b72a;       // Vert d'accent
+$color-text-primary: #050505;    // Couleur principale du texte
+$color-text-secondary: #606770;  // Couleur secondaire du texte
+$color-background: #f0f2f5;      // Couleur d'arrière-plan
+$color-border: #ced0d4;          // Couleur de bordure
+$color-highlight: #f02849;       // Rouge d'accent pour les alertes
+
+// -----------------------------------------------------------------------------
+// URL RELATIVE OU ABSOLUE OÙ TOUS LES ACTIFS SONT SERVIS
+// -----------------------------------------------------------------------------
+$base-url: '/assets/' !default;

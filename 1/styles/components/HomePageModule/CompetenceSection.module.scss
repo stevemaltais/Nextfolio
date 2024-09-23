@@ -1,0 +1,204 @@
+/* ----------------------------------------------------------------------------- */
+/* IMPORTS */
+/* ----------------------------------------------------------------------------- */
+
+@import "../../../styles/abstracts/colors";
+@import "../../../styles/abstracts/variables";
+@import "../../../styles/abstracts/mixins";
+
+/* ----------------------------------------------------------------------------- */
+/* WRAPPER AND TITLE */
+/* ----------------------------------------------------------------------------- */
+
+/* Wrapper container adjustments for responsive design */
+.wrapper {
+  @media (max-width: 750px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Title styling with responsive font-size adjustments */
+.title {
+  font-size: clamp(14rem, 8vw, 16rem); /* Clamp pour une taille fluide */
+  color: var(--titleScript);
+  text-align: center;
+  margin-bottom: $spacing-xxx;
+
+  /* Utilisation des mixins pour la réactivité */
+
+  @include breakpoint-up('xl') {
+    font-size: clamp(17rem, 9vw, 16rem); /* Limitation pour les très grands écrans */
+  }
+  @include breakpoint-down('lg') {
+    font-size: clamp(12rem, 7vw, 14rem); /* Ajustement pour les écrans moyens */
+  }
+
+  @include breakpoint-down('md') {
+    font-size: clamp(10rem, 6vw, 14rem); /* Ajustement pour les écrans moyens */
+  }
+
+  @include breakpoint-down('sm') {
+    font-size: clamp(7rem, 5vw, 9rem); /* Ajustement pour les petits écrans */
+  }
+  @include breakpoint-down('xs') {
+    font-size: clamp(5rem, 1vw, 2rem); /* Ajustement pour les petits écrans */
+  }
+
+
+}
+
+/* ----------------------------------------------------------------------------- */
+/* COMPETENCES SECTION */
+/* ----------------------------------------------------------------------------- */
+
+/* Competences section heading styling */
+.competencesWeb h2 {
+  margin-bottom: $spacing-xxl;
+  text-align: center;
+  font-size: $font-title-xs;
+
+  @media (max-width: 750px) {
+    font-size: $font-lg;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+/* Competences section layout adjustments */
+.competencesWeb {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+
+  @media (max-width: 750px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.competencesWeb ul {
+  list-style: none;
+}
+
+.competencesWeb li {
+  
+  margin-bottom: 20px;
+}
+
+.competencesWeb li strong {
+  font-size: $font-std;
+  text-transform: uppercase;
+
+  @media (max-width: 750px) {
+    font-size: $font-sm;
+    margin-bottom: $spacing-sm;
+  }
+}
+
+/* ----------------------------------------------------------------------------- */
+/* DOMAINES AND DEVELOPPEMENT SECTION */
+/* ----------------------------------------------------------------------------- */
+
+.domaines em {
+  font-size: $font-sm;
+  font-weight: 300;
+
+  @media (max-width: 750px) {
+    font-size: $font-xs;
+    
+  }
+}
+
+.domaines,
+.developpement {
+  width: 45%;
+
+  @media (max-width: 750px) {
+    width: 90%;
+    margin-bottom: 4rem;
+  }
+}
+
+/* ----------------------------------------------------------------------------- */
+/* TITLE 2 AND ANIMATION */
+/* ----------------------------------------------------------------------------- */
+
+/* Title 2 styling with responsive adjustments */
+.title2 {
+  color: var(--animatedText);
+  position: relative;
+  font-size: $font-title-xl;
+  margin-top: -9.3rem;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+
+  @media (max-width: 750px) {
+    font-size: 35px;
+    margin-top: -2.2rem;
+  }
+}
+
+/* Animation for elements with the class .animate */
+.animate {
+  animation: fadeInAnimation 1s ease forwards 2s;
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ----------------------------------------------------------------------------- */
+/* PROGRESS BAR */
+/* ----------------------------------------------------------------------------- */
+
+/* ProgressBar component styling */
+.progressBar {
+  background-color: #4f4f51;
+  border-radius: 5px;
+  height: 30px;
+  margin-bottom: 25px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+
+  &:nth-child(1) {
+    animation-delay: 1.1s;
+  }
+  @media (max-width: 750px) {
+    margin-bottom: $spacing-md;
+    
+  }
+}
+
+/* Inner progress bar with transition for smooth width change */
+.progress {
+  background-color: #f58f7c;
+  height: 100%;
+  opacity: 1;
+  transition: width 1s ease-in-out;
+}
+
+.progress[data-width] {
+  opacity: 1;
+}
+
+/* Progress bar label styling */
+.progress span {
+  color: #2b2c30;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-left: 10px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  @media (max-width: 750px) {
+    font-size: $font-xs;
+    
+  }
+}

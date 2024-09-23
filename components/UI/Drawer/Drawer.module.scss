@@ -1,0 +1,72 @@
+@import "styles/abstracts/mixins";
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 0; /* Le drawer commence avec une largeur de 0 */
+  background: var(--SetupCoverSideBar);
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
+  transition: width 0.9s ease; /* Transition sur la largeur du drawer */
+  z-index: 1000;
+  overflow-y: auto;
+
+  @include breakpoint-down('xm') {
+    width: 0; /* Drawer commence à 0px sur mobile également */
+  }
+
+  &.open {
+    width: 400px; /* Largeur du drawer lorsqu'il est ouvert */
+    @include breakpoint-down('xm') {
+      width: 100vw; /* Pleine largeur pour mobile */
+    }
+  }
+
+  &__content {
+    padding: 20px;
+    opacity: 0; /* Le contenu commence invisible */
+    transition: opacity 0.3s ease; /* Transition de l'opacité */
+  }
+
+  /* Lorsque le drawer est ouvert, le contenu devient visible avec un délai */
+  &.open &__content {
+    opacity: 1;
+    transition: opacity 0.3s ease 0.5s; /* Délai de 0.5s pour s'assurer que le drawer est ouvert avant que le contenu n'apparaisse */
+  }
+
+  /* Lorsque le drawer commence à se fermer, le contenu disparaît rapidement */
+  &.closing &__content {
+    opacity: 0;
+     /* Fermeture plus rapide */
+  }
+
+  &__closeButton {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+  }
+}
+
+.drawerOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.drawerOverlay.open {
+  opacity: 1;
+  pointer-events: auto; /* Active les interactions lorsque l'overlay est visible */
+}

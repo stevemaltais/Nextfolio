@@ -10,6 +10,7 @@ export async function getStaticProps() {
           projets(first: 10) {
             nodes {
               title
+              id
               slug
               detailsDuProjet {
                 titreCourtDuProjet

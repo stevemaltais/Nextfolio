@@ -1,0 +1,213 @@
+@import "../../../styles/abstracts/colors";
+@import "../../../styles/abstracts/variables";
+@import "../../../styles/abstracts/mixins";
+
+.section {
+  margin: 10rem 0rem;
+
+  @include breakpoint-down('lg') {
+    margin: 10rem 2rem;
+  }
+}
+
+.techno {
+  padding: 0.5rem 0.5rem;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  margin-right: 0.5rem;
+  width: auto;
+  height: auto;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+}
+
+.techno:hover {
+  background-color: darken(#64d8ff, 10%);
+}
+
+.aboutSeparator {
+  border: 1px solid var(--accent-color);
+  margin-bottom: 10rem;
+}
+
+.container h2 {
+  font-size: 4.4rem;
+}
+
+.embla__slide {
+  display: block;
+  cursor: pointer;
+}
+
+.slideContent_title {
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 0.5rem; /* Ajuste l'espacement sous le h2 */
+}
+
+.embla__slideBackground {
+  position: relative;
+  height: var(--slide-height);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  border-radius: 1.8rem;
+  padding-left: 10px;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+.embla__slideBackground::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 1.8rem;
+  z-index: 12;
+}
+
+.embla__slideContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  z-index: 3;
+  color: white;
+  text-align: left;
+  position: relative;
+  z-index: 12;
+  flex-grow: 0; /* Empêche l'extension de la hauteur */
+  flex-shrink: 1; /* Permet au contenu de se réduire si nécessaire */
+  max-height: 100%; /* S'assurer qu'il ne dépasse pas son conteneur parent */
+
+  h2 {
+    font-size: $font-lg;
+    margin: 0;
+    padding: 0;
+   
+  }
+
+  .technologiesList__container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .technologiesList__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    align-items: flex-start;
+  }
+}
+
+.embla__slideContent p {
+  text-align: left;
+  font-size: $font-xs;
+  margin-bottom: 1rem;
+}
+
+.embla__slide:hover .embla__slideBackground::before {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.embla__slideContent h2,
+.embla__slideContent div {
+  transition: color 0.3s ease;
+}
+
+.embla__slide:hover .embla__slideContent h2,
+.embla__slide:hover .embla__slideContent div {
+  color: #fff;
+}
+.drawerContent {
+  opacity: 1;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.drawerContent__Title{
+  text-align: right;
+  margin-bottom: 2vh;
+
+  
+  }
+
+.drawerContent__Description{
+  font-size: 2vh;
+  line-height: 2.2vh;
+  text-align: justify;
+}
+.DrawerTechno_separator {
+  border: none;
+  height: 1px;
+  background: var( --drawerSeparator);
+  margin: 1rem 0; /* Espace au-dessus et en dessous de la ligne */
+  display: block; /* S'assurer que le span se comporte comme un bloc pour occuper toute la largeur */
+}
+
+.projectDetails h4{
+  font-size: 2vh;
+  margin-bottom: 2vh;
+  
+  }
+
+.projectDetails p{
+font-size: 1.8vh;
+
+}
+.projectDetails__Link{
+  font-size: 1.5vh;
+  font-weight: bold;
+  margin-left: 1vh;
+  color: var(--TextColorButtonAfter);
+  text-transform: uppercase;
+
+  &:hover{
+    color: var(--accent-color);
+  }
+}
+
+.drawerImageContainer {
+  width: 100%;
+  height: auto;
+  border-radius: 10px; /* Assure un bord arrondi pour le conteneur */
+  overflow: hidden; /* Cache toute partie de l'image qui dépasse du conteneur */
+  margin-bottom: 1rem;
+}
+
+.drawerImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Assure que l'image s'ajuste bien dans son conteneur */
+  display: block; /* S'assure que l'image est un élément en bloc */
+  border-radius: 10px; /* Applique le radius si nécessaire */
+  margin-bottom: 2vh;
+}
+
+.fadeIn {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fadeOut {
+  opacity: 0;
+  transform: translateX(-20px); /* Un léger déplacement vers la gauche pour l'effet de sortie */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.moreInfoButton{
+  text-align: center;
+}

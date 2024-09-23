@@ -1,0 +1,95 @@
+// InstagramGallery.module.scss
+@import "@/styles/abstracts/colors";
+@import "@/styles/abstracts/variables";
+@import "/styles/abstracts/mixins";
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); // 6 colonnes pour la galerie
+  gap: 15px; // Espace entre les éléments
+  max-width: 1800px; // Largeur maximale de la galerie
+  margin: auto;
+
+  @include breakpoint-down('xl') {
+    grid-template-columns: repeat(5, 1fr); // 3 colonnes pour les écrans XL
+  }
+
+  @include breakpoint-down('lg') {
+    grid-template-columns: repeat(4, 1fr); // 2 colonnes pour les écrans LG
+  }
+
+
+  @include breakpoint-down('sm') {
+    margin: 0 10px;
+    gap: 10px;
+    grid-template-columns: repeat(3, 1fr); // 2 colonnes pour les petits écrans
+  }
+
+  @include breakpoint-down('xs') {
+    grid-template-columns: repeat(3, 1fr); // 2 colonnes pour les très petits écrans
+    gap: 4px;
+  }
+}
+
+.anchor {
+  position: relative; // Pour le positionnement de l'overlay
+  display: block;
+  width: 100%; // Utiliser toute la largeur de la cellule de grille
+  height: 100%; // Assurez-vous que l'élément .anchor remplit entièrement la cellule de la grille
+  overflow: hidden; // Masquer tout dépassement
+  border-radius: 10px; // Coins arrondis
+
+  @include breakpoint-down('xs') {
+    border-radius: 10px;
+    height: 220px; // Hauteur ajustée pour les petits écrans
+  }
+}
+
+.image, .thumbnail {
+  width: 100%; // Remplir la largeur du conteneur
+  height: 100%; // Remplir la hauteur du conteneur pour que l'image couvre le bloc .anchor
+  object-fit: cover; // Couvrir tout le conteneur tout en conservant les proportions
+  transition: opacity 0.3s ease-in-out; // Transition lors du survol
+
+  @include breakpoint-down('xs') {
+    height: 220px; // Hauteur ajustée pour les petits écrans
+    object-fit: cover;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  padding: 10px; // Padding pour éviter que le texte touche les bords
+  text-align: center;
+  font-size: 14px; // Taille du texte
+}
+
+.anchor:hover .image, .anchor:hover .thumbnail {
+  opacity: 0.7; // Réduire l'opacité de l'image sur hover
+}
+
+.anchor:hover .overlay {
+  opacity: 1; // Afficher l'overlay sur hover
+}
+.loadMoreContainer{
+  text-align: center;
+
+}
+
+@media screen and (orientation: landscape) and (max-width: 767px) {
+
+  .gallery {
+    grid-template-columns: repeat(4, 1fr); 
+  }
+
+  }

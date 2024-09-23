@@ -1,29 +1,53 @@
-// Dans index.js ou là où vous voulez utiliser le Carousel
-import React from 'react';
+// Importation des composants de la page d'accueil
+import { 
+  ImageOverlay, 
+  HomeSection, 
+  AboutSection, 
+  CompetenceSection, 
+  ContactSection, 
+  PorteFolioSection 
+} from '@/components/HomePageComponents';
 
-import ImageOverlay from "@/components/HomePageComponents/ImageOverlay";
-import HomeSection from "@/components/HomePageComponents/HomeSection";
-import AboutSection from "@/components/HomePageComponents/AboutSection";
-import CompetenceSection from "@/components/HomePageComponents/CompetenceSection";
-import ContactSection from '@/components/HomePageComponents/ContactSection';
-
+// Importation des données pour la page
 import { getStaticProps as getProjetsStaticProps } from '@/graphql/queries';
-import { PorteFolioSection } from '@/components/HomePageComponents/PorteFolioSection'; 
+
+import { useState } from 'react'; // Importation de useState pour gérer l'état du drawer
 
 export default function Home({ projets }) {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false); // État pour gérer l'ouverture du drawer
+
+  // Fonction pour ouvrir le drawer
+  const handleOpenDrawer = () => {
+    setIsDrawerOpen(true);
+  };
+
+  // Fonction pour fermer le drawer
+  const handleCloseDrawer = () => {
+    setIsDrawerOpen(false);
+  };
 
   return (
-    < >
-    
-      <ImageOverlay />
+    <>
+      {/* Composant pour l'overlay d'image d'arrière-plan */}
+      <ImageOverlay isDrawerOpen={isDrawerOpen} />  {/* Passer l'état du drawer */}
+
+      {/* Section d'accueil */}
       <HomeSection />
+
+      {/* Section "À propos" */}
       <AboutSection />
+
+      {/* Section des compétences */}
       <CompetenceSection />
-      <PorteFolioSection  projets={projets} options={{ loop: true }} />
-      <ContactSection/>
-      
+
+      {/* Section du portefolio */}
+      <PorteFolioSection projets={projets} onOpenDrawer={handleOpenDrawer} onCloseDrawer={handleCloseDrawer} isDrawerOpen={isDrawerOpen} />
+
+      {/* Section de contact */}
+      <ContactSection />
     </>
   );
 }
 
+// Récupération des données pour la page d'accueil
 export const getStaticProps = getProjetsStaticProps;

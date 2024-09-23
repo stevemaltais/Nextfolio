@@ -52,4 +52,4 @@ const ContactSection = () => {
   </section>
   )
 }
-export default ContactSection
+export default ContactSection;

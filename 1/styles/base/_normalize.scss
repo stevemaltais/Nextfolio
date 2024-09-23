@@ -1,0 +1,29 @@
+// -----------------------------------------------------------------------------
+// Ce fichier contient toutes les actions pour la normalisation.
+// -----------------------------------------------------------------------------
+ 
+
+// Styles de base pour les éléments HTML et body
+
+body {
+  font-size: $font-std; // Taille de police par défaut
+  color: var(--text-color); // Couleur du texte
+  background-color: var(--background-color); // Couleur d'arrière-plan
+
+ 
+  
+
+}
+
+// Styles de base pour les liens
+a {
+  color: $titleColor; // Couleur du lien
+  text-decoration: none; // Pas de soulignement
+}
+
+// Styles pour les liens au survol
+a:hover {
+  color: $verylightgray; // Couleur du lien au survol
+  text-decoration: none; // Pas de soulignement
+}
+
