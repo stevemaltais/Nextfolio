@@ -4,6 +4,7 @@ import Image from "next/image";
 import TextScroller from '../Textecroller';
 import PrimaryButton from '../PrimaryButton';
 import Modal from '../Modal';
+import MyFormModal from '../MyFormModal';
 
 const HomeSection = () => {
   const [isModalVisible, setModalVisible] = useState(false);
@@ -35,7 +36,9 @@ const HomeSection = () => {
             <TextScroller />
           </div>
           <PrimaryButton data-scroll data-scroll-speed="1" text="Dites moi Bonjour!" onClick={toggleModal} />
-          <Modal isVisible={isModalVisible} onClose={toggleModal} />
+          <Modal isVisible={isModalVisible} onClose={toggleModal}>
+        <MyFormModal onClose={toggleModal} />
+      </Modal>
         </div>
       </div>
     </section>

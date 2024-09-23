@@ -4,6 +4,7 @@ import styles from '@/styles/components/HomePageModule/ContactSection.module.scs
 import useIntersectionObserver from '@/Hooks/useIntersectionObserver'
 import AnimatedText from '@/components/AnimatedText'
 import Modal from '@/components/Modal';
+import MyFormModal from '@/components/MyFormModal';
 
 
 
@@ -45,8 +46,10 @@ const ContactSection = () => {
                 grandes choses. N'hésitez pas à me solliciter pour toute information complémentaire. À très bientôt !</p>
 
                 <PrimaryButton data-scroll  text="Dites moi Bonjour!" onClick={toggleModal}></PrimaryButton>
-                    <Modal isVisible={isModalVisible} onClose={toggleModal}/>
-                  {/* Contenu du modal ici */}
+                <Modal isVisible={isModalVisible} onClose={toggleModal}>
+        <MyFormModal onClose={toggleModal} />
+      </Modal>
+            
                
         </div>
   </section>
