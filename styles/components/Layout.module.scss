@@ -1,56 +1,61 @@
 @import "/styles/abstracts/mixins";
 
-
 .contentWithSidebarClosed {
   margin-left: 7.8rem;
-  transition: margin-left 0.3s ease; /* Transition uniquement sur margin-left */
+  transform: translateX(0); /* Pas de translation à l'état fermé */
+  transition: margin-left 0.3s ease, transform 0.3s ease;
   overflow: hidden;
-
+  will-change: transform; /* Optimisation des animations */
 }
 
 .contentWithSidebarOpen {
-  margin-left: 25rem;
-  transition: margin-left 0.3s ease; /* Transition uniquement sur margin-left */
+  margin-left: 10rem;
+  transform: translateX(10px); /* Translation vers la droite */
+  transition: margin-left 0.3s ease, transform 0.3s ease;
   overflow: hidden;
+  will-change: transform; /* Optimisation des animations */
 }
 
 .homeMainWithSidebarClosed {
-  margin: 0 13rem;
+  margin: 0 20rem 0 15rem;
+  transform: translateX(0); /* Pas de translation */
   height: auto;
-  transition: margin-left 0.3s ease; /* Transition uniquement sur margin */
-  overflow: hidden; /* Empêche les débordements qui pourraient affecter la hauteur */
+  transition: margin-left 0.3s ease, transform 0.3s ease;
+  overflow-x: hidden; /* Empêche la barre de défilement horizontale */
+  will-change: transform;
   @include breakpoint-down('sm') {
     margin: 0;
-    
   }
 }
 
 .homeMainWithSidebarOpen {
-  padding: 0 13rem;
+  margin: 0 20rem 0 10rem;
+  transform: translateX(100px); /* Translation vers la droite */
   height: auto;
-  transition: margin-left 0.3s ease; /* Transition uniquement sur margin */
-  overflow: hidden; /* Empêche les débordements qui pourraient affecter la hauteur */
+  transition: margin-left 0.3s ease, transform 0.3s ease;
+  overflow-x: hidden; /* Empêche la barre de défilement horizontale */
+  will-change: transform;
   @include breakpoint-down('lg') {
     padding: 4rem;
-    
   }
   @include breakpoint-down('md') {
     padding: 0;
-    
   }
 }
+
 
 @media (max-width: 768px)  {
   .contentWithSidebarClosed {
     margin-left: 0rem;
     transition: margin-left 0.3s ease; /* Transition uniquement sur margin-left */
-   
+    transform: translateX(0);
   }
 
   
   .contentWithSidebarOpen {
     margin: auto;
     transition: margin-left 0.3s ease; /* Transition uniquement sur margin-left */
+    transform: translateX(0);
   }
 
   
@@ -59,6 +64,7 @@
     height: auto;
     transition: margin 0.3s ease; /* Transition uniquement sur margin */
     overflow: hidden; /* Empêche les débordements qui pourraient affecter la hauteur */
+    transform: translateX(0);
   }
 
 }
