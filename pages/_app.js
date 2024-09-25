@@ -1,6 +1,3 @@
-
-
-
 import React, { useState, useCallback } from 'react';
 import SideNav from "@/components/SideNav";
 import "@/styles/globals.scss";
@@ -16,14 +13,19 @@ export default function App({ Component, pageProps }) {
   }, []);
 
   return (
-    <NextUIProvider> {/* Enveloppez votre application dans NextUIProvider */}
+    <NextUIProvider> {/* Enveloppez votre application dans NextUIProvider */} 
       <header>
         <SideNav isOpen={isNavOpen} toggleNav={toggleNav} />
-        <div id="modal-root"></div>  
+        <div id="modal-root"></div> {/* Div utilisée pour les modals */}
       </header>
 
-      <main data-scroll-container className={`${styles.appContent} ${isNavOpen ? styles.contentWithSidebarOpen : styles.contentWithSidebarClosed}`}>
-        <div className={`${styles.homeMain} ${isNavOpen ? styles.homeMainWithSidebarOpen : styles.homeMainWithSidebarClosed}`}>
+      <main
+        data-scroll-container
+        className={`${styles.appContent} ${isNavOpen ? styles.contentWithSidebarOpen : styles.contentWithSidebarClosed}`}
+      >
+        <div
+          className={`${styles.homeMain} ${isNavOpen ? styles.homeMainWithSidebarOpen : styles.homeMainWithSidebarClosed}`}
+        >
           <Component {...pageProps} />
         </div>
       </main>

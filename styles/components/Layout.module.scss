@@ -1,78 +1,75 @@
 @import "/styles/abstracts/mixins";
 
+/* ----------------------------------------------------------------------------- */
+/* SECTION PRINCIPALE AVEC SIDEBAR */
+/* ----------------------------------------------------------------------------- */
+
+/* 
+   Contenu principal avec sidebar fermé
+   - Ajustement de la marge gauche lorsque le sidebar est fermé
+*/
 .contentWithSidebarClosed {
   margin-left: 7.8rem;
-  transform: translateX(0); /* Pas de translation à l'état fermé */
-  transition: margin-left 0.3s ease, transform 0.3s ease;
-  overflow: hidden;
-  will-change: transform; /* Optimisation des animations */
+  transition: margin-left 0.3s ease;
 }
 
+/* 
+   Contenu principal avec sidebar ouvert
+   - Ajustement de la marge gauche lorsque le sidebar est ouvert
+*/
 .contentWithSidebarOpen {
-  margin-left: 10rem;
-  transform: translateX(10px); /* Translation vers la droite */
-  transition: margin-left 0.3s ease, transform 0.3s ease;
-  overflow: hidden;
-  will-change: transform; /* Optimisation des animations */
+  margin-left: 20rem;
+  transition: margin-left 0.3s ease;
 }
 
+/* ----------------------------------------------------------------------------- */
+/* SECTION PRINCIPALE (HOME) */
+/* ----------------------------------------------------------------------------- */
+
+/* 
+   Section principale (homeMain) avec sidebar fermé
+   - Centrage du contenu principal avec des marges gauche et droite
+*/
 .homeMainWithSidebarClosed {
-  margin: 0 20rem 0 15rem;
-  transform: translateX(0); /* Pas de translation */
-  height: auto;
-  transition: margin-left 0.3s ease, transform 0.3s ease;
-  overflow-x: hidden; /* Empêche la barre de défilement horizontale */
-  will-change: transform;
-  @include breakpoint-down('sm') {
+  margin-left: 12rem;
+  margin-right: 15rem;
+  transition: margin 0.3s ease;
+}
+
+/* 
+   Section principale (homeMain) avec sidebar ouvert
+   - Ajustement des marges gauche et droite lorsque le sidebar est ouvert
+*/
+.homeMainWithSidebarOpen {
+  margin-left: 12rem;
+  margin-right: 10rem;
+  transition: margin 0.3s ease;
+}
+
+/* ----------------------------------------------------------------------------- */
+/* MEDIA QUERIES ET ADAPTATION MOBILE */
+/* ----------------------------------------------------------------------------- */
+
+/* 
+   Adaptation pour les écrans plus petits (tablettes et mobiles)
+   - Réduit les marges et ajuste le layout pour s'adapter aux petits écrans
+*/
+@media (max-width: 768px) {
+  .contentWithSidebarClosed,
+  .contentWithSidebarOpen {
+    margin-left: 0;
+    transition: margin-left 0.3s ease;
+  }
+
+  .homeMainWithSidebarClosed,
+  .homeMainWithSidebarOpen {
     margin: 0;
+    transition: margin 0.3s ease;
   }
 }
 
-.homeMainWithSidebarOpen {
-  margin: 0 20rem 0 10rem;
-  transform: translateX(100px); /* Translation vers la droite */
-  height: auto;
-  transition: margin-left 0.3s ease, transform 0.3s ease;
-  overflow-x: hidden; /* Empêche la barre de défilement horizontale */
-  will-change: transform;
-  @include breakpoint-down('lg') {
-    padding: 4rem;
-  }
-  @include breakpoint-down('md') {
+@media screen and (orientation: landscape) and (max-width: 767px) {
+  .homeMainWithSidebarOpen {
     padding: 0;
   }
-}
-
-
-@media (max-width: 768px)  {
-  .contentWithSidebarClosed {
-    margin-left: 0rem;
-    transition: margin-left 0.3s ease; /* Transition uniquement sur margin-left */
-    transform: translateX(0);
-  }
-
-  
-  .contentWithSidebarOpen {
-    margin: auto;
-    transition: margin-left 0.3s ease; /* Transition uniquement sur margin-left */
-    transform: translateX(0);
-  }
-
-  
-  .homeMainWithSidebarClosed, .homeMainWithSidebarOpen {
-    margin: 0;
-    height: auto;
-    transition: margin 0.3s ease; /* Transition uniquement sur margin */
-    overflow: hidden; /* Empêche les débordements qui pourraient affecter la hauteur */
-    transform: translateX(0);
-  }
-
-}
-@media screen and (orientation: landscape) and (max-width: 767px) {
-  .homeMainWithSidebarOpen{
-    padding: 0PX;
-  }
-
-
-
 }

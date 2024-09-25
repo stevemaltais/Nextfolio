@@ -1,53 +1,26 @@
 @import "styles/abstracts/mixins";
-
 .drawer {
-  position: fixed;
+  position: fixed; /* Fixé sur la page */
   top: 0;
-  right: 0;
-  height: 100%;
-  width: 350px; /* Largeur fixe du drawer */
-  background: var(--SetupCoverSideBar);
-  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-  transform: translateX(100%); /* Drawer est hors de l'écran par défaut */
-  transition: transform 0.6s ease; /* Transition sur la translation (déplacement) */
-
-  @include breakpoint-down('xm') {
-    width: 100vw; /* Pleine largeur pour mobile */
-  }
-
-  /* Drawer ouvert */
-  &.open {
-    transform: translateX(0); /* Drawer ramené à sa position initiale */
-  }
-
-  &__content {
-    padding: 20px;
-    opacity: 0; /* Le contenu commence invisible */
-    transition: opacity 0.3s ease; /* Transition de l'opacité */
-  }
-
-  /* Lorsque le drawer est ouvert, le contenu devient visible */
-  &.open &__content {
-    opacity: 1;
-    transition: opacity 0.3s ease 0.4s; /* Délai pour l'opacité après l'ouverture du drawer */
-  }
-
-  /* Lorsque le drawer commence à se fermer, le contenu disparaît */
-  &.closing &__content {
-    opacity: 0;
-    transition: opacity 0.2s ease; /* Le contenu disparaît rapidement lors de la fermeture */
-  }
-
-  &__closeButton {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 28px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #fff;
-  }
+  right: -350px; /* Caché hors de l'écran à droite */
+  height: 100vh; /* Prend toute la hauteur visible de l'écran */
+  width: 350px; /* Largeur du drawer */
+  background-color: #333; /* Couleur du fond du drawer */
+  z-index: 1000; /* S'assure que le drawer reste au-dessus des autres éléments */
+  transition: right 0.3s ease; /* Transition fluide pour l'ouverture/fermeture */
 }
 
+.drawer.open {
+  right: 0; /* Quand le drawer est ouvert, il se place à droite */
+}
+
+.drawer__content {
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.drawer.open .drawer__content {
+  opacity: 1;
+  transition: opacity 0.3s ease 0.4s; /* Légère temporisation pour l'affichage du contenu */
+}
