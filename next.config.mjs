@@ -14,6 +14,23 @@ const nextConfig = {
   },
   compress: true,
   productionBrowserSourceMaps: false,
+  
+  // Ajout des redirections
+  async redirects() {
+    return [
+      {
+        source: '/(.*)',  // Redirige toutes les pages
+        has: [
+          {
+            type: 'host',
+            value: 'stevemaltais.dev',  // Rediriger seulement le domaine sans "www"
+          },
+        ],
+        destination: 'https://www.stevemaltais.dev/:path*',  // Destination avec "www"
+        permanent: true,  // Redirection 301
+      },
+    ];
+  },
 };
 
 export default nextConfig;
