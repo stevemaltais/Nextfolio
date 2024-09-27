@@ -12,6 +12,7 @@ import SocialMediaIcons from '@/components/SocialMedia/SocialMediaIcon/SocialMed
 import AnimatedText from '@/components/AnimatedText';
 import useIntersectionObserver from '@/Hooks/useIntersectionObserver';
 import Image from 'next/image';
+import { NextSeo } from 'next-seo';
 
 const About = () => {
     const [isIntersecting, setIsIntersecting] = useState(false);
@@ -49,18 +50,30 @@ const About = () => {
 
     return (
         <>
-            <Head>
-                <title>À propos de moi - Développeur Web & Nomade Numérique</title>
-                <meta name="description" content="Découvrez mon parcours en tant que développeur web et nomade numérique, ainsi que mes aspirations à travers mes projets, mes compétences et mes voyages." />
-                <meta name="keywords" content="développeur web, nomade numérique, voyages, IA, développement mobile, mentorat" />
-                <meta name="author" content="Ton Nom" />
-                <meta property="og:title" content="À propos de moi - Développeur Web & Nomade Numérique" />
-                <meta property="og:description" content="Explorez mon parcours, mes compétences et mes aspirations en tant que développeur web et nomade numérique." />
-                <meta property="og:image" content="/images/about-preview.jpg" />
-                <meta property="og:url" content="https://ton-site.com/about" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            </Head>
+          <NextSeo
+                    title="À propos de moi - Développeur Web & Nomade Numérique"  // Titre pour la page
+                    description="Découvrez mon parcours en tant que développeur web et nomade numérique, ainsi que mes aspirations à travers mes projets, mes compétences et mes voyages."  // Description SEO
+                    canonical="https://www.stevemaltais.dev/about"  // URL canonique
+                    openGraph={{
+                        url: 'https://www.stevemaltais.dev/about',  // URL Open Graph
+                        title: 'À propos de moi - Développeur Web & Nomade Numérique',
+                        description: 'Explorez mon parcours, mes compétences et mes aspirations en tant que développeur web et nomade numérique.',
+                        images: [
+                            {
+                                url: '/images/about-preview.jpg',  // Image Open Graph
+                                width: 1200,
+                                height: 630,
+                                alt: 'Aperçu de la page À propos',
+                            },
+                        ],
+                        site_name: 'Steve Maltais Portfolio',
+                    }}
+                    twitter={{
+                        handle: '@stevemaltais',  // Ton handle Twitter
+                        site: '@stevemaltais',     // Handle Twitter du site
+                        cardType: 'summary_large_image',  // Carte Twitter pour grand aperçu d'image
+                    }}
+                />
             <main className={styles.aboutPage}>
                 <section className={`${styles.wrapper}`}>
                     <MasonryGallery />

@@ -1,21 +1,60 @@
 import React from 'react';
+import { NextSeo } from 'next-seo';
 import { fetchTechSlugs, fetchTechDetails, fetchProjectsByTech } from '@/graphql/queries';
 
 const TechPage = ({ techInfo, projects }) => {
+  if (!techInfo || !techInfo.title) {
+    return <div>Aucune information disponible pour cette technologie.</div>;
+  }
+
   return (
-    <div>
-      <h1>{techInfo.title}</h1>
-      <p>{techInfo.content}</p>
-      
-      <h2>Projets Relatifs</h2>
+    <>
+      {/* SEO Dynamique pour chaque page de technologie */}
+      <NextSeo
+        title={`Technologie: ${techInfo.title} - Steve Maltais`}  // Titre SEO dynamique
+        description={`Découvrez les détails de la technologie ${techInfo.title} et les projets associés.`}  // Description SEO
+        canonical={`https://www.stevemaltais.dev/technologies/${techInfo.slug}`}  // URL canonique dynamique
+        openGraph={{
+          url: `https://www.stevemaltais.dev/technologies/${techInfo.slug}`,  // URL OpenGraph dynamique
+          title: `Technologie: ${techInfo.title} - Steve Maltais`,
+          description: `Découvrez la technologie ${techInfo.title} et les projets associés.`,
+          images: [
+            {
+              url: techInfo.image || '/images/default-tech-image.jpg',  // Image OpenGraph dynamique ou par défaut
+              width: 1200,
+              height: 630,
+              alt: `Image de la technologie ${techInfo.title}`,
+            },
+          ],
+          site_name: 'Steve Maltais Portfolio',
+        }}
+        twitter={{
+          handle: '@stevemaltais',
+          site: '@stevemaltais',
+          cardType: 'summary_large_image',
+        }}
+      />
+
+      {/* Contenu de la page technologie */}
       <div>
-        {projects.map(project => (
-          <div key={project.id}>
-            <h3>{project.title}</h3>
-          </div>
-        ))}
+        <h1>{techInfo.title}</h1>
+        <p>{techInfo.content}</p>
+        
+        <h2>Projets Relatifs</h2>
+        <div>
+          {projects.length > 0 ? (
+            projects.map(project => (
+              <div key={project.id}>
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+              </div>
+            ))
+          ) : (
+            <p>Aucun projet disponible pour cette technologie.</p>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
@@ -25,7 +64,7 @@ export async function getStaticPaths() {
   
   return {
     paths,
-    fallback: 'blocking'
+    fallback: 'blocking',
   };
 }
 
@@ -33,11 +72,16 @@ export async function getStaticProps({ params }) {
   const techInfo = await fetchTechDetails(params.tech);
   const projects = await fetchProjectsByTech(params.tech);
 
-  // Vérifiez ici que techInfo et projects ne sont pas undefined
+  if (!techInfo) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
-      techInfo: techInfo || {}, // Utilisez un objet vide si techInfo est undefined
-      projects: projects || [], // Utilisez un tableau vide si projects est undefined
+      techInfo,
+      projects: projects || [], // Renvoie un tableau vide si aucun projet n'est associé
     },
   };
 }

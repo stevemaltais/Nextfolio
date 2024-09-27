@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import EmblaCarousel from '@/components/Carousel/EmblaCarousel';
 import styles from '@/styles/components/HomePageModule/PorteFolioSection.module.scss';
@@ -13,7 +14,6 @@ const PorteFolioSection = ({ projets }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const isValidProject = (projet) => projet && projet.id;
@@ -113,11 +113,11 @@ const PorteFolioSection = ({ projets }) => {
             )}
             <ProjectDetails project={selectedProject} formatUrl={formatUrl} />
             <div className={styles.moreInfoButton}>
-              <PrimaryButton
-                text="Étude de cas"
-                onClick={() => router.push(`/portefolio/${selectedProject.slug}`)}
-                data-scroll
-              />
+            <Link href={`/portefolio/${selectedProject.slug}`} scroll={true}>
+  <div>
+    <PrimaryButton text="Étude de cas" />
+  </div>
+</Link>
             </div>
           </div>
         )}

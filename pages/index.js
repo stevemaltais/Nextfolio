@@ -8,7 +8,8 @@ import {
 } from '@/components/HomePageComponents';
 import { getStaticProps as getProjetsStaticProps } from '@/graphql/queries';
 import { useState } from 'react';
-import { NextSeo } from 'next-seo';  // Importation de NextSeo
+import { NextSeo, BreadcrumbJsonLd } from 'next-seo';
+import PersonSchema from '@/components/SEO/PersonSchema';  // Import de PersonSchema
 
 export default function Home({ projets }) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -23,17 +24,18 @@ export default function Home({ projets }) {
 
   return (
     <>
+      {/* Configuration SEO avec OpenGraph, Twitter, etc. */}
       <NextSeo
-        title="Accueil - Mon Portfolio"  // Titre pour la page
-        description="Bienvenue sur mon portfolio. Découvrez mes compétences, mes projets et contactez-moi pour plus d'informations."  // Description SEO
-        canonical="https://ton-site.com/"  // URL canonique de la page
+        title="Accueil - Mon Portfolio"
+        description="Bienvenue sur mon portfolio. Découvrez mes compétences, mes projets et contactez-moi pour plus d'informations."
+        canonical="https://www.stevemaltais.dev/"
         openGraph={{
-          url: 'https://ton-site.com/',  // URL Open Graph
+          url: 'https://www.stevemaltais.dev/',
           title: 'Accueil - Mon Portfolio',
           description: 'Découvrez mes compétences et projets en tant que développeur web.',
           images: [
             {
-              url: '/images/portfolio-preview.jpg',  // Image de prévisualisation pour Open Graph
+              url: '/images/portfolio-preview.jpg',
               width: 1200,
               height: 630,
               alt: 'Aperçu de mon portfolio',
@@ -42,10 +44,38 @@ export default function Home({ projets }) {
           site_name: 'Mon Portfolio',
         }}
         twitter={{
-          handle: '@tonhandle',  // Twitter handle de l'utilisateur
-          site: '@tonhandle',  // Twitter handle du site
-          cardType: 'summary_large_image',  // Type de carte Twitter
+          handle: '@stevemaltais',
+          site: '@stevemaltais',
+          cardType: 'summary_large_image',
         }}
+      />
+
+      {/* Schéma JSON-LD pour la Personne (toi) */}
+      <PersonSchema
+        name="Steve Maltais"
+        jobTitle="Développeur Web"
+        url="https://www.stevemaltais.dev/"
+        image="https://www.stevemaltais.dev/images/stevemaltais.jpg"
+        sameAs={[
+          'https://www.linkedin.com/in/stevemaltais/',
+          'https://www.twitter.com/stevemaltais',
+        ]}
+      />
+
+      {/* Schéma JSON-LD pour Breadcrumb */}
+      <BreadcrumbJsonLd
+        itemListElements={[
+          {
+            position: 1,
+            name: 'Accueil',
+            item: 'https://www.stevemaltais.dev/',
+          },
+          {
+            position: 2,
+            name: 'Portfolio',
+            item: 'https://www.stevemaltais.dev/portfolio',
+          },
+        ]}
       />
 
       {/* Composant pour l'overlay d'image d'arrière-plan */}
@@ -60,7 +90,7 @@ export default function Home({ projets }) {
       {/* Section des compétences */}
       <CompetenceSection />
 
-      {/* Section du portefolio */}
+      {/* Section du portfolio */}
       <PorteFolioSection 
         projets={projets} 
         onOpenDrawer={handleOpenDrawer} 

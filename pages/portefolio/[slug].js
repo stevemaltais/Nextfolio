@@ -1,4 +1,6 @@
-import React from 'react';
+
+
+import React, { useEffect } from 'react';  // Correction de l'import
 import { useRouter } from 'next/router';
 import { fetchProjectSlugs, getProjectBySlug } from '@/graphql/queries';
 import styles from './etudedecas.module.scss'; 
@@ -53,6 +55,10 @@ const formatUrl = (url) => {
 
 const ProjectPage = ({ project }) => {
   const router = useRouter();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (router.isFallback || !project) {
     return <div>Loading...</div>;
