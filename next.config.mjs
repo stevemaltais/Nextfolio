@@ -19,26 +19,15 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/(.*)',  // Redirige toutes les pages
+        source: '/:path*',  // Redirige toutes les pages
         has: [
           {
             type: 'host',
-            value: 'stevemaltais.dev',  // Rediriger seulement le domaine sans "www"
+            value: 'stevemaltais.dev',  // Redirige si le domaine est sans "www"
           },
         ],
         destination: 'https://www.stevemaltais.dev/:path*',  // Destination avec "www"
         permanent: true,  // Redirection 301
-      },
-      {
-        source: '/www/(.*)', // Empêche la redirection des URLs déjà avec "www"
-        has: [
-          {
-            type: 'host',
-            value: 'www.stevemaltais.dev',
-          },
-        ],
-        destination: '/:path*', // Ne pas rediriger
-        permanent: false, // Pas de redirection
       },
     ];
   },
