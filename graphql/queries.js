@@ -6,35 +6,44 @@ export async function getStaticProps() {
   try {
     const { data } = await client.query({
       query: gql`
-        query projets {
-          projets(first: 10) {
-            nodes {
-              title
-              id
-              slug
-              detailsDuProjet {
-                titreCourtDuProjet
-                descriptionCourteDuProjet
-                categorieDuProjet
-                anneeDuProjet
+      query projets {
+        projets(first: 10) {
+          nodes {
+            title
+            id
+            slug
+            detailsDuProjet {
+              titreCourtDuProjet
+              descriptionCourteDuProjet
+              categorieDuProjet
+              anneeDuProjet
+            }
+            featuredImage {
+              node {
+                mediaItemUrl
               }
-              featuredImage {
+            }
+            etudeDeCas {
+          
+              mockupimage {
                 node {
-                  mediaItemUrl
+                  sourceUrl
                 }
               }
-              etudeDeCas {
-                technologiesUtilisees
-                mockupimage {
-                  node {
-                    sourceUrl
+              urlDuProjet
+              technologiesutilisees {
+                nodes {
+                  ... on Technologie {
+                    id
+                    title
+                    slug
                   }
                 }
-                urlDuProjet
               }
             }
           }
         }
+      }
       `,
     });
 
@@ -73,7 +82,15 @@ export const getProjectBySlug = async (slug) => {
             }
             etudeDeCas {
               descriptionDuProjet
-              technologiesUtilisees
+              technologiesutilisees {
+                nodes {
+                  ... on Technologie {
+                    id
+                    title
+                    slug
+                  }
+                }
+              }
               urlDuProjet
               problemeAResoudre
               solutionProposee
@@ -196,15 +213,24 @@ export const fetchProjectsByTech = async (techSlug) => {
   try {
     const { data } = await client.query({
       query: gql`
-        query GetAllProjects {
+        query GetProjectsByTech {
           projets {
             nodes {
               title
               id
-              content
               slug
+              detailsDuProjet {
+                descriptionCourteDuProjet
+              }
               etudeDeCas {
-                technologiesUtilisees
+                technologiesutilisees {
+                  nodes {
+                    ... on Technologie {
+                      slug
+                      title
+                    }
+                  }
+                }
               }
               featuredImage {
                 node {
@@ -221,8 +247,11 @@ export const fetchProjectsByTech = async (techSlug) => {
       return [];
     }
 
+    // Filtrer les projets pour ceux qui contiennent la technologie avec le slug spécifié
     const filteredProjects = data.projets.nodes.filter((project) =>
-      project.etudeDeCas?.technologiesUtilisees?.includes(techSlug)
+      project.etudeDeCas?.technologiesutilisees?.nodes?.some(
+        (tech) => tech.slug.toLowerCase() === techSlug.toLowerCase()
+      )
     );
 
     return filteredProjects;

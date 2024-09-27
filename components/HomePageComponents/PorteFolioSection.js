@@ -3,22 +3,19 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import EmblaCarousel from '@/components/Carousel/EmblaCarousel';
 import styles from '@/styles/components/HomePageModule/PorteFolioSection.module.scss';
-import { useRouter } from 'next/router';
 import TechnologiesList from '../Blog/TechnologiesList';
 import Drawer from '@/components/UI/Drawer/Drawer';
 import PrimaryButton from '../PrimaryButton';
-import ProjectDetails from '@/components/Projets/ProjectDetails'; // Importation du composant séparé
+import ProjectDetails from '@/components/Projets/ProjectDetails'; 
 import { formatUrl } from '@/utils/formatUrl';
 
 const PorteFolioSection = ({ projets }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const router = useRouter();
 
   const isValidProject = (projet) => projet && projet.id;
 
-  // Ouvre le drawer avec le projet sélectionné
   const handleProjectSelection = useCallback(
     (projet) => {
       if (selectedProject && selectedProject.id !== projet.id) {
@@ -28,19 +25,18 @@ const PorteFolioSection = ({ projets }) => {
           setIsTransitioning(false);
         }, 500);
       } else {
-        setSelectedProject(projet); // Sélectionne le projet
-        setIsDrawerOpen(true); // Ouvre le drawer
+        setSelectedProject(projet);
+        setIsDrawerOpen(true);
       }
     },
     [selectedProject]
   );
 
-  // Ferme le drawer et réinitialise l'état
   const closeDrawer = useCallback(() => {
     setIsDrawerOpen(false);
     setTimeout(() => {
-      setSelectedProject(null); // Réinitialise après la fermeture
-    }, 600); // Correspond à la durée de la transition de fermeture
+      setSelectedProject(null);
+    }, 600);
   }, []);
 
   if (!projets || projets.length === 0) {
@@ -51,7 +47,7 @@ const PorteFolioSection = ({ projets }) => {
     (projet) => {
       if (!isValidProject(projet)) {
         console.warn('Projet sans ID trouvé:', projet);
-        return null; // Ignore les projets sans ID
+        return null;
       }
 
       const backgroundImageUrl =
@@ -63,7 +59,7 @@ const PorteFolioSection = ({ projets }) => {
         <div
           key={projet.id}
           className={styles.embla__slide}
-          onClick={() => handleProjectSelection(projet)} // Ouvre ou met à jour le drawer
+          onClick={() => handleProjectSelection(projet)}
         >
           <div
             className={styles.embla__slideBackground}
@@ -73,8 +69,8 @@ const PorteFolioSection = ({ projets }) => {
               <h2 className={styles.slideContent_title}>
                 {formatUrl(projet.etudeDeCas?.urlDuProjet || projet.title)}
               </h2>
-              {projet.etudeDeCas?.technologiesUtilisees ? (
-                <TechnologiesList technologies={projet.etudeDeCas.technologiesUtilisees} />
+              {projet.etudeDeCas?.technologiesutilisees?.nodes.length ? (
+                <TechnologiesList technologies={projet.etudeDeCas.technologiesutilisees.nodes} />
               ) : (
                 <p>Aucune technologie spécifiée</p>
               )}
@@ -111,13 +107,13 @@ const PorteFolioSection = ({ projets }) => {
                 className={styles.drawerImage}
               />
             )}
-            <ProjectDetails project={selectedProject} formatUrl={formatUrl} />
+            <ProjectDetails project={selectedProject} />
             <div className={styles.moreInfoButton}>
-            <Link href={`/portefolio/${selectedProject.slug}`} scroll={true}>
-  <div>
-    <PrimaryButton text="Étude de cas" />
-  </div>
-</Link>
+              <Link href={`/portefolio/${selectedProject.slug}`} scroll={true}>
+                <div>
+                  <PrimaryButton text="Étude de cas" />
+                </div>
+              </Link>
             </div>
           </div>
         )}
@@ -145,7 +141,15 @@ PorteFolioSection.propTypes = {
         }),
       }),
       etudeDeCas: PropTypes.shape({
-        technologiesUtilisees: PropTypes.array,
+        technologiesutilisees: PropTypes.shape({
+          nodes: PropTypes.arrayOf(
+            PropTypes.shape({
+              id: PropTypes.string.isRequired,
+              title: PropTypes.string.isRequired,
+              slug: PropTypes.string.isRequired,
+            })
+          ),
+        }),
         mockupimage: PropTypes.shape({
           node: PropTypes.shape({
             sourceUrl: PropTypes.string,

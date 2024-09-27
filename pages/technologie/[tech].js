@@ -7,6 +7,8 @@ const TechPage = ({ techInfo, projects }) => {
     return <div>Aucune information disponible pour cette technologie.</div>;
   }
 
+
+  console.log('Projets associés:', projects);
   return (
     <>
       {/* SEO Dynamique pour chaque page de technologie */}
@@ -20,7 +22,7 @@ const TechPage = ({ techInfo, projects }) => {
           description: `Découvrez la technologie ${techInfo.title} et les projets associés.`,
           images: [
             {
-              url: techInfo.image || '/images/default-tech-image.jpg',  // Image OpenGraph dynamique ou par défaut
+              url: techInfo.featuredImage?.node?.mediaItemUrl || '/images/default-tech-image.jpg',  // Image OpenGraph dynamique ou par défaut
               width: 1200,
               height: 630,
               alt: `Image de la technologie ${techInfo.title}`,
@@ -46,7 +48,7 @@ const TechPage = ({ techInfo, projects }) => {
             projects.map(project => (
               <div key={project.id}>
                 <h3>{project.title}</h3>
-                <p>{project.description}</p>
+                <p>{project.detailsDuProjet?.descriptionCourteDuProjet}</p>
               </div>
             ))
           ) : (
@@ -61,7 +63,7 @@ const TechPage = ({ techInfo, projects }) => {
 export async function getStaticPaths() {
   const slugs = await fetchTechSlugs();
   const paths = slugs.map(slug => ({ params: { tech: slug } }));
-  
+
   return {
     paths,
     fallback: 'blocking',
