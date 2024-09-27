@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TechnologiesList from '../Blog/TechnologiesList';
 import styles from '@/styles/components/HomePageModule/PorteFolioSection.module.scss';
+import { formatUrl } from '@/utils/formatUrl';
 
-const ProjectDetails = ({ project, formatUrl }) => (
+
+
+const ProjectDetails = ({ project }) => (
   <div>
     <div className={styles.projectDetails}>
       <h4>DESCRIPTION</h4>
@@ -26,7 +29,7 @@ const ProjectDetails = ({ project, formatUrl }) => (
       </p>
       <div className={styles.DrawerTechno}>
         <span className={styles.DrawerTechno_separator}></span>
-        <TechnologiesList technologies={project.etudeDeCas?.technologiesUtilisees} isInDrawer={true} />
+        <TechnologiesList technologies={project.etudeDeCas.technologiesutilisees.nodes} isInDrawer={true} />
       </div>
       <span className={styles.DrawerTechno_separator}></span>
     </div>
