@@ -12,6 +12,10 @@
   background: var(--MenuCoverSideBar);
   z-index: 1000; /* S'assure que le drawer reste au-dessus des autres éléments */
   transition: right 0.6s ease; /* Transition fluide pour l'ouverture/fermeture */
+  @include breakpoint-down('md') {
+    right: -450px; /* Caché hors de l'écran à droite */
+    width: 100%;
+  }
 }
 
 .drawer.open {

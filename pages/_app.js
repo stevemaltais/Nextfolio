@@ -8,7 +8,7 @@ import { NextUIProvider } from '@nextui-org/react';
 import { DefaultSeo } from 'next-seo';
 import SEO from '../next-seo.config';
 import Script from 'next/script';  // Pour inclure le script Google Analytics
-import * as gtag from '../lib/gtag';  // Importe les fonctions gtag.js
+import * as gtag from '@/components/SEO/gtag';  // Importe les fonctions gtag.js
 
 export default function App({ Component, pageProps }) {
   const [isNavOpen, setIsNavOpen] = useState(false);
