@@ -13,6 +13,7 @@ const PorteFolioSection = ({ projets }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const isValidProject = (projet) => projet && projet.id;

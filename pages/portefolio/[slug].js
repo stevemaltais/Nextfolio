@@ -1,9 +1,10 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { fetchProjectSlugs, getProjectBySlug } from '@/graphql/queries';
-import styles from './etudedecas.module.scss'; // Import du module SCSS
+import styles from './etudedecas.module.scss'; 
 import technoColors from '@/utils/technoColors';
 import TechnologiesList from '@/components/Blog/TechnologiesList';
+import { NextSeo } from 'next-seo'; 
 
 export async function getStaticPaths() {
   const slugs = await fetchProjectSlugs();
@@ -65,6 +66,32 @@ const ProjectPage = ({ project }) => {
   };
 
   return (
+    <>
+      <NextSeo
+        title={`${project.title} - Étude de cas`}  // Titre dynamique
+        description={project.etudeDeCas?.descriptionDuProjet || 'Découvrez ce projet unique.'}  // Description du projet
+        canonical={`https://ton-site.com/portefolio/${project.slug}`}  // URL canonique
+        openGraph={{
+          url: `https://ton-site.com/portefolio/${project.slug}`,  // URL Open Graph dynamique
+          title: `${project.title} - Étude de cas`,
+          description: project.etudeDeCas?.descriptionDuProjet || 'Découvrez ce projet unique.',
+          images: [
+            {
+              url: project.featuredImage?.node?.mediaItemUrl || '/images/default-image.jpg',  // Image dynamique ou par défaut
+              width: 1200,
+              height: 630,
+              alt: `Image de présentation pour ${project.title}`,
+            },
+          ],
+          site_name: 'Mon Portfolio',
+        }}
+        twitter={{
+          handle: '@tonhandle',  // Twitter handle
+          site: '@tonhandle',
+          cardType: 'summary_large_image',
+        }}
+      />
+   
     <div className={styles.etudeDeCas}>
       <div className={styles.etudeDeCas__wrapper}>
         <div className={styles.etudeDeCas__header}>
@@ -236,6 +263,7 @@ const ProjectPage = ({ project }) => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

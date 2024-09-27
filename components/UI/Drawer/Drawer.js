@@ -41,7 +41,7 @@ const Drawer = ({ isOpen, onClose, children }) => {
       <div className={`${styles.drawer} ${isOpen ? styles.open : ''} ${isClosing ? 'closing' : ''}`}>
         <div className={styles.drawer__content}>
           <button className={styles.drawer__closeButton} onClick={handleClose}>
-            ×
+            x
           </button>
           {children}
         </div>

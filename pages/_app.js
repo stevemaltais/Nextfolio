@@ -3,7 +3,9 @@ import SideNav from "@/components/SideNav";
 import "@/styles/globals.scss";
 import styles from "@/styles/components/Layout.module.scss";
 import Footer from '@/components/Footer';
-import { NextUIProvider } from '@nextui-org/react'; // Importation du NextUIProvider
+import { NextUIProvider } from '@nextui-org/react';
+import { DefaultSeo } from 'next-seo';
+import SEO from '../next-seo.config';
 
 export default function App({ Component, pageProps }) {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -13,10 +15,10 @@ export default function App({ Component, pageProps }) {
   }, []);
 
   return (
-    <NextUIProvider> {/* Enveloppez votre application dans NextUIProvider */} 
+    <NextUIProvider>
+      <DefaultSeo {...SEO} />
       <header>
         <SideNav isOpen={isNavOpen} toggleNav={toggleNav} />
-        <div id="modal-root"></div> {/* Div utilisée pour les modals */}
       </header>
 
       <main
