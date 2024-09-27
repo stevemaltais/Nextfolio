@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import SideNav from "@/components/SideNav";
 import "@/styles/globals.scss";
 import styles from "@/styles/components/Layout.module.scss";
@@ -6,9 +7,8 @@ import Footer from '@/components/Footer';
 import { NextUIProvider } from '@nextui-org/react';
 import { DefaultSeo } from 'next-seo';
 import SEO from '../next-seo.config';
-import { useRouter } from 'next/router';
-import Script from 'next/script'; // Pour ajouter Google Analytics
-import * as gtag from '@/components/SEO/gtag';  // Importe les fonctions gtag.js
+import Script from 'next/script';  // Pour inclure le script Google Analytics
+import * as gtag from '../lib/gtag';  // Importe les fonctions gtag.js
 
 export default function App({ Component, pageProps }) {
   const [isNavOpen, setIsNavOpen] = useState(false);
