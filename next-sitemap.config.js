@@ -4,11 +4,14 @@ const generateRobotsTxt = true;
 const sitemapSize = 7000;
 const changefreq = 'daily';
 const priority = 0.7;
-const exclude = [];
+
+// Ajouter ici les chemins que tu veux exclure
+const exclude = ['/cdn-cgi/*', '/_next/static/*', '/api/*'];
+
 const robotsTxtOptions = {
     policies: [
         { userAgent: '*', allow: '/' },
-        { userAgent: '*', disallow: '/api/' },
+        { userAgent: '*', disallow: '/api/' },  // Empêcher les robots d'accéder à /api/
     ],
 };
 
@@ -18,6 +21,6 @@ module.exports = {
     sitemapSize,
     changefreq,
     priority,
-    exclude,
+    exclude, // Exclusions ajoutées ici
     robotsTxtOptions,
 };

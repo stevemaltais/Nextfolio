@@ -19,28 +19,12 @@ const TechPage = ({ techInfo, projects }) => {
     <>
       {/* SEO Dynamique pour chaque page de technologie */}
       <NextSeo
-        title={`Technologie: ${techInfo.title} - Steve Maltais`}  // Titre SEO dynamique
-        description={`Découvrez les détails de la technologie ${techInfo.title} et les projets associés.`}  // Description SEO
-        canonical={`https://www.stevemaltais.dev/technologie/${techInfo.slug || 'undefined'}`}   // URL canonique dynamique
-        openGraph={{
-          url: `https://www.stevemaltais.dev/technologie/${techInfo.slug}`,  // URL OpenGraph dynamique
-          title: `Technologie: ${techInfo.title} - Steve Maltais`,
-          description: `Découvrez la technologie ${techInfo.title} et les projets associés.`,
-          images: [
-            {
-              url: techInfo.featuredImage?.node?.mediaItemUrl || defaultImage,  // Image OpenGraph dynamique ou par défaut
-              width: 1200,
-              height: 630,
-              alt: `Image de la technologie ${techInfo.title}`,
-            },
-          ],
-          site_name: 'Steve Maltais Portfolio',
-        }}
-        twitter={{
-          handle: '@stevemaltais',
-          site: '@stevemaltais',
-          cardType: 'summary_large_image',
-        }}
+          title={`Technologie: ${techInfo.title} - Steve Maltais`}
+          description={`Découvrez les détails de la technologie ${techInfo.title} et les projets associés.`}
+          canonical={`https://stevemaltais.dev/technologie/${techInfo.slug}`}
+          noindex={false} // Assure que la page soit indexable
+          openGraph={{ /*...*/ }}
+          twitter={{ /*...*/ }}
       />
 
       {/* Contenu de la page technologie */}
@@ -55,16 +39,13 @@ const TechPage = ({ techInfo, projects }) => {
         
         <h2>Projets Relatifs</h2>
         <div>
-          {projects.length > 0 ? (
-            projects.map(project => (
-              <div key={project.id}>
-                <h3>{project.title}</h3>
-                <p>{project.detailsDuProjet?.descriptionCourteDuProjet || "Pas de description disponible."}</p>
-              </div>
-            ))
-          ) : (
-            <p>Aucun projet disponible pour cette technologie.</p>
-          )}
+        {projects.map(project => (
+          <div key={project.id}>
+            <h3>{project.title}</h3>
+            <p>{project.detailsDuProjet?.descriptionCourteDuProjet || "Ce projet ne dispose pas encore d'une description détaillée."}</p>
+          </div>
+          ))}
+
         </div>
       </div>
     </>
