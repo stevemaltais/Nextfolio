@@ -14,18 +14,25 @@ const TechnologiesList = ({ technologies, isInDrawer = false }) => {
     <div className={`${styles.technologiesList__container} ${isInDrawer ? styles.drawerTechnologiesGrid : ''}`}>
       <div className={styles.technologiesList__content}>
         <ul>
-          {displayedTechnologies.map((tech) => (
-            <li key={tech.id} className={styles.technologiesList__item}>
-              <a
-                href={`/technologie/${encodeURIComponent(tech.slug)}`}  // Utilisation du slug récupéré depuis ACF
-                onClick={(e) => e.stopPropagation()}  // Empêche la propagation du clic si dans un Drawer
-                className={styles.technologiesList__techno}
-                style={{ backgroundColor: isInDrawer ? 'var(--accent-color)' : technoColors[tech.title] || '#64d8ff' }}  // Couleur personnalisée
-              >
-                {tech.title}  {/* Affiche le nom de la technologie */} 
-              </a>
-            </li>
-          ))}
+          {displayedTechnologies.map((tech) => {
+            if (!tech?.title || !tech?.slug) {
+              console.warn('Technologie sans titre ou slug trouvé:', tech);
+              return null;  // Ignore les technologies sans slug ou title
+            }
+
+            return (
+              <li key={tech.id} className={styles.technologiesList__item}>
+                <a
+                  href={`/technologie/${encodeURIComponent(tech.slug)}`}  // Utilisation du slug récupéré depuis ACF
+                  onClick={(e) => e.stopPropagation()}  // Empêche la propagation du clic si dans un Drawer
+                  className={styles.technologiesList__techno}
+                  style={{ backgroundColor: isInDrawer ? 'var(--accent-color)' : technoColors[tech.title] || '#64d8ff' }}  // Couleur personnalisée
+                >
+                  {tech.title}  {/* Affiche le nom de la technologie */} 
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>

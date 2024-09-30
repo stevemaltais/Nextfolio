@@ -69,7 +69,7 @@ const PorteFolioSection = ({ projets }) => {
               <h2 className={styles.slideContent_title}>
                 {formatUrl(projet.etudeDeCas?.urlDuProjet || projet.title)}
               </h2>
-              {projet.etudeDeCas?.technologiesutilisees?.nodes.length ? (
+              {projet.etudeDeCas?.technologiesutilisees?.nodes?.length ? (
                 <TechnologiesList technologies={projet.etudeDeCas.technologiesutilisees.nodes} />
               ) : (
                 <p>Aucune technologie spécifiée</p>

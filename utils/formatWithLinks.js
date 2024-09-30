@@ -3,7 +3,7 @@ import Link from 'next/link';
 import styles from "@/styles/components/HomePageModule/AboutSection.module.scss";
 
 const formatWithLinks = (text) => {
-  // Remplacer explicitement "C++" par un placeholder unique pour éviter les problèmes avec \b
+  // Utiliser un placeholder pour "C++"
   const cppPlaceholder = "CPLUSPLUS";
   let processedText = text.replace(/C\+\+/g, cppPlaceholder);
 
@@ -14,27 +14,32 @@ const formatWithLinks = (text) => {
     "JavaScript": "/technologie/javascript",
     "SQL": "/technologie/sql",
     "Java": "/technologie/java",
-    // Utilisez le placeholder pour "C++"
-    [cppPlaceholder]: "/technologie/cplusplus",
+    [cppPlaceholder]: "/technologie/cpp",
     "UML": "/technologie/uml",
     "RUP": "/technologie/rup",
     "UX": "/technologie/ux",
     "UI": "/technologie/ui",
   };
 
-  const regexPattern = Object.keys(techTerms).map(term => term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
-  const regex = new RegExp(`\\b(${regexPattern})\\b`, 'g');
+  const regexPattern = Object.keys(techTerms)
+    .map(term => term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+    .join('|');
 
-  // Séparez le texte en parties basées sur la regex, en traitant le placeholder comme tout autre terme
+  const regex = new RegExp(`\\b(${regexPattern})\\b`, 'g');
   const parts = processedText.split(regex);
 
-  // Mappez chaque partie au composant Link ou texte brut, en remplaçant le placeholder par "C++" dans le rendu
   return parts.map((part, index) => {
     if (techTerms[part]) {
       const href = techTerms[part];
-      const displayText = part === cppPlaceholder ? "C++" : part; // Remplacez le placeholder par "C++"
-      return (
-        <Link key={index} href={href}className={styles.techLink}>{displayText}</Link>
+      const displayText = part === cppPlaceholder ? "C++" : part;
+
+      // Vérification supplémentaire pour éviter les liens incorrects
+      return href ? (
+        <Link key={index} href={href} className={styles.techLink}>
+          {displayText}
+        </Link>
+      ) : (
+        <span key={index}>{displayText}</span>
       );
     }
     return part;

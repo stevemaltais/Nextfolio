@@ -1,0 +1,13 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: https://api.stevemaltais.dev/
+
+# Host
+Host: https://stevemaltais.dev
+
+# Sitemaps
+Sitemap: https://stevemaltais.dev/sitemap.xml

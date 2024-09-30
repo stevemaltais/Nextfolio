@@ -6,63 +6,61 @@ export async function getStaticProps() {
   try {
     const { data } = await client.query({
       query: gql`
-      query projets {
-        projets(first: 10) {
-          nodes {
-            title
-            id
-            slug
-            detailsDuProjet {
-              titreCourtDuProjet
-              descriptionCourteDuProjet
-              categorieDuProjet
-              anneeDuProjet
-            }
-            featuredImage {
-              node {
-                mediaItemUrl
+        query projets {
+          projets(first: 10) {
+            nodes {
+              title
+              id
+              slug
+              detailsDuProjet {
+                titreCourtDuProjet
+                descriptionCourteDuProjet
+                categorieDuProjet
+                anneeDuProjet
               }
-            }
-            etudeDeCas {
-          
-              mockupimage {
+              featuredImage {
                 node {
-                  sourceUrl
+                  mediaItemUrl
                 }
               }
-              urlDuProjet
-              technologiesutilisees {
-                nodes {
-                  ... on Technologie {
-                    id
-                    title
-                    slug
+              etudeDeCas {
+                mockupimage {
+                  node {
+                    sourceUrl
+                  }
+                }
+                urlDuProjet
+                technologiesutilisees {
+                  nodes {
+                    ... on Technologie {
+                      id
+                      title
+                      slug
+                    }
                   }
                 }
               }
             }
           }
         }
-      }
       `,
     });
 
-    // Vérifier les projets récupérés
-    console.log('Projets récupérés:', data.projets.nodes);
+    console.log('Données projets récupérées:', data.projets.nodes); // Ajouter un log ici
 
     return {
       props: {
         projets: data.projets.nodes, // Retourner les projets dans les props
       },
-      revalidate: 60,  // Revalider toutes les 60 secondes
     };
   } catch (error) {
     console.error('Erreur lors de la récupération des projets:', error);
     return {
-      notFound: true,  // Si erreur, renvoyer la page 404
+      notFound: true,
     };
   }
 }
+
 
 export const getProjectBySlug = async (slug) => {
   try {
@@ -137,6 +135,7 @@ export const fetchProjectSlugs = async () => {
         query GetAllProjectSlugs {
           projets {
             nodes {
+              id
               slug
             }
           }
@@ -161,8 +160,9 @@ export const fetchTechSlugs = async () => {
     const { data } = await client.query({
       query: gql`
         query GetAllTechSlugs {
-          technologies {
+          technologies(first: 100) {
             nodes {
+              id
               slug
             }
           }
@@ -174,12 +174,16 @@ export const fetchTechSlugs = async () => {
       return [];
     }
 
+    // Log the slugs to check if the missing ones are here
+    console.log('Slugs récupérés :', data.technologies.nodes.map((node) => node.slug));
+
     return data.technologies.nodes.map((node) => node.slug);
   } catch (error) {
     console.error('Erreur lors de la récupération des slugs de technologies:', error);
     return [];
   }
 };
+
 
 // Requête pour récupérer les détails d'une technologie spécifique
 export const fetchTechDetails = async (techSlug) => {
@@ -190,6 +194,7 @@ export const fetchTechDetails = async (techSlug) => {
           technologieBy(slug: $slug) {
             title
             id
+            slug
             content
           }
         }
@@ -198,15 +203,18 @@ export const fetchTechDetails = async (techSlug) => {
     });
 
     if (!data || !data.technologieBy) {
+      console.error('Technologie non trouvée pour ce slug:', techSlug);
       return null;
     }
 
+    console.log('Technologie récupérée:', data.technologieBy); // Log des données
     return data.technologieBy;
   } catch (error) {
     console.error('Erreur lors de la récupération des détails de la technologie:', error);
     return null;
   }
 };
+
 
 // Requête pour récupérer des projets par technologie
 export const fetchProjectsByTech = async (techSlug) => {
@@ -226,6 +234,7 @@ export const fetchProjectsByTech = async (techSlug) => {
                 technologiesutilisees {
                   nodes {
                     ... on Technologie {
+                      id
                       slug
                       title
                     }
@@ -240,7 +249,7 @@ export const fetchProjectsByTech = async (techSlug) => {
             }
           }
         }
-      `,
+      `, variables: { slug: techSlug },
     });
 
     if (!data || !data.projets) {
