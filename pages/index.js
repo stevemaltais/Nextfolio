@@ -28,9 +28,9 @@ export default function Home({ projets }) {
       <NextSeo
         title="Accueil - Mon Portfolio"
         description="Bienvenue sur mon portfolio. Découvrez mes compétences, mes projets et contactez-moi pour plus d'informations."
-        canonical="https://www.stevemaltais.dev/"
+        canonical="https://stevemaltais.dev/"
         openGraph={{
-          url: 'https://www.stevemaltais.dev/',
+          url: 'https://stevemaltais.dev/',
           title: 'Accueil - Mon Portfolio',
           description: 'Découvrez mes compétences et projets en tant que développeur web.',
           images: [

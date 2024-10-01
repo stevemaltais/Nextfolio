@@ -8,9 +8,9 @@ const Curriculum = () => {
       <NextSeo
         title="Curriculum - Steve Maltais"  // Titre pour la page
         description="Découvrez mon parcours professionnel et mes compétences en tant que développeur web."  // Description SEO
-        canonical="https://www.stevemaltais.dev/curriculum"  // URL canonique
+        canonical="https://stevemaltais.dev/curriculum"  // URL canonique
         openGraph={{
-          url: 'https://www.stevemaltais.dev/curriculum',  // URL Open Graph
+          url: 'https://stevemaltais.dev/curriculum',  // URL Open Graph
           title: 'Curriculum - Steve Maltais',
           description: 'Parcours professionnel et compétences de Steve Maltais, développeur web.',
           images: [

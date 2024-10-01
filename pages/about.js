@@ -53,9 +53,9 @@ const About = () => {
           <NextSeo
                     title="À propos de moi - Développeur Web & Nomade Numérique"  // Titre pour la page
                     description="Découvrez mon parcours en tant que développeur web et nomade numérique, ainsi que mes aspirations à travers mes projets, mes compétences et mes voyages."  // Description SEO
-                    canonical="https://www.stevemaltais.dev/about"  // URL canonique
+                    canonical="https://stevemaltais.dev/about"  // URL canonique
                     openGraph={{
-                        url: 'https://www.stevemaltais.dev/about',  // URL Open Graph
+                        url: 'https://stevemaltais.dev/about',  // URL Open Graph
                         title: 'À propos de moi - Développeur Web & Nomade Numérique',
                         description: 'Explorez mon parcours, mes compétences et mes aspirations en tant que développeur web et nomade numérique.',
                         images: [

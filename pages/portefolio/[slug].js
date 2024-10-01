@@ -83,9 +83,9 @@ const ProjectPage = ({ project }) => {
       <NextSeo
         title={`${project.title} - Étude de cas`}  // Titre dynamique
         description={project.etudeDeCas?.descriptionDuProjet || 'Découvrez ce projet unique.'}  // Description du projet
-        canonical={`https://ton-site.com/portefolio/${project.slug}`}  // URL canonique
+        canonical={`https://stevemaltais.dev/portefolio/${project.slug}`}  // URL canonique
         openGraph={{
-          url: `https://ton-site.com/portefolio/${project.slug}`,  // URL Open Graph dynamique
+          url: `https://stevemaltais.dev/portefolio/${project.slug}`,  // URL Open Graph dynamique
           title: `${project.title} - Étude de cas`,
           description: project.etudeDeCas?.descriptionDuProjet || 'Découvrez ce projet unique.',
           images: [

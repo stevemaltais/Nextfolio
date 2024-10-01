@@ -9,9 +9,9 @@ const TechnologiePage = () => {
       <NextSeo
         title="Technologies - Steve Maltais"  // Titre pour la page
         description="Découvrez les technologies que j'utilise, telles que React, Next.js, et bien d'autres, pour créer des applications web performantes."  // Description SEO
-        canonical="https://www.stevemaltais.dev/technologie"  // URL canonique
+        canonical="https://stevemaltais.dev/technologie"  // URL canonique
         openGraph={{
-          url: 'https://www.stevemaltais.dev/technologie',  // URL Open Graph
+          url: 'https://stevemaltais.dev/technologie',  // URL Open Graph
           title: 'Technologie - Steve Maltais',
           description: 'Présentation des technologies utilisées pour le développement web, notamment React et Next.js.',
           images: [

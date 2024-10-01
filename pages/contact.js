@@ -8,9 +8,9 @@ const Contact = () => {
       <NextSeo
         title="Contact - Steve Maltais"  // Titre pour la page
         description="N'hésitez pas à me contacter pour des opportunités de collaboration ou toute autre question."  // Description SEO
-        canonical="https://www.stevemaltais.dev/contact"  // URL canonique
+        canonical="https://stevemaltais.dev/contact"  // URL canonique
         openGraph={{
-          url: 'https://www.stevemaltais.dev/contact',  // URL Open Graph
+          url: 'https://stevemaltais.dev/contact',  // URL Open Graph
           title: 'Contact - Steve Maltais',
           description: 'Contactez-moi pour toute demande, opportunité ou projet.',
           images: [

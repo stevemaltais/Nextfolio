@@ -40,7 +40,7 @@ const Blog = () => {
 
       {/* Schéma JSON-LD Article pour la page de Blog */}
       <ArticleJsonLd
-        url="https://www.stevemaltais.dev/blog"
+        url="https://stevemaltais.dev/blog"
         title="Blog - Steve Maltais"
         images={['/images/blog-preview.jpg']}
         datePublished="2023-01-01"  // Date de publication de ton blog
