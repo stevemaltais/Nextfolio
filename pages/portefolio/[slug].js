@@ -86,7 +86,7 @@ const ProjectPage = ({ project }) => {
         canonical={`https://stevemaltais.dev/portefolio/${project.slug}`}  // URL canonique
         openGraph={{
           url: `https://stevemaltais.dev/portefolio/${project.slug}`,  // URL Open Graph dynamique
-          title: `${project.title} - Étude de cas`,
+          title: `Étude de cas -${project.title}`,
           description: project.etudeDeCas?.descriptionDuProjet || 'Découvrez ce projet unique.',
           images: [
             {

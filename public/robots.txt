@@ -4,7 +4,15 @@ Allow: /
 
 # *
 User-agent: *
-Disallow: https://api.stevemaltais.dev/
+Disallow: /api/
+
+# *
+User-agent: *
+Disallow: /_next/
+
+# *
+User-agent: *
+Disallow: /cdn-cgi/
 
 # Host
 Host: https://stevemaltais.dev
