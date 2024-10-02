@@ -8,9 +8,9 @@ const Blog = () => {
       <NextSeo
         title="Blog - Steve Maltais"  // Titre pour la page
         description="Découvrez des articles passionnants sur le développement web, les technologies, et des conseils pratiques pour les développeurs."  // Description SEO
-        canonical="https://www.stevemaltais.dev/blog"  // URL canonique
+        canonical="https://stevemaltais.dev/blog"  // URL canonique
         openGraph={{
-          url: 'https://www.stevemaltais.dev/blog',  // URL Open Graph
+          url: 'https://stevemaltais.dev/blog',  // URL Open Graph
           title: 'Blog - Steve Maltais',
           description: 'Explorez des articles sur le développement web, les technologies et plus encore.',
           images: [
