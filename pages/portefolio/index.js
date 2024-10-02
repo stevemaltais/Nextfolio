@@ -8,9 +8,9 @@ const Index = () => {
       <NextSeo
         title="Portfolio - Steve Maltais"  // Titre pour la page
         description="Bienvenue sur mon portfolio. Découvrez mes projets de développement web, mes compétences et mes expériences professionnelles."  // Description SEO
-        canonical="https://stevemaltais.dev"  // URL canonique
+        canonical="https://stevemaltais.dev/portefolio"  // URL canonique
         openGraph={{
-          url: 'https://stevemaltais.dev',  // URL Open Graph
+          url: 'https://stevemaltais.dev/portefolio',  // URL Open Graph
           title: 'Portfolio - Steve Maltais',
           description: 'Découvrez mes projets, compétences, et expériences en tant que développeur web.',
           images: [
