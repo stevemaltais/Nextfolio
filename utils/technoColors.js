@@ -1,9 +1,8 @@
 const technoColors = {
     HTML: "green",
-    'nexts.js': "blue",
     react: "red",
     Nextjs: "red",
-    Scss: "orange",
+    SCSS: "orange",
     javascript: "yellow",
     VERCEL :  "pink"
   };

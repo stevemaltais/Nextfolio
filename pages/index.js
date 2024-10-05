@@ -1,108 +1,108 @@
-import { 
-  ImageOverlay, 
-  HomeSection, 
-  AboutSection, 
-  CompetenceSection, 
-  ContactSection, 
-  PorteFolioSection 
-} from '@/components/HomePageComponents';
-import { getStaticProps as getProjetsStaticProps } from '@/graphql/queries';
-import { useState } from 'react';
-import { NextSeo, BreadcrumbJsonLd } from 'next-seo';
-import PersonSchema from '@/components/SEO/PersonSchema';  // Import de PersonSchema
+  import { 
+    ImageOverlay, 
+    HomeSection, 
+    AboutSection, 
+    CompetenceSection, 
+    ContactSection, 
+    PorteFolioSection 
+  } from '@/components/HomePageComponents';
+  import { getStaticProps as getProjetsStaticProps } from '@/graphql/queries';
+  import { useState } from 'react';
+  import { NextSeo, BreadcrumbJsonLd } from 'next-seo';
+  import PersonSchema from '@/components/SEO/PersonSchema';  // Import de PersonSchema
 
-export default function Home({ projets }) {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  export default function Home({ projets }) {
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const handleOpenDrawer = () => {
-    setIsDrawerOpen(true);
-  };
+    const handleOpenDrawer = () => {
+      setIsDrawerOpen(true);
+    };
 
-  const handleCloseDrawer = () => {
-    setIsDrawerOpen(false);
-  };
+    const handleCloseDrawer = () => {
+      setIsDrawerOpen(false);
+    };
 
-  return (
-    <>
-      {/* Configuration SEO avec OpenGraph, Twitter, etc. */}
-      <NextSeo
-        title="Accueil - Mon Portfolio"
-        description="Bienvenue sur mon portfolio. Découvrez mes compétences, mes projets et contactez-moi pour plus d'informations."
-        canonical="https://stevemaltais.dev/"
-        openGraph={{
-          url: 'https://stevemaltais.dev/',
-          title: 'Accueil - Mon Portfolio',
-          description: 'Découvrez mes compétences et projets en tant que développeur web.',
-          images: [
+    return (
+      <>
+        {/* Configuration SEO avec OpenGraph, Twitter, etc. */}
+        <NextSeo
+          title="Accueil - Mon Portfolio"
+          description="Bienvenue sur mon portfolio. Découvrez mes compétences, mes projets et contactez-moi pour plus d'informations."
+          canonical="https://stevemaltais.dev/"
+          openGraph={{
+            url: 'https://stevemaltais.dev/',
+            title: 'Accueil - Mon Portfolio',
+            description: 'Découvrez mes compétences et projets en tant que développeur web.',
+            images: [
+              {
+                url: '/images/portfolio-preview.jpg',
+                width: 1200,
+                height: 630,
+                alt: 'Aperçu de mon portfolio',
+              },
+            ],
+            site_name: 'Mon Portfolio',
+          }}
+          twitter={{
+            handle: '@stevemaltais',
+            site: '@stevemaltais',
+            cardType: 'summary_large_image',
+          }}
+        />
+
+        {/* Schéma JSON-LD pour la Personne (toi) */}
+        <PersonSchema
+          name="Steve Maltais"
+          jobTitle="Développeur Web"
+          url="https://stevemaltais.dev/"
+          image="https://stevemaltais.dev/images/stevemaltais.jpg"
+          sameAs={[
+            'https://www.linkedin.com/in/stevemaltais/',
+            'https://www.twitter.com/stevemaltais',
+          ]}
+        />
+
+        {/* Schéma JSON-LD pour Breadcrumb */}
+        <BreadcrumbJsonLd
+          itemListElements={[
             {
-              url: '/images/portfolio-preview.jpg',
-              width: 1200,
-              height: 630,
-              alt: 'Aperçu de mon portfolio',
+              position: 1,
+              name: 'Accueil',
+              item: 'https://stevemaltais.dev/',
             },
-          ],
-          site_name: 'Mon Portfolio',
-        }}
-        twitter={{
-          handle: '@stevemaltais',
-          site: '@stevemaltais',
-          cardType: 'summary_large_image',
-        }}
-      />
+            {
+              position: 2,
+              name: 'Portfolio',
+              item: 'https://stevemaltais.dev/portfolio',
+            },
+          ]}
+        />
 
-      {/* Schéma JSON-LD pour la Personne (toi) */}
-      <PersonSchema
-        name="Steve Maltais"
-        jobTitle="Développeur Web"
-        url="https://www.stevemaltais.dev/"
-        image="https://www.stevemaltais.dev/images/stevemaltais.jpg"
-        sameAs={[
-          'https://www.linkedin.com/in/stevemaltais/',
-          'https://www.twitter.com/stevemaltais',
-        ]}
-      />
+        {/* Composant pour l'overlay d'image d'arrière-plan */}
+        <ImageOverlay isDrawerOpen={isDrawerOpen} />
 
-      {/* Schéma JSON-LD pour Breadcrumb */}
-      <BreadcrumbJsonLd
-        itemListElements={[
-          {
-            position: 1,
-            name: 'Accueil',
-            item: 'https://www.stevemaltais.dev/',
-          },
-          {
-            position: 2,
-            name: 'Portfolio',
-            item: 'https://www.stevemaltais.dev/portfolio',
-          },
-        ]}
-      />
+        {/* Section d'accueil */}
+        <HomeSection />
 
-      {/* Composant pour l'overlay d'image d'arrière-plan */}
-      <ImageOverlay isDrawerOpen={isDrawerOpen} />
+        {/* Section "À propos" */}
+        <AboutSection />
 
-      {/* Section d'accueil */}
-      <HomeSection />
+        {/* Section des compétences */}
+        <CompetenceSection />
 
-      {/* Section "À propos" */}
-      <AboutSection />
+        {/* Section du portfolio */}
+        <PorteFolioSection 
+          projets={projets} 
+          onOpenDrawer={handleOpenDrawer} 
+          onCloseDrawer={handleCloseDrawer} 
+          isDrawerOpen={isDrawerOpen} 
+        />
 
-      {/* Section des compétences */}
-      <CompetenceSection />
+        {/* Section de contact */}
+        <ContactSection />
+      </>
+    );
+  }
 
-      {/* Section du portfolio */}
-      <PorteFolioSection 
-        projets={projets} 
-        onOpenDrawer={handleOpenDrawer} 
-        onCloseDrawer={handleCloseDrawer} 
-        isDrawerOpen={isDrawerOpen} 
-      />
-
-      {/* Section de contact */}
-      <ContactSection />
-    </>
-  );
-}
-
-// Récupération des données pour la page d'accueil
-export const getStaticProps = getProjetsStaticProps;
+  // Récupération des données pour la page d'accueil
+  export const getStaticProps = getProjetsStaticProps;
