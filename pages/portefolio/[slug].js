@@ -1,9 +1,52 @@
-import React, { useEffect } from 'react'; 
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { fetchProjectSlugs, getProjectBySlug } from '@/graphql/queries';
-import styles from './etudedecas.module.scss'; 
+import styles from './etudedecas.module.scss';
 import TechnologiesList from '@/components/Blog/TechnologiesList';
-import { NextSeo } from 'next-seo'; 
+import { NextSeo } from 'next-seo';
+
+// Fonction utilitaire pour tronquer les textes
+const truncate = (str, max) => (str?.length > max ? `${str.substring(0, max - 3)}...` : str);
+
+// Fonction pour formater le titre SEO avec les deux premières technologies
+const formatTitleSEO = (project) => {
+  const projectName = project.champsSeo?.titreSeo || project.title;
+
+  // Extraire les deux premières technologies utilisées ou fournir un fallback
+  const technologies = project.etudeDeCas?.technologiesutilisees?.nodes
+    .slice(0, 2) // Prendre les deux premières technologies
+    .map((tech) => tech.title) // Extraire les titres
+    .join(' & '); // Les joindre avec "&"
+
+  const mainTech = technologies || 'des technologies modernes';
+
+  return `Étude de cas: ${projectName} – ${mainTech}`;
+};
+
+// Fonction pour formater la description SEO
+const formatDescriptionSEO = (project) => {
+  const category = project.detailsDuProjet?.categorieDuProjet || 'projet innovant';
+  const technologies = project.etudeDeCas?.technologiesutilisees?.nodes
+    .slice(0, 2) // Extraire les deux premières technologies
+    .map((tech) => tech.title)
+    .join(' et ') || 'des technologies modernes';
+
+  return `Un ${category} développé avec ${technologies}, offrant une architecture performante et une expérience utilisateur fluide.`;
+};
+
+// Fonction pour afficher dynamiquement les sections
+const renderSection = (title, content) => {
+  if (!content) return null;
+  return (
+    <section className={styles.etudeDeCas__section}>
+      <h2 className={styles.etudeDeCas__sectionTitle}>{title}</h2>
+      <div
+        className={styles.etudeDeCas__content}
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
+    </section>
+  );
+};
 
 export async function getStaticPaths() {
   const slugs = await fetchProjectSlugs();
@@ -11,42 +54,18 @@ export async function getStaticPaths() {
     params: { slug },
   }));
 
-  return {
-    paths,
-    fallback: 'blocking',
-  };
+  return { paths, fallback: 'blocking' };
 }
 
 export async function getStaticProps({ params }) {
   const project = await getProjectBySlug(params.slug);
 
   if (!project) {
-    return {
-      notFound: true,
-    };
+    return { notFound: true };
   }
 
-  return {
-    props: {
-      project,
-    },
-  };
+  return { props: { project } };
 }
-
-function splitProjectTitle(title) {
-  let parts = title.split(' – ');
-  if (parts.length > 1) {
-    return {
-      firstPart: parts[0],
-      secondPart: parts.slice(1).join(' – '),
-    };
-  }
-  return { firstPart: title, secondPart: '' };
-}
-
-const formatUrl = (url) => {
-  return url.replace(/^https?:\/\//, '').replace(/\/$/, '');
-};
 
 const ProjectPage = ({ project }) => {
   const router = useRouter();
@@ -59,38 +78,22 @@ const ProjectPage = ({ project }) => {
     return <div>Loading...</div>;
   }
 
-  const { firstPart, secondPart } = splitProjectTitle(project.title);
-
-  const createMarkup = (content) => {
-    return { __html: content };
-  };
-
-  const renderSection = (title, content) => {
-    if (!content) return null; // Si le contenu est vide, on ne rend rien.
-    return (
-      <section className={styles.etudeDeCas__section}>
-        <h2 className={styles.etudeDeCas__sectionTitle}>{title}</h2>
-        <div
-          className={styles.etudeDeCas__content}
-          dangerouslySetInnerHTML={createMarkup(content)}
-        />
-      </section>
-    );
-  };
+  const titleSEO = truncate(formatTitleSEO(project), 60);
+  const descriptionSEO = truncate(formatDescriptionSEO(project), 160);
 
   return (
     <>
       <NextSeo
-        title={`${project.title} - Étude de cas`}  // Titre dynamique
-        description={project.etudeDeCas?.descriptionDuProjet || 'Découvrez ce projet unique.'}  // Description du projet
-        canonical={`https://stevemaltais.dev/portefolio/${project.slug}`}  // URL canonique
+        title={titleSEO}
+        description={descriptionSEO}
+        canonical={`https://stevemaltais.dev/portefolio/${project.slug}`}
         openGraph={{
-          url: `https://stevemaltais.dev/portefolio/${project.slug}`,  // URL Open Graph dynamique
-          title: `Étude de cas : ${project.title}`,
-          description: project.etudeDeCas?.descriptionDuProjet || 'Découvrez ce projet unique.',
+          url: `https://stevemaltais.dev/portefolio/${project.slug}`,
+          title: titleSEO,
+          description: descriptionSEO,
           images: [
             {
-              url: project.featuredImage?.node?.mediaItemUrl || '/images/default-image.jpg',  // Image dynamique ou par défaut
+              url: project.featuredImage?.node?.mediaItemUrl || '/images/default-image.jpg',
               width: 1200,
               height: 630,
               alt: `Image de présentation pour ${project.title}`,
@@ -99,7 +102,7 @@ const ProjectPage = ({ project }) => {
           site_name: 'Mon Portfolio',
         }}
         twitter={{
-          handle: '@tonhandle',  // Twitter handle
+          handle: '@tonhandle',
           site: '@tonhandle',
           cardType: 'summary_large_image',
         }}
@@ -110,23 +113,24 @@ const ProjectPage = ({ project }) => {
           <div className={styles.etudeDeCas__header}>
             <div className={styles.etudeDeCas__HeaderRightSide}>
               <h1 className={styles.etudeDeCas__title}>
-                <span className={styles.etudeDeCas__titleSpan}>Étude de cas</span><br />
-                <a href={project.etudeDeCas?.urlDuProjet || '#'} target="_blank" rel="noopener noreferrer">
-                  <span className={styles.etudeDeCas__titleFirstPart}><strong>{firstPart}</strong></span>
+                <span className={styles.etudeDeCas__titleSpan}>Étude de cas</span>
+                <br />
+                <a
+                  href={project.etudeDeCas?.urlDuProjet || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className={styles.etudeDeCas__titleFirstPart}>
+                    <strong>{project.title}</strong>
+                  </span>
                 </a>
-                {secondPart && (
-                  <span className={styles.etudeDeCas__titleSecondPart}> – {secondPart}</span>
-                )}
               </h1>
 
-              {/* Section Technologies Utilisées */}
               {project.etudeDeCas?.technologiesutilisees?.nodes && (
                 <TechnologiesList technologies={project.etudeDeCas.technologiesutilisees.nodes} />
               )}
-
             </div>
 
-            {/* Section Image du Projet */}
             {project.featuredImage?.node?.mediaItemUrl && (
               <div className={styles.etudeDeCas__imageContainer}>
                 <img
@@ -137,7 +141,6 @@ const ProjectPage = ({ project }) => {
             )}
           </div>
 
-          {/* Rendu dynamique des sections */}
           {project.etudeDeCas && (
             <>
               {renderSection('Contexte et Objectifs', project.etudeDeCas.contexteEtObjectifs)}

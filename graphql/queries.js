@@ -6,43 +6,48 @@ export async function getStaticProps() {
   try {
     const { data } = await client.query({
       query: gql`
-        query projets {
-          projets(first: 10) {
-            nodes {
-              title
-              id
-              slug
-              detailsDuProjet {
-                titreCourtDuProjet
-                descriptionCourteDuProjet
-                categorieDuProjet
-                anneeDuProjet
+      query projets {
+        projets(first: 10) {
+          nodes {
+            title
+            id
+            slug
+            detailsDuProjet {
+              titreCourtDuProjet
+              descriptionCourteDuProjet
+              categorieDuProjet
+              anneeDuProjet
+            }
+            featuredImage {
+              node {
+                mediaItemUrl
               }
-              featuredImage {
+            }
+            etudeDeCas {
+              mockupimage {
                 node {
-                  mediaItemUrl
+                  sourceUrl
                 }
               }
-              etudeDeCas {
-                mockupimage {
-                  node {
-                    sourceUrl
-                  }
-                }
-                urlDuProjet
-                technologiesutilisees {
-                  nodes {
-                    ... on Technologie {
-                      id
-                      title
-                      slug
-                    }
+              urlDuProjet
+              technologiesutilisees {
+                nodes {
+                  ... on Technologie {
+                    id
+                    title
+                    slug
                   }
                 }
               }
             }
+            champsSeo {
+              descriptionSeo
+              titreSeo
+              technologiePrincipale
+            }
           }
         }
+      }
       `,
     });
 
@@ -66,52 +71,57 @@ export const getProjectBySlug = async (slug) => {
   try {
     const { data } = await client.query({
       query: gql`
-        query ProjectBySlug($slug: String!) {
-          projetBy(slug: $slug) {
-            title
-            id
-            content
-            slug
-            detailsDuProjet {
-              titreCourtDuProjet
-              descriptionCourteDuProjet
-              categorieDuProjet
-              anneeDuProjet
-            }
-            etudeDeCas {
-              descriptionDuProjet
-              technologiesutilisees {
-                nodes {
-                  ... on Technologie {
-                    id
-                    title
-                    slug
-                  }
-                }
-              }
-              urlDuProjet
-              problemeAResoudre
-              solutionProposee
-              processusDeDeveloppement
-              fonctionnalitesCles
-              imageDuProjet {
-                node {
-                  mediaItemUrl
-                }
-              }
-              mockupimage {
-                node {
-                  sourceUrl
+      query ProjectBySlug($slug: String!) {
+        projetBy(slug: $slug) {
+          title
+          id
+          content
+          slug
+          detailsDuProjet {
+            titreCourtDuProjet
+            descriptionCourteDuProjet
+            categorieDuProjet
+            anneeDuProjet
+          }
+          etudeDeCas {
+            descriptionDuProjet
+            technologiesutilisees {
+              nodes {
+                ... on Technologie {
+                  id
+                  title
+                  slug
                 }
               }
             }
-            featuredImage {
+            urlDuProjet
+            problemeAResoudre
+            solutionProposee
+            processusDeDeveloppement
+            fonctionnalitesCles
+            imageDuProjet {
               node {
                 mediaItemUrl
               }
             }
+            mockupimage {
+              node {
+                sourceUrl
+              }
+            }
+          }
+          featuredImage {
+            node {
+              mediaItemUrl
+            }
+          }
+          champsSeo {
+            descriptionSeo
+            titreSeo
+            technologiePrincipale
           }
         }
+      }
       `,
       variables: { slug },
     });
