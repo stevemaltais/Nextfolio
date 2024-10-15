@@ -1,37 +1,34 @@
 // next-sitemap.config.js
 
 const siteUrl = 'https://stevemaltais.dev';
-const generateRobotsTxt = true;
-const sitemapSize = 7000;
-const changefreq = 'daily';
-const priority = 0.7;
-
-// Chemins à exclure du sitemap
-const exclude = [
-  '/cdn-cgi/*',     // Exclut les scripts Cloudflare
-  '/_next/static/*', // Exclut les fichiers statiques générés par Next.js
-  '/api/*',          // Exclut les routes API
-  '/technologie/[tech]', // Exclut les routes dynamiques brutes comme [tech]
-  '/portefolio/[slug]', // Exclut les routes dynamiques brutes comme [slug]
-  '/blog/[slug]', // Exclut les routes dynamiques brutes comme [slug]
-    
-];
-
-const robotsTxtOptions = {
-  policies: [
-    { userAgent: '*', allow: '/' },      // Permet aux robots d'explorer le site
-    { userAgent: '*', disallow: '/api/' }, // Bloque l'accès aux routes API
-    { userAgent: '*', disallow: '/_next/' }, // Bloque l'accès aux fichiers Next.js
-    { userAgent: '*', disallow: '/cdn-cgi/' }, // Bloque les scripts Cloudflare
-  ],
-};
 
 module.exports = {
   siteUrl,
-  generateRobotsTxt,
-  sitemapSize,
-  changefreq,
-  priority,
-  exclude, // Exclusions ajoutées ici
-  robotsTxtOptions,
+  generateRobotsTxt: true,  // Générer un fichier robots.txt
+  sitemapSize: 7000,        // Limite de 7000 URLs par fichier sitemap
+  changefreq: 'daily',       // Fréquence d’exploration suggérée
+  priority: 0.7,             // Priorité par défaut
+
+  // Exclusion de certaines routes
+  exclude: [
+    '/cdn-cgi/*',           // Scripts Cloudflare
+    '/_next/static/*',       // Fichiers statiques Next.js
+    '/api/*',               // Routes API
+    '/technologie/[tech]',  // Routes dynamiques brutes
+    '/portefolio/[slug]',   // Routes dynamiques brutes
+    '/blog/[slug]',         // Routes dynamiques brutes
+  ],
+
+  // Configuration de robots.txt
+  robotsTxtOptions: {
+    policies: [
+      { userAgent: '*', allow: '/' },        // Autorise l'exploration du site
+      { userAgent: '*', disallow: '/api/' }, // Bloque les routes API
+      { userAgent: '*', disallow: '/_next/' }, // Bloque les fichiers Next.js
+      { userAgent: '*', disallow: '/cdn-cgi/' }, // Bloque les scripts Cloudflare
+    ],
+    additionalSitemaps: [
+      `${siteUrl}/sitemap-0.xml`,  // Inclusion manuelle du sitemap secondaire
+    ],
+  },
 };
