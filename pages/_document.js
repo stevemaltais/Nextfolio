@@ -1,11 +1,17 @@
-import { Html, Head, Main, NextScript } from "next/document";
+// /pages/_document.js
+import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
   return (
     <Html lang="fr">
       <Head>
-        {/* Meta Viewport pour le responsive */}
-       
+        {/* Meta pour le responsive */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        {/* Favicon dynamique */}
+        <link rel="icon" type="image/svg+xml" href="/assets/fav-icon.png" />
+        {/* Fallback pour les anciens navigateurs */}
+        
 
         {/* Fonts et CSS */}
         <link
@@ -23,7 +29,7 @@ export default function Document() {
           type="text/css"
         />
 
-        {/* Script pour le SDK Facebook */}
+        {/* Script SDK Facebook */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -34,17 +40,15 @@ export default function Document() {
                   xfbml      : true,
                   version    : '${process.env.NEXT_PUBLIC_FACEBOOK_API_VERSION}'
                 });
-                  
                 FB.AppEvents.logPageView();   
               };
-
               (function(d, s, id){
-                 var js, fjs = d.getElementsByTagName(s)[0];
-                 if (d.getElementById(id)) {return;}
-                 js = d.createElement(s); js.id = id;
-                 js.src = "https://connect.facebook.net/en_US/sdk.js";
-                 fjs.parentNode.insertBefore(js, fjs);
-               }(document, 'script', 'facebook-jssdk'));
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'facebook-jssdk'));
             `,
           }}
         />
@@ -52,7 +56,7 @@ export default function Document() {
         {/* Crédit */}
         <script
           className="Crédit"
-          style={{ display: "none" }}
+          style={{ display: 'none' }}
           dangerouslySetInnerHTML={{
             __html: `<!-- Coding With Steve -->`,
           }}
