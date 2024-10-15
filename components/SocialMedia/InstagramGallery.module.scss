@@ -4,29 +4,31 @@
 @import "/styles/abstracts/mixins";
 .gallery {
   display: grid;
-  grid-template-columns: repeat(6, 1fr); // 6 colonnes pour la galerie
-  gap: 15px; // Espace entre les éléments
-  max-width: 1800px; // Largeur maximale de la galerie
+  gap: 15px;
+  max-width: 1800px;
   margin: auto;
 
+  /* Nombre de colonnes en fonction de la taille de l’écran */
+  grid-template-columns: repeat(6, 1fr); // Par défaut : 6 colonnes
+
   @include breakpoint-down('xl') {
-    grid-template-columns: repeat(5, 1fr); // 3 colonnes pour les écrans XL
+    grid-template-columns: repeat(5, 1fr); // 5 colonnes sur grand écran
   }
 
   @include breakpoint-down('lg') {
-    grid-template-columns: repeat(4, 1fr); // 2 colonnes pour les écrans LG
+    grid-template-columns: repeat(4, 1fr); // 4 colonnes sur écran moyen
+  }
+
+  @include breakpoint-down('md') {
+    grid-template-columns: repeat(3, 1fr); // 3 colonnes sur écran tablette
   }
 
 
-  @include breakpoint-down('sm') {
-    margin: 0 10px;
-    gap: 10px;
-    grid-template-columns: repeat(3, 1fr); // 2 colonnes pour les petits écrans
-  }
 
-  @include breakpoint-down('xs') {
-    grid-template-columns: repeat(3, 1fr); // 2 colonnes pour les très petits écrans
-    gap: 4px;
+  /* Empêche le contenu de déborder */
+  > * {
+    min-width: 0;
+    overflow: hidden;
   }
 }
 
