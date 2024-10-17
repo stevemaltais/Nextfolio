@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next';
-import client from '@/lib/ApolloClient';
+import client from '@/lib/apolloClient';
 import { GET_POST_TITLES } from '@/GraphQl/queries/getPosts';
 import { BlogProps } from '@/types/blog';
 

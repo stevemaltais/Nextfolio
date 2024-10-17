@@ -200,20 +200,31 @@ export const fetchTechDetails = async (techSlug) => {
   try {
     const { data } = await client.query({
       query: gql`
-        query GetTechDetails($slug: String!) {
-          technologieBy(slug: $slug) {
-            title
-            id
-            slug
-            content
+      query GetTechDetails($slug: String!) {
+        technologieBy(slug: $slug) {
+          title
+          id
+          slug
+          deTailsTechnologies {
+            logo {
+              node {
+                mediaItemUrl
+                altText
+              }
+            }
+            descriptionDuProjet
+            siteOfficiel
+            titreRessource1
           }
         }
+      }
       `,
       variables: { slug: techSlug },
     });
-
+   
     if (!data || !data.technologieBy) {
       console.error('Technologie non trouvée pour ce slug:', techSlug);
+      
       return null;
     }
 
@@ -276,6 +287,54 @@ export const fetchProjectsByTech = async (techSlug) => {
     return filteredProjects;
   } catch (error) {
     console.error('Erreur lors de la récupération des projets par technologie:', error);
+    return [];
+  }
+};
+
+// Requête pour récupérer les technologies par catégorie
+export const fetchTechnologiesByCategory = async () => {
+  try {
+    const { data } = await client.query({
+      query: gql`
+      query GetTechnologiesByCategory {
+        categoriesDeTechnologie {
+          nodes {
+            id
+            name
+            slug
+            technologies {
+              nodes {
+                id
+                title
+                slug
+                deTailsTechnologies {
+                  logo {
+                    node {
+                      mediaItemUrl
+                      altText
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      `,
+    });
+
+    console.log('Données brutes reçues :', data); // Ajouter un log pour voir toute la réponse
+
+    if (!data || !data.categoriesDeTechnologie) {
+      console.warn('Aucune catégorie trouvée ou donnée mal formée.');
+      return [];
+    }
+
+    console.log('Catégories récupérées :', data.categoriesDeTechnologie.nodes); // Debugging
+
+    return data.categoriesDeTechnologie.nodes;
+  } catch (error) {
+    console.error('Erreur lors de la récupération des technologies:', error);
     return [];
   }
 };

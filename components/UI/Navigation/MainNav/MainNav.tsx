@@ -2,7 +2,7 @@ import styles from '@/components/UI/Navigation/MainNav/MainNav.module.scss';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { gql, useQuery } from '@apollo/client';
-import client from '@/lib/ApolloClient';
+import client from '@/lib/apolloClient';
 
 const GET_GUIDES = gql`
   query GetGuides {
