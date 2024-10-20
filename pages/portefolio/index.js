@@ -21,6 +21,7 @@ const PortfolioPage = ({ projets }) => {
         title="Portfolio - Steve Maltais"
         description="Bienvenue sur mon portfolio. Découvrez mes projets de développement web, mes compétences et mes expériences professionnelles."
         canonical="https://stevemaltais.dev/portefolio"
+        noindex={true} 
         openGraph={{
           url: 'https://stevemaltais.dev/portefolio',
           title: 'Portfolio - Steve Maltais',

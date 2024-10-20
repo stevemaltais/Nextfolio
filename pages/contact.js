@@ -9,6 +9,7 @@ const Contact = () => {
         title="Contact - Steve Maltais"  // Titre pour la page
         description="N'hésitez pas à me contacter pour des opportunités de collaboration ou toute autre question."  // Description SEO
         canonical="https://stevemaltais.dev/contact"  // URL canonique
+        noindex={true} 
         openGraph={{
           url: 'https://stevemaltais.dev/contact',  // URL Open Graph
           title: 'Contact - Steve Maltais',

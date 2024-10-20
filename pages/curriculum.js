@@ -9,6 +9,7 @@ const Curriculum = () => {
         title="Curriculum - Steve Maltais"  // Titre pour la page
         description="Découvrez mon parcours professionnel et mes compétences en tant que développeur web."  // Description SEO
         canonical="https://stevemaltais.dev/curriculum"  // URL canonique
+        noindex={true} 
         openGraph={{
           url: 'https://stevemaltais.dev/curriculum',  // URL Open Graph
           title: 'Curriculum - Steve Maltais',

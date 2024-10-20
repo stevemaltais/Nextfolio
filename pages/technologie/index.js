@@ -21,6 +21,7 @@ const TechnologiePage = ({ categories }) => {
         title="Technologies - Steve Maltais"
         description="Découvrez les technologies utilisées regroupées par catégories."
         canonical="https://stevemaltais.dev/technologie"
+        noindex={true} 
         openGraph={{
           url: 'https://stevemaltais.dev/technologie',
           title: 'Technologies - Steve Maltais',

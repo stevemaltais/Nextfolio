@@ -6,29 +6,31 @@ const Blog = () => {
     <>
       {/* Configuration SEO pour la page de Blog */}
       <NextSeo
-        title="Blog - Steve Maltais"  // Titre pour la page
-        description="Découvrez des articles passionnants sur le développement web, les technologies, et des conseils pratiques pour les développeurs."  // Description SEO
-        canonical="https://stevemaltais.dev/blog"  // URL canonique
-        openGraph={{
-          url: 'https://stevemaltais.dev/blog',  // URL Open Graph
-          title: 'Blog - Steve Maltais',
-          description: 'Explorez des articles sur le développement web, les technologies et plus encore.',
-          images: [
-            {
-              url: '/images/blog-preview.jpg',  // Image Open Graph pour l'aperçu
-              width: 1200,
-              height: 630,
-              alt: 'Aperçu du Blog',
-            },
-          ],
-          site_name: 'Steve Maltais Blog',
-        }}
-        twitter={{
-          handle: '@stevemaltais',  // Ton handle Twitter
-          site: '@stevemaltais',     // Handle Twitter du site
-          cardType: 'summary_large_image',  // Carte Twitter avec grande image
-        }}
-      />
+  title="Blog - Steve Maltais"
+  description="Découvrez des articles passionnants sur le développement web, les technologies, et des conseils pratiques pour les développeurs."
+  canonical="https://stevemaltais.dev/blog"
+  noindex={true}  // Cette balise empêche l'indexation de la page
+  openGraph={{
+    url: 'https://stevemaltais.dev/blog',
+    title: 'Blog - Steve Maltais',
+    description: 'Explorez des articles sur le développement web, les technologies et plus encore.',
+    images: [
+      {
+        url: '/images/blog-preview.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Aperçu du Blog',
+      },
+    ],
+    site_name: 'Steve Maltais Blog',
+  }}
+  twitter={{
+    handle: '@stevemaltais',
+    site: '@stevemaltais',
+    cardType: 'summary_large_image',
+  }}
+/>
+
 
       {/* Schéma JSON-LD pour le fil d'Ariane (Breadcrumb) */}
       <BreadcrumbJsonLd
