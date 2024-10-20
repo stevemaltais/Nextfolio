@@ -18,7 +18,7 @@ const TechPage = ({ techInfo, projects }) => {
         title={`Technologie : ${techInfo.title} - Steve Maltais`}
         description={`Découvrez la technologie ${techInfo.title} et ses projets associés.`}
         canonical={`https://stevemaltais.dev/technologie/${techInfo.slug}`}
-        noindex={true} 
+       
         openGraph={{
           url: `https://stevemaltais.dev/technologie/${techInfo.slug}`,
           title: `Technologie : ${techInfo.title} - Steve Maltais`,
