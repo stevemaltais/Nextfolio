@@ -41,9 +41,9 @@ const CompetenceSection = () => {
         <h2>
           <AnimatedText text="Compétences" onVisibilityChange={handleVisibilityChange} />
         </h2>
-        <h4 className={`${styles.title2} ${isIntersecting ? styles.animate : ''}`}>
+        <h3 className={`${styles.title2} ${isIntersecting ? styles.animate : ''}`}>
           Stack Technique
-        </h4>
+        </h3>
       </div>
 
       <div className={`${styles.competencesWeb} ${styles.fadeIn}`}>

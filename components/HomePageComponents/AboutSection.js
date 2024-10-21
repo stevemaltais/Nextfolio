@@ -32,7 +32,7 @@ const AboutSection = () => {
             </p>
           </div>
           <div data-scroll data-scroll-direction="horizontal" data-scroll-speed="-1" className={styles.contactInfo}>
-            <h4>Personal Information</h4>
+            <h3>Personal Information</h3>
             <PersonalInfo />
           </div>
         </div>

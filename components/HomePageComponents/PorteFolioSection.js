@@ -66,9 +66,9 @@ const PorteFolioSection = ({ projets }) => {
             style={{ backgroundImage: `url(${backgroundImageUrl})` }}
           >
             <div className={styles.embla__slideContent}>
-              <h2 className={styles.slideContent_title}>
+              <h3 className={styles.slideContent_title}>
                 {formatUrl(projet.etudeDeCas?.urlDuProjet || projet.title)}
-              </h2>
+              </h3>
               {projet.etudeDeCas?.technologiesutilisees?.nodes?.length ? (
                 <TechnologiesList technologies={projet.etudeDeCas.technologiesutilisees.nodes} />
               ) : (
