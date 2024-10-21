@@ -1,4 +1,10 @@
 import { 
+  NextSeo, 
+  BreadcrumbJsonLd, 
+  ArticleJsonLd 
+} from 'next-seo';
+import { useState } from 'react';
+import { 
   ImageOverlay, 
   HomeSection, 
   AboutSection, 
@@ -7,12 +13,13 @@ import {
   PorteFolioSection 
 } from '@/components/HomePageComponents';
 import { getStaticProps as getProjetsStaticProps } from '@/graphql/queries';
-import { useState } from 'react';
-import { NextSeo, BreadcrumbJsonLd } from 'next-seo';
-import PersonSchema from '@/components/SEO/PersonSchema';  // Import de PersonSchema
+import PersonSchema from '@/components/SEO/PersonSchema';
 
-export default function Home({ projets }) {
+export default function Home({ projets, datePublished }) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  // Génération automatique de la date actuelle au format ISO pour la date de modification
+  const dateModified = new Date().toISOString();
 
   const handleOpenDrawer = () => {
     setIsDrawerOpen(true);
@@ -50,7 +57,7 @@ export default function Home({ projets }) {
         }}
       />
 
-      {/* Schéma JSON-LD pour la Personne (toi) */}
+      {/* Schéma JSON-LD pour la Personne */}
       <PersonSchema
         name="Steve Maltais"
         jobTitle="Développeur Web"
@@ -58,7 +65,7 @@ export default function Home({ projets }) {
         image="https://stevemaltais.dev/images/stevemaltais.jpg"
         sameAs={[
           'https://www.linkedin.com/in/stevemaltais/',
-          'https://www.twitter.com/stevemaltais',
+          'https://twitter.com/stevemaltais',
         ]}
       />
 
@@ -78,8 +85,20 @@ export default function Home({ projets }) {
         ]}
       />
 
+      {/* Schéma JSON-LD pour l'article ou la page */}
+      <ArticleJsonLd
+        url="https://stevemaltais.dev/"
+        title="Accueil - Mon Portfolio"
+        images={['https://stevemaltais.dev/images/portfolio-preview.jpg']}
+        datePublished={datePublished}  // Date de publication fixe
+        dateModified={dateModified}    // Date de modification automatique
+        authorName="Steve Maltais"
+        publisherName="Steve Maltais"
+        description="Bienvenue sur mon portfolio. Découvrez mes compétences, mes projets et contactez-moi pour plus d'informations."
+      />
+
       {/* Composant pour l'overlay d'image d'arrière-plan */}
-      <ImageOverlay isDrawerOpen={isDrawerOpen} />
+      <ImageOverlay isDrawerOpen={isDrawerOpen} aria-hidden={!isDrawerOpen} />
 
       {/* Section d'accueil */}
       <HomeSection />
@@ -104,5 +123,17 @@ export default function Home({ projets }) {
   );
 }
 
-// Récupération des données pour la page d'accueil
-export const getStaticProps = getProjetsStaticProps;
+// Récupération des données pour la page d'accueil avec la date de publication fixe
+export const getStaticProps = async () => {
+  const projets = await getProjetsStaticProps();
+
+  // Date de publication fixe (15 janvier 2023)
+  const datePublished = '2024-08-15T08:00:00+08:00';
+
+  return {
+    props: {
+      projets,
+      datePublished,  // Passer la date de publication à la page
+    },
+  };
+};
