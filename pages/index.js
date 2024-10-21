@@ -1,10 +1,4 @@
 import { 
-  NextSeo, 
-  BreadcrumbJsonLd, 
-  ArticleJsonLd 
-} from 'next-seo';
-import { useState } from 'react';
-import { 
   ImageOverlay, 
   HomeSection, 
   AboutSection, 
@@ -13,20 +7,23 @@ import {
   PorteFolioSection 
 } from '@/components/HomePageComponents';
 import { getStaticProps as getProjetsStaticProps } from '@/graphql/queries';
-import PersonSchema from '@/components/SEO/PersonSchema';
+import { useState } from 'react';
+import { NextSeo, BreadcrumbJsonLd, ArticleJsonLd } from 'next-seo';  // Ajout de ArticleJsonLd pour gérer les dates
+import PersonSchema from '@/components/SEO/PersonSchema';  // Import de PersonSchema
 
-export default function Home({ projets, datePublished }) {
+export default function Home({ projets }) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   // Génération automatique de la date actuelle au format ISO pour la date de modification
   const dateModified = new Date().toISOString();
 
-  // Fonction pour ouvrir le drawer
+  // Date de publication fixe
+  const datePublished = '2023-01-15T08:00:00+08:00';
+
   const handleOpenDrawer = () => {
     setIsDrawerOpen(true);
   };
 
-  // Fonction pour fermer le drawer
   const handleCloseDrawer = () => {
     setIsDrawerOpen(false);
   };
@@ -59,7 +56,7 @@ export default function Home({ projets, datePublished }) {
         }}
       />
 
-      {/* Schéma JSON-LD pour la Personne */}
+      {/* Schéma JSON-LD pour la Personne (toi) */}
       <PersonSchema
         name="Steve Maltais"
         jobTitle="Développeur Web"
@@ -67,7 +64,7 @@ export default function Home({ projets, datePublished }) {
         image="https://stevemaltais.dev/images/stevemaltais.jpg"
         sameAs={[
           'https://www.linkedin.com/in/stevemaltais/',
-          'https://twitter.com/stevemaltais',
+          'https://www.twitter.com/stevemaltais',
         ]}
       />
 
@@ -100,7 +97,7 @@ export default function Home({ projets, datePublished }) {
       />
 
       {/* Composant pour l'overlay d'image d'arrière-plan */}
-      <ImageOverlay isDrawerOpen={isDrawerOpen} aria-hidden={!isDrawerOpen} />
+      <ImageOverlay isDrawerOpen={isDrawerOpen} />
 
       {/* Section d'accueil */}
       <HomeSection />
@@ -113,7 +110,7 @@ export default function Home({ projets, datePublished }) {
 
       {/* Section du portfolio */}
       <PorteFolioSection 
-        projets={Array.isArray(projets) ? projets : []} // Vérification que projets est bien un tableau
+        projets={projets} 
         onOpenDrawer={handleOpenDrawer} 
         onCloseDrawer={handleCloseDrawer} 
         isDrawerOpen={isDrawerOpen} 
@@ -132,13 +129,9 @@ export const getStaticProps = async () => {
   // Vérification que la réponse est un tableau, sinon renvoyer un tableau vide
   const validProjets = Array.isArray(projets) ? projets : [];
 
-  // Date de publication fixe (15 janvier 2023)
-  const datePublished = '2024-08-15T08:00:00+08:00';
-
   return {
     props: {
       projets: validProjets,  // Toujours renvoyer un tableau, même si vide
-      datePublished,  // Passer la date de publication à la page
     },
   };
 };
