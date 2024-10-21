@@ -15,7 +15,7 @@ export default function Home({ projets }) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   // Date de publication fixe et date de modification dynamique
-  const datePublished = '2023-01-15T08:00:00+08:00';  // Date fixe
+  const datePublished = '2024-07-15T08:00:00+08:00';  // Date fixe
   const dateModified = new Date().toISOString();  // Date de modification dynamique
 
   const handleOpenDrawer = () => {
@@ -30,41 +30,31 @@ export default function Home({ projets }) {
     <>
       {/* Configuration SEO avec OpenGraph, Twitter, etc. */}
       <NextSeo
-        title="Accueil - Mon Portfolio"
-        description="Bienvenue sur mon portfolio. Découvrez mes compétences, mes projets et contactez-moi pour plus d'informations."
-        canonical="https://stevemaltais.dev/"
-        openGraph={{
-          url: 'https://stevemaltais.dev/',
-          title: 'Accueil - Mon Portfolio',
-          description: 'Découvrez mes compétences et projets en tant que développeur web.',
-          images: [
-            {
-              url: '/images/portfolio-preview.jpg',
-              width: 1200,
-              height: 630,
-              alt: 'Aperçu de mon portfolio',
-            },
-          ],
-          site_name: 'Mon Portfolio',
-        }}
-        twitter={{
-          handle: '@stevemaltais',
-          site: '@stevemaltais',
-          cardType: 'summary_large_image',
-        }}
-      />
+  title="Création de Sites Web  | Développeur Web - React, WordPress"
+  description="Développeur web freelance spécialisé en création de sites modernes avec React, Next.js, et WordPress. Consultez mon portfolio pour découvrir mes projets."
+  canonical="https://stevemaltais.dev/"
+  openGraph={{
+    url: 'https://stevemaltais.dev/',
+    title: 'Création de Sites Web  | Développeur Web - React, WordPress',
+    description: 'Développeur web freelance spécialisé en création de sites modernes avec React, Next.js, et WordPress. Consultez mon portfolio pour découvrir mes projets.',
+    images: [
+      {
+        url: '/images/portfolio-preview.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Aperçu de mon portfolio',
+      },
+    ],
+    site_name: 'Mon Portfolio',
+  }}
+  twitter={{
+    handle: '@stevemaltais',
+    site: '@stevemaltais',
+    cardType: 'summary_large_image',
+  }}
+/>
 
-      {/* Schéma JSON-LD pour la Personne (toi) */}
-      <PersonSchema
-        name="Steve Maltais"
-        jobTitle="Développeur Web"
-        url="https://stevemaltais.dev/"
-        image="https://stevemaltais.dev/images/stevemaltais.jpg"
-        sameAs={[
-          'https://www.linkedin.com/in/stevemaltais/',
-          'https://www.twitter.com/stevemaltais',
-        ]}
-      />
+
 
       {/* Schéma JSON-LD pour Breadcrumb */}
       <BreadcrumbJsonLd
@@ -86,13 +76,25 @@ export default function Home({ projets }) {
       <ArticleJsonLd
         url="https://stevemaltais.dev/"
         title="Accueil - Mon Portfolio"
-        images={['https://stevemaltais.dev/images/portfolio-preview.jpg']}
+        images={['https://stevemaltais.dev/portfolio-preview.jpg']}
         datePublished={datePublished}
         dateModified={dateModified}
         authorName="Steve Maltais"
         publisherName="Steve Maltais"
         description="Bienvenue sur mon portfolio. Découvrez mes compétences, mes projets et contactez-moi pour plus d'informations."
       />
+
+      {/* Schéma JSON-LD pour la personne */}
+      <PersonSchema
+          name="Steve Maltais"
+          jobTitle="Développeur Web Freelance"
+          url="https://stevemaltais.dev/"
+          image="https://stevemaltais.dev/profilePicture.jpg"
+          sameAs={[
+            'https://www.linkedin.com/in/stevemaltais/',
+            'https://twitter.com/stevemaltais',
+          ]}
+      /> 
 
       {/* Composant pour l'overlay d'image d'arrière-plan */}
       <ImageOverlay isDrawerOpen={isDrawerOpen} />
