@@ -8,17 +8,15 @@ import {
 } from '@/components/HomePageComponents';
 import { getStaticProps as getProjetsStaticProps } from '@/graphql/queries';
 import { useState } from 'react';
-import { NextSeo, BreadcrumbJsonLd, ArticleJsonLd } from 'next-seo';  // Ajout de ArticleJsonLd pour gérer les dates
+import { NextSeo, BreadcrumbJsonLd, ArticleJsonLd } from 'next-seo';
 import PersonSchema from '@/components/SEO/PersonSchema';  // Import de PersonSchema
 
 export default function Home({ projets }) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  // Génération automatique de la date actuelle au format ISO pour la date de modification
-  const dateModified = new Date().toISOString();
-
-  // Date de publication fixe
-  const datePublished = '2023-01-15T08:00:00+08:00';
+  // Date de publication fixe et date de modification dynamique
+  const datePublished = '2023-01-15T08:00:00+08:00';  // Date fixe
+  const dateModified = new Date().toISOString();  // Date de modification dynamique
 
   const handleOpenDrawer = () => {
     setIsDrawerOpen(true);
@@ -89,8 +87,8 @@ export default function Home({ projets }) {
         url="https://stevemaltais.dev/"
         title="Accueil - Mon Portfolio"
         images={['https://stevemaltais.dev/images/portfolio-preview.jpg']}
-        datePublished={datePublished}  // Date de publication fixe
-        dateModified={dateModified}    // Date de modification automatique
+        datePublished={datePublished}
+        dateModified={dateModified}
         authorName="Steve Maltais"
         publisherName="Steve Maltais"
         description="Bienvenue sur mon portfolio. Découvrez mes compétences, mes projets et contactez-moi pour plus d'informations."
@@ -122,16 +120,5 @@ export default function Home({ projets }) {
   );
 }
 
-// Récupération des données pour la page d'accueil avec la date de publication fixe
-export const getStaticProps = async () => {
-  const projets = await getProjetsStaticProps();
-
-  // Vérification que la réponse est un tableau, sinon renvoyer un tableau vide
-  const validProjets = Array.isArray(projets) ? projets : [];
-
-  return {
-    props: {
-      projets: validProjets,  // Toujours renvoyer un tableau, même si vide
-    },
-  };
-};
+// Récupération des données pour la page d'accueil
+export const getStaticProps = getProjetsStaticProps;
