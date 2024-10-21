@@ -76,7 +76,7 @@ export default function Home({ projets }) {
       <ArticleJsonLd
         url="https://stevemaltais.dev/"
         title="Accueil - Mon Portfolio"
-        images={['https://stevemaltais.dev/assets/portfolio-preview.jpg']}
+        images={['https://stevemaltais.dev/portfolio-preview.jpg']}
         datePublished={datePublished}
         dateModified={dateModified}
         author={{
@@ -89,7 +89,7 @@ export default function Home({ projets }) {
           "name": "Steve Maltais",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://stevemaltais.dev/assets/logo.png"  // Exemple de logo
+            "url": "https://stevemaltais.dev/LOGO.png"  // Exemple de logo
           }
         }}
         description="Bienvenue sur mon portfolio. Découvrez mes compétences, mes projets et contactez-moi pour plus d'informations."
