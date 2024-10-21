@@ -87,13 +87,13 @@ const SettingsMenu = ({ isOpen, sidebarIsOpen }) => {
   return (
     <section style={menuStyle} id="menu-container" className={`${styles.menu} ${isOpen ? styles.open : ''}`}>
       <div id="menu">
-        <h3>Style Theme</h3>
+        <span>Style Theme</span>
         <div className={styles.toggle}>
           <input type="checkbox" id="dark-mode" checked={isDarkMode} onChange={changeTheme} />
           <label htmlFor="dark-mode" className={styles.themeLabel}></label>
         </div>
         <hr />
-        <h4>Couleurs Theme</h4>
+        <span>Couleurs Theme</span>
         <div className={styles.colorPalette}>
           <div onClick={() => changeColor('greenFluo')} className={styles.color} style={{ backgroundColor: 'var(--greenFluo)' }}></div>
           <div onClick={() => changeColor('pinkFluo')} className={styles.color} style={{ backgroundColor: 'var(--pinkFluo)' }}></div>
