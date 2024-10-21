@@ -21,10 +21,12 @@ export default function Home({ projets, datePublished }) {
   // Génération automatique de la date actuelle au format ISO pour la date de modification
   const dateModified = new Date().toISOString();
 
+  // Fonction pour ouvrir le drawer
   const handleOpenDrawer = () => {
     setIsDrawerOpen(true);
   };
 
+  // Fonction pour fermer le drawer
   const handleCloseDrawer = () => {
     setIsDrawerOpen(false);
   };
@@ -111,7 +113,7 @@ export default function Home({ projets, datePublished }) {
 
       {/* Section du portfolio */}
       <PorteFolioSection 
-        projets={projets} 
+        projets={Array.isArray(projets) ? projets : []} // Vérification que projets est bien un tableau
         onOpenDrawer={handleOpenDrawer} 
         onCloseDrawer={handleCloseDrawer} 
         isDrawerOpen={isDrawerOpen} 
@@ -127,12 +129,15 @@ export default function Home({ projets, datePublished }) {
 export const getStaticProps = async () => {
   const projets = await getProjetsStaticProps();
 
+  // Vérification que la réponse est un tableau, sinon renvoyer un tableau vide
+  const validProjets = Array.isArray(projets) ? projets : [];
+
   // Date de publication fixe (15 janvier 2023)
   const datePublished = '2024-08-15T08:00:00+08:00';
 
   return {
     props: {
-      projets,
+      projets: validProjets,  // Toujours renvoyer un tableau, même si vide
       datePublished,  // Passer la date de publication à la page
     },
   };
