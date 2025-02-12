@@ -39,7 +39,7 @@ export default function Home({ projets }) {
     description: 'Développeur web freelance spécialisé en création de sites modernes avec React, Next.js, et WordPress. Consultez mon portfolio pour découvrir mes projets.',
     images: [
       {
-        url: '/images/portfolio-preview.jpg',
+        url: '/portfolio-preview.jpg',
         width: 1200,
         height: 630,
         alt: 'Aperçu de mon portfolio',
